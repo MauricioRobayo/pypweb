@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
+import cn from 'classnames';
 import Head from 'next/head';
-import styles from './Layout.module.scss';
 import Email from '../email/email';
 import CTA from '../call-to-action/call-to-action';
 import LicensePlate from '../license-plate/license-plate';
-import utilStyles from '../../styles/utils.module.scss';
 import Select from '../select/select';
 import { PypOption } from '../../types';
+import styles from './Layout.module.scss';
+import utilStyles from '../../styles/utils.module.scss';
 
 type LayoutProps = {
   children: ReactNode;
@@ -24,7 +25,7 @@ export default function Layout({
   pypOptions,
 }: LayoutProps) {
   return (
-    <div className={styles.site}>
+    <div className={styles.layout}>
       <Head>
         <title>
           Toda la información sobre el pico y placa en Colombia | Pico y placa
@@ -42,13 +43,15 @@ export default function Layout({
           </nav>
         </header>
       )}
-      <div className={utilStyles.textCenter}>{header}</div>
-      <div className={styles.site}>
-        <main className={styles.main}>{children}</main>
-        {home ? null : <CTA />}
+      <div className={home ? styles.home : styles.main}>
+        <div className={utilStyles.textCenter}>{header}</div>
+        <div>
+          <main className={styles.main}>{children}</main>
+          {home ? null : <CTA />}
+        </div>
       </div>
       {aside ? <aside>{aside}</aside> : null}
-      <footer className={styles.footer}>
+      <footer className={cn(styles.footer, utilStyles.textCenter)}>
         <p>PICO Y PLACA HOY</p>
         <Email />
       </footer>

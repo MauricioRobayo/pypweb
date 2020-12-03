@@ -42,6 +42,7 @@ export default function Select({ pypOptions }: SelectProps) {
         id="pypOption"
         onChange={onChangeHandler}
         value={selectedOption}
+        placeholder="Ciudad / Categoría"
       />
       <datalist id="pyp-options">
         {pypOptions.map(({ name: optionName, value }) => (

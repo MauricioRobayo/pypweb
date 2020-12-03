@@ -1,23 +1,36 @@
 .logo {
   height: 48px;
 }
-.site {
+.layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;  
+  min-height: 100vh;
   align-items: center;
-  .site {
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 100%;
+    input {
+      border: none;
+      border-bottom: 2px solid #444;
+      margin-top: 2rem;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+    }
+  }
+  .main {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    flex: 1 1 100%;    
+    flex: 1 1 100%;
     width: 100%;
     justify-content: flex-start;
     .main {
       display: grid;
       justify-content: center;
       select {
-        padding: .25rem 1rem;
+        padding: 0.25rem 1rem;
         font-size: 1.5rem;
         border: none;
         border-bottom: 4px solid currentColor;
