@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Link from 'next/link';
 import cn from 'classnames';
 import Head from 'next/head';
 import Email from '../email/email';
@@ -36,7 +37,11 @@ export default function Layout({
       {home ? null : (
         <header className={styles.header}>
           <h2>
-            <LicensePlate>PYPHOY</LicensePlate>
+            <Link href="/">
+              <a>
+                <LicensePlate>PYPHOY</LicensePlate>
+              </a>
+            </Link>
           </h2>
           <nav>
             <Select pypOptions={pypOptions} />
