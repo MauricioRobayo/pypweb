@@ -29,9 +29,9 @@ export default function Select({ pypOptions }: SelectProps) {
     if (targetOption) {
       setSelectedOption(targetOption.name);
       router.push(targetOption.value);
+    } else {
+      setSelectedOption(targetValue);
     }
-
-    setSelectedOption(targetValue);
   }
 
   return (
