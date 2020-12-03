@@ -34,16 +34,16 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {home ? null : (
-        <header>
+        <header className={styles.header}>
           <h2>
-            <LicensePlate size="large">PYPHOY</LicensePlate>
+            <LicensePlate>PYPHOY</LicensePlate>
           </h2>
           <nav>
             <Select pypOptions={pypOptions} />
           </nav>
         </header>
       )}
-      <div className={home ? styles.home : styles.main}>
+      <div className={home ? styles.home : styles.page}>
         <div className={utilStyles.textCenter}>{header}</div>
         <div>
           <main className={styles.main}>{children}</main>
