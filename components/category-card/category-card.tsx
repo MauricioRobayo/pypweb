@@ -34,33 +34,34 @@ export default function CategoryCard({
   const schemeString =
     scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
   return (
-    <article
-      key={categoryName}
-      className={cn(styles.card, {
-        [styles.na]: !hasRestriction,
-      })}
-    >
+    <article key={categoryName}>
       <Link href={path}>
         <a>
-          <h4 className={styles.title}>{categoryName}</h4>
+          <div
+            className={cn(styles.card, {
+              [styles.na]: !hasRestriction,
+            })}
+          >
+            <h4 className={styles.title}>{categoryName}</h4>
+            {hasRestriction ? (
+              <div>
+                <div>No circulan en el siguiente horario</div>
+                <Hours hours={hours} interactive />
+              </div>
+            ) : null}
+
+            {isAllDigits || !hasRestriction ? null : (
+              <div>Placas {schemeString} en</div>
+            )}
+            <LicensePlate
+              publicLicense={isPublicLicense(categoryName)}
+              size={hasRestriction ? 'large' : 'medium'}
+            >
+              {numbersString}
+            </LicensePlate>
+          </div>
         </a>
       </Link>
-      {hasRestriction ? (
-        <div>
-          <div>No circulan en el siguiente horario</div>
-          <Hours hours={hours} interactive />
-        </div>
-      ) : null}
-
-      {isAllDigits || !hasRestriction ? null : (
-        <div>Placas {schemeString} en</div>
-      )}
-      <LicensePlate
-        publicLicense={isPublicLicense(categoryName)}
-        size={hasRestriction ? 'large' : 'medium'}
-      >
-        {numbersString}
-      </LicensePlate>
     </article>
   );
 }
