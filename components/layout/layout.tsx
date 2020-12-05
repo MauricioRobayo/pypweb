@@ -7,7 +7,7 @@ import CTA from '../call-to-action/call-to-action';
 import LicensePlate from '../license-plate/license-plate';
 import Select from '../select/select';
 import { PypOption } from '../../types';
-import styles from './Layout.module.scss';
+import styles from './layout.module.scss';
 import utilStyles from '../../styles/utils.module.scss';
 
 type LayoutProps = {
