@@ -20,6 +20,7 @@
   --active-background-color: hsl(51, 100%, 92%);
   --active-color: hsl(51, 100%, 56%);
   --inactive-background-color: hsl(0, 0%, 96%);
+  --link-color: hsl(217, 71%, 53%);
 }
 
 body {
@@ -35,6 +36,6 @@ a {
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: #3273dc;
+    color: var(--link-color);
   }
 }
