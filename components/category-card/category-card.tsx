@@ -57,7 +57,7 @@ export default function CategoryCard({
           <div>Placas {schemeString} en</div>
         )}
         <LicensePlate
-          publicLicense={isPublicLicense(name)}
+          publicLicense={isPublicLicense(group)}
           size={hasRestriction ? 'large' : 'medium'}
         >
           {numbersString}
