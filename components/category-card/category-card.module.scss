@@ -4,6 +4,9 @@
   background-color: #f8e153;
   border: 2px solid #eb942b;
   text-align: center;
+  a:hover {
+    color: inherit;
+  }
   &.na {
     border: 2px solid #444;
     background-color: #f5f5f5;

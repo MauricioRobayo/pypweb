@@ -1,6 +1,7 @@
 import { IHourData } from '@mauriciorobayo/pyptron';
 import cn from 'classnames';
 import Link from 'next/link';
+import utilStyles from '../../styles/utils.module.scss';
 import vehicleStyles from '../../styles/vehicles.module.scss';
 import { Scheme } from '../../types';
 import { ALL_DIGITS, NA, pypNumbersToString } from '../../utils/utils';
@@ -35,35 +36,38 @@ export default function CategoryCard({
 
   return (
     <article key={name}>
-      <Link href={path}>
-        <a>
-          <div
-            className={cn(styles.card, {
-              [styles.na]: !hasRestriction,
-            })}
-          >
-            <h4 className={cn(styles.title, vehicleStyles[`vehicle-${group}`])}>
-              {name}
-            </h4>
-            {hasRestriction ? (
-              <div>
-                <div>No circulan en el siguiente horario</div>
-                <Hours hours={hours} interactive />
-              </div>
-            ) : null}
-
-            {isAllDigits || !hasRestriction ? null : (
-              <div>Placas {schemeString} en</div>
-            )}
-            <LicensePlate
-              publicLicense={isPublicLicense(name)}
-              size={hasRestriction ? 'large' : 'medium'}
-            >
-              {numbersString}
-            </LicensePlate>
+      <div
+        className={cn(styles.card, {
+          [styles.na]: !hasRestriction,
+        })}
+      >
+        <h4 className={cn(styles.title, vehicleStyles[`vehicle-${group}`])}>
+          <Link href={path}>
+            <a>{name}</a>
+          </Link>
+        </h4>
+        {hasRestriction ? (
+          <div>
+            <div>No circulan en el siguiente horario</div>
+            <Hours hours={hours} interactive />
           </div>
-        </a>
-      </Link>
+        ) : null}
+
+        {isAllDigits || !hasRestriction ? null : (
+          <div>Placas {schemeString} en</div>
+        )}
+        <LicensePlate
+          publicLicense={isPublicLicense(name)}
+          size={hasRestriction ? 'large' : 'medium'}
+        >
+          {numbersString}
+        </LicensePlate>
+        <footer>
+          <Link href={path}>
+            <a className={utilStyles.button}>Ver próximos 7 días </a>
+          </Link>
+        </footer>
+      </div>
     </article>
   );
 }
