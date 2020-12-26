@@ -6,7 +6,7 @@
   border: 1px solid #dbdbdb;
   border-top: none;
   &.current {
-    background-color: #fff9c9;
+    background-color: var(--active-background-color);
     align-items: start;
     box-shadow: 0 0 10px 0 #7a7a7a;
     position: relative;
@@ -20,7 +20,7 @@
     text-decoration: none;
   }
   &.na {
-    background-color: #f5f5f5;
+    background-color: var(-inactive-background-color);
     color: #b5b5b5;
   }
   .license {
