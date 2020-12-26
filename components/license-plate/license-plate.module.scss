@@ -1,5 +1,5 @@
 .licensePlate {
-  --license-background-color: #F7C000;
+  --license-background-color: #f7c000;
   --license-color: black;
   background-color: var(--license-background-color);
   box-shadow: 0 0 0 1.5px var(--license-background-color);
@@ -8,13 +8,14 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  border-radius: .25em;
+  border-radius: 0.25em;
   font-family: LicensePlate, monospace, sans-serif;
-  padding: 0.25em;
+  padding: 0.4em 0.25em 0.25em;
   margin: 1.5px;
   border: 1.5px solid var(--license-color);
   text-transform: uppercase;
   font-weight: bold;
+  line-height: 1rem;
 }
 
 .small {
