@@ -1,5 +1,5 @@
 .list {
-  max-width: 570px;
+  max-width: var(--max-width);
   margin: auto;
   .title {
     font-size: 1.4rem;

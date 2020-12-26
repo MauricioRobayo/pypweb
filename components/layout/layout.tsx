@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
-import Link from 'next/link';
 import cn from 'classnames';
 import Head from 'next/head';
-import Email from '../email/email';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+import utilStyles from '../../styles/utils.module.scss';
+import { PypOption } from '../../types';
 import CTA from '../call-to-action/call-to-action';
+import Email from '../email/email';
 import LicensePlate from '../license-plate/license-plate';
 import Select from '../select/select';
-import { PypOption } from '../../types';
 import styles from './layout.module.scss';
-import utilStyles from '../../styles/utils.module.scss';
 
 type LayoutProps = {
   children: ReactNode;
@@ -36,16 +36,18 @@ export default function Layout({
       </Head>
       {home ? null : (
         <header className={styles.header}>
-          <h2>
-            <Link href="/">
-              <a>
-                <LicensePlate>PYPHOY</LicensePlate>
-              </a>
-            </Link>
-          </h2>
-          <nav>
-            <Select pypOptions={pypOptions} />
-          </nav>
+          <div className={styles.content}>
+            <h2>
+              <Link href="/">
+                <a>
+                  <LicensePlate>PYPHOY</LicensePlate>
+                </a>
+              </Link>
+            </h2>
+            <nav>
+              <Select pypOptions={pypOptions} />
+            </nav>
+          </div>
         </header>
       )}
       <div className={home ? styles.home : styles.page}>
