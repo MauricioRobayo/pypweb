@@ -33,7 +33,7 @@ export default function DayCard({
   hasRestriction,
 }: DayCardProps) {
   const currentDate = useContext(DateContext);
-  const schemeString = scheme === Scheme.FirstNumber ? 'último' : 'primer';
+  const schemeString = scheme === Scheme.FirstNumber ? 'Último' : 'Primer';
   const isCurrentDate = areSameDate(date, currentDate);
 
   return (
@@ -58,33 +58,22 @@ export default function DayCard({
           </Link>
         </div>
         {hasRestriction && isCurrentDate ? (
-          <>
-            <h6>
-              No circulan según el {schemeString} dígito de la placa en el
-              siguiente horario:
-            </h6>
-            <div>
-              <Hours hours={hours} interactive />
-            </div>
-          </>
+          <div>
+            <Hours hours={hours} interactive />
+          </div>
         ) : null}
       </div>
       <div className={styles.license}>
-        {hasRestriction && isCurrentDate ? (
-          <span
-            aria-label="No circulan"
-            title="No circulan"
-            className={styles.scheme}
-          >
-            🛑
-          </span>
-        ) : null}
+        {hasRestriction && isCurrentDate ? <div>No circulan</div> : null}
         <LicensePlate
           publicLicense={isPublicLicense}
           size={isCurrentDate ? 'large' : 'medium'}
         >
           {numbersString}
         </LicensePlate>
+        {hasRestriction && isCurrentDate ? (
+          <div>{schemeString} dígito de la placa</div>
+        ) : null}
       </div>
     </div>
   );

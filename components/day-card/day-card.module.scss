@@ -14,12 +14,6 @@
     .title {
       margin-bottom: 1rem;
     }
-    .license {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      grid-gap: 0.25rem;
-      align-items: center;
-    }
   }
   a {
     text-decoration: none;
@@ -30,5 +24,8 @@
   }
   .current {
     font-size: 1.25rem;
+  }
+  .license {
+    text-align: right;
   }
 }
