@@ -1,19 +1,19 @@
-import cn from 'classnames';
 import { IHourData } from '@mauriciorobayo/pyptron';
+import cn from 'classnames';
 import Link from 'next/link';
 import { useContext } from 'react';
-
-import LicensePlate from '../license-plate/license-plate';
+import DateContext from '../../contexts/date-context';
+import vehicleStyles from '../../styles/vehicles.module.scss';
+import { ALL_DIGITS, Scheme } from '../../utils/utils';
 import Date from '../date/date';
-import { Scheme, ALL_DIGITS } from '../../utils/utils';
 import { areSameDate } from '../date/utils';
 import Hours from '../hours/hours';
+import LicensePlate from '../license-plate/license-plate';
 import styles from './day-card.module.scss';
-import DateContext from '../../contexts/date-context';
 
 type DayCardProps = {
   scheme: Scheme;
-  categoryKey: string;
+  group: string;
   date: string;
   numbersString: string;
   hours: IHourData[];
@@ -24,7 +24,7 @@ type DayCardProps = {
 
 export default function DayCard({
   scheme,
-  categoryKey,
+  group,
   date,
   numbersString,
   hours,
@@ -49,7 +49,7 @@ export default function DayCard({
       <div>
         <div
           className={cn(styles.title, {
-            [styles[categoryKey]]: isCurrentDate,
+            [vehicleStyles[`vehicle-${group}`]]: isCurrentDate,
             [styles.current]: isCurrentDate,
           })}
         >

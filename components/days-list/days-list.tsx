@@ -1,15 +1,14 @@
 import { ICategoryData2 } from '@mauriciorobayo/pyptron';
-
+import {
+  isPublicLicense,
+  listFormat,
+  NA,
+  pypNumbersToString,
+  Scheme,
+} from '../../utils/utils';
 import DayCard from '../day-card/day-card';
 import NumberLinks from '../number-links/number-links';
 import styles from './days-list.module.scss';
-import {
-  isPublicLicense,
-  pypNumbersToString,
-  listFormat,
-  NA,
-  Scheme,
-} from '../../utils/utils';
 
 type DaysTableProps = {
   cityName: string;
@@ -19,7 +18,7 @@ type DaysTableProps = {
 export default function DaysList({ cityName, categoryData }: DaysTableProps) {
   const {
     name: categoryName,
-    key: categoryKey,
+    group: categoryGroup,
     path: categoryPath,
     data: [{ vehicleClasses, scheme }],
   } = categoryData;
@@ -37,7 +36,7 @@ export default function DaysList({ cityName, categoryData }: DaysTableProps) {
           return (
             <DayCard
               scheme={scheme}
-              categoryKey={categoryKey}
+              group={categoryGroup}
               key={date}
               date={date}
               numbersString={numbersString}

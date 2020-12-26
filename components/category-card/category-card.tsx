@@ -1,30 +1,29 @@
-import Link from 'next/link';
 import { IHourData } from '@mauriciorobayo/pyptron';
 import cn from 'classnames';
-
+import Link from 'next/link';
+import vehicleStyles from '../../styles/vehicles.module.scss';
 import { Scheme } from '../../types';
+import { ALL_DIGITS, NA, pypNumbersToString } from '../../utils/utils';
 import Hours from '../hours/hours';
 import LicensePlate from '../license-plate/license-plate';
 import styles from './category-card.module.scss';
-import { pypNumbersToString, ALL_DIGITS, NA } from '../../utils/utils';
 
 type CategoryCardProps = {
   path: string;
   numbers: number[];
   hours: IHourData[];
-  categoryName: string;
+  name: string;
+  group: string;
   scheme: Scheme;
 };
 
-function isPublicLicense(categoryName: string) {
-  const lowerCaseName = categoryName.toLowerCase();
-  return lowerCaseName === 'taxis' || lowerCaseName.includes('público');
-}
+const isPublicLicense = (group: string) => ['taxis', 'tpc'].includes(group);
 
 export default function CategoryCard({
   numbers,
   path,
-  categoryName,
+  name,
+  group,
   hours,
   scheme,
 }: CategoryCardProps) {
@@ -33,8 +32,9 @@ export default function CategoryCard({
   const hasRestriction = numbersString !== NA;
   const schemeString =
     scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
+
   return (
-    <article key={categoryName}>
+    <article key={name}>
       <Link href={path}>
         <a>
           <div
@@ -42,7 +42,9 @@ export default function CategoryCard({
               [styles.na]: !hasRestriction,
             })}
           >
-            <h4 className={styles.title}>{categoryName}</h4>
+            <h4 className={cn(styles.title, vehicleStyles[`vehicle-${group}`])}>
+              {name}
+            </h4>
             {hasRestriction ? (
               <div>
                 <div>No circulan en el siguiente horario</div>
@@ -54,7 +56,7 @@ export default function CategoryCard({
               <div>Placas {schemeString} en</div>
             )}
             <LicensePlate
-              publicLicense={isPublicLicense(categoryName)}
+              publicLicense={isPublicLicense(name)}
               size={hasRestriction ? 'large' : 'medium'}
             >
               {numbersString}
