@@ -57,7 +57,7 @@ export default function Layout({
           {home ? null : <CTA />}
         </div>
       </div>
-      {aside ? <aside>{aside}</aside> : null}
+      {aside ? <aside className={styles.aside}>{aside}</aside> : null}
       <footer className={cn(styles.footer, utilStyles.textCenter)}>
         <p>PICO Y PLACA HOY</p>
         <Email />
