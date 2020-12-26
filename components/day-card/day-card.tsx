@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import DateContext from '../../contexts/date-context';
 import vehicleStyles from '../../styles/vehicles.module.scss';
-import { ALL_DIGITS, Scheme } from '../../utils/utils';
+import { Scheme } from '../../utils/utils';
 import Date from '../date/date';
 import { areSameDate } from '../date/utils';
 import Hours from '../hours/hours';
@@ -33,9 +33,7 @@ export default function DayCard({
   hasRestriction,
 }: DayCardProps) {
   const currentDate = useContext(DateContext);
-  const schemeString =
-    scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
-  const isAllDigits = numbersString === ALL_DIGITS;
+  const schemeString = scheme === Scheme.FirstNumber ? 'último' : 'primer';
   const isCurrentDate = areSameDate(date, currentDate);
 
   return (
@@ -60,16 +58,26 @@ export default function DayCard({
           </Link>
         </div>
         {hasRestriction && isCurrentDate ? (
-          <div>
-            <Hours hours={hours} interactive />
-          </div>
+          <>
+            <h6>
+              No circulan según el {schemeString} dígito de la placa en el
+              siguiente horario:
+            </h6>
+            <div>
+              <Hours hours={hours} interactive />
+            </div>
+          </>
         ) : null}
       </div>
       <div className={styles.license}>
-        {hasRestriction && !isAllDigits && isCurrentDate ? (
-          <div className={styles.scheme}>
-            No circulan placas {schemeString} en
-          </div>
+        {hasRestriction && isCurrentDate ? (
+          <span
+            aria-label="No circulan"
+            title="No circulan"
+            className={styles.scheme}
+          >
+            🛑
+          </span>
         ) : null}
         <LicensePlate
           publicLicense={isPublicLicense}

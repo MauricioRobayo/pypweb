@@ -7,7 +7,6 @@
   border-top: none;
   &.current {
     background-color: var(--active-background-color);
-    align-items: start;
     box-shadow: 0 0 10px 0 #7a7a7a;
     position: relative;
     border-radius: 4px;
@@ -24,10 +23,13 @@
     color: #b5b5b5;
   }
   .license {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: right;
-  }
-  .scheme {
-    margin-top: 0.5rem;
+    & > * {
+      margin-left: 0.5rem;
+    }
   }
   .current {
     font-size: 1.25rem;
