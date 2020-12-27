@@ -9,9 +9,6 @@ type CategoryListProps = {
 export default function CategoriesList({ categories }: CategoryListProps) {
   return (
     <div className={styles.list}>
-      <h3 className={styles.title}>
-        Se restringe la circulación de los siguientes vehículos
-      </h3>
       {categories.map(
         ({ path, group, name, data: [{ numbers, scheme, hours }] }) => {
           return (
