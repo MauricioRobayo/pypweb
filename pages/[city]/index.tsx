@@ -22,7 +22,7 @@ export default function City({ cityData, pypOptions }: CityProps) {
 
   const aside = (
     <section>
-      <h2>Pico y placa vigente en {cityName}</h2>
+      <h4>Pico y placa vigente en {cityName}</h4>
       <p>
         Las siguientes son las medidas de restricción vehicular vigentes para{' '}
         {cityName} durante el mes de{' '}
