@@ -62,7 +62,7 @@ export default function CategoryCard({
         >
           {numbersString}
         </LicensePlate>
-        <footer>
+        <footer className={styles.footer}>
           <Link href={path}>
             <a className={utilStyles.button}>Ver próximos 7 días </a>
           </Link>
