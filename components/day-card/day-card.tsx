@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import DateContext from '../../contexts/date-context';
 import vehicleStyles from '../../styles/vehicles.module.scss';
-import { Scheme } from '../../utils/utils';
+import { ALL_DIGITS, Scheme } from '../../utils/utils';
 import Date from '../date/date';
 import { areSameDate } from '../date/utils';
 import Hours from '../hours/hours';
@@ -35,6 +35,7 @@ export default function DayCard({
   const currentDate = useContext(DateContext);
   const schemeString = scheme === Scheme.FirstNumber ? 'Último' : 'Primer';
   const isCurrentDate = areSameDate(date, currentDate);
+  const isAllDigits = numbersString === ALL_DIGITS;
 
   return (
     <div
@@ -71,7 +72,7 @@ export default function DayCard({
         >
           {numbersString}
         </LicensePlate>
-        {hasRestriction && isCurrentDate ? (
+        {hasRestriction && !isAllDigits && isCurrentDate ? (
           <div>{schemeString} dígito de la placa</div>
         ) : null}
       </div>
