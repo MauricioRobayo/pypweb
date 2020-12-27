@@ -16,6 +16,7 @@ type LayoutProps = {
   home?: boolean;
   header?: ReactNode;
   aside?: ReactNode;
+  title?: string;
 };
 
 export default function Layout({
@@ -24,14 +25,12 @@ export default function Layout({
   home,
   aside,
   pypOptions,
+  title,
 }: LayoutProps) {
   return (
     <div className={styles.layout}>
       <Head>
-        <title>
-          Toda la información sobre el pico y placa en Colombia | Pico y placa
-          hoy
-        </title>
+        <title>{`${title} | Pico y placa hoy`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {home ? null : (
@@ -70,4 +69,5 @@ Layout.defaultProps = {
   home: false,
   header: null,
   aside: null,
+  title: 'Toda la información sobre el pico y placa en Colombia',
 };

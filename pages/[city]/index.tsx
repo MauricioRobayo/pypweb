@@ -1,17 +1,16 @@
-import Link from 'next/link';
-import { GetStaticPaths, GetStaticProps } from 'next';
 import {
   getCitiesMap2,
   getCityData2,
   ICityData2,
 } from '@mauriciorobayo/pyptron';
-
-import Layout from '../../components/layout/layout';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
 import CategoriesList from '../../components/categories-list/categories-list';
 import PypDate from '../../components/date/date';
 import { getLocalLongDateString } from '../../components/date/utils';
-import { getInfoFromSlug, getPypOptions } from '../../utils/utils';
+import Layout from '../../components/layout/layout';
 import { PypOption } from '../../types';
+import { getInfoFromSlug, getPypOptions } from '../../utils/utils';
 
 type CityProps = {
   cityData: ICityData2;
@@ -20,10 +19,11 @@ type CityProps = {
 
 export default function City({ cityData, pypOptions }: CityProps) {
   const { name: cityName, categories: cityCategories } = cityData;
+  const title = `Pico y placa ${cityName}`;
 
   const header = (
     <header>
-      <h1>{`Pico y placa ${cityName}`}</h1>
+      <h1>{title}</h1>
       <h2>
         <PypDate />
       </h2>
@@ -52,7 +52,7 @@ export default function City({ cityData, pypOptions }: CityProps) {
   );
 
   return (
-    <Layout header={header} aside={aside} pypOptions={pypOptions}>
+    <Layout header={header} aside={aside} pypOptions={pypOptions} title={title}>
       <CategoriesList categories={cityData.categories} />
     </Layout>
   );

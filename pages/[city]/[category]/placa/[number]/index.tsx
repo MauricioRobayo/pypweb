@@ -44,9 +44,11 @@ export default function Category({
     path: categoryPath,
     data: [{ numbers, scheme, vehicleClasses, hours }],
   } = categoryData;
+  const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
+
   const header = (
     <header>
-      <h1>{`Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`}</h1>
+      <h1>{title}</h1>
       <h2>
         <PypDate />
       </h2>
@@ -83,7 +85,7 @@ export default function Category({
     );
 
   return (
-    <Layout header={header} pypOptions={pypOptions} aside={aside}>
+    <Layout header={header} pypOptions={pypOptions} aside={aside} title={title}>
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
           Los {vehicleClassesString} con {currentNumberLicense}{' '}

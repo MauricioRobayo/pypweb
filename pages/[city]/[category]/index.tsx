@@ -1,20 +1,19 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
 import {
   getCitiesMap2,
-  ICityMap2,
-  ICategoryMap2,
-  ICategoryData2,
   getCityData2,
+  ICategoryData2,
+  ICategoryMap2,
+  ICityMap2,
 } from '@mauriciorobayo/pyptron';
-
-import DateContext from '../../../contexts/date-context';
-import Layout from '../../../components/layout/layout';
-import DaysList from '../../../components/days-list/days-list';
-import PypDate from '../../../components/date/date';
-import { getInfoFromSlug, getPypOptions } from '../../../utils/utils';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import CategoryInfo from '../../../components/category-info/category-info';
+import PypDate from '../../../components/date/date';
+import DaysList from '../../../components/days-list/days-list';
+import Layout from '../../../components/layout/layout';
+import DateContext from '../../../contexts/date-context';
 import { PypOption } from '../../../types';
+import { getInfoFromSlug, getPypOptions } from '../../../utils/utils';
 
 type CategoryProps = {
   cityKey: string;
@@ -50,9 +49,11 @@ export default function Category({
     );
   }
 
+  const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
+
   const header = (
     <header>
-      <h1>{`Pico y placa ${data.name.toLowerCase()} en ${cityName}`}</h1>
+      <h1>{title}</h1>
       <h2>
         <PypDate date={queryDate} />
       </h2>
@@ -62,7 +63,7 @@ export default function Category({
   const aside = <CategoryInfo categoryData={categoryData} />;
 
   return (
-    <Layout header={header} aside={aside} pypOptions={pypOptions}>
+    <Layout header={header} aside={aside} pypOptions={pypOptions} title={title}>
       <DateContext.Provider value={queryDate}>
         <DaysList cityName={cityName} categoryData={data} />
       </DateContext.Provider>
