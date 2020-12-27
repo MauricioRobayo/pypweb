@@ -1,30 +1,30 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
 import {
   getCitiesMap2,
-  ICityMap2,
-  ICategoryMap2,
-  ICategoryData2,
   getCityData2,
+  ICategoryData2,
+  ICategoryMap2,
+  ICityMap2,
 } from '@mauriciorobayo/pyptron';
 import cn from 'classnames';
-
-import Layout from '../../../../../components/layout/layout';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
+import CategoryInfo from '../../../../../components/category-info/category-info';
 import PypDate from '../../../../../components/date/date';
-import {
-  getInfoFromSlug,
-  listFormat,
-  Scheme,
-  pypNumbersToString,
-  NA,
-  getPypOptions,
-} from '../../../../../utils/utils';
-import NumberLinks from '../../../../../components/number-links/number-links';
 import Hours from '../../../../../components/hours/hours';
+import Layout from '../../../../../components/layout/layout';
 import LicensePlate from '../../../../../components/license-plate/license-plate';
-import styles from './index.module.scss';
+import NumberLinks from '../../../../../components/number-links/number-links';
 import utilStyles from '../../../../../styles/utils.module.scss';
 import { PypOption } from '../../../../../types';
+import {
+  getInfoFromSlug,
+  getPypOptions,
+  listFormat,
+  NA,
+  pypNumbersToString,
+  Scheme,
+} from '../../../../../utils/utils';
+import styles from './index.module.scss';
 
 type CategoryProps = {
   categoryData: ICategoryData2;
@@ -68,6 +68,8 @@ export default function Category({
     </>
   );
 
+  const aside = <CategoryInfo categoryData={categoryData} />;
+
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
@@ -81,7 +83,7 @@ export default function Category({
     );
 
   return (
-    <Layout header={header} pypOptions={pypOptions}>
+    <Layout header={header} pypOptions={pypOptions} aside={aside}>
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
           Los {vehicleClassesString} con {currentNumberLicense}{' '}
