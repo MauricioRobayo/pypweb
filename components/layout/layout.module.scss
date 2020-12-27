@@ -6,6 +6,16 @@
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
+  header {
+    h1 {
+      margin: 2rem 0 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    h2 {
+      font-weight: 1.2rem;
+    }
+  }
   .header,
   .footer {
     width: 100%;
@@ -50,7 +60,7 @@
   }
   .main {
     padding: 1rem;
-    margin: 1rem auto;
+    margin: 0 auto;
   }
   .aside {
     padding: 1rem;
