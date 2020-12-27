@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import utilStyles from '../../styles/utils.module.scss';
 import { PypOption } from '../../types';
 import CTA from '../call-to-action/call-to-action';
+import PypDate from '../date/date';
 import Email from '../email/email';
 import LicensePlate from '../license-plate/license-plate';
 import Select from '../select/select';
@@ -14,23 +15,23 @@ type LayoutProps = {
   children: ReactNode;
   pypOptions: PypOption[];
   home?: boolean;
-  header?: ReactNode;
   aside?: ReactNode;
   title?: string;
+  date?: Date | string;
 };
 
 export default function Layout({
-  header,
   children,
   home,
   aside,
   pypOptions,
   title,
+  date,
 }: LayoutProps) {
   return (
     <div className={styles.layout}>
       <Head>
-        <title>{`${title} | Pico y placa hoy`}</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {home ? null : (
@@ -50,7 +51,14 @@ export default function Layout({
         </header>
       )}
       <div className={home ? styles.home : styles.page}>
-        <div className={utilStyles.textCenter}>{header}</div>
+        <div className={utilStyles.textCenter}>
+          <header>
+            <h1>{title}</h1>
+            <h2>
+              <PypDate date={date} />
+            </h2>
+          </header>
+        </div>
         <div>
           <main className={styles.main}>{children}</main>
           {home ? null : <CTA />}
@@ -67,7 +75,7 @@ export default function Layout({
 
 Layout.defaultProps = {
   home: false,
-  header: null,
+  date: new Date(),
   aside: null,
-  title: 'Toda la información sobre el pico y placa en Colombia',
+  title: 'Pico y placa hoy',
 };

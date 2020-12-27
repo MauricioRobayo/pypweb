@@ -8,7 +8,6 @@ import {
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import CategoryInfo from '../../../components/category-info/category-info';
-import PypDate from '../../../components/date/date';
 import DaysList from '../../../components/days-list/days-list';
 import Layout from '../../../components/layout/layout';
 import DateContext from '../../../contexts/date-context';
@@ -51,19 +50,15 @@ export default function Category({
 
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
-  const header = (
-    <header>
-      <h1>{title}</h1>
-      <h2>
-        <PypDate date={queryDate} />
-      </h2>
-    </header>
-  );
-
   const aside = <CategoryInfo categoryData={categoryData} />;
 
   return (
-    <Layout header={header} aside={aside} pypOptions={pypOptions} title={title}>
+    <Layout
+      aside={aside}
+      pypOptions={pypOptions}
+      title={title}
+      date={queryDate}
+    >
       <DateContext.Provider value={queryDate}>
         <DaysList cityName={cityName} categoryData={data} />
       </DateContext.Provider>

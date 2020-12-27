@@ -6,7 +6,6 @@ import {
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import CategoriesList from '../../components/categories-list/categories-list';
-import PypDate from '../../components/date/date';
 import { getLocalLongDateString } from '../../components/date/utils';
 import Layout from '../../components/layout/layout';
 import { PypOption } from '../../types';
@@ -20,15 +19,6 @@ type CityProps = {
 export default function City({ cityData, pypOptions }: CityProps) {
   const { name: cityName, categories: cityCategories } = cityData;
   const title = `Pico y placa ${cityName}`;
-
-  const header = (
-    <header>
-      <h1>{title}</h1>
-      <h2>
-        <PypDate />
-      </h2>
-    </header>
-  );
 
   const aside = (
     <section>
@@ -52,7 +42,7 @@ export default function City({ cityData, pypOptions }: CityProps) {
   );
 
   return (
-    <Layout header={header} aside={aside} pypOptions={pypOptions} title={title}>
+    <Layout aside={aside} pypOptions={pypOptions} title={title}>
       <CategoriesList categories={cityData.categories} />
     </Layout>
   );
