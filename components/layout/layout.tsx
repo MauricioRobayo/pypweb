@@ -35,8 +35,8 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {home ? null : (
-        <header className={styles.header}>
-          <div className={styles.content}>
+        <div className={styles.navbar}>
+          <nav>
             <h2>
               <Link href="/">
                 <a>
@@ -44,11 +44,9 @@ export default function Layout({
                 </a>
               </Link>
             </h2>
-            <nav>
-              <Select pypOptions={pypOptions} />
-            </nav>
-          </div>
-        </header>
+            <Select pypOptions={pypOptions} />
+          </nav>
+        </div>
       )}
       <div className={home ? styles.home : styles.page}>
         <div className={utilStyles.textCenter}>
