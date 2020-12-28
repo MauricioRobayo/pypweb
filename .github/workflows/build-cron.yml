@@ -1,14 +1,12 @@
 name: build-cron
 on:
   schedule:
-    - cron: '35 18 * * *'
+    - cron: '0 5 * * *'
 jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - name: timestamp
-        run: date
-      - name: build
+      - name: hit build endpoint
         run: |
           curl \
           --request POST \
