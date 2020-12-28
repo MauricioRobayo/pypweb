@@ -56,12 +56,14 @@ export default function CategoryCard({
         {isAllDigits || !hasRestriction ? null : (
           <div>Placas {schemeString} en</div>
         )}
-        <LicensePlate
-          publicLicense={isPublicLicense(group)}
-          size={hasRestriction ? 'large' : 'medium'}
-        >
-          {numbersString}
-        </LicensePlate>
+        <div className={styles.licenseNumbers}>
+          <LicensePlate
+            publicLicense={isPublicLicense(group)}
+            size={hasRestriction ? 'large' : 'medium'}
+          >
+            {numbersString}
+          </LicensePlate>
+        </div>
         <footer className={styles.footer}>
           <Link href={path}>
             <a className={utilStyles.button}>Ver próximos 7 días </a>

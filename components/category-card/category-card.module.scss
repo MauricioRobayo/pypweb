@@ -1,22 +1,18 @@
 .card {
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--active-background-color);
-  border: 2px solid var(--active-color);
+  background-color: #f5f5f5;
+  border: 2px solid #444;
   text-align: center;
   a:hover {
     color: inherit;
   }
-  &.na {
-    border: 2px solid #444;
-    background-color: #f5f5f5;
+  .licenseNumbers {
+    margin: 1rem 0;
   }
   .title {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 1rem;
-  }
-  .footer {
-    margin-top: 1rem;
   }
 }
