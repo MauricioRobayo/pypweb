@@ -1,3 +1,5 @@
+import styles from "./mega-banner.module.scss";
+
 const isProduction = process.env.NODE_ENV === "production";
 const id = "71116-1";
 
@@ -9,7 +11,7 @@ export default () => (
         <script src="//ads.themoneytizer.com/s/requestform.js?siteId=71116&formatId=1" />
       </>
     ) : (
-      <div>Ad placeholder</div>
+      <div className={styles.megaBanner}>Mega Banner</div>
     )}
   </div>
 );
