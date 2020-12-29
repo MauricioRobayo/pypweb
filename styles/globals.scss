@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'LicensePlate';
   src: url('/fonts/LicensePlate.eot');
-  src: url('/fonts/LicensePlate.eot?#iefix') format('embedded-opentype'),
+  src:
+    url('/fonts/LicensePlate.eot?#iefix') format('embedded-opentype'),
     url('/fonts/LicensePlate.otf') format('opentype'),
     url('/fonts/LicensePlate.svg') format('svg'),
     url('/fonts/LicensePlate.ttf') format('truetype'),
@@ -24,8 +25,18 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
   line-height: normal;
 }
 
@@ -36,6 +47,7 @@ strong {
 a {
   text-decoration: none;
   color: inherit;
+
   &:hover {
     color: var(--link-color);
   }

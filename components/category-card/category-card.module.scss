@@ -4,15 +4,19 @@
   background-color: #f5f5f5;
   border: 2px solid #444;
   text-align: center;
+
   a:hover {
     color: inherit;
   }
+
   .licenseNumbers {
     margin: 1rem 0;
   }
+
   &.na {
     opacity: 0.5;
   }
+
   .title {
     font-size: 1.2rem;
     font-weight: bold;

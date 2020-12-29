@@ -1,11 +1,13 @@
 .numberLinks {
   margin: 4rem 0 2rem;
   text-align: center;
+
   .title {
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 1rem;
   }
+
   .selected,
   .link {
     margin: 0.5rem;
@@ -20,9 +22,11 @@
     text-align: center;
     box-sizing: border-box;
   }
+
   .selected {
     border: 2px solid currentColor;
   }
+
   .link {
     border: 2px solid var(--link-color);
     text-decoration: none;
