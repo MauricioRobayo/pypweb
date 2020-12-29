@@ -3,13 +3,15 @@
   "plugins": [
     "stylelint-prettier",
     "stylelint-scss",
-    "stylelint-csstree-validator"
+    "stylelint-csstree-validator",
+    "stylelint-order"
   ],
   "rules": {
     "prettier/prettier": true,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
-    "csstree/validator": true
+    "csstree/validator": true,
+    "order/properties-alphabetical-order": true
   },
   "ignoreFiles": [".next/**"]
 }
