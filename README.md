@@ -1,6 +1,7 @@
 # pypweb
 
 [![build-cron](https://github.com/MauricioRobayo/pypweb/workflows/build-cron/badge.svg)](https://github.com/MauricioRobayo/pypweb/actions?query=workflow%3Abuild-cron)
+[![CodeFactor](https://www.codefactor.io/repository/github/mauriciorobayo/pypweb/badge?s=4b4b191b0d216d10f28fcfd92c2bb2cb0d990519)](https://www.codefactor.io/repository/github/mauriciorobayo/pypweb)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
