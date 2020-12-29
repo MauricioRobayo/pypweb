@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import styles from "./number-links.module.scss";
 
 type NumberLinksProps = {

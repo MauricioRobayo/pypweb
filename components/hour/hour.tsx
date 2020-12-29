@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { IHourData } from "@mauriciorobayo/pyptron";
-
-import { convert24toAMPM } from "./utils";
-import styles from "./hour.module.scss";
-import { isEmptyArray, ALL_DAY } from "../../utils/utils";
+import { useContext } from "react";
 import dateContext from "../../contexts/date-context";
+import { ALL_DAY, isEmptyArray } from "../../utils/utils";
+import styles from "./hour.module.scss";
+import { convert24toAMPM } from "./utils";
 
 type HourProps = {
   hourData: IHourData;

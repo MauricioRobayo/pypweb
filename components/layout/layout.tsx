@@ -9,6 +9,7 @@ import PypDate from "../date/date";
 import Email from "../email/email";
 import LicensePlate from "../license-plate/license-plate";
 import Select from "../select/select";
+import MegaBanner from "../the-moneytizer/mega-banner";
 import styles from "./layout.module.scss";
 
 type LayoutProps = {
@@ -48,6 +49,7 @@ export default function Layout({
           </nav>
         </div>
       )}
+      <MegaBanner />
       <div className={home ? styles.home : styles.page}>
         <div className={utilStyles.textCenter}>
           <header>
