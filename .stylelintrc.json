@@ -1,13 +1,11 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
   "plugins": [
-    "stylelint-prettier",
     "stylelint-scss",
     "stylelint-csstree-validator",
     "stylelint-order"
   ],
   "rules": {
-    "prettier/prettier": true,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     "csstree/validator": true,
