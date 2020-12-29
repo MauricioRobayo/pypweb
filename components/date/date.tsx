@@ -1,10 +1,10 @@
-import {
-  getWeekdayName,
-  getLocalShortDateString,
-  getLocalLongDateString,
-  dateIsToday,
-} from "./utils";
 import styles from "./date.module.scss";
+import {
+  dateIsToday,
+  getLocalLongDateString,
+  getLocalShortDateString,
+  getWeekdayName,
+} from "./utils";
 
 type DateProps = {
   date?: Date | string;
