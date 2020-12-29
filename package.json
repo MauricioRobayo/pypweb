@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "eslint": "eslint .",
-    "stylelint": "stylelint \"**/*.scss\"",
+    "lint:eslint": "eslint .",
+    "lint:stylelint": "stylelint \"**/*.scss\"",
+    "lint": "run-p lint:*",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next dev",
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
     "start": "next start"
@@ -37,6 +38,7 @@
     "eslint-plugin-simple-import-sort": "^5.0.3",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.1.2",
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0",
