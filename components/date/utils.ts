@@ -1,12 +1,12 @@
 const dateTimeFormatOptions = {
-  day: 'numeric',
-  month: 'long',
-  timeZone: 'America/Bogota',
-  weekday: 'long',
-  year: 'numeric',
+  day: "numeric",
+  month: "long",
+  timeZone: "America/Bogota",
+  weekday: "long",
+  year: "numeric",
 };
 
-const formatter = new Intl.DateTimeFormat('es-CO', dateTimeFormatOptions);
+const formatter = new Intl.DateTimeFormat("es-CO", dateTimeFormatOptions);
 
 export function getDateFormattedParts(
   date: Date = new Date()
@@ -17,7 +17,7 @@ export function getDateFormattedParts(
 export function getWeekdayName(date: Date = new Date()): string {
   const parts = getDateFormattedParts(date);
   const weekdayName = parts.find(
-    ({ type }: Intl.DateTimeFormatPart) => type === 'weekday'
+    ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
   ) as Intl.DateTimeFormatPart;
   return weekdayName.value;
 }
@@ -28,12 +28,12 @@ export function getLocalLongDateString(date: Date = new Date()): string {
 
 export function getLocalShortDateString(date: Date = new Date()): string {
   const shortDateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'numeric',
-    timeZone: 'America/Bogota',
-    year: 'numeric',
+    day: "numeric",
+    month: "numeric",
+    timeZone: "America/Bogota",
+    year: "numeric",
   };
-  const f = new Intl.DateTimeFormat('es-CO', shortDateTimeFormatOptions);
+  const f = new Intl.DateTimeFormat("es-CO", shortDateTimeFormatOptions);
   return f.format(date);
 }
 

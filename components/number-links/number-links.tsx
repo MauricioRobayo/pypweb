@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import styles from './number-links.module.scss';
+import styles from "./number-links.module.scss";
 
 type NumberLinksProps = {
   path: string;
@@ -16,9 +16,9 @@ export default function NumberLinks({
   numberSelected,
 }: NumberLinksProps) {
   const numbers =
-    cityName === 'Manizales' && categoryName === 'Transporte publico colectivo'
-      ? ['H', 'I', 'J', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
-      : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    cityName === "Manizales" && categoryName === "Transporte publico colectivo"
+      ? ["H", "I", "J", "A", "B", "C", "D", "E", "F", "G"]
+      : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   return (
     <div className={styles.numberLinks}>

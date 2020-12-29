@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { IHourData } from '@mauriciorobayo/pyptron';
+import { useContext } from "react";
+import { IHourData } from "@mauriciorobayo/pyptron";
 
-import { convert24toAMPM } from './utils';
-import styles from './hour.module.scss';
-import { isEmptyArray, ALL_DAY } from '../../utils/utils';
-import dateContext from '../../contexts/date-context';
+import { convert24toAMPM } from "./utils";
+import styles from "./hour.module.scss";
+import { isEmptyArray, ALL_DAY } from "../../utils/utils";
+import dateContext from "../../contexts/date-context";
 
 type HourProps = {
   hourData: IHourData;
@@ -13,7 +13,7 @@ type HourProps = {
 export default function Hour({
   hourData: { hours, comment, days },
 }: HourProps) {
-  const hasComment = comment !== '';
+  const hasComment = comment !== "";
   const isAllDay = comment === ALL_DAY;
 
   const date = useContext(dateContext);
@@ -45,7 +45,7 @@ export default function Hour({
           return (
             <li key={index} className={styles.hour}>
               <span>
-                {hour.map((hour24) => convert24toAMPM(hour24)).join(' a ')}
+                {hour.map((hour24) => convert24toAMPM(hour24)).join(" a ")}
               </span>
             </li>
           );

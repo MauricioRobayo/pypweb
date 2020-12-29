@@ -1,17 +1,17 @@
-import React from 'react';
-import cn from 'classnames';
-import styles from './license-plate.module.scss';
+import React from "react";
+import cn from "classnames";
+import styles from "./license-plate.module.scss";
 
 type LicensePlateProps = {
   children: React.ReactNode;
   publicLicense?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
 };
 
 export default function LicensePlate({
   children,
   publicLicense = false,
-  size = 'medium',
+  size = "medium",
 }: LicensePlateProps) {
   return (
     <div
@@ -26,5 +26,5 @@ export default function LicensePlate({
 
 LicensePlate.defaultProps = {
   publicLicense: false,
-  size: 'medium',
+  size: "medium",
 };

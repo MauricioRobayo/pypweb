@@ -1,15 +1,15 @@
-import cn from 'classnames';
-import Head from 'next/head';
-import Link from 'next/link';
-import { ReactNode } from 'react';
-import utilStyles from '../../styles/utils.module.scss';
-import { PypOption } from '../../types';
-import CTA from '../call-to-action/call-to-action';
-import PypDate from '../date/date';
-import Email from '../email/email';
-import LicensePlate from '../license-plate/license-plate';
-import Select from '../select/select';
-import styles from './layout.module.scss';
+import cn from "classnames";
+import Head from "next/head";
+import Link from "next/link";
+import { ReactNode } from "react";
+import utilStyles from "../../styles/utils.module.scss";
+import { PypOption } from "../../types";
+import CTA from "../call-to-action/call-to-action";
+import PypDate from "../date/date";
+import Email from "../email/email";
+import LicensePlate from "../license-plate/license-plate";
+import Select from "../select/select";
+import styles from "./layout.module.scss";
 
 type LayoutProps = {
   children: ReactNode;
@@ -75,5 +75,5 @@ Layout.defaultProps = {
   aside: null,
   date: new Date(),
   home: false,
-  title: 'Pico y placa hoy',
+  title: "Pico y placa hoy",
 };
