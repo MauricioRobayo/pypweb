@@ -32,7 +32,7 @@ export default function CategoryCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const schemeString =
-    scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
+    scheme === Scheme.FirstNumber ? 'iniciadas' : 'terminadas';
 
   return (
     <article key={name}>

@@ -33,7 +33,7 @@ export default function DayCard({
   hasRestriction,
 }: DayCardProps) {
   const currentDate = useContext(DateContext);
-  const schemeString = scheme === Scheme.FirstNumber ? 'Último' : 'Primer';
+  const schemeString = scheme === Scheme.FirstNumber ? 'Primer' : 'Último';
   const isCurrentDate = areSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
 
