@@ -81,6 +81,6 @@ export default function DayCard({
 }
 
 DayCard.defaultProps = {
-  isPublicLicense: false,
   hasRestriction: true,
+  isPublicLicense: false,
 };

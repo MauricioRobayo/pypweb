@@ -27,7 +27,7 @@ export default function NumberLinks({
         {numbers.map((number) => {
           if (number === numberSelected) {
             return (
-              <span className={styles.selected} key={number}>
+              <span key={number} className={styles.selected}>
                 {number}
               </span>
             );

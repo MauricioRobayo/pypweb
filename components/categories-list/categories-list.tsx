@@ -14,11 +14,11 @@ export default function CategoriesList({ categories }: CategoryListProps) {
           return (
             <CategoryCard
               key={path}
-              path={path}
-              name={name}
               group={group}
               hours={hours}
+              name={name}
               numbers={numbers}
+              path={path}
               scheme={scheme}
             />
           );

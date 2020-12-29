@@ -32,7 +32,7 @@ export default function Layout({
     <div className={styles.layout}>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       {home ? null : (
         <div className={styles.navbar}>
@@ -72,8 +72,8 @@ export default function Layout({
 }
 
 Layout.defaultProps = {
-  home: false,
-  date: new Date(),
   aside: null,
+  date: new Date(),
+  home: false,
   title: 'Pico y placa hoy',
 };

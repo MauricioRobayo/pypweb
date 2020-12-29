@@ -77,7 +77,7 @@ export default function Category({
     );
 
   return (
-    <Layout pypOptions={pypOptions} aside={aside} title={title}>
+    <Layout aside={aside} pypOptions={pypOptions} title={title}>
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
           Los {vehicleClassesString} con {currentNumberLicense}{' '}
@@ -129,10 +129,10 @@ export default function Category({
           </div>
         </div>
         <NumberLinks
-          path={categoryPath}
-          cityName={cityName}
           categoryName={categoryName}
+          cityName={cityName}
           numberSelected={number}
+          path={categoryPath}
         />
       </div>
     </Layout>
@@ -151,14 +151,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
           : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
       numbers.forEach((number) =>
         paths.push({
-          params: { city: citySlug, category: categorySlug, number },
+          params: {
+            category: categorySlug,
+            city: citySlug,
+            number,
+          },
         })
       );
     });
   });
   return {
-    paths,
     fallback: false,
+    paths,
   };
 };
 
@@ -184,8 +188,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
   return {
     props: {
-      cityName,
       categoryData,
+      cityName,
       number: params?.number,
       pypOptions: getPypOptions(),
     },

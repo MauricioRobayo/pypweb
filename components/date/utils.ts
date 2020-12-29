@@ -1,9 +1,9 @@
 const dateTimeFormatOptions = {
+  day: 'numeric',
+  month: 'long',
+  timeZone: 'America/Bogota',
   weekday: 'long',
   year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-  timeZone: 'America/Bogota',
 };
 
 const formatter = new Intl.DateTimeFormat('es-CO', dateTimeFormatOptions);
@@ -28,10 +28,10 @@ export function getLocalLongDateString(date: Date = new Date()): string {
 
 export function getLocalShortDateString(date: Date = new Date()): string {
   const shortDateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'numeric',
     day: 'numeric',
+    month: 'numeric',
     timeZone: 'America/Bogota',
+    year: 'numeric',
   };
   const f = new Intl.DateTimeFormat('es-CO', shortDateTimeFormatOptions);
   return f.format(date);

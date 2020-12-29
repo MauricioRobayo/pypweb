@@ -19,10 +19,10 @@ export default function Email({ color }: { color?: string }) {
   /* eslint-disable react/no-danger */
   return (
     <span
-      style={{ color }}
       dangerouslySetInnerHTML={{
         __html: `&#${emailCharactersCodes.join('&#')}`,
       }}
+      style={{ color }}
     />
   );
 }

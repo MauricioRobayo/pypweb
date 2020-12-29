@@ -41,8 +41,8 @@ export default function Category({
     data = getInfoFromSlug<ICategoryData2>(
       categorySlug as string,
       getCityData2(cityKey, {
-        date: queryDate,
         categoryKey: [categoryKey],
+        date: queryDate,
         days: 8,
       }).categories
     );
@@ -55,12 +55,12 @@ export default function Category({
   return (
     <Layout
       aside={aside}
+      date={queryDate}
       pypOptions={pypOptions}
       title={title}
-      date={queryDate}
     >
       <DateContext.Provider value={queryDate}>
-        <DaysList cityName={cityName} categoryData={data} />
+        <DaysList categoryData={data} cityName={cityName} />
       </DateContext.Provider>
     </Layout>
   );
@@ -69,14 +69,14 @@ export default function Category({
 export const getStaticPaths: GetStaticPaths = async () => {
   const citiesMap = getCitiesMap2();
   return {
+    fallback: false,
     paths: citiesMap
       .map(({ slug: citySlug, categories }) => {
         return categories.map(({ slug: categorySlug }) => {
-          return { params: { city: citySlug, category: categorySlug } };
+          return { params: { category: categorySlug, city: citySlug } };
         });
       })
       .flat(),
-    fallback: false,
   };
 };
 
@@ -102,11 +102,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
   return {
     props: {
-      cityKey,
+      categoryData,
       categoryKey,
       citiesMap,
+      cityKey,
       cityName,
-      categoryData,
       pypOptions: getPypOptions(),
     },
   };

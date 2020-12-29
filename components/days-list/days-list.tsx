@@ -35,24 +35,24 @@ export default function DaysList({ cityName, categoryData }: DaysTableProps) {
           const numbersString = pypNumbersToString(numbers);
           return (
             <DayCard
-              scheme={scheme}
-              group={categoryGroup}
               key={date}
               date={date}
-              numbersString={numbersString}
+              group={categoryGroup}
+              hasRestriction={numbersString !== NA}
               hours={hours}
               isPublicLicense={isPublicLicense(categoryName)}
-              hasRestriction={numbersString !== NA}
+              numbersString={numbersString}
               path={categoryPath}
+              scheme={scheme}
             />
           );
         })}
       </div>
       <footer>
         <NumberLinks
-          path={categoryPath}
-          cityName={cityName}
           categoryName={categoryName}
+          cityName={cityName}
+          path={categoryPath}
         />
       </footer>
     </article>

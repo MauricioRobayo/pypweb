@@ -51,8 +51,8 @@ export default function City({ cityData, pypOptions }: CityProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const citiesMap = getCitiesMap2();
   return {
-    paths: citiesMap.map(({ slug }) => ({ params: { city: slug } })),
     fallback: false,
+    paths: citiesMap.map(({ slug }) => ({ params: { city: slug } })),
   };
 };
 
