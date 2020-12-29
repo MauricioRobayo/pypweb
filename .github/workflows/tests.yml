@@ -25,7 +25,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install Dependencies
-        run: npm ci
+        # Skip post-install scripts here, as a malicious
+        # script could steal NODE_AUTH_TOKEN.
+        run: npm ci --ignore-scripts
+        # `npm rebuild` will run all those post-install scripts for us.
+        - run: npm rebuild && npm run prepare --if-present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build
         run: npm run build
       - name: Lint
