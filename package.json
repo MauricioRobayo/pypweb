@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "eslint .",
+    "eslint": "eslint .",
+    "stylelint": "stylelint \"**/*.scss\"",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next dev",
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
     "start": "next start"
@@ -37,6 +38,10 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
     "prettier": "^2.1.2",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.18.0",
     "typescript": "^4.0.3"
   },
   "repository": {
