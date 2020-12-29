@@ -2,8 +2,9 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import * as gtag from "../lib/gtag";
-import "../styles/globals.scss";
+// organize-imports-ignore
 import "../styles/reset.css";
+import "../styles/globals.scss";
 
 const isProduction = process.env.NODE_ENV === "production";
 
