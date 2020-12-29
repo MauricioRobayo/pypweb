@@ -24,14 +24,13 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install Dependencies
-        # Skip post-install scripts here, as a malicious
-        # script could steal NODE_AUTH_TOKEN.
-        run: npm ci --ignore-scripts
-        # `npm rebuild` will run all those post-install scripts for us.
-        - run: npm rebuild && npm run prepare --if-present
+      # Skip post-install scripts here, as a malicious
+      # script could steal NODE_AUTH_TOKEN.
+      - run: npm ci --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # `npm rebuild` will run all those post-install scripts for us.
+      - run: npm rebuild && npm run prepare --if-present
       - name: Build
         run: npm run build
       - name: Lint
