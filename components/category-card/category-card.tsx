@@ -1,13 +1,13 @@
-import { IHourData } from '@mauriciorobayo/pyptron';
-import cn from 'classnames';
-import Link from 'next/link';
-import utilStyles from '../../styles/utils.module.scss';
-import vehicleStyles from '../../styles/vehicles.module.scss';
-import { Scheme } from '../../types';
-import { ALL_DIGITS, NA, pypNumbersToString } from '../../utils/utils';
-import Hours from '../hours/hours';
-import LicensePlate from '../license-plate/license-plate';
-import styles from './category-card.module.scss';
+import { IHourData } from "@mauriciorobayo/pyptron";
+import cn from "classnames";
+import Link from "next/link";
+import utilStyles from "../../styles/utils.module.scss";
+import vehicleStyles from "../../styles/vehicles.module.scss";
+import { Scheme } from "../../types";
+import { ALL_DIGITS, NA, pypNumbersToString } from "../../utils/utils";
+import Hours from "../hours/hours";
+import LicensePlate from "../license-plate/license-plate";
+import styles from "./category-card.module.scss";
 
 type CategoryCardProps = {
   path: string;
@@ -18,7 +18,7 @@ type CategoryCardProps = {
   scheme: Scheme;
 };
 
-const isPublicLicense = (group: string) => ['taxis', 'tpc'].includes(group);
+const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
 export default function CategoryCard({
   numbers,
@@ -32,7 +32,7 @@ export default function CategoryCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const schemeString =
-    scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
+    scheme === Scheme.FirstNumber ? "iniciadas" : "terminadas";
 
   return (
     <article key={name}>
@@ -59,7 +59,7 @@ export default function CategoryCard({
         <div className={styles.licenseNumbers}>
           <LicensePlate
             publicLicense={isPublicLicense(group)}
-            size={hasRestriction ? 'large' : 'medium'}
+            size={hasRestriction ? "large" : "medium"}
           >
             {numbersString}
           </LicensePlate>

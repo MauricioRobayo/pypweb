@@ -1,8 +1,8 @@
-import { getCitiesMap2 } from '@mauriciorobayo/pyptron';
+import { getCitiesMap2 } from "@mauriciorobayo/pyptron";
 
-export const ALL_DIGITS = 'Todos';
-export const NA = 'No aplica';
-export const ALL_DAY = 'Todo el día';
+export const ALL_DIGITS = "Todos";
+export const NA = "No aplica";
+export const ALL_DAY = "Todo el día";
 
 export enum Scheme {
   LastNumber,
@@ -43,7 +43,7 @@ export function pypNumbersToString(numbers: number[]) {
     return ALL_DIGITS;
   }
 
-  return numbers.join('-');
+  return numbers.join("-");
 }
 
 export function listFormat(array: string[]) {
@@ -56,13 +56,13 @@ export function listFormat(array: string[]) {
         return `${formatedList} y ${listElement.toLowerCase()}`;
       }
       return `${formatedList}, ${listElement.toLowerCase()}`;
-    }, '')
-    .replace(/\.$/, '');
+    }, "")
+    .replace(/\.$/, "");
 }
 
 export function isPublicLicense(categoryName: string) {
   const lowerCaseName = categoryName.toLowerCase();
-  return ['taxis', 'público'].some((category) =>
+  return ["taxis", "público"].some((category) =>
     lowerCaseName.includes(category)
   );
 }

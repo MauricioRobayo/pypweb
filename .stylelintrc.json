@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-csstree-validator",
+    "stylelint-order"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "csstree/validator": true,
+    "order/properties-alphabetical-order": true
+  },
+  "ignoreFiles": [".next/**"]
+}

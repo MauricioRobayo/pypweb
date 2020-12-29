@@ -4,18 +4,18 @@ import {
   ICategoryData2,
   ICategoryMap2,
   ICityMap2,
-} from '@mauriciorobayo/pyptron';
-import cn from 'classnames';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
-import CategoryInfo from '../../../../../components/category-info/category-info';
-import PypDate from '../../../../../components/date/date';
-import Hours from '../../../../../components/hours/hours';
-import Layout from '../../../../../components/layout/layout';
-import LicensePlate from '../../../../../components/license-plate/license-plate';
-import NumberLinks from '../../../../../components/number-links/number-links';
-import utilStyles from '../../../../../styles/utils.module.scss';
-import { PypOption } from '../../../../../types';
+} from "@mauriciorobayo/pyptron";
+import cn from "classnames";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+import CategoryInfo from "../../../../../components/category-info/category-info";
+import PypDate from "../../../../../components/date/date";
+import Hours from "../../../../../components/hours/hours";
+import Layout from "../../../../../components/layout/layout";
+import LicensePlate from "../../../../../components/license-plate/license-plate";
+import NumberLinks from "../../../../../components/number-links/number-links";
+import utilStyles from "../../../../../styles/utils.module.scss";
+import { PypOption } from "../../../../../types";
 import {
   getInfoFromSlug,
   getPypOptions,
@@ -23,8 +23,8 @@ import {
   NA,
   pypNumbersToString,
   Scheme,
-} from '../../../../../utils/utils';
-import styles from './index.module.scss';
+} from "../../../../../utils/utils";
+import styles from "./index.module.scss";
 
 type CategoryProps = {
   categoryData: ICategoryData2;
@@ -50,7 +50,7 @@ export default function Category({
   const vehicleClassesString = listFormat(vehicleClasses);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString =
-    scheme === Scheme.FirstNumber ? 'terminadas' : 'iniciadas';
+    scheme === Scheme.FirstNumber ? "terminadas" : "iniciadas";
 
   const currentNumberLicense = hasRestriction ? (
     <>
@@ -67,7 +67,7 @@ export default function Category({
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
-        Hoy tienen pico y placa los {vehicleClassesString} con placas{' '}
+        Hoy tienen pico y placa los {vehicleClassesString} con placas{" "}
         {schemeString} en <LicensePlate>{numbersString}</LicensePlate>.
       </div>
     ) : (
@@ -80,11 +80,11 @@ export default function Category({
     <Layout aside={aside} pypOptions={pypOptions} title={title}>
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
-          Los {vehicleClassesString} con {currentNumberLicense}{' '}
+          Los {vehicleClassesString} con {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
-              ? 'hoy tienen restricción en el siguiente horario:'
-              : 'hoy no tienen restricción.'}
+              ? "hoy tienen restricción en el siguiente horario:"
+              : "hoy no tienen restricción."}
           </strong>
         </div>
         {hasRestriction ? (
@@ -145,10 +145,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   citiesMap.forEach(({ slug: citySlug, categories }) => {
     categories.forEach(({ slug: categorySlug }) => {
       const numbers =
-        citySlug === 'manizales' &&
-        categorySlug === 'transporte-publico-colectivo'
-          ? ['H', 'I', 'J', 'A', 'B', 'C', 'D', 'E', 'F', 'G']
-          : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        citySlug === "manizales" &&
+        categorySlug === "transporte-publico-colectivo"
+          ? ["H", "I", "J", "A", "B", "C", "D", "E", "F", "G"]
+          : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
       numbers.forEach((number) =>
         paths.push({
           params: {

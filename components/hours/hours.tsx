@@ -1,5 +1,5 @@
-import { IHourData } from '@mauriciorobayo/pyptron';
-import Hour from '../hour/hour';
+import { IHourData } from "@mauriciorobayo/pyptron";
+import Hour from "../hour/hour";
 
 type HoursProps = {
   hours: IHourData[];
@@ -9,7 +9,7 @@ type HoursProps = {
 export default function Hours({ hours, interactive }: HoursProps) {
   return (
     /* eslint-disable react/no-array-index-key */
-    <div className={`${interactive ? 'interactive' : ''}`}>
+    <div className={`${interactive ? "interactive" : ""}`}>
       {hours.map((hourData, index) => (
         <Hour key={index} hourData={hourData} />
       ))}

@@ -4,15 +4,15 @@ import {
   ICategoryData2,
   ICategoryMap2,
   ICityMap2,
-} from '@mauriciorobayo/pyptron';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import CategoryInfo from '../../../components/category-info/category-info';
-import DaysList from '../../../components/days-list/days-list';
-import Layout from '../../../components/layout/layout';
-import DateContext from '../../../contexts/date-context';
-import { PypOption } from '../../../types';
-import { getInfoFromSlug, getPypOptions } from '../../../utils/utils';
+} from "@mauriciorobayo/pyptron";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import CategoryInfo from "../../../components/category-info/category-info";
+import DaysList from "../../../components/days-list/days-list";
+import Layout from "../../../components/layout/layout";
+import DateContext from "../../../contexts/date-context";
+import { PypOption } from "../../../types";
+import { getInfoFromSlug, getPypOptions } from "../../../utils/utils";
 
 type CategoryProps = {
   cityKey: string;
@@ -36,7 +36,7 @@ export default function Category({
   let queryDate = new Date();
 
   // a date query string was provided
-  if (typeof date === 'string') {
+  if (typeof date === "string") {
     queryDate = new Date(date);
     data = getInfoFromSlug<ICategoryData2>(
       categorySlug as string,
@@ -71,11 +71,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     fallback: false,
     paths: citiesMap
-      .map(({ slug: citySlug, categories }) => {
-        return categories.map(({ slug: categorySlug }) => {
-          return { params: { category: categorySlug, city: citySlug } };
-        });
-      })
+      .map(({ slug: citySlug, categories }) =>
+        categories.map(({ slug: categorySlug }) => ({
+          params: { category: categorySlug, city: citySlug },
+        }))
+      )
       .flat(),
   };
 };

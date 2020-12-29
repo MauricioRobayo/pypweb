@@ -1,4 +1,4 @@
-import styles from './call-to-action.module.scss';
+import styles from "./call-to-action.module.scss";
 
 export default function CTA() {
   return (

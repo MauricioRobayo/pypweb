@@ -1,15 +1,15 @@
-import { IHourData } from '@mauriciorobayo/pyptron';
-import cn from 'classnames';
-import Link from 'next/link';
-import { useContext } from 'react';
-import DateContext from '../../contexts/date-context';
-import vehicleStyles from '../../styles/vehicles.module.scss';
-import { ALL_DIGITS, Scheme } from '../../utils/utils';
-import Date from '../date/date';
-import { areSameDate } from '../date/utils';
-import Hours from '../hours/hours';
-import LicensePlate from '../license-plate/license-plate';
-import styles from './day-card.module.scss';
+import { IHourData } from "@mauriciorobayo/pyptron";
+import cn from "classnames";
+import Link from "next/link";
+import { useContext } from "react";
+import DateContext from "../../contexts/date-context";
+import vehicleStyles from "../../styles/vehicles.module.scss";
+import { ALL_DIGITS, Scheme } from "../../utils/utils";
+import Date from "../date/date";
+import { areSameDate } from "../date/utils";
+import Hours from "../hours/hours";
+import LicensePlate from "../license-plate/license-plate";
+import styles from "./day-card.module.scss";
 
 type DayCardProps = {
   scheme: Scheme;
@@ -33,7 +33,7 @@ export default function DayCard({
   hasRestriction,
 }: DayCardProps) {
   const currentDate = useContext(DateContext);
-  const schemeString = scheme === Scheme.FirstNumber ? 'Último' : 'Primer';
+  const schemeString = scheme === Scheme.FirstNumber ? "Primer" : "Último";
   const isCurrentDate = areSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
 
@@ -68,7 +68,7 @@ export default function DayCard({
         {hasRestriction && isCurrentDate ? <div>No circulan</div> : null}
         <LicensePlate
           publicLicense={isPublicLicense}
-          size={isCurrentDate ? 'large' : 'medium'}
+          size={isCurrentDate ? "large" : "medium"}
         >
           {numbersString}
         </LicensePlate>

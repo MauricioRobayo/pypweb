@@ -2,14 +2,14 @@ import {
   getCitiesMap2,
   getCityData2,
   ICityData2,
-} from '@mauriciorobayo/pyptron';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
-import CategoriesList from '../../components/categories-list/categories-list';
-import { getLocalLongDateString } from '../../components/date/utils';
-import Layout from '../../components/layout/layout';
-import { PypOption } from '../../types';
-import { getInfoFromSlug, getPypOptions } from '../../utils/utils';
+} from "@mauriciorobayo/pyptron";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+import CategoriesList from "../../components/categories-list/categories-list";
+import { getLocalLongDateString } from "../../components/date/utils";
+import Layout from "../../components/layout/layout";
+import { PypOption } from "../../types";
+import { getInfoFromSlug, getPypOptions } from "../../utils/utils";
 
 type CityProps = {
   cityData: ICityData2;
@@ -24,9 +24,9 @@ export default function City({ cityData, pypOptions }: CityProps) {
     <section>
       <h4>Pico y placa vigente en {cityName}</h4>
       <p>
-        Las siguientes son las medidas de restricción vehicular vigentes para{' '}
-        {cityName} durante el mes de{' '}
-        {getLocalLongDateString().split(' ').slice(3).join(' ')}, de acuerdo con
+        Las siguientes son las medidas de restricción vehicular vigentes para{" "}
+        {cityName} durante el mes de{" "}
+        {getLocalLongDateString().split(" ").slice(3).join(" ")}, de acuerdo con
         lo establecido por la Alcaldía de {cityName}:
       </p>
       <ul>

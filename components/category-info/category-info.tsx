@@ -1,4 +1,4 @@
-import { ICategoryData2 } from '@mauriciorobayo/pyptron';
+import { ICategoryData2 } from "@mauriciorobayo/pyptron";
 
 type CategoryDataProps = {
   categoryData: ICategoryData2;
@@ -25,7 +25,7 @@ export default function CategoryInfo({ categoryData }: CategoryDataProps) {
 
   /* eslint-disable react/no-danger */
   const exceptionsContent =
-    exceptions === '' ? null : (
+    exceptions === "" ? null : (
       <>
         <h4>Excepciones</h4>
         <div dangerouslySetInnerHTML={{ __html: exceptions }} />
@@ -33,7 +33,7 @@ export default function CategoryInfo({ categoryData }: CategoryDataProps) {
     );
 
   const observationsContent =
-    observations === '' ? null : (
+    observations === "" ? null : (
       <>
         <h4>Observaciones</h4>
         <div dangerouslySetInnerHTML={{ __html: exceptions }} />

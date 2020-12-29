@@ -1,23 +1,23 @@
-import cn from 'classnames';
-import { useRouter } from 'next/router';
-import { ChangeEvent, useState } from 'react';
-import { PypOption } from '../../types';
-import styles from './select.module.scss';
+import cn from "classnames";
+import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
+import { PypOption } from "../../types";
+import styles from "./select.module.scss";
 
 type SelectProps = {
   pypOptions: PypOption[];
-  type?: 'main' | 'normal';
+  type?: "main" | "normal";
 };
 
 export default function Select({ pypOptions, type }: SelectProps) {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const router = useRouter();
 
   function onChangeHandler(event: ChangeEvent<HTMLInputElement>) {
     const { value: targetValue } = event.target;
 
     const isAvailableOption = pypOptions.some(({ name: optionName }) => {
-      const regexp = new RegExp(targetValue, 'i');
+      const regexp = new RegExp(targetValue, "i");
       return regexp.test(optionName);
     });
 
@@ -25,9 +25,9 @@ export default function Select({ pypOptions, type }: SelectProps) {
       return;
     }
 
-    const targetOption = pypOptions.find(({ name: optionName }) => {
-      return optionName === targetValue;
-    });
+    const targetOption = pypOptions.find(
+      ({ name: optionName }) => optionName === targetValue
+    );
 
     if (targetOption) {
       setSelectedOption(targetOption.name);
@@ -39,7 +39,7 @@ export default function Select({ pypOptions, type }: SelectProps) {
 
   return (
     <>
-      <div className={cn(styles.box, { [styles.main]: type === 'main' })}>
+      <div className={cn(styles.box, { [styles.main]: type === "main" })}>
         <span className={styles.icon}>
           <svg
             focusable="false"
@@ -69,5 +69,5 @@ export default function Select({ pypOptions, type }: SelectProps) {
 }
 
 Select.defaultProps = {
-  type: 'normal',
+  type: "normal",
 };

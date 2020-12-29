@@ -1,11 +1,11 @@
-import { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import * as gtag from '../lib/gtag';
-import '../styles/globals.scss';
-import '../styles/reset.css';
+import { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import * as gtag from "../lib/gtag";
+import "../styles/globals.scss";
+import "../styles/reset.css";
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === "production";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -17,9 +17,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         gtag.pageview(url);
       }
     };
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 
