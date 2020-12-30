@@ -16,9 +16,6 @@ export default function PypDate({
   type = "long",
 }: DateProps) {
   const currentDate = new Date(date);
-  const today = new Date();
-  currentDate.setUTCHours(5, 0, 0, 0); // Colombian TZ
-  today.setUTCHours(5, 0, 0, 0); // Colombian TZ
 
   const currentDateISOString = currentDate.toISOString();
 
