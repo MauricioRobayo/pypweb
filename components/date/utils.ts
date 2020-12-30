@@ -37,7 +37,7 @@ export function getLocalShortDateString(date: Date = new Date()): string {
   return f.format(date);
 }
 
-export function areSameDate(date1: Date | string, date2: Date | string) {
+export function isSameDate(date1: Date | string, date2: Date | string) {
   const currentDate1 = new Date(date1);
   const currentDate2 = new Date(date2);
   const sameDate = currentDate1.getUTCDate() === currentDate2.getUTCDate();
@@ -46,12 +46,8 @@ export function areSameDate(date1: Date | string, date2: Date | string) {
     currentDate1.getUTCFullYear() === currentDate2.getUTCFullYear();
 
   return sameDate && sameMonth && sameYear;
-  // currentDate1.setUTCHours(5, 0, 0, 0); // Colombian TZ
-  // currentDate2.setUTCHours(5, 0, 0, 0); // Colombian TZ
-
-  // return currentDate1.toISOString() === currentDate2.toISOString();
 }
 
 export function dateIsToday(date: Date | string): boolean {
-  return areSameDate(date, new Date());
+  return isSameDate(date, new Date());
 }

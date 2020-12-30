@@ -48,14 +48,14 @@ export function pypNumbersToString(numbers: number[]) {
 
 export function listFormat(array: string[]) {
   return array
-    .reduce((formatedList, listElement, index) => {
+    .reduce((formattedList, listElement, index) => {
       if (index === 0) {
         return listElement.toLowerCase();
       }
       if (index === array.length - 1) {
-        return `${formatedList} y ${listElement.toLowerCase()}`;
+        return `${formattedList} y ${listElement.toLowerCase()}`;
       }
-      return `${formatedList}, ${listElement.toLowerCase()}`;
+      return `${formattedList}, ${listElement.toLowerCase()}`;
     }, "")
     .replace(/\.$/, "");
 }
