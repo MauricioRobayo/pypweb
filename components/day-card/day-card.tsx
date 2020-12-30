@@ -6,7 +6,7 @@ import DateContext from "../../contexts/date-context";
 import vehicleStyles from "../../styles/vehicles.module.scss";
 import { ALL_DIGITS, Scheme } from "../../utils/utils";
 import Date from "../date/date";
-import { areSameDate } from "../date/utils";
+import { isSameDate } from "../date/utils";
 import Hours from "../hours/hours";
 import LicensePlate from "../license-plate/license-plate";
 import styles from "./day-card.module.scss";
@@ -34,7 +34,7 @@ export default function DayCard({
 }: DayCardProps) {
   const currentDate = useContext(DateContext);
   const schemeString = scheme === Scheme.FirstNumber ? "Primer" : "Último";
-  const isCurrentDate = areSameDate(date, currentDate);
+  const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
 
   return (
