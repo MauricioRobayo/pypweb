@@ -1,5 +1,18 @@
 {
   "editor.codeActionsOnSave": {
     "source.organizeImports": false
-  }
+  },
+  "cSpell.words": [
+    "aplica",
+    "circulan",
+    "dígito",
+    "moneytizer",
+    "pico",
+    "placa",
+    "público",
+    "pyphoy",
+    "pyptron",
+    "pypweb",
+    "todos"
+  ]
 }
