@@ -11,7 +11,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* enable analytics script only for production */}
           {isProduction && (
             <>
               {/* Global Site Tag (gtag.js) - Google Analytics */}
@@ -32,6 +31,7 @@ export default class MyDocument extends Document {
                 }}
               />
               <script
+                async
                 dangerouslySetInnerHTML={{
                   __html: theMoneytizer,
                 }}
