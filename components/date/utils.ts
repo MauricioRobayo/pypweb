@@ -40,10 +40,9 @@ export function getLocalShortDateString(date: Date = new Date()): string {
 export function isSameDate(date1: Date | string, date2: Date | string) {
   const currentDate1 = new Date(date1);
   const currentDate2 = new Date(date2);
-  const sameDate = currentDate1.getUTCDate() === currentDate2.getUTCDate();
-  const sameMonth = currentDate1.getUTCMonth() === currentDate2.getUTCMonth();
-  const sameYear =
-    currentDate1.getUTCFullYear() === currentDate2.getUTCFullYear();
+  const sameDate = currentDate1.getDate() === currentDate2.getDate();
+  const sameMonth = currentDate1.getMonth() === currentDate2.getMonth();
+  const sameYear = currentDate1.getFullYear() === currentDate2.getFullYear();
 
   return sameDate && sameMonth && sameYear;
 }
