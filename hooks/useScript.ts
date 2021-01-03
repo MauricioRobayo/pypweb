@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 
 const useScript = (
   url: string,
-  async: boolean = false,
-  ref: React.RefObject<HTMLDivElement>
+  ref: React.RefObject<HTMLDivElement>,
+  async: boolean = false
 ) => {
   useEffect(() => {
     const script = document.createElement("script");
