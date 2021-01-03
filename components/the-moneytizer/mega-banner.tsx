@@ -15,7 +15,7 @@ function MegaBanner() {
       div
     );
   }
-  return <div ref={div} id={siteId} />;
+  return <div ref={div} id={`${siteId}-${formatId}`} />;
 }
 
 export default MegaBanner;
