@@ -5,7 +5,7 @@
   "scripts": {
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.scss\"",
-    "lint:webhint": "hint .",
+    "lint:webhint": "hint . --telemetry=on",
     "lint": "run-p lint:*",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next dev",
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
