@@ -1,0 +1,15 @@
+{
+  "connector": {
+    "name": "local",
+    "options": {
+      "pattern": ["**", "!.git/**", "!node_modules/**"]
+    }
+  },
+  "extends": ["development", "accessibility"],
+  "formatters": ["stylish"],
+  "hints": {
+    "compat-api/css": "off",
+    "compat-api/html": "off",
+    "no-inline-styles": "off"
+  }
+}

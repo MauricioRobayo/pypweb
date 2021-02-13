@@ -1,10 +1,11 @@
 {
-  "name": "pyphoy",
+  "name": "pypweb",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint \"**/*.scss\"",
+    "lint:webhint": "hint . --telemetry=on",
     "lint": "run-p lint:*",
     "dev": "NODE_ICU_DATA=node_modules/full-icu next dev",
     "build": "NODE_ICU_DATA=node_modules/full-icu next build",
@@ -15,6 +16,7 @@
   "dependencies": {
     "@mauriciorobayo/pyptron": "^1.63.0",
     "@types/classnames": "^2.2.11",
+    "axe-core": "^4.1.2",
     "classnames": "^2.2.6",
     "full-icu": "^1.3.1",
     "next": "^10.0.4",
@@ -25,6 +27,8 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@hint/hint-axe": "^4.4.3",
+    "@hint/hint-meta-theme-color": "^4.0.5",
     "@types/gtag.js": "0.0.4",
     "@types/node": "^14.14.16",
     "@types/react": "^17.0.0",
@@ -37,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "hint": "^6.1.3",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
     "npm-run-all": "^4.1.5",
@@ -52,7 +57,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/picoyplaca/pyphoy.git"
+    "url": "https://github.com/picoyplaca/pypweb.git"
   },
   "husky": {
     "hooks": {
