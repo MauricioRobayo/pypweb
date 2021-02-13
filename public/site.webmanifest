@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "Pico y placa",
+  "short_name": "pyphoy",
   "icons": [
     {
       "src": "https://cdn.pyphoy.com/favicon/android-chrome-192x192.png",
