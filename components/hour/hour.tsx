@@ -1,21 +1,19 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { useContext } from "react";
-import dateContext from "../../contexts/date-context";
 import { ALL_DAY, isEmptyArray } from "../../utils/utils";
 import styles from "./hour.module.scss";
 import { convert24toAMPM } from "./utils";
 
 type HourProps = {
   hourData: IHourData;
+  date: Date;
 };
 
 export default function Hour({
+  date,
   hourData: { hours, comment, days },
 }: HourProps) {
   const hasComment = comment !== "";
   const isAllDay = comment === ALL_DAY;
-
-  const date = useContext(dateContext);
 
   return (
     <div>

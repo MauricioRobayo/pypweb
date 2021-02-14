@@ -8,9 +8,9 @@ import {
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import CategoryInfo from "../../../components/category-info/category-info";
+import { isValidDate } from "../../../components/date/utils";
 import DaysList from "../../../components/days-list/days-list";
 import Layout from "../../../components/layout/layout";
-import DateContext from "../../../contexts/date-context";
 import { PypOption } from "../../../types";
 import { getInfoFromSlug, getPypOptions } from "../../../utils/utils";
 
@@ -19,6 +19,7 @@ type CategoryProps = {
   categoryKey: string;
   categoryData: ICategoryData2;
   cityName: string;
+  currentDate: number;
   pypOptions: PypOption[];
 };
 
@@ -27,41 +28,31 @@ export default function Category({
   categoryKey,
   categoryData,
   cityName,
+  currentDate,
   pypOptions,
 }: CategoryProps) {
   const router = useRouter();
-  const { d: date, category: categorySlug } = router.query;
+  const { d: requestedDate, category: categorySlug } = router.query;
 
-  let data = categoryData;
-  let queryDate = new Date();
-
-  // a date query string was provided
-  if (typeof date === "string") {
-    queryDate = new Date(date);
-    data = getInfoFromSlug<ICategoryData2>(
-      categorySlug as string,
-      getCityData2(cityKey, {
-        categoryKey: [categoryKey],
-        date: queryDate,
-        days: 8,
-      }).categories
-    );
-  }
+  const date = new Date(
+    isValidDate(requestedDate) ? requestedDate : currentDate
+  );
+  const data = getInfoFromSlug<ICategoryData2>(
+    categorySlug as string,
+    getCityData2(cityKey, {
+      categoryKey: [categoryKey],
+      date,
+      days: 8,
+    }).categories
+  );
 
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
   const aside = <CategoryInfo categoryData={categoryData} />;
 
   return (
-    <Layout
-      aside={aside}
-      date={queryDate}
-      pypOptions={pypOptions}
-      title={title}
-    >
-      <DateContext.Provider value={queryDate}>
-        <DaysList categoryData={data} cityName={cityName} />
-      </DateContext.Provider>
+    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+      <DaysList categoryData={data} cityName={cityName} currentDate={date} />
     </Layout>
   );
 }
@@ -107,6 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       citiesMap,
       cityKey,
       cityName,
+      currentDate: Date.now(),
       pypOptions: getPypOptions(),
     },
   };

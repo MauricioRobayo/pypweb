@@ -10,12 +10,17 @@ import DayCard from "../day-card/day-card";
 import NumberLinks from "../number-links/number-links";
 import styles from "./days-list.module.scss";
 
-type DaysTableProps = {
+type DaysListProps = {
   cityName: string;
   categoryData: ICategoryData2;
+  currentDate: Date;
 };
 
-export default function DaysList({ cityName, categoryData }: DaysTableProps) {
+export default function DaysList({
+  cityName,
+  categoryData,
+  currentDate,
+}: DaysListProps) {
   const {
     name: categoryName,
     group: categoryGroup,
@@ -36,6 +41,7 @@ export default function DaysList({ cityName, categoryData }: DaysTableProps) {
           return (
             <DayCard
               key={date}
+              currentDate={currentDate}
               date={date}
               group={categoryGroup}
               hasRestriction={numbersString !== NA}

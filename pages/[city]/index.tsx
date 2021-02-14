@@ -14,11 +14,13 @@ import { getInfoFromSlug, getPypOptions } from "../../utils/utils";
 type CityProps = {
   cityData: ICityData2;
   pypOptions: PypOption[];
+  currentDate: number;
 };
 
-export default function City({ cityData, pypOptions }: CityProps) {
+export default function City({ cityData, currentDate, pypOptions }: CityProps) {
   const { name: cityName, categories: cityCategories } = cityData;
   const title = `Pico y placa ${cityName}`;
+  const date = new Date(currentDate);
 
   const aside = (
     <section>
@@ -42,8 +44,8 @@ export default function City({ cityData, pypOptions }: CityProps) {
   );
 
   return (
-    <Layout aside={aside} pypOptions={pypOptions} title={title}>
-      <CategoriesList categories={cityData.categories} />
+    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+      <CategoriesList categories={cityData.categories} date={date} />
     </Layout>
   );
 }
@@ -63,6 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       cityData,
+      currentDate: Date.now(),
       pypOptions: getPypOptions(),
     },
   };

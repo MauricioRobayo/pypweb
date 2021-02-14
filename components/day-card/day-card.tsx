@@ -1,8 +1,6 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
 import Link from "next/link";
-import { useContext } from "react";
-import DateContext from "../../contexts/date-context";
 import vehicleStyles from "../../styles/vehicles.module.scss";
 import { ALL_DIGITS, Scheme } from "../../utils/utils";
 import Date from "../date/date";
@@ -15,6 +13,7 @@ type DayCardProps = {
   scheme: Scheme;
   group: string;
   date: string;
+  currentDate: Date;
   numbersString: string;
   hours: IHourData[];
   path: string;
@@ -25,6 +24,7 @@ type DayCardProps = {
 export default function DayCard({
   scheme,
   group,
+  currentDate,
   date,
   numbersString,
   hours,
@@ -32,7 +32,6 @@ export default function DayCard({
   isPublicLicense,
   hasRestriction,
 }: DayCardProps) {
-  const currentDate = useContext(DateContext);
   const schemeString = scheme === Scheme.FirstNumber ? "Primer" : "Último";
   const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
@@ -60,7 +59,7 @@ export default function DayCard({
         </div>
         {hasRestriction && isCurrentDate ? (
           <div>
-            <Hours hours={hours} interactive />
+            <Hours date={currentDate} hours={hours} interactive />
           </div>
         ) : null}
       </div>
