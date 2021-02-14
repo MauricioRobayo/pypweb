@@ -8,7 +8,7 @@ import {
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import CategoryInfo from "../../../components/category-info/category-info";
-import { isValidDate } from "../../../components/date/utils";
+import { isValidDateString } from "../../../components/date/utils";
 import DaysList from "../../../components/days-list/days-list";
 import Layout from "../../../components/layout/layout";
 import { PypOption } from "../../../types";
@@ -34,9 +34,15 @@ export default function Category({
   const router = useRouter();
   const { d: requestedDate, category: categorySlug } = router.query;
 
-  const date = new Date(
-    isValidDate(requestedDate) ? requestedDate : currentDate
-  );
+  let date: Date;
+
+  if (isValidDateString(requestedDate)) {
+    const localRequestedDate = requestedDate.replace(/-/, "/").substr(0, 10);
+    date = new Date(localRequestedDate);
+  } else {
+    date = new Date(currentDate);
+  }
+
   const data = getInfoFromSlug<ICategoryData2>(
     categorySlug as string,
     getCityData2(cityKey, {
