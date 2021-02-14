@@ -1,3 +1,4 @@
+import cn from "classnames";
 import { useRef } from "react";
 import useScript from "../../hooks/useScript";
 import styles from "./mega-banner.module.scss";
@@ -18,12 +19,14 @@ function MegaBanner() {
   }
 
   return (
-    <div
-      ref={div}
-      className={isProduction ? "" : styles.megaBanner}
-      id={`${siteId}-${formatId}`}
-    >
-      {isProduction ? null : "MegaBanner"}
+    <div className={styles.megaBannerWrapper}>
+      <div
+        ref={div}
+        className={cn(styles.megaBanner, { [styles.dev]: !isProduction })}
+        id={`${siteId}-${formatId}`}
+      >
+        {isProduction ? null : "MegaBanner"}
+      </div>
     </div>
   );
 }
