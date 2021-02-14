@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import useScript from "../../hooks/useScript";
+import styles from "./mega-banner.module.scss";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
@@ -15,7 +16,16 @@ function MegaBanner() {
       div
     );
   }
-  return <div ref={div} id={`${siteId}-${formatId}`} />;
+
+  return (
+    <div
+      ref={div}
+      className={isProduction ? "" : styles.megaBanner}
+      id={`${siteId}-${formatId}`}
+    >
+      {isProduction ? null : "MegaBanner"}
+    </div>
+  );
 }
 
 export default MegaBanner;
