@@ -50,3 +50,7 @@ export function isSameDate(date1: Date | string, date2: Date | string) {
 export function dateIsToday(date: Date | string): boolean {
   return isSameDate(date, new Date());
 }
+
+export function isValidDate(date: any): date is Date {
+  return typeof date === "string" && !Number.isNaN(new Date(date));
+}

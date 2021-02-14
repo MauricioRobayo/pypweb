@@ -10,6 +10,7 @@ import LicensePlate from "../license-plate/license-plate";
 import styles from "./category-card.module.scss";
 
 type CategoryCardProps = {
+  date: Date;
   path: string;
   numbers: number[];
   hours: IHourData[];
@@ -21,6 +22,7 @@ type CategoryCardProps = {
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
 export default function CategoryCard({
+  date,
   numbers,
   path,
   name,
@@ -49,7 +51,7 @@ export default function CategoryCard({
         {hasRestriction ? (
           <div>
             <div>No circulan en el siguiente horario</div>
-            <Hours hours={hours} interactive />
+            <Hours date={date} hours={hours} interactive />
           </div>
         ) : null}
 

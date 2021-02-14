@@ -18,7 +18,7 @@ type LayoutProps = {
   home?: boolean;
   aside?: ReactNode;
   title?: string;
-  date?: Date | string;
+  date: Date;
 };
 
 export default function Layout({
@@ -75,7 +75,6 @@ export default function Layout({
 
 Layout.defaultProps = {
   aside: null,
-  date: new Date(),
   home: false,
   title: "Pico y placa hoy",
 };

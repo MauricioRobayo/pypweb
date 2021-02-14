@@ -29,6 +29,7 @@ import styles from "./index.module.scss";
 type CategoryProps = {
   categoryData: ICategoryData2;
   cityName: string;
+  currentDate: number;
   number: string;
   pypOptions: PypOption[];
 };
@@ -36,6 +37,7 @@ type CategoryProps = {
 export default function Category({
   categoryData,
   cityName,
+  currentDate,
   number,
   pypOptions,
 }: CategoryProps) {
@@ -46,6 +48,7 @@ export default function Category({
   } = categoryData;
   const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
 
+  const date = new Date(currentDate);
   const numbersString = pypNumbersToString(numbers);
   const vehicleClassesString = listFormat(vehicleClasses);
   const hasRestriction = numbers.includes(Number(number));
@@ -77,7 +80,7 @@ export default function Category({
     );
 
   return (
-    <Layout aside={aside} pypOptions={pypOptions} title={title}>
+    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
           Los {vehicleClassesString} con {currentNumberLicense}{" "}
@@ -89,7 +92,7 @@ export default function Category({
         </div>
         {hasRestriction ? (
           <>
-            <Hours hours={hours} />
+            <Hours date={date} hours={hours} />
           </>
         ) : (
           todaysRestriction
@@ -190,6 +193,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       categoryData,
       cityName,
+      currentDate: Date.now(),
       number: params?.number,
       pypOptions: getPypOptions(),
     },

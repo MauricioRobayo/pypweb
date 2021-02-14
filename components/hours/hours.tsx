@@ -2,16 +2,17 @@ import { IHourData } from "@mauriciorobayo/pyptron";
 import Hour from "../hour/hour";
 
 type HoursProps = {
+  date: Date;
   hours: IHourData[];
   interactive?: boolean;
 };
 
-export default function Hours({ hours, interactive }: HoursProps) {
+export default function Hours({ date, hours, interactive }: HoursProps) {
   return (
     /* eslint-disable react/no-array-index-key */
     <div className={`${interactive ? "interactive" : ""}`}>
       {hours.map((hourData, index) => (
-        <Hour key={index} hourData={hourData} />
+        <Hour key={index} date={date} hourData={hourData} />
       ))}
     </div>
     /* eslint-enable */
