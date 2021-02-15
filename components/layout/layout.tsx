@@ -16,7 +16,7 @@ import styles from "./layout.module.scss";
 type LayoutProps = {
   children: ReactNode;
   pypOptions: PypOption[];
-  home?: boolean;
+  isHome?: boolean;
   aside?: ReactNode;
   title?: string;
   date: Date;
@@ -24,7 +24,7 @@ type LayoutProps = {
 
 export default function Layout({
   children,
-  home,
+  isHome,
   aside,
   pypOptions,
   title,
@@ -36,7 +36,7 @@ export default function Layout({
         <title>{title}</title>
         <link href="/favicon.ico" rel="icon" />
       </Head>
-      {home ? null : (
+      {isHome ? null : (
         <div className={styles.navbar}>
           <nav>
             <h2>
@@ -50,7 +50,7 @@ export default function Layout({
           </nav>
         </div>
       )}
-      <div className={home ? styles.home : styles.page}>
+      <div className={isHome ? styles.home : styles.page}>
         <div className={utilStyles.textCenter}>
           <header>
             <h1>{title}</h1>
@@ -61,11 +61,11 @@ export default function Layout({
         </div>
         <div>
           <main className={styles.main}>{children}</main>
-          {home ? null : <CTA />}
+          {isHome ? null : <CTA />}
         </div>
       </div>
       {aside ? <aside className={styles.aside}>{aside}</aside> : null}
-      {home && isProduction ? <Skin /> : null}
+      {isHome && isProduction ? <Skin /> : null}
       <footer className={cn(styles.footer, utilStyles.textCenter)}>
         <p>PICO Y PLACA HOY</p>
         <Email />
@@ -76,6 +76,6 @@ export default function Layout({
 
 Layout.defaultProps = {
   aside: null,
-  home: false,
+  isHome: false,
   title: "Pico y placa hoy",
 };

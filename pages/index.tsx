@@ -16,7 +16,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const date = new Date(currentDate);
   return (
-    <Layout date={date} home pypOptions={selectOptions}>
+    <Layout date={date} isHome pypOptions={selectOptions}>
       <Select pypOptions={selectOptions} type="main" />
     </Layout>
   );
