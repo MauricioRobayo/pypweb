@@ -1,12 +1,37 @@
-import cn from "classnames";
 import { useRef } from "react";
+import styled from "styled-components";
 import useScript from "../../hooks/useScript";
-import styles from "./mega-banner.module.scss";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
 const formatId = "1";
 const type = "1";
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  width: 100%;
+`;
+
+const Banner = styled.div`
+  margin: 2rem 0;
+  ${() =>
+    !isProduction &&
+    `
+      align-items: center;
+      background-color: mistyrose;
+      border: 1px solid currentColor;
+      color: tomato;
+      display: flex;
+      font-weight: bold;
+      height: 90px;
+      justify-content: center;
+      maxWidth: 728px;
+      text-transform: uppercase;
+      width: 100%;
+    `};
+`;
 
 function MegaBanner() {
   const div = useRef<HTMLDivElement>(null);
@@ -19,15 +44,11 @@ function MegaBanner() {
   }
 
   return (
-    <div className={styles.megaBannerWrapper}>
-      <div
-        ref={div}
-        className={cn(styles.megaBanner, { [styles.dev]: !isProduction })}
-        id={`${siteId}-${formatId}`}
-      >
+    <Wrapper>
+      <Banner ref={div} id={`${siteId}-${formatId}`}>
         {isProduction ? null : "MegaBanner"}
-      </div>
-    </div>
+      </Banner>
+    </Wrapper>
   );
 }
 
