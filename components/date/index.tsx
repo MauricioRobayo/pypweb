@@ -1,4 +1,4 @@
-import styles from "./date.module.scss";
+import styled from "styled-components";
 import {
   dateIsToday,
   getLocalLongDateString,
@@ -10,6 +10,12 @@ type DateProps = {
   date: Date | string;
   type?: "long" | "short";
 };
+
+const Small = styled.span`
+  color: #b5b5b5;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+`;
 
 export default function PypDate({ date: d, type = "long" }: DateProps) {
   const date = typeof d === "string" ? new Date(d) : d;
@@ -30,7 +36,7 @@ export default function PypDate({ date: d, type = "long" }: DateProps) {
   return (
     <time dateTime={date.toISOString()}>
       <span>{isToday ? `Hoy ${weekdayName}` : weekdayName}</span>{" "}
-      <span className={styles.small}>{localShortDateString}</span>
+      <Small>{localShortDateString}</Small>
     </time>
   );
 }
