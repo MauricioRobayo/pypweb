@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import { PypOption } from "../../types";
+import { PypOption } from "types";
 import styles from "./select.module.scss";
 
 type SelectProps = {

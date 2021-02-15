@@ -3,15 +3,15 @@ import {
   getCityData2,
   ICityData2,
 } from "@mauriciorobayo/pyptron";
+import CategoriesList from "components/categories-list/categories-list";
+import { getLocalLongDateString } from "components/date/utils";
+import Layout from "components/layout/layout";
+import MegaBanner from "components/the-moneytizer/mega-banner";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
-import CategoriesList from "../../components/categories-list/categories-list";
-import { getLocalLongDateString } from "../../components/date/utils";
-import Layout from "../../components/layout/layout";
-import MegaBanner from "../../components/the-moneytizer/mega-banner";
-import { PypOption } from "../../types";
-import { getInfoFromSlug, getPypOptions } from "../../utils/utils";
+import { PypOption } from "types";
+import { getInfoFromSlug, getPypOptions } from "utils/utils";
 
 type CityProps = {
   cityData: ICityData2;

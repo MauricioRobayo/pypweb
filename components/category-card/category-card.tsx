@@ -1,10 +1,10 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
 import Link from "next/link";
-import utilStyles from "../../styles/utils.module.scss";
-import vehicleStyles from "../../styles/vehicles.module.scss";
-import { Scheme } from "../../types";
-import { ALL_DIGITS, NA, pypNumbersToString } from "../../utils/utils";
+import utilStyles from "styles/utils.module.scss";
+import vehicleStyles from "styles/vehicles.module.scss";
+import { Scheme } from "types";
+import { ALL_DIGITS, NA, pypNumbersToString } from "utils/utils";
 import Hours from "../hours/hours";
 import LicensePlate from "../license-plate/license-plate";
 import styles from "./category-card.module.scss";

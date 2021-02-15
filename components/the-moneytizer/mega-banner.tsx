@@ -1,6 +1,6 @@
+import useScript from "hooks/useScript";
 import { useRef } from "react";
 import styled, { css } from "styled-components";
-import useScript from "../../hooks/useScript";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";

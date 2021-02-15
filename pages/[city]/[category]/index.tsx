@@ -5,16 +5,16 @@ import {
   ICategoryMap2,
   ICityMap2,
 } from "@mauriciorobayo/pyptron";
+import CategoryInfo from "components/category-info/category-info";
+import { isValidDateString } from "components/date/utils";
+import DaysList from "components/days-list/days-list";
+import Layout from "components/layout/layout";
+import MegaBanner from "components/the-moneytizer/mega-banner";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import CategoryInfo from "../../../components/category-info/category-info";
-import { isValidDateString } from "../../../components/date/utils";
-import DaysList from "../../../components/days-list/days-list";
-import Layout from "../../../components/layout/layout";
-import MegaBanner from "../../../components/the-moneytizer/mega-banner";
-import { PypOption } from "../../../types";
-import { getInfoFromSlug, getPypOptions } from "../../../utils/utils";
+import { PypOption } from "types";
+import { getInfoFromSlug, getPypOptions } from "utils/utils";
 
 type CategoryProps = {
   cityKey: string;
