@@ -1,4 +1,6 @@
 import cn from "classnames";
+import Skin from "components/the-moneytizer/skin";
+import { isProduction } from "lib/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -63,6 +65,7 @@ export default function Layout({
         </div>
       </div>
       {aside ? <aside className={styles.aside}>{aside}</aside> : null}
+      {home && isProduction ? <Skin /> : null}
       <footer className={cn(styles.footer, utilStyles.textCenter)}>
         <p>PICO Y PLACA HOY</p>
         <Email />
