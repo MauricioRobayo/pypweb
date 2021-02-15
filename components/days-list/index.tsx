@@ -6,15 +6,27 @@ import {
   pypNumbersToString,
   Scheme,
 } from "lib/utils";
+import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
-import styles from "./days-list.module.scss";
 
 type DaysListProps = {
   cityName: string;
   categoryData: ICategoryData2;
   currentDate: Date;
 };
+
+const Article = styled.article`
+  margin: auto;
+  max-width: var(--max-width);
+`;
+
+const Title = styled.h3`
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+  text-align: center;
+`;
 
 export default function DaysList({
   cityName,
@@ -30,11 +42,11 @@ export default function DaysList({
   const vehicleClassesList = listFormat(vehicleClasses);
   const schemeMessage = scheme === Scheme.FirstNumber ? "primer" : "último";
   return (
-    <article className={styles.list}>
-      <h3 className={styles.title}>
+    <Article>
+      <Title>
         Se restringe la circulación de <strong>{vehicleClassesList}</strong>{" "}
         según el <strong>{schemeMessage} dígito del número de la placa</strong>
-      </h3>
+      </Title>
       <div>
         {categoryData.data.map(({ date, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
@@ -61,6 +73,6 @@ export default function DaysList({
           path={categoryPath}
         />
       </footer>
-    </article>
+    </Article>
   );
 }

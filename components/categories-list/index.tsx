@@ -1,18 +1,25 @@
 import { ICategoryData2 } from "@mauriciorobayo/pyptron";
+import styled from "styled-components";
 import CategoryCard from "../category-card";
-import styles from "./categories-list.module.scss";
 
 type CategoryListProps = {
   categories: ICategoryData2[];
   date: Date;
 };
 
+const List = styled.div`
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  max-width: var(--max-width);
+`;
+
 export default function CategoriesList({
   categories,
   date,
 }: CategoryListProps) {
   return (
-    <div className={styles.list}>
+    <List>
       {categories.map(
         ({ path, group, name, data: [{ numbers, scheme, hours }] }) => (
           <CategoryCard
@@ -27,6 +34,6 @@ export default function CategoriesList({
           />
         )
       )}
-    </div>
+    </List>
   );
 }
