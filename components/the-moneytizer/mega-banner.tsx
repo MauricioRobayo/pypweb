@@ -1,34 +1,59 @@
-import cn from "classnames";
 import { useRef } from "react";
+import styled from "styled-components";
 import useScript from "../../hooks/useScript";
-import styles from "./mega-banner.module.scss";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
 const formatId = "1";
-const type = "1";
+const baseUrl = "//ads.themoneytizer.com/s";
 
-function MegaBanner() {
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  width: 100%;
+`;
+
+const Banner = styled.div`
+  ${() =>
+    !isProduction &&
+    `
+      align-items: center;
+      background-color: mistyrose;
+      border: 1px solid currentColor;
+      color: tomato;
+      display: flex;
+      font-weight: bold;
+      height: 90px;
+      justify-content: center;
+      maxWidth: 728px;
+      text-transform: uppercase;
+      width: 100%;
+    `};
+`;
+
+type MegaBannerProps = {
+  className: string;
+};
+
+const MegaBanner = ({ className }: MegaBannerProps) => {
   const div = useRef<HTMLDivElement>(null);
+
   if (isProduction) {
-    useScript(`//ads.themoneytizer.com/s/gen.js?type=${type}`, div);
+    useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
     useScript(
-      `//ads.themoneytizer.com/s/requestform.js?siteId=${siteId}&formatId=${formatId}`,
-      div
+      div,
+      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`
     );
   }
 
   return (
-    <div className={styles.megaBannerWrapper}>
-      <div
-        ref={div}
-        className={cn(styles.megaBanner, { [styles.dev]: !isProduction })}
-        id={`${siteId}-${formatId}`}
-      >
+    <Wrapper className={className}>
+      <Banner ref={div} id={`${siteId}-${formatId}`}>
         {isProduction ? null : "MegaBanner"}
-      </div>
-    </div>
+      </Banner>
+    </Wrapper>
   );
-}
+};
 
 export default MegaBanner;

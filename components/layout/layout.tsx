@@ -2,6 +2,7 @@ import cn from "classnames";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
+import styled from "styled-components";
 import utilStyles from "../../styles/utils.module.scss";
 import { PypOption } from "../../types";
 import CTA from "../call-to-action/call-to-action";
@@ -20,6 +21,10 @@ type LayoutProps = {
   title?: string;
   date: Date;
 };
+
+const StyledMegaBanner = styled(MegaBanner)`
+  margin-top: 2rem;
+`;
 
 export default function Layout({
   children,
@@ -49,7 +54,7 @@ export default function Layout({
           </nav>
         </div>
       )}
-      <MegaBanner />
+      <StyledMegaBanner />
       <div className={home ? styles.home : styles.page}>
         <div className={utilStyles.textCenter}>
           <header>
