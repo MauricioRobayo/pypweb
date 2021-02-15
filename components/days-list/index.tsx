@@ -6,8 +6,8 @@ import {
   pypNumbersToString,
   Scheme,
 } from "lib/utils";
-import DayCard from "../day-card/day-card";
-import NumberLinks from "../number-links/number-links";
+import DayCard from "../day-card";
+import NumberLinks from "../number-links";
 import styles from "./days-list.module.scss";
 
 type DaysListProps = {

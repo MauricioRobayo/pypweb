@@ -5,10 +5,10 @@ import {
   ICategoryMap2,
   ICityMap2,
 } from "@mauriciorobayo/pyptron";
-import CategoryInfo from "components/category-info/category-info";
+import CategoryInfo from "components/category-info";
 import { isValidDateString } from "components/date/utils";
-import DaysList from "components/days-list/days-list";
-import Layout from "components/layout/layout";
+import DaysList from "components/days-list";
+import Layout from "components/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
 import { getInfoFromSlug, getPypOptions } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";

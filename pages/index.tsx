@@ -1,5 +1,5 @@
-import Layout from "components/layout/layout";
-import Select from "components/select/select";
+import Layout from "components/layout";
+import Select from "components/select";
 import { getPypOptions } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
 

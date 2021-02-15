@@ -1,5 +1,5 @@
 import { ICategoryData2 } from "@mauriciorobayo/pyptron";
-import CategoryCard from "../category-card/category-card";
+import CategoryCard from "../category-card";
 import styles from "./categories-list.module.scss";
 
 type CategoryListProps = {

@@ -6,11 +6,11 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import utilStyles from "styles/utils.module.scss";
 import { PypOption } from "types";
-import CTA from "../call-to-action/call-to-action";
-import PypDate from "../date/date";
-import Email from "../email/email";
-import LicensePlate from "../license-plate/license-plate";
-import Select from "../select/select";
+import CTA from "../call-to-action";
+import PypDate from "../date";
+import Email from "../email";
+import LicensePlate from "../license-plate";
+import Select from "../select";
 import styles from "./layout.module.scss";
 
 type LayoutProps = {

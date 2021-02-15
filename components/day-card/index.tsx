@@ -3,10 +3,10 @@ import cn from "classnames";
 import { ALL_DIGITS, Scheme } from "lib/utils";
 import Link from "next/link";
 import vehicleStyles from "styles/vehicles.module.scss";
-import Date from "../date/date";
+import Date from "../date";
 import { isSameDate } from "../date/utils";
-import Hours from "../hours/hours";
-import LicensePlate from "../license-plate/license-plate";
+import Hours from "../hours";
+import LicensePlate from "../license-plate";
 import styles from "./day-card.module.scss";
 
 type DayCardProps = {
