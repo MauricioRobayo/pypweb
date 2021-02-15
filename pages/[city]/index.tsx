@@ -7,11 +7,11 @@ import CategoriesList from "components/categories-list/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
+import { getInfoFromSlug, getPypOptions } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import { PypOption } from "types";
-import { getInfoFromSlug, getPypOptions } from "utils/utils";
 
 type CityProps = {
   cityData: ICityData2;

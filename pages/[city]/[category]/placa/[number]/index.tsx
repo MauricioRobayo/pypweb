@@ -13,11 +13,6 @@ import Layout from "components/layout/layout";
 import LicensePlate from "components/license-plate/license-plate";
 import NumberLinks from "components/number-links/number-links";
 import MegaBanner from "components/the-moneytizer/mega-banner";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Link from "next/link";
-import styled from "styled-components";
-import utilStyles from "styles/utils.module.scss";
-import { PypOption } from "types";
 import {
   getInfoFromSlug,
   getPypOptions,
@@ -25,7 +20,12 @@ import {
   NA,
   pypNumbersToString,
   Scheme,
-} from "utils/utils";
+} from "lib/utils";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Link from "next/link";
+import styled from "styled-components";
+import utilStyles from "styles/utils.module.scss";
+import { PypOption } from "types";
 import styles from "./index.module.scss";
 
 type CategoryProps = {

@@ -1,8 +1,8 @@
 import Layout from "components/layout/layout";
 import Select from "components/select/select";
 import Skin from "components/the-moneytizer/skin";
+import { getPypOptions } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
-import { getPypOptions } from "../utils/utils";
 
 export const getStaticProps = async () => ({
   props: {

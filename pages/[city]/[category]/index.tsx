@@ -10,11 +10,11 @@ import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list/days-list";
 import Layout from "components/layout/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
+import { getInfoFromSlug, getPypOptions } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { PypOption } from "types";
-import { getInfoFromSlug, getPypOptions } from "utils/utils";
 
 type CategoryProps = {
   cityKey: string;
