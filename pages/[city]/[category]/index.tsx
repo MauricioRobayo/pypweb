@@ -7,10 +7,12 @@ import {
 } from "@mauriciorobayo/pyptron";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import styled from "styled-components";
 import CategoryInfo from "../../../components/category-info/category-info";
 import { isValidDateString } from "../../../components/date/utils";
 import DaysList from "../../../components/days-list/days-list";
 import Layout from "../../../components/layout/layout";
+import MegaBanner from "../../../components/the-moneytizer/mega-banner";
 import { PypOption } from "../../../types";
 import { getInfoFromSlug, getPypOptions } from "../../../utils/utils";
 
@@ -22,6 +24,10 @@ type CategoryProps = {
   currentDate: number;
   pypOptions: PypOption[];
 };
+
+const StyledMegaBanner = styled(MegaBanner)`
+  margin-bottom: 1rem;
+`;
 
 export default function Category({
   cityKey,
@@ -58,6 +64,7 @@ export default function Category({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+      <StyledMegaBanner />
       <DaysList categoryData={data} cityName={cityName} currentDate={date} />
     </Layout>
   );

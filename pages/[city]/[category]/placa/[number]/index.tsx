@@ -8,12 +8,14 @@ import {
 import cn from "classnames";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import styled from "styled-components";
 import CategoryInfo from "../../../../../components/category-info/category-info";
 import PypDate from "../../../../../components/date/date";
 import Hours from "../../../../../components/hours/hours";
 import Layout from "../../../../../components/layout/layout";
 import LicensePlate from "../../../../../components/license-plate/license-plate";
 import NumberLinks from "../../../../../components/number-links/number-links";
+import MegaBanner from "../../../../../components/the-moneytizer/mega-banner";
 import utilStyles from "../../../../../styles/utils.module.scss";
 import { PypOption } from "../../../../../types";
 import {
@@ -33,6 +35,10 @@ type CategoryProps = {
   number: string;
   pypOptions: PypOption[];
 };
+
+const StyledMegaBanner = styled(MegaBanner)`
+  margin-bottom: 1rem;
+`;
 
 export default function Category({
   categoryData,
@@ -81,6 +87,7 @@ export default function Category({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+      <StyledMegaBanner />
       <div className={utilStyles.textCenter}>
         <div className={styles.title}>
           Los {vehicleClassesString} con {currentNumberLicense}{" "}

@@ -5,9 +5,11 @@ import {
 } from "@mauriciorobayo/pyptron";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import styled from "styled-components";
 import CategoriesList from "../../components/categories-list/categories-list";
 import { getLocalLongDateString } from "../../components/date/utils";
 import Layout from "../../components/layout/layout";
+import MegaBanner from "../../components/the-moneytizer/mega-banner";
 import { PypOption } from "../../types";
 import { getInfoFromSlug, getPypOptions } from "../../utils/utils";
 
@@ -16,6 +18,10 @@ type CityProps = {
   pypOptions: PypOption[];
   currentDate: number;
 };
+
+const StyledMegaBanner = styled(MegaBanner)`
+  margin-bottom: 1rem;
+`;
 
 export default function City({ cityData, currentDate, pypOptions }: CityProps) {
   const { name: cityName, categories: cityCategories } = cityData;
@@ -45,6 +51,7 @@ export default function City({ cityData, currentDate, pypOptions }: CityProps) {
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+      <StyledMegaBanner />
       <CategoriesList categories={cityData.categories} date={date} />
     </Layout>
   );
