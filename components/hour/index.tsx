@@ -30,20 +30,20 @@ export default function Hour({
       <ul>
         {hours.map((hour, index) => {
           /* eslint-disable react/no-array-index-key */
-          if (isAllDay) {
-            return (
-              <li key={index}>
-                <StyledHour>{ALL_DAY}</StyledHour>
-              </li>
-            );
-          }
-
           if (isEmptyArray(hour)) {
             return null;
           }
 
           if (days.length > 0 && !days.includes(date.getDay())) {
             return null;
+          }
+
+          if (isAllDay) {
+            return (
+              <li key={index}>
+                <StyledHour>{ALL_DAY}</StyledHour>
+              </li>
+            );
           }
 
           return (
