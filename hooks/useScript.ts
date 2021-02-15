@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 const useScript = (
-  url: string,
   ref: React.RefObject<HTMLDivElement>,
+  url: string,
   async: boolean = false
 ) => {
   useEffect(() => {
