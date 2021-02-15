@@ -3,9 +3,9 @@ import {
   getCityData2,
   ICityData2,
 } from "@mauriciorobayo/pyptron";
-import CategoriesList from "components/categories-list/categories-list";
+import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
-import Layout from "components/layout/layout";
+import Layout from "components/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
 import { getInfoFromSlug, getPypOptions } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";

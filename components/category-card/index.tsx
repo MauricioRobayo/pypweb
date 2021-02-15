@@ -5,8 +5,8 @@ import Link from "next/link";
 import utilStyles from "styles/utils.module.scss";
 import vehicleStyles from "styles/vehicles.module.scss";
 import { Scheme } from "types";
-import Hours from "../hours/hours";
-import LicensePlate from "../license-plate/license-plate";
+import Hours from "../hours";
+import LicensePlate from "../license-plate";
 import styles from "./category-card.module.scss";
 
 type CategoryCardProps = {

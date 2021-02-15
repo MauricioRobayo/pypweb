@@ -1,5 +1,5 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import Hour from "../hour/hour";
+import Hour from "../hour";
 
 type HoursProps = {
   date: Date;

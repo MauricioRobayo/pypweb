@@ -6,12 +6,12 @@ import {
   ICityMap2,
 } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
-import CategoryInfo from "components/category-info/category-info";
-import PypDate from "components/date/date";
-import Hours from "components/hours/hours";
-import Layout from "components/layout/layout";
-import LicensePlate from "components/license-plate/license-plate";
-import NumberLinks from "components/number-links/number-links";
+import CategoryInfo from "components/category-info";
+import PypDate from "components/date";
+import Hours from "components/hours";
+import Layout from "components/layout";
+import LicensePlate from "components/license-plate";
+import NumberLinks from "components/number-links";
 import MegaBanner from "components/the-moneytizer/mega-banner";
 import {
   getInfoFromSlug,
