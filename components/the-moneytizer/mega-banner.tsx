@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import useScript from "../../hooks/useScript";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const Banner = styled.div`
   ${() =>
     !isProduction &&
-    `
+    css`
       align-items: center;
       background-color: mistyrose;
       border: 1px solid currentColor;
@@ -26,7 +26,7 @@ const Banner = styled.div`
       font-weight: bold;
       height: 90px;
       justify-content: center;
-      maxWidth: 728px;
+      max-width: 728px;
       text-transform: uppercase;
       width: 100%;
     `};
