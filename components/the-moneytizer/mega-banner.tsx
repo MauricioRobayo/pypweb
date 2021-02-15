@@ -7,6 +7,10 @@ const siteId = "71116";
 const formatId = "1";
 const baseUrl = "//ads.themoneytizer.com/s";
 
+type MegaBannerProps = {
+  className?: string;
+};
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -32,10 +36,6 @@ const Banner = styled.div`
     `};
 `;
 
-type MegaBannerProps = {
-  className: string;
-};
-
 const MegaBanner = ({ className }: MegaBannerProps) => {
   const div = useRef<HTMLDivElement>(null);
 
@@ -54,6 +54,10 @@ const MegaBanner = ({ className }: MegaBannerProps) => {
       </Banner>
     </Wrapper>
   );
+};
+
+MegaBanner.defaultProps = {
+  className: undefined,
 };
 
 export default MegaBanner;
