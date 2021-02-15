@@ -5,7 +5,7 @@ import {
   NA,
   pypNumbersToString,
   Scheme,
-} from "../../utils/utils";
+} from "lib/utils";
 import DayCard from "../day-card/day-card";
 import NumberLinks from "../number-links/number-links";
 import styles from "./days-list.module.scss";

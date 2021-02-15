@@ -1,8 +1,10 @@
 import { getCitiesMap2 } from "@mauriciorobayo/pyptron";
 
+export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
-export const ALL_DAY = "Todo el día";
+
+export const isProduction = process.env.NODE_ENV === "production";
 
 export enum Scheme {
   LastNumber,

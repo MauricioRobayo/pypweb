@@ -1,5 +1,5 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { ALL_DAY, isEmptyArray } from "../../utils/utils";
+import { ALL_DAY, isEmptyArray } from "lib/utils";
 import styles from "./hour.module.scss";
 import { convert24toAMPM } from "./utils";
 

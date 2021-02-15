@@ -1,8 +1,8 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
+import { ALL_DIGITS, Scheme } from "lib/utils";
 import Link from "next/link";
-import vehicleStyles from "../../styles/vehicles.module.scss";
-import { ALL_DIGITS, Scheme } from "../../utils/utils";
+import vehicleStyles from "styles/vehicles.module.scss";
 import Date from "../date/date";
 import { isSameDate } from "../date/utils";
 import Hours from "../hours/hours";
