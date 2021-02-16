@@ -77,7 +77,7 @@ export default function CategoryCard({
         )}
         <LicenseNumbers>
           <LicensePlate
-            publicLicense={isPublicLicense(group)}
+            isPublic={isPublicLicense(group)}
             size={hasRestriction ? "large" : "medium"}
           >
             {numbersString}
