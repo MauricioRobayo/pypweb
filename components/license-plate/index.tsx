@@ -1,30 +1,58 @@
-import cn from "classnames";
 import React from "react";
-import styles from "./license-plate.module.scss";
+import styled from "styled-components";
+
+type LicenseSize = keyof typeof licenseSize;
+type StyledLicensePlateProps = {
+  isPublic: boolean;
+  size: LicenseSize;
+};
+const licenseSize = {
+  large: "1.5em",
+  medium: "1em",
+  small: "0.75em",
+};
+const BG_COLOR = "#f7c000";
+const PUBLIC_BG_COLOR = "white";
+const getBackgroundColor = ({ isPublic }: StyledLicensePlateProps) =>
+  isPublic ? PUBLIC_BG_COLOR : BG_COLOR;
+const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
+  align-items: center;
+  background-color: ${getBackgroundColor};
+  border: 1.5px solid currentColor;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0 1.5px ${getBackgroundColor};
+  color: black;
+  display: inline-flex;
+  font-family: LicensePlate, monospace, sans-serif;
+  font-size: ${({ size }) => licenseSize[size]};
+  font-weight: bold;
+  justify-content: center;
+  line-height: 1rem;
+  margin: 1.5px;
+  padding: 0.4em 0.25em 0.25em;
+  text-transform: uppercase;
+  white-space: nowrap;
+`;
 
 type LicensePlateProps = {
   children: React.ReactNode;
-  publicLicense?: boolean;
-  size?: "small" | "medium" | "large";
+  isPublic?: boolean;
+  size?: LicenseSize;
 };
 
 export default function LicensePlate({
   children,
-  publicLicense = false,
+  isPublic = false,
   size = "medium",
 }: LicensePlateProps) {
   return (
-    <div
-      className={cn(styles.licensePlate, styles[size], {
-        [styles.public]: publicLicense,
-      })}
-    >
+    <StyledLicensePlate isPublic={isPublic} size={size}>
       {children}
-    </div>
+    </StyledLicensePlate>
   );
 }
 
 LicensePlate.defaultProps = {
-  publicLicense: false,
+  isPublic: false,
   size: "medium",
 };
