@@ -16,11 +16,16 @@ const exponentialRetryBackOff = async () => {
   while (lapseInSeconds < maxTimeInSeconds) {
     lapseInSeconds *= 2;
     try {
-      const { data, status } = await axios.post(webhook);
+      const { data, status, statusText } = await axios.post(webhook);
 
-      console.log({ data, lapseInSeconds, status });
+      console.log({ data, lapseInSeconds, status, statusText });
 
-      if (status === 200) {
+      if (
+        status === 200 ||
+        status === 201 ||
+        statusText.toLowerCase() === "ok" ||
+        statusText.toLowerCase() === "created"
+      ) {
         return 0;
       }
     } catch (error) {

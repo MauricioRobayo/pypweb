@@ -30,6 +30,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # `npm rebuild` will run all those post-install scripts for us.
       - run: npm rebuild && npm run prepare --if-present
-      - run: |
-          npm ci --ignore-scripts
-          node ./scripts/exponential-retry-back-off.js
+      - run: node ./scripts/exponential-retry-back-off.js
