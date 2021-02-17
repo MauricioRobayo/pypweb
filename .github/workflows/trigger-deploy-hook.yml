@@ -1,11 +1,12 @@
-name: build-cron
+name: trigger-deploy-hook
 on:
   workflow_dispatch:
   schedule:
     - cron: "0 5 * * *"
 jobs:
-  cron:
+  trigger-deploy-hook:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: hit build endpoint
         run: node ./scripts/exponential-retry-back-off.js
