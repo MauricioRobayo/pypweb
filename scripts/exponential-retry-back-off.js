@@ -20,12 +20,7 @@ const exponentialRetryBackOff = async () => {
 
       console.log({ data, lapseInSeconds, status, statusText });
 
-      if (
-        status === 200 ||
-        status === 201 ||
-        statusText.toLowerCase() === "ok" ||
-        statusText.toLowerCase() === "created"
-      ) {
+      if (status === 201) {
         return 0;
       }
     } catch (error) {
