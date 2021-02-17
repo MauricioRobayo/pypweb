@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: node ./scripts/exponential-retry-back-off.js
+      - run: |
+        npm ci --ignore-scripts
+        node ./scripts/exponential-retry-back-off.js
