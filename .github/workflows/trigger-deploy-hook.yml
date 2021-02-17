@@ -7,7 +7,29 @@ jobs:
   trigger-deploy-hook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          always-auth: true
+          node-version: "12"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@mauriciorobayo"
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      # Skip post-install scripts here, as a malicious
+      # script could steal NODE_AUTH_TOKEN.
+      - run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # `npm rebuild` will run all those post-install scripts for us.
+      - run: npm rebuild && npm run prepare --if-present
       - run: |
           npm ci --ignore-scripts
           node ./scripts/exponential-retry-back-off.js
