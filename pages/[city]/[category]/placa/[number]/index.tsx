@@ -59,7 +59,7 @@ export default function Category({
   const vehicleClassesString = listFormat(vehicleClasses);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString =
-    scheme === Scheme.FirstNumber ? "terminadas" : "iniciadas";
+    scheme === Scheme.FirstNumber ? "iniciadas" : "terminadas";
 
   const currentNumberLicense = hasRestriction ? (
     <>
