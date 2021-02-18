@@ -23,6 +23,7 @@ const Number = styled.div<NumberProps>`
     ${({ selected }) => (selected ? "currentColor" : "var(--link-color)")};
   border-radius: 50%;
   box-sizing: border-box;
+  cursor: ${({ selected }) => (selected ? "auto" : "pointer")};
   display: inline-flex;
   font-size: 1.25rem;
   height: 0.5rem;
@@ -31,9 +32,11 @@ const Number = styled.div<NumberProps>`
   padding: 1rem;
   text-align: center;
   width: 0.5rem;
-  a {
+`;
+const Anchor = styled.a`
+  color: white;
+  &:hover {
     color: white;
-    text-decoration: none;
   }
 `;
 
@@ -69,9 +72,9 @@ export default function NumberLinks({
           }
           return (
             <Link key={number} href={`/${path}/placa/${number}`}>
-              <Number>
-                <a>{number}</a>
-              </Number>
+              <Anchor>
+                <Number>{number}</Number>
+              </Anchor>
             </Link>
           );
         })}
