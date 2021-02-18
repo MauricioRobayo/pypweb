@@ -54,7 +54,6 @@ export default function CategoryCard({
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
-  console.log({ scheme });
   const schemeString =
     scheme === Scheme.FirstNumber ? "iniciadas" : "terminadas";
 
