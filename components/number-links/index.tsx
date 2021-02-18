@@ -1,5 +1,41 @@
 import Link from "next/link";
-import styles from "./number-links.module.scss";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  margin: 4rem 0 2rem;
+  text-align: center;
+`;
+
+const Title = styled.h4`
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+type NumberProps = {
+  selected?: boolean;
+};
+const Number = styled.div<NumberProps>`
+  align-items: center;
+  background-color: ${({ selected }) =>
+    selected ? "white" : "var(--link-color)"};
+  border: 2px solid
+    ${({ selected }) => (selected ? "currentColor" : "var(--link-color)")};
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 0.5rem;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  width: 0.5rem;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+`;
 
 type NumberLinksProps = {
   path: string;
@@ -20,25 +56,27 @@ export default function NumberLinks({
       : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   return (
-    <div className={styles.numberLinks}>
-      <h4 className={styles.title}>¿Cuándo tengo pico y placa?</h4>
+    <Wrapper>
+      <Title>¿Cuándo tengo pico y placa?</Title>
       <div>
         {numbers.map((number) => {
           if (number === numberSelected) {
             return (
-              <span key={number} className={styles.selected}>
+              <Number key={number} selected>
                 {number}
-              </span>
+              </Number>
             );
           }
           return (
             <Link key={number} href={`/${path}/placa/${number}`}>
-              <a className={styles.link}>{number}</a>
+              <Number>
+                <a>{number}</a>
+              </Number>
             </Link>
           );
         })}
       </div>
-    </div>
+    </Wrapper>
   );
 }
 

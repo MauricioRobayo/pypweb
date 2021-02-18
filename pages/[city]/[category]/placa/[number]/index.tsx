@@ -5,7 +5,6 @@ import {
   ICategoryMap2,
   ICityMap2,
 } from "@mauriciorobayo/pyptron";
-import cn from "classnames";
 import CategoryInfo from "components/category-info";
 import PypDate from "components/date";
 import Hours from "components/hours";
@@ -25,7 +24,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import utilStyles from "styles/utils.module.scss";
 import { PypOption } from "types";
-import styles from "./index.module.scss";
 
 type CategoryProps = {
   categoryData: ICategoryData2;
@@ -37,6 +35,35 @@ type CategoryProps = {
 
 const StyledMegaBanner = styled(MegaBanner)`
   margin-bottom: 1rem;
+`;
+const Title = styled.h4`
+  font-size: 1.25rem;
+`;
+const NextDays = styled.div`
+  li {
+    margin-top: 0.5rem;
+  }
+  li:first-child {
+    margin-top: 1rem;
+  }
+`;
+type SemaphoreProps = {
+  hasRestriction?: boolean;
+};
+const Semaphore = styled.div<SemaphoreProps>`
+  align-items: center;
+  background-color: ${({ hasRestriction }) =>
+    hasRestriction ? "red" : "limegreen"};
+  border: 4px solid #444;
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 4rem;
+  justify-content: center;
+  justify-self: center;
+  width: 4rem;
 `;
 
 export default function Category({
@@ -87,14 +114,14 @@ export default function Category({
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
       <div className={utilStyles.textCenter}>
-        <div className={styles.title}>
+        <Title>
           Los {vehicleClassesString} con {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
               ? "hoy tienen restricción en el siguiente horario:"
               : "hoy no tienen restricción."}
           </strong>
-        </div>
+        </Title>
         {hasRestriction ? (
           <>
             <Hours date={date} hours={hours} />
@@ -102,38 +129,34 @@ export default function Category({
         ) : (
           todaysRestriction
         )}
-        <div
-          className={cn(styles.semaphore, {
-            [styles.hasRestriction]: hasRestriction,
-          })}
-        >
-          {number}
-        </div>
+        <Semaphore>{number}</Semaphore>
         <div>
-          <h4 className={styles.title}>Prográmese</h4>
+          <Title>Prográmese</Title>
           <div>
             <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-            <ol className={styles.nextDays}>
-              {categoryData.data.slice(1).map((data) => {
-                if (data.numbers.includes(Number(number))) {
-                  return (
-                    <li key={data.date}>
-                      <Link
-                        href={`/${categoryData.path}?d=${data.date.substr(
-                          0,
-                          10
-                        )}`}
-                      >
-                        <a>
-                          <PypDate date={data.date} />
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ol>
+            <NextDays>
+              <ol>
+                {categoryData.data.slice(1).map((data) => {
+                  if (data.numbers.includes(Number(number))) {
+                    return (
+                      <li key={data.date}>
+                        <Link
+                          href={`/${categoryData.path}?d=${data.date.substr(
+                            0,
+                            10
+                          )}`}
+                        >
+                          <a>
+                            <PypDate date={data.date} />
+                          </a>
+                        </Link>
+                      </li>
+                    );
+                  }
+                  return null;
+                })}
+              </ol>
+            </NextDays>
           </div>
         </div>
         <NumberLinks
