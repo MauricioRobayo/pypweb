@@ -1,6 +1,6 @@
 export enum Scheme {
-  LastNumber = "last",
   FirstNumber = "first",
+  LastNumber = "last",
 }
 
 export type PypOption = {
