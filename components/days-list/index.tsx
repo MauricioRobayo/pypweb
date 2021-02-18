@@ -1,11 +1,5 @@
 import { ICategoryData2 } from "@mauriciorobayo/pyptron";
-import {
-  isPublicLicense,
-  listFormat,
-  NA,
-  pypNumbersToString,
-  Scheme,
-} from "lib/utils";
+import { isPublicLicense, listFormat, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
@@ -40,7 +34,7 @@ export default function DaysList({
     data: [{ vehicleClasses, scheme }],
   } = categoryData;
   const vehicleClassesList = listFormat(vehicleClasses);
-  const schemeMessage = scheme === Scheme.FirstNumber ? "primer" : "último";
+  const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
       <Title>

@@ -19,7 +19,6 @@ import {
   listFormat,
   NA,
   pypNumbersToString,
-  Scheme,
 } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
@@ -58,8 +57,7 @@ export default function Category({
   const numbersString = pypNumbersToString(numbers);
   const vehicleClassesString = listFormat(vehicleClasses);
   const hasRestriction = numbers.includes(Number(number));
-  const schemeString =
-    scheme === Scheme.FirstNumber ? "iniciadas" : "terminadas";
+  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
 
   const currentNumberLicense = hasRestriction ? (
     <>

@@ -6,11 +6,6 @@ export const NA = "No aplica";
 
 export const isProduction = process.env.NODE_ENV === "production";
 
-export enum Scheme {
-  LastNumber,
-  FirstNumber,
-}
-
 export function getPypOptions() {
   const citiesMap = getCitiesMap2();
   const pypOptions: { value: string; name: string }[] = [];

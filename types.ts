@@ -1,7 +1,4 @@
-export enum Scheme {
-  FirstNumber = "first",
-  LastNumber = "last",
-}
+export type Scheme = "first" | "last";
 
 export type PypOption = {
   name: string;

@@ -1,8 +1,9 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { ALL_DIGITS, Scheme } from "lib/utils";
+import { ALL_DIGITS } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import vehicleStyles from "styles/vehicles.module.scss";
+import { Scheme } from "types";
 import Date from "../date";
 import { isSameDate } from "../date/utils";
 import Hours from "../hours";
@@ -70,7 +71,7 @@ export default function DayCard({
   isPublicLicense,
   hasRestriction,
 }: DayCardProps) {
-  const schemeString = scheme === Scheme.FirstNumber ? "Primer" : "Último";
+  const schemeString = scheme === "first" ? "Primer" : "Último";
   const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
 
