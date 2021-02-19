@@ -1,8 +1,8 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
+import Button from "components/button";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
-import utilStyles from "styles/utils.module.scss";
 import vehicleStyles from "styles/vehicles.module.scss";
 import { Scheme } from "types";
 import Hours from "../hours";
@@ -84,7 +84,9 @@ export default function CategoryCard({
         </LicenseNumbers>
         <footer>
           <Link href={path}>
-            <a className={utilStyles.button}>Ver próximos 7 días →</a>
+            <a>
+              <Button>Ver próximos 7 días →</Button>
+            </a>
           </Link>
         </footer>
       </Card>
