@@ -33,17 +33,7 @@
     "react/jsx-sort-props": "error",
     "sort-keys": "error",
     "import/no-unresolved": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never",
-        "mjs": "never"
-      }
-    ],
+    "import/extensions": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       1,

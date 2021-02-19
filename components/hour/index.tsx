@@ -1,7 +1,19 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import { ALL_DAY, isEmptyArray } from "lib/utils";
-import styles from "./hour.module.scss";
+import styled from "styled-components";
 import { convert24toAMPM } from "./utils";
+
+const Wrapper = styled.div`
+  text-align: left;
+`;
+const Comment = styled.div`
+  font-weight: bold;
+  margin: 1rem 0 0;
+`;
+
+const StyledHour = styled.div`
+  margin-top: 0.25rem;
+`;
 
 type HourProps = {
   hourData: IHourData;
@@ -16,21 +28,11 @@ export default function Hour({
   const isAllDay = comment === ALL_DAY;
 
   return (
-    <div>
-      {hasComment && !isAllDay ? (
-        <div className={styles.title}>{comment}</div>
-      ) : null}
-      <ul className={styles.hours}>
+    <Wrapper>
+      {hasComment && !isAllDay ? <Comment>{comment}</Comment> : null}
+      <ul>
         {hours.map((hour, index) => {
           /* eslint-disable react/no-array-index-key */
-          if (isAllDay) {
-            return (
-              <li key={index} className={styles.hour}>
-                {ALL_DAY}
-              </li>
-            );
-          }
-
           if (isEmptyArray(hour)) {
             return null;
           }
@@ -39,16 +41,24 @@ export default function Hour({
             return null;
           }
 
+          if (isAllDay) {
+            return (
+              <li key={index}>
+                <StyledHour>{ALL_DAY}</StyledHour>
+              </li>
+            );
+          }
+
           return (
-            <li key={index} className={styles.hour}>
-              <span>
+            <li key={index}>
+              <StyledHour>
                 {hour.map((hour24) => convert24toAMPM(hour24)).join(" a ")}
-              </span>
+              </StyledHour>
             </li>
           );
           /* eslint-enable */
         })}
       </ul>
-    </div>
+    </Wrapper>
   );
 }

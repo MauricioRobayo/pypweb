@@ -1,13 +1,12 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import cn from "classnames";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import styled from "styled-components";
 import utilStyles from "styles/utils.module.scss";
 import vehicleStyles from "styles/vehicles.module.scss";
 import { Scheme } from "types";
-import Hours from "../hours/hours";
-import LicensePlate from "../license-plate/license-plate";
-import styles from "./category-card.module.scss";
+import Hours from "../hours";
+import LicensePlate from "../license-plate";
 
 type CategoryCardProps = {
   date: Date;
@@ -21,6 +20,28 @@ type CategoryCardProps = {
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
+const Card = styled.div`
+  background-color: #f5f5f5;
+  border: 2px solid #444;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+
+  a:hover {
+    color: inherit;
+  }
+`;
+
+const Title = styled.h4`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+const LicenseNumbers = styled.div`
+  margin: 1rem 0;
+`;
+
 export default function CategoryCard({
   date,
   numbers,
@@ -33,21 +54,16 @@ export default function CategoryCard({
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
-  const schemeString =
-    scheme === Scheme.FirstNumber ? "iniciadas" : "terminadas";
+  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
 
   return (
     <article key={name}>
-      <div
-        className={cn(styles.card, {
-          [styles.na]: !hasRestriction,
-        })}
-      >
-        <h4 className={cn(styles.title, vehicleStyles[`vehicle-${group}`])}>
+      <Card>
+        <Title className={vehicleStyles[`vehicle-${group}`]}>
           <Link href={path}>
             <a>{name}</a>
           </Link>
-        </h4>
+        </Title>
         {hasRestriction ? (
           <div>
             <div>No circulan en el siguiente horario</div>
@@ -58,20 +74,20 @@ export default function CategoryCard({
         {isAllDigits || !hasRestriction ? null : (
           <div>Placas {schemeString} en</div>
         )}
-        <div className={styles.licenseNumbers}>
+        <LicenseNumbers>
           <LicensePlate
-            publicLicense={isPublicLicense(group)}
+            isPublic={isPublicLicense(group)}
             size={hasRestriction ? "large" : "medium"}
           >
             {numbersString}
           </LicensePlate>
-        </div>
-        <footer className={styles.footer}>
+        </LicenseNumbers>
+        <footer>
           <Link href={path}>
             <a className={utilStyles.button}>Ver próximos 7 días →</a>
           </Link>
         </footer>
-      </div>
+      </Card>
     </article>
   );
 }
