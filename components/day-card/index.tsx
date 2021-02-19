@@ -10,7 +10,7 @@ import Hours from "../hours";
 import LicensePlate from "../license-plate";
 
 const currentCardStyle = css`
-  background-color: var(--active-background-color);
+  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
   border: none;
   border-radius: 4px;
   box-shadow: 0 0 10px 0 #7a7a7a;
@@ -18,7 +18,7 @@ const currentCardStyle = css`
 `;
 
 const hasRestrictionStyle = css`
-  background-color: var(--inactive-background-color);
+  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
   color: #b5b5b5;
 `;
 

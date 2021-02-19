@@ -17,10 +17,11 @@ type NumberProps = {
 };
 const Number = styled.div<NumberProps>`
   align-items: center;
-  background-color: ${({ selected }) =>
-    selected ? "white" : "var(--link-color)"};
+  background-color: ${({ selected, theme }) =>
+    selected ? "white" : theme.colors.linkColor};
   border: 2px solid
-    ${({ selected }) => (selected ? "currentColor" : "var(--link-color)")};
+    ${({ selected, theme }) =>
+      selected ? "currentColor" : theme.colors.linkColor};
   border-radius: 50%;
   box-sizing: border-box;
   cursor: ${({ selected }) => (selected ? "auto" : "pointer")};

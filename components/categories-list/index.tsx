@@ -11,7 +11,7 @@ const List = styled.div`
   display: grid;
   gap: 1rem;
   justify-content: center;
-  max-width: var(--max-width);
+  max-width: ${({ theme }) => theme.maxWidth};
 `;
 
 export default function CategoriesList({

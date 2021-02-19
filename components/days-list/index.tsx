@@ -12,7 +12,7 @@ type DaysListProps = {
 
 const Article = styled.article`
   margin: auto;
-  max-width: var(--max-width);
+  max-width: ${({ theme }) => theme.maxWidth};
 `;
 
 const Title = styled.h3`
