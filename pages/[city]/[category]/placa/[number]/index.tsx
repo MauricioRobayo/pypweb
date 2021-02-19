@@ -22,7 +22,6 @@ import {
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
-import utilStyles from "styles/utils.module.scss";
 import { PypOption } from "types";
 
 type CategoryProps = {
@@ -113,7 +112,7 @@ export default function Category({
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
-      <div className={utilStyles.textCenter}>
+      <div>
         <Title>
           Los {vehicleClassesString} con {currentNumberLicense}{" "}
           <strong>
