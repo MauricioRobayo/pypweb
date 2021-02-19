@@ -1,10 +1,12 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
-  "plugins": ["stylelint-scss", "stylelint-order"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-styled-components"
+  ],
+  "plugins": ["stylelint-order"],
   "rules": {
     "value-keyword-case": null,
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
     "order/properties-alphabetical-order": true
   },
   "ignoreFiles": [".next/**"]

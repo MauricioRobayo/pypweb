@@ -19,7 +19,7 @@ const StyledLayout = styled.div`
 
   header {
     margin: auto;
-    max-width: var(--max-width);
+    max-width: ${({ theme }) => theme.maxWidth};
 
     h1 {
       font-size: 2rem;
@@ -44,7 +44,7 @@ const Navbar = styled.div`
     gap: 0.5rem;
     grid-template-columns: auto 1fr;
     margin: auto;
-    max-width: var(--max-width);
+    max-width: ${({ theme }) => theme.maxWidth};
   }
 `;
 
@@ -67,14 +67,14 @@ const Page = styled.div<PageProps>`
 `;
 
 const Aside = styled.aside`
-  max-width: var(--max-width);
+  max-width: ${({ theme }) => theme.maxWidth};
   padding: 1rem;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
   }
   a {
-    color: var(--link-color);
+    color: ${({ theme }) => theme.colors.linkColor};
   }
   ol {
     list-style-type: number;

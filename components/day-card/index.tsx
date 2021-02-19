@@ -1,8 +1,8 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
+import Icon from "components/icon";
 import { ALL_DIGITS } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import vehicleStyles from "styles/vehicles.module.scss";
 import { Scheme } from "types";
 import Date from "../date";
 import { isSameDate } from "../date/utils";
@@ -10,7 +10,7 @@ import Hours from "../hours";
 import LicensePlate from "../license-plate";
 
 const currentCardStyle = css`
-  background-color: var(--active-background-color);
+  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
   border: none;
   border-radius: 4px;
   box-shadow: 0 0 10px 0 #7a7a7a;
@@ -18,7 +18,7 @@ const currentCardStyle = css`
 `;
 
 const hasRestrictionStyle = css`
-  background-color: var(--inactive-background-color);
+  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
   color: #b5b5b5;
 `;
 
@@ -82,12 +82,10 @@ export default function DayCard({
       isCurrentDate={isCurrentDate}
     >
       <div>
-        <Title
-          className={isCurrentDate ? vehicleStyles[`vehicle-${group}`] : ""}
-          isCurrentDate={isCurrentDate}
-        >
+        <Title isCurrentDate={isCurrentDate}>
           <Link href={`/${path}?d=${date.substr(0, 10)}`}>
             <a>
+              {isCurrentDate ? <Icon iconName={group} /> : null}{" "}
               <Date date={date} type="short" />
             </a>
           </Link>

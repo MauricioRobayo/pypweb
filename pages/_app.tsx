@@ -2,8 +2,9 @@ import * as gtag from "lib/gtag";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-// organize-imports-ignore
-import "../styles/globals.scss";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "styles/global";
+import defaultTheme from "styles/theme";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -22,7 +23,12 @@ const App = ({ Component, pageProps }: AppProps) => {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 };
 
 export default App;

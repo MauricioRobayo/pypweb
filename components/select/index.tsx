@@ -16,7 +16,7 @@ const Wrapper = styled.div<WrapperProps>`
   margin: ${({ type }) => (type === "main" ? "0.5rem 0" : "0")};
   padding: ${({ type }) => (type === "main" ? "0.5rem" : "0.25rem")};
   &:focus-within {
-    box-shadow: 0 0 0.25rem 0 var(--link-color);
+    box-shadow: 0 0 0.25rem 0 ${({ theme }) => theme.colors.linkColor};
   }
 `;
 
