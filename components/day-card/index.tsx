@@ -1,8 +1,8 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
+import Icon from "components/icon";
 import { ALL_DIGITS } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import vehicleStyles from "styles/vehicles.module.scss";
 import { Scheme } from "types";
 import Date from "../date";
 import { isSameDate } from "../date/utils";
@@ -82,12 +82,10 @@ export default function DayCard({
       isCurrentDate={isCurrentDate}
     >
       <div>
-        <Title
-          className={isCurrentDate ? vehicleStyles[`vehicle-${group}`] : ""}
-          isCurrentDate={isCurrentDate}
-        >
+        <Title isCurrentDate={isCurrentDate}>
           <Link href={`/${path}?d=${date.substr(0, 10)}`}>
             <a>
+              {isCurrentDate ? <Icon iconName={group} /> : null}{" "}
               <Date date={date} type="short" />
             </a>
           </Link>
