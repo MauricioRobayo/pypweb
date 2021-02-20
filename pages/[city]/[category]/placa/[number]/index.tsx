@@ -1,6 +1,6 @@
 import {
-  getCitiesMap2,
-  getCityData2,
+  getCitiesMap,
+  getCityData,
   ICategoryData2,
   ICategoryMap2,
   ICityMap2,
@@ -170,7 +170,7 @@ export default function Category({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const paths: any = [];
   citiesMap.forEach(({ slug: citySlug, categories }) => {
     categories.forEach(({ slug: categorySlug }) => {
@@ -199,7 +199,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as string;
   const categorySlug = params?.category as string;
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const {
     key: cityKey,
     name: cityName,
@@ -211,7 +211,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   );
   const categoryData = getInfoFromSlug<ICategoryData2>(
     categorySlug,
-    getCityData2(cityKey, {
+    getCityData(cityKey, {
       categoryKey: [categoryKey],
       days: 30,
     }).categories
