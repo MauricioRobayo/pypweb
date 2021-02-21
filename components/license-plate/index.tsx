@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-type LicenseSize = keyof typeof licenseSize;
+type LicenseSize = keyof typeof licenseFontSize;
 type StyledLicensePlateProps = {
   isPublic: boolean;
   size: LicenseSize;
 };
-const licenseSize = {
+const licenseFontSize = {
   large: "1.5em",
   medium: "1em",
   small: "0.75em",
@@ -18,13 +18,13 @@ const getBackgroundColor = ({ isPublic }: StyledLicensePlateProps) =>
 const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
   align-items: center;
   background-color: ${getBackgroundColor};
-  border: 1.5px solid currentColor;
+  border: 0.15em solid currentColor;
   border-radius: 0.25em;
-  box-shadow: 0 0 0 1.5px ${getBackgroundColor};
+  box-shadow: 0 0 0 0.1em ${getBackgroundColor};
   color: black;
   display: inline-flex;
   font-family: LicensePlate, monospace, sans-serif;
-  font-size: ${({ size }) => licenseSize[size]};
+  font-size: ${({ size }) => licenseFontSize[size]};
   font-weight: bold;
   justify-content: center;
   line-height: 1rem;
