@@ -31,13 +31,11 @@ const Card = styled.div`
     color: inherit;
   }
 `;
-
 const Title = styled.h4`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 `;
-
 const LicenseNumbers = styled.div`
   margin: 1rem 0;
 `;
@@ -77,10 +75,7 @@ export default function CategoryCard({
           <div>Placas {schemeString} en</div>
         )}
         <LicenseNumbers>
-          <LicensePlate
-            isPublic={isPublicLicense(group)}
-            size={hasRestriction ? "large" : "medium"}
-          >
+          <LicensePlate isPublic={isPublicLicense(group)}>
             {numbersString}
           </LicensePlate>
         </LicenseNumbers>

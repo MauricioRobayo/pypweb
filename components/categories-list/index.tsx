@@ -1,9 +1,9 @@
-import { ICategoryData2 } from "@mauriciorobayo/pyptron";
+import { ICategoryData } from "@mauriciorobayo/pyptron";
 import styled from "styled-components";
 import CategoryCard from "../category-card";
 
 type CategoryListProps = {
-  categories: ICategoryData2[];
+  categories: ICategoryData[];
   date: Date;
 };
 

@@ -1,4 +1,4 @@
-import { ICategoryData2 } from "@mauriciorobayo/pyptron";
+import { ICategoryData } from "@mauriciorobayo/pyptron";
 import { isPublicLicense, listFormat, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
@@ -6,7 +6,7 @@ import NumberLinks from "../number-links";
 
 type DaysListProps = {
   cityName: string;
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
   currentDate: Date;
 };
 

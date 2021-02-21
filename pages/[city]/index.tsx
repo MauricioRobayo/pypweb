@@ -1,8 +1,4 @@
-import {
-  getCitiesMap2,
-  getCityData2,
-  ICityData2,
-} from "@mauriciorobayo/pyptron";
+import { getCitiesMap, getCityData, ICityData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
@@ -14,7 +10,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CityProps = {
-  cityData: ICityData2;
+  cityData: ICityData;
   pypOptions: PypOption[];
   currentDate: number;
 };
@@ -58,7 +54,7 @@ export default function City({ cityData, currentDate, pypOptions }: CityProps) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   return {
     fallback: false,
     paths: citiesMap.map(({ slug }) => ({ params: { city: slug } })),
@@ -67,8 +63,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as string;
-  const { key: cityKey } = getInfoFromSlug(citySlug, getCitiesMap2());
-  const cityData = getCityData2(cityKey);
+  const { key: cityKey } = getInfoFromSlug(citySlug, getCitiesMap());
+  const cityData = getCityData(cityKey);
   return {
     props: {
       cityData,

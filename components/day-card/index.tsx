@@ -26,7 +26,6 @@ type StyleProps = {
   isCurrentDate?: boolean;
   hasRestriction?: boolean;
 };
-
 const StyledCard = styled.div<StyleProps>`
   ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
   ${({ hasRestriction }) => !hasRestriction && hasRestrictionStyle};
@@ -38,14 +37,15 @@ const StyledCard = styled.div<StyleProps>`
   justify-content: space-between;
   padding: 1rem;
 `;
-
 const Title = styled.div<StyleProps>`
   font-size: ${({ isCurrentDate }) => (isCurrentDate ? "1.25rem" : "1rem")};
   margin-bottom: ${({ isCurrentDate }) => (isCurrentDate ? "1rem" : "0")};
 `;
-
 const LicenseWrapper = styled.div`
   text-align: right;
+`;
+const StyledHours = styled(Hours)`
+  text-align: left;
 `;
 
 type DayCardProps = {
@@ -91,9 +91,7 @@ export default function DayCard({
           </Link>
         </Title>
         {hasRestriction && isCurrentDate ? (
-          <div>
-            <Hours date={currentDate} hours={hours} interactive />
-          </div>
+          <StyledHours date={currentDate} hours={hours} interactive />
         ) : null}
       </div>
       <LicenseWrapper>

@@ -1,4 +1,4 @@
-import { getCitiesMap2 } from "@mauriciorobayo/pyptron";
+import { getCitiesMap } from "@mauriciorobayo/pyptron";
 
 export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
@@ -7,7 +7,7 @@ export const NA = "No aplica";
 export const isProduction = process.env.NODE_ENV === "production";
 
 export function getPypOptions() {
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const pypOptions: { value: string; name: string }[] = [];
   citiesMap.forEach(({ name: cityName, categories }) => {
     categories.forEach(({ name: categoryName, path }) => {

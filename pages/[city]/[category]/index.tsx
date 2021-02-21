@@ -1,9 +1,9 @@
 import {
-  getCitiesMap2,
-  getCityData2,
-  ICategoryData2,
-  ICategoryMap2,
-  ICityMap2,
+  getCitiesMap,
+  getCityData,
+  ICategoryData,
+  ICategoryMap,
+  ICityMap,
 } from "@mauriciorobayo/pyptron";
 import CategoryInfo from "components/category-info";
 import { isValidDateString } from "components/date/utils";
@@ -19,7 +19,7 @@ import { PypOption } from "types";
 type CategoryProps = {
   cityKey: string;
   categoryKey: string;
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
   cityName: string;
   currentDate: number;
   pypOptions: PypOption[];
@@ -49,9 +49,9 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const data = getInfoFromSlug<ICategoryData2>(
+  const data = getInfoFromSlug<ICategoryData>(
     categorySlug as string,
-    getCityData2(cityKey, {
+    getCityData(cityKey, {
       categoryKey: [categoryKey],
       date,
       days: 8,
@@ -71,7 +71,7 @@ export default function Category({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   return {
     fallback: false,
     paths: citiesMap
@@ -87,19 +87,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as string;
   const categorySlug = params?.category as string;
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const {
     key: cityKey,
     name: cityName,
     categories: categoriesMap,
-  } = getInfoFromSlug<ICityMap2>(citySlug, citiesMap);
-  const { key: categoryKey } = getInfoFromSlug<ICategoryMap2>(
+  } = getInfoFromSlug<ICityMap>(citySlug, citiesMap);
+  const { key: categoryKey } = getInfoFromSlug<ICategoryMap>(
     categorySlug,
     categoriesMap
   );
-  const categoryData = getInfoFromSlug<ICategoryData2>(
+  const categoryData = getInfoFromSlug<ICategoryData>(
     categorySlug,
-    getCityData2(cityKey, {
+    getCityData(cityKey, {
       categoryKey: [categoryKey],
       days: 8,
     }).categories

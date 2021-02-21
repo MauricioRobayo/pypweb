@@ -1,9 +1,9 @@
 import {
-  getCitiesMap2,
-  getCityData2,
-  ICategoryData2,
-  ICategoryMap2,
-  ICityMap2,
+  getCitiesMap,
+  getCityData,
+  ICategoryData,
+  ICategoryMap,
+  ICityMap,
 } from "@mauriciorobayo/pyptron";
 import CategoryInfo from "components/category-info";
 import PypDate from "components/date";
@@ -25,7 +25,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
   cityName: string;
   currentDate: number;
   number: string;
@@ -170,7 +170,7 @@ export default function Category({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const paths: any = [];
   citiesMap.forEach(({ slug: citySlug, categories }) => {
     categories.forEach(({ slug: categorySlug }) => {
@@ -199,19 +199,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as string;
   const categorySlug = params?.category as string;
-  const citiesMap = getCitiesMap2();
+  const citiesMap = getCitiesMap();
   const {
     key: cityKey,
     name: cityName,
     categories: categoriesMap,
-  } = getInfoFromSlug<ICityMap2>(citySlug, citiesMap);
-  const { key: categoryKey } = getInfoFromSlug<ICategoryMap2>(
+  } = getInfoFromSlug<ICityMap>(citySlug, citiesMap);
+  const { key: categoryKey } = getInfoFromSlug<ICategoryMap>(
     categorySlug,
     categoriesMap
   );
-  const categoryData = getInfoFromSlug<ICategoryData2>(
+  const categoryData = getInfoFromSlug<ICategoryData>(
     categorySlug,
-    getCityData2(cityKey, {
+    getCityData(cityKey, {
       categoryKey: [categoryKey],
       days: 30,
     }).categories
