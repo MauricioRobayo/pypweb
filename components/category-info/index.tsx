@@ -1,7 +1,7 @@
-import { ICategoryData2 } from "@mauriciorobayo/pyptron";
+import { ICategoryData } from "@mauriciorobayo/pyptron";
 
 type CategoryDataProps = {
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
 };
 
 export default function CategoryInfo({ categoryData }: CategoryDataProps) {

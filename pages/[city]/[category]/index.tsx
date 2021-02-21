@@ -1,9 +1,9 @@
 import {
   getCitiesMap,
   getCityData,
-  ICategoryData2,
-  ICategoryMap2,
-  ICityMap2,
+  ICategoryData,
+  ICategoryMap,
+  ICityMap,
 } from "@mauriciorobayo/pyptron";
 import CategoryInfo from "components/category-info";
 import { isValidDateString } from "components/date/utils";
@@ -19,7 +19,7 @@ import { PypOption } from "types";
 type CategoryProps = {
   cityKey: string;
   categoryKey: string;
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
   cityName: string;
   currentDate: number;
   pypOptions: PypOption[];
@@ -49,7 +49,7 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const data = getInfoFromSlug<ICategoryData2>(
+  const data = getInfoFromSlug<ICategoryData>(
     categorySlug as string,
     getCityData(cityKey, {
       categoryKey: [categoryKey],
@@ -92,12 +92,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     key: cityKey,
     name: cityName,
     categories: categoriesMap,
-  } = getInfoFromSlug<ICityMap2>(citySlug, citiesMap);
-  const { key: categoryKey } = getInfoFromSlug<ICategoryMap2>(
+  } = getInfoFromSlug<ICityMap>(citySlug, citiesMap);
+  const { key: categoryKey } = getInfoFromSlug<ICategoryMap>(
     categorySlug,
     categoriesMap
   );
-  const categoryData = getInfoFromSlug<ICategoryData2>(
+  const categoryData = getInfoFromSlug<ICategoryData>(
     categorySlug,
     getCityData(cityKey, {
       categoryKey: [categoryKey],

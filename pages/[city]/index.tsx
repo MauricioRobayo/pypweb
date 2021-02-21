@@ -1,4 +1,4 @@
-import { getCitiesMap, getCityData, ICityData2 } from "@mauriciorobayo/pyptron";
+import { getCitiesMap, getCityData, ICityData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CityProps = {
-  cityData: ICityData2;
+  cityData: ICityData;
   pypOptions: PypOption[];
   currentDate: number;
 };

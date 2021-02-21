@@ -1,9 +1,9 @@
 import {
   getCitiesMap,
   getCityData,
-  ICategoryData2,
-  ICategoryMap2,
-  ICityMap2,
+  ICategoryData,
+  ICategoryMap,
+  ICityMap,
 } from "@mauriciorobayo/pyptron";
 import CategoryInfo from "components/category-info";
 import PypDate from "components/date";
@@ -25,7 +25,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
-  categoryData: ICategoryData2;
+  categoryData: ICategoryData;
   cityName: string;
   currentDate: number;
   number: string;
@@ -204,12 +204,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     key: cityKey,
     name: cityName,
     categories: categoriesMap,
-  } = getInfoFromSlug<ICityMap2>(citySlug, citiesMap);
-  const { key: categoryKey } = getInfoFromSlug<ICategoryMap2>(
+  } = getInfoFromSlug<ICityMap>(citySlug, citiesMap);
+  const { key: categoryKey } = getInfoFromSlug<ICategoryMap>(
     categorySlug,
     categoriesMap
   );
-  const categoryData = getInfoFromSlug<ICategoryData2>(
+  const categoryData = getInfoFromSlug<ICategoryData>(
     categorySlug,
     getCityData(cityKey, {
       categoryKey: [categoryKey],
