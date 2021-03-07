@@ -1,4 +1,4 @@
-import { getCitiesMap } from "@mauriciorobayo/pyptron";
+import cities from "@mauriciorobayo/pyptron";
 
 export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
@@ -6,25 +6,27 @@ export const NA = "No aplica";
 
 export const isProduction = process.env.NODE_ENV === "production";
 
-export function getPypOptions() {
-  const citiesMap = getCitiesMap();
-  const pypOptions: { value: string; name: string }[] = [];
-  citiesMap.forEach(({ name: cityName, categories }) => {
-    categories.forEach(({ name: categoryName, path }) => {
-      pypOptions.push({
-        name: `${cityName} / ${categoryName}`,
-        value: `/${path}`,
-      });
-    });
-  });
-  return pypOptions;
+export type CityType = keyof typeof cities;
+
+export function isCity(city: any): city is CityType {
+  return typeof city === "string" && city in cities;
 }
 
-export function getInfoFromSlug<T extends { slug: string }>(
-  slug: string,
-  map: T[]
-): T {
-  return map.find((info) => info.slug === slug) as T;
+export function getPypOptions() {
+  const pypOptions: { value: string; name: string }[] = [];
+  Object.values(cities).forEach(
+    ({ name: cityName, slug: citySlug, categories }) => {
+      Object.values(categories).forEach(
+        ({ name: categoryName, slug: categorySlug }) => {
+          pypOptions.push({
+            name: `${cityName} / ${categoryName}`,
+            value: `${citySlug}/${categorySlug}`,
+          });
+        }
+      );
+    }
+  );
+  return pypOptions;
 }
 
 export function hasAllDigits(numbers: number[]) {

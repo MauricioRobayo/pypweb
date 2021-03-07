@@ -42,22 +42,17 @@ const Anchor = styled.a`
 `;
 
 type NumberLinksProps = {
-  path: string;
-  cityName: string;
-  categoryName: string;
+  citySlug: string;
+  categorySlug: string;
   numberSelected?: string | null;
 };
 
 export default function NumberLinks({
-  path,
-  cityName,
-  categoryName,
+  citySlug,
+  categorySlug,
   numberSelected,
 }: NumberLinksProps) {
-  const numbers =
-    cityName === "Manizales" && categoryName === "Transporte publico colectivo"
-      ? ["H", "I", "J", "A", "B", "C", "D", "E", "F", "G"]
-      : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
   return (
     <Wrapper>
@@ -72,7 +67,11 @@ export default function NumberLinks({
             );
           }
           return (
-            <Link key={number} href={`/${path}/placa/${number}`}>
+            <Link
+              key={number}
+              href={`/${citySlug}/${categorySlug}/placa/${number}`}
+              passHref
+            >
               <Anchor>
                 <Number>{number}</Number>
               </Anchor>

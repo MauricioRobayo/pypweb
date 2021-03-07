@@ -1,22 +1,11 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import Button from "components/button";
+import Hours from "components/hours";
 import Icon from "components/icon";
+import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
-import { Scheme } from "types";
-import Hours from "../hours";
-import LicensePlate from "../license-plate";
-
-type CategoryCardProps = {
-  date: Date;
-  path: string;
-  numbers: number[];
-  hours: IHourData[];
-  name: string;
-  group: string;
-  scheme: Scheme;
-};
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
@@ -40,12 +29,22 @@ const LicenseNumbers = styled.div`
   margin: 1rem 0;
 `;
 
+type CategoryCardProps = {
+  categoryName: CategoryName;
+  categorySlug: string;
+  citySlug: string;
+  date: Date;
+  numbers: number[];
+  hours: IHourData[];
+  scheme: Scheme;
+};
+
 export default function CategoryCard({
+  categoryName,
+  categorySlug,
+  citySlug,
   date,
   numbers,
-  path,
-  name,
-  group,
   hours,
   scheme,
 }: CategoryCardProps) {
@@ -53,14 +52,16 @@ export default function CategoryCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
+  const categoryPath = `/${citySlug}/${categorySlug}`;
 
   return (
-    <article key={name}>
+    <article key={categoryName}>
       <Card>
         <Title>
-          <Link href={path}>
+          <Link href={`/${categoryPath}`}>
             <a>
-              <Icon iconName={group} /> {name}
+              <Icon iconName={categoryName} />
+              {categoryName}
             </a>
           </Link>
         </Title>
@@ -75,12 +76,12 @@ export default function CategoryCard({
           <div>Placas {schemeString} en</div>
         )}
         <LicenseNumbers>
-          <LicensePlate isPublic={isPublicLicense(group)}>
+          <LicensePlate isPublic={isPublicLicense(categorySlug)}>
             {numbersString}
           </LicensePlate>
         </LicenseNumbers>
         <footer>
-          <Link href={path}>
+          <Link href={`/${categoryPath}`}>
             <a>
               <Button>Ver próximos 7 días →</Button>
             </a>

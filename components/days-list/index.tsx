@@ -5,7 +5,7 @@ import DayCard from "../day-card";
 import NumberLinks from "../number-links";
 
 type DaysListProps = {
-  cityName: string;
+  citySlug: string;
   categoryData: ICategoryData;
   currentDate: Date;
 };
@@ -23,14 +23,13 @@ const Title = styled.h3`
 `;
 
 export default function DaysList({
-  cityName,
+  citySlug,
   categoryData,
   currentDate,
 }: DaysListProps) {
   const {
     name: categoryName,
-    group: categoryGroup,
-    path: categoryPath,
+    slug: categorySlug,
     data: [{ vehicleClasses, scheme }],
   } = categoryData;
   const vehicleClassesList = listFormat(vehicleClasses);
@@ -47,25 +46,22 @@ export default function DaysList({
           return (
             <DayCard
               key={date}
+              categoryName={categoryName}
+              categorySlug={categorySlug}
+              citySlug={citySlug}
               currentDate={currentDate}
               date={date}
-              group={categoryGroup}
               hasRestriction={numbersString !== NA}
               hours={hours}
               isPublicLicense={isPublicLicense(categoryName)}
               numbersString={numbersString}
-              path={categoryPath}
               scheme={scheme}
             />
           );
         })}
       </div>
       <footer>
-        <NumberLinks
-          categoryName={categoryName}
-          cityName={cityName}
-          path={categoryPath}
-        />
+        <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
       </footer>
     </Article>
   );

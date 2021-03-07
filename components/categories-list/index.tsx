@@ -1,11 +1,7 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import styled from "styled-components";
+import { CityType } from "../../lib/utils";
 import CategoryCard from "../category-card";
-
-type CategoryListProps = {
-  categories: ICategoryData[];
-  date: Date;
-};
 
 const List = styled.div`
   display: grid;
@@ -14,22 +10,33 @@ const List = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
 `;
 
+type CategoryListProps = {
+  citySlug: CityType;
+  categories: ICategoryData[];
+  date: Date;
+};
+
 export default function CategoriesList({
   categories,
+  citySlug,
   date,
 }: CategoryListProps) {
   return (
     <List>
       {categories.map(
-        ({ path, group, name, data: [{ numbers, scheme, hours }] }) => (
+        ({
+          slug: categorySlug,
+          name: categoryName,
+          data: [{ numbers, scheme, hours }],
+        }) => (
           <CategoryCard
-            key={path}
+            key={categorySlug}
+            categoryName={categoryName}
+            categorySlug={categorySlug}
+            citySlug={citySlug}
             date={date}
-            group={group}
             hours={hours}
-            name={name}
             numbers={numbers}
-            path={path}
             scheme={scheme}
           />
         )

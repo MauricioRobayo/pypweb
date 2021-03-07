@@ -1,16 +1,18 @@
-import { getCitiesMap, getCityData, ICityData } from "@mauriciorobayo/pyptron";
+import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
-import { getInfoFromSlug, getPypOptions } from "lib/utils";
+import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import { PypOption } from "types";
 
 type CityProps = {
-  cityData: ICityData;
+  categories: ICategoryData[];
+  cityName: string;
+  citySlug: CityType;
   pypOptions: PypOption[];
   currentDate: number;
 };
@@ -19,8 +21,13 @@ const StyledMegaBanner = styled(MegaBanner)`
   margin-bottom: 1rem;
 `;
 
-export default function City({ cityData, currentDate, pypOptions }: CityProps) {
-  const { name: cityName, categories: cityCategories } = cityData;
+export default function City({
+  categories,
+  cityName,
+  citySlug,
+  currentDate,
+  pypOptions,
+}: CityProps) {
   const title = `Pico y placa ${cityName}`;
   const date = new Date(currentDate);
 
@@ -34,9 +41,9 @@ export default function City({ cityData, currentDate, pypOptions }: CityProps) {
         lo establecido por la Alcaldía de {cityName}:
       </p>
       <ul>
-        {cityCategories.map(({ name: categoryName, path: categoryPath }) => (
+        {categories.map(({ name: categoryName, slug: categorySlug }) => (
           <li key={categoryName}>
-            <Link href={categoryPath}>
+            <Link href={`/${citySlug}/${categorySlug}`}>
               <a>{categoryName}</a>
             </Link>
           </li>
@@ -48,26 +55,33 @@ export default function City({ cityData, currentDate, pypOptions }: CityProps) {
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
-      <CategoriesList categories={cityData.categories} date={date} />
+      <CategoriesList categories={categories} citySlug={citySlug} date={date} />
     </Layout>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap();
-  return {
-    fallback: false,
-    paths: citiesMap.map(({ slug }) => ({ params: { city: slug } })),
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  fallback: false,
+  paths: Object.values(cities).map(({ slug }) => ({ params: { city: slug } })),
+});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const citySlug = params?.city as string;
-  const { key: cityKey } = getInfoFromSlug(citySlug, getCitiesMap());
-  const cityData = getCityData(cityKey);
+  const citySlug = params?.city;
+  if (!isCity(citySlug)) {
+    throw new Error("That city don't exists");
+  }
+
+  const { name: cityName, categories } = cities[citySlug];
+
+  const categoriesData = Object.values(categories).map((category) =>
+    category.getCategoryData()
+  );
+
   return {
     props: {
-      cityData,
+      categories: categoriesData,
+      cityName,
+      citySlug,
       currentDate: Date.now(),
       pypOptions: getPypOptions(),
     },
