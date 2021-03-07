@@ -5,18 +5,15 @@ type CategoryDataProps = {
 };
 
 export default function CategoryInfo({ categoryData }: CategoryDataProps) {
-  const {
-    decrees,
-    data: [{ exceptions, observations, maps }],
-  } = categoryData;
+  const { decrees, article } = categoryData;
   const decreesList =
     decrees.length === 0 ? null : (
       <>
         <h4>Decretos</h4>
         <ul>
-          {decrees.map(({ url, name }) => (
+          {decrees.map(({ url, text }) => (
             <li key={url}>
-              <a href={url}>{name}</a>
+              <a href={url}>{text}</a>
             </li>
           ))}
         </ul>
@@ -24,43 +21,16 @@ export default function CategoryInfo({ categoryData }: CategoryDataProps) {
     );
 
   /* eslint-disable react/no-danger */
-  const exceptionsContent =
-    exceptions === "" ? null : (
-      <>
-        <h4>Excepciones</h4>
-        <div dangerouslySetInnerHTML={{ __html: exceptions }} />
-      </>
-    );
-
-  const observationsContent =
-    observations === "" ? null : (
-      <>
-        <h4>Observaciones</h4>
-        <div dangerouslySetInnerHTML={{ __html: exceptions }} />
-      </>
+  const articleContent =
+    article === "" ? null : (
+      <div dangerouslySetInnerHTML={{ __html: article }} />
     );
   /* eslint-enable */
-
-  const mapsList =
-    maps.length === 0 ? null : (
-      <>
-        <h4>Decretos</h4>
-        <ul>
-          {maps.map(({ url, name }) => (
-            <li key={url}>
-              <a href={url}>{name}</a>
-            </li>
-          ))}
-        </ul>
-      </>
-    );
 
   return (
     <section>
       {decreesList}
-      {exceptionsContent}
-      {observationsContent}
-      {mapsList}
+      {articleContent}
     </section>
   );
 }

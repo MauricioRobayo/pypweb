@@ -1,22 +1,11 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import { IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import Button from "components/button";
 import Icon from "components/icon";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
-import { Scheme } from "types";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
-
-type CategoryCardProps = {
-  date: Date;
-  path: string;
-  numbers: number[];
-  hours: IHourData[];
-  name: string;
-  group: string;
-  scheme: Scheme;
-};
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
@@ -40,12 +29,20 @@ const LicenseNumbers = styled.div`
   margin: 1rem 0;
 `;
 
+type CategoryCardProps = {
+  date: Date;
+  path: string;
+  numbers: number[];
+  hours: IHourData[];
+  name: string;
+  scheme: Scheme;
+};
+
 export default function CategoryCard({
   date,
   numbers,
   path,
   name,
-  group,
   hours,
   scheme,
 }: CategoryCardProps) {
@@ -60,7 +57,7 @@ export default function CategoryCard({
         <Title>
           <Link href={path}>
             <a>
-              <Icon iconName={group} /> {name}
+              <Icon iconName={slug} /> {name}
             </a>
           </Link>
         </Title>
@@ -75,7 +72,7 @@ export default function CategoryCard({
           <div>Placas {schemeString} en</div>
         )}
         <LicenseNumbers>
-          <LicensePlate isPublic={isPublicLicense(group)}>
+          <LicensePlate isPublic={isPublicLicense(slug)}>
             {numbersString}
           </LicensePlate>
         </LicenseNumbers>

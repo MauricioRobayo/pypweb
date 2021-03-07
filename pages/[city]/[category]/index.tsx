@@ -1,26 +1,20 @@
-import {
-  getCitiesMap,
-  getCityData,
-  ICategoryData,
-  ICategoryMap,
-  ICityMap,
-} from "@mauriciorobayo/pyptron";
+import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoryInfo from "components/category-info";
 import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
 import MegaBanner from "components/the-moneytizer/mega-banner";
-import { getInfoFromSlug, getPypOptions } from "lib/utils";
+import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
-  cityKey: string;
-  categoryKey: string;
   categoryData: ICategoryData;
+  categorySlug: string;
   cityName: string;
+  citySlug: CityType;
   currentDate: number;
   pypOptions: PypOption[];
 };
@@ -30,15 +24,15 @@ const StyledMegaBanner = styled(MegaBanner)`
 `;
 
 export default function Category({
-  cityKey,
-  categoryKey,
   categoryData,
+  categorySlug,
   cityName,
+  citySlug,
   currentDate,
   pypOptions,
 }: CategoryProps) {
   const router = useRouter();
-  const { d: requestedDate, category: categorySlug } = router.query;
+  const { d: requestedDate } = router.query;
 
   let date: Date;
 
@@ -49,14 +43,10 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const data = getInfoFromSlug<ICategoryData>(
-    categorySlug as string,
-    getCityData(cityKey, {
-      categoryKey: [categoryKey],
-      date,
-      days: 8,
-    }).categories
-  );
+  const data = cities[citySlug].categories[categorySlug].getCategoryData({
+    date,
+    days: 8,
+  });
 
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
@@ -70,47 +60,37 @@ export default function Category({
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const citiesMap = getCitiesMap();
-  return {
-    fallback: false,
-    paths: citiesMap
-      .map(({ slug: citySlug, categories }) =>
-        categories.map(({ slug: categorySlug }) => ({
-          params: { category: categorySlug, city: citySlug },
-        }))
-      )
-      .flat(),
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  fallback: false,
+  paths: Object.values(cities)
+    .map(({ categories, slug: citySlug }) =>
+      Object.values(categories).map(({ slug: categorySlug }) => ({
+        params: { category: categorySlug, city: citySlug },
+      }))
+    )
+    .flat(),
+});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const citySlug = params?.city as string;
-  const categorySlug = params?.category as string;
-  const citiesMap = getCitiesMap();
-  const {
-    key: cityKey,
-    name: cityName,
-    categories: categoriesMap,
-  } = getInfoFromSlug<ICityMap>(citySlug, citiesMap);
-  const { key: categoryKey } = getInfoFromSlug<ICategoryMap>(
-    categorySlug,
-    categoriesMap
-  );
-  const categoryData = getInfoFromSlug<ICategoryData>(
-    categorySlug,
-    getCityData(cityKey, {
-      categoryKey: [categoryKey],
-      days: 8,
-    }).categories
-  );
+  const citySlug = params?.city;
+  if (!isCity(citySlug)) {
+    throw new Error("That's not a city");
+  }
+  const { categories, name: cityName } = cities[citySlug];
+
+  const categorySlug = params?.category;
+  if (typeof categorySlug !== "string" || !(categorySlug in categories)) {
+    throw new Error("That's not a category");
+  }
+
+  const { getCategoryData } = categories[categorySlug];
+
   return {
     props: {
-      categoryData,
-      categoryKey,
-      citiesMap,
-      cityKey,
+      categoryData: getCategoryData({ days: 8 }),
+      categorySlug,
       cityName,
+      citySlug,
       currentDate: Date.now(),
       pypOptions: getPypOptions(),
     },
