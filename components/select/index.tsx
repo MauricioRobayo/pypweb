@@ -68,7 +68,7 @@ export default function Select({ pypOptions, type = "main" }: SelectProps) {
 
     if (targetOption) {
       setSelectedOption(targetOption.name);
-      router.push(targetOption.value);
+      router.push(`/${targetOption.value}`);
     } else {
       setSelectedOption(targetValue);
     }
@@ -105,5 +105,5 @@ export default function Select({ pypOptions, type = "main" }: SelectProps) {
 }
 
 Select.defaultProps = {
-  type: "normal",
+  type: "main",
 };

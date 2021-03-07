@@ -69,7 +69,6 @@ export default function Category({
   pypOptions,
 }: CategoryProps) {
   const {
-    name: categoryName,
     slug: categorySlug,
     data: [{ numbers, scheme, vehicleClasses, hours }],
   } = categoryData;
@@ -155,10 +154,9 @@ export default function Category({
           </div>
         </div>
         <NumberLinks
-          categoryName={categoryName}
-          cityName={cityName}
+          categorySlug={categorySlug}
+          citySlug={citySlug}
           numberSelected={number}
-          path={`${citySlug}/${categorySlug}`}
         />
       </div>
     </Layout>

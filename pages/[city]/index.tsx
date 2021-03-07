@@ -43,7 +43,7 @@ export default function City({
       <ul>
         {categories.map(({ name: categoryName, slug: categorySlug }) => (
           <li key={categoryName}>
-            <Link href={categorySlug}>
+            <Link href={`/${citySlug}/${categorySlug}`}>
               <a>{categoryName}</a>
             </Link>
           </li>

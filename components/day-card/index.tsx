@@ -1,9 +1,8 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import Icon from "components/icon";
 import { ALL_DIGITS } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import { Scheme } from "types";
 import Date from "../date";
 import { isSameDate } from "../date/utils";
 import Hours from "../hours";
@@ -49,27 +48,29 @@ const StyledHours = styled(Hours)`
 `;
 
 type DayCardProps = {
-  scheme: Scheme;
-  group: string;
-  date: string;
+  categoryName: CategoryName;
+  categorySlug: string;
+  citySlug: string;
   currentDate: Date;
-  numbersString: string;
-  hours: IHourData[];
-  path: string;
-  isPublicLicense?: boolean;
+  date: string;
   hasRestriction?: boolean;
+  hours: IHourData[];
+  isPublicLicense?: boolean;
+  numbersString: string;
+  scheme: Scheme;
 };
 
 export default function DayCard({
-  scheme,
-  group,
+  categorySlug,
+  categoryName,
+  citySlug,
   currentDate,
   date,
   numbersString,
   hours,
-  path,
   isPublicLicense,
   hasRestriction,
+  scheme,
 }: DayCardProps) {
   const schemeString = scheme === "first" ? "Primer" : "Último";
   const isCurrentDate = isSameDate(date, currentDate);
@@ -83,9 +84,9 @@ export default function DayCard({
     >
       <div>
         <Title isCurrentDate={isCurrentDate}>
-          <Link href={`/${path}?d=${date.substr(0, 10)}`}>
+          <Link href={`/${citySlug}/${categorySlug}?d=${date.substr(0, 10)}`}>
             <a>
-              {isCurrentDate ? <Icon iconName={group} /> : null}{" "}
+              {isCurrentDate ? <Icon iconName={categoryName} /> : null}{" "}
               <Date date={date} type="short" />
             </a>
           </Link>

@@ -24,14 +24,19 @@ export default function CategoriesList({
   return (
     <List>
       {categories.map(
-        ({ slug: categorySlug, name, data: [{ numbers, scheme, hours }] }) => (
+        ({
+          slug: categorySlug,
+          name: categoryName,
+          data: [{ numbers, scheme, hours }],
+        }) => (
           <CategoryCard
             key={categorySlug}
+            categoryName={categoryName}
+            categorySlug={categorySlug}
+            citySlug={citySlug}
             date={date}
             hours={hours}
-            name={name}
             numbers={numbers}
-            path={`${citySlug}/${categorySlug}`}
             scheme={scheme}
           />
         )
