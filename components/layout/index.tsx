@@ -1,5 +1,3 @@
-import Skin from "components/the-moneytizer/skin";
-import { isProduction } from "lib/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -157,7 +155,6 @@ export default function Layout({
         </div>
       </Page>
       {aside ? <Aside>{aside}</Aside> : null}
-      {isHome && isProduction ? <Skin /> : null}
       <Footer>
         <p>PICO Y PLACA HOY</p>
         <Email />
