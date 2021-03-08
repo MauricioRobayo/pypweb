@@ -1,0 +1,41 @@
+#### Decretos
+
+- [Decreto 344 del 15 de septiembre de 2020](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2020/DECRETO No. 1000-24 - 344 DEL 15 DE SEPTIEMBRE DE 2020.pdf)
+- [Decreto 331 del 31 de agosto de 2020](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2020/DECRETO No. 1000-24 - 331 DEL 31 DE AGOSTO DE 2020.pdf)
+- [Decreto 347 del 24 de julio de 2019](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2019/DECRETO No 347 DEL 24 DE JULIO DE 2019.pdf)
+- [Decreto 222 del 25 de julio de 2018](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)
+- [Decreto 245 del 26 de julio de 2017](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-245-del-26-de-julio-de-2017.pdf)
+
+#### Observaciones
+
+Aplica en todo Villavicencio.
+
+#### Excepciones
+
+- Vehículos de organismos de seguridad del Estado.
+- Vehículos oficiales.
+- Vehículos para la asistencia y prestación de servicios de salud. Así mismo, el personal en formación en las diferentes áreas de la salud que sean necesarias para adelantar actividades de salud pública y de salud en general asociada al Coronavirus COVID-19. Vehículos asignados al cuerpo diplomático.
+- Vehículos y motocicletas en los que se desplace personal operativo de las empresas de servicios públicos domiciliarios.
+- Vehículos de los servidores públicos, contratistas del estado, particulares que ejerzan funciones públicas y demás personal necesario para prevenir, mitigar y atender la emergencia sanitaria por causa del Coronavirus COVID-19, y garantizar el functionamiento de los servicios del Estado.
+- Motocicletas vinculadas a establecimientos de comercio que ofrezcan el servidio de mensajería debidamente identificadas con logos y/o distintivos pintados o adheridos al vehículo y/o en las cuales los conductores se encuentren debidamente uniformados e indentificados como personal de los establecimientos mencionados.
+- <del>Furgones, vehículos de estacas y plataforma destinados al transporte de carga y mercancías.</del> Furgones, vehículos de estacas de platón y plataforma destinados al transporte de carga y mercancías, especialmente los necesarios para la cadena de producción de alimentos.
+- Motocarros destinados al transporte de carga.
+- Vehículos destinados al control de tráfico y vehículos tipo grúa al servicio de la Secretaría de Movilidad.
+- Vehículos de blindaje nivel tres o superior.
+- Vehículos destinados a la prestación del servicio de escolta, debidamente autorizados por la Superintendencia de Vigilancia y Seguridad Privada o quien haga parte de un esquema de seguridad autorizados por los Organismos del Estado y solo durante la prestación del servicio.
+- Vehículos de supervisores de seguridad y vigilancia debidamente identificados.
+- Vehículos que transporten o sean conducidos por personas con discapacidad o cuya condición motora, sensorial o mental limite su movilidad.
+- Vehículos automotores de emergencia debidamente identificados e iluminados, dispuestos para movilizar personas afectadas en salud, prevenir o atender desastres y/o calamidades, o actividades policiales, debidamente registrados como tal con las normas y características que exige la actividad para la cual se matricule, y los automotores que realizan atención médica domiciliaria, debidamente identificados, cuando en ellos se desplace personal médico de servicio.
+- Vehículos de transporte de residuos y/o desechos hospitalarios, los cuales deben estar plenamente identificados con los logos de la empresa contratante pintados o adheridos en la carrocería.
+- Vehículos destinados y/o adecuados técnicamente para el translado de féretros.
+- Vehículos y motocicletas vinculados a escualas de enseñanza automovilística que cumplan con las condiciones establecidas en la normatividad vigente.
+- Vehículos de los comunicadores sociales y periodistas de los distintos medios de comunicación.
+- Vehículos y motocicletas propulsados exclusivamente por motores eléctricos.
+
+Las personas que desarrollen las actividades antes mencionadas deberán estar acreditadas o identificadas en el ejercicio de sus funciones o actividades, por parte de la entidad a la cual se encuentren adscritos.
+
+Se prohibe el tránsito de los vehículos y motocicletas destinados al servicio de domicilios con más de un acompañante cuando se trate de automovil y con acompañante en caso de las motocicletas.
+
+#### Mapa
+
+![Mapa pico y placa Villavicencio](https://pyphoy.s3.amazonaws.com/docs/villavicencio/mapa-pico-y-placa-villavicencio.jpg)

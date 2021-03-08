@@ -1,0 +1,75 @@
+#### Decretos
+
+- [Decreto 1198 del 1 de octubre de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)
+- [Decreto 0500 del 16 de marzo del 2020](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-0500-del-16-de-marzo-del-2020.pdf)
+- [Decreto 0017 del 3 de enero de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto-0017_2020-P.PDF)
+- [Decreto 1361 del 29 de noviembre de 2018](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-1361-del-29-de-noviembre-de-2018.pdf)
+- [Decreto 1550 del 30 de noviembre de 2017](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-1550-del-30-de-noviembre-de-2017.pdf)
+
+#### Observaciones
+
+Se aplica en las siguientes vías del Distrito Turístico y Cultural de Cartagena de Indias:
+
+- Transversal 54: desde la intersección con la Calle 30 hasta la glorieta del Pozón sobre la Variante a Cartagena.
+- Avenida Pedro de Heredia: tramo comprendido entre la intersección con la avenida Luis Carlos López y la Avenida Rafael Núñez (sector India Catalina), hasta la intersecicón con la Transversal 54 (Sector de la Bomba el Amparo).
+- Troncal del Occidente: desde la intersección con la Transversal 54 (Sector de la Bomba el Amparo), hasta los límites de ls ciduad con el municipio de Turbaco (Tubo Caribe).
+- Avenida Santander: desde la entrada del Puente del Túnel de Crespo hasta la Calle 10 (Hotel Decamerón).
+- Avenida San Martín: Calle 10 A Blockbuste, hasta la intersección de la Avenida Santander (antigua Glorieta Santander) y la Avenida Blas de Lezo.
+- Avenida Pedro Romero (Calle 31 D): tramo comprendido entre la carrera 30 (Glorieta de la Esperanza), hasta la intersección con la Transversal 54. (Y de Olaya - Caño Chaplundun).
+- Carrera 30 (La Esperanza): en el tramo comprendido entre la intersección con la Avenida Pedro Romero hasta la intersección con la Avenida Pedro de Heredia.
+- Diagonal 32 (Carrera antigua de Turbaco): Tramo comprendido entre la intersección con la Avenida Pedro Romero (CAI de Olaya) hasta la intersección con la Troncal del Occidente (Bomba Terpel de Ternera - Cárcel de Ternera).
+- Carrera 71:
+  - Desde la intersección con la calle 30 (frente Biblioteca Jorge Artel) hasta la Troncal del Occidente en ambos sentido viables.
+  - Desde la intersección con la Troncal del Occidente hasta la Diagonal 32 (El Biffi).
+- Avenida Blas de Lezo: En el tramo comprendido desde la intersección con la Avenida San Martín (carrera 2a) y carrera 1a (Avenida Santander), hasta la avenida Venezuela y carrera 8A.
+- Avenida Rafael Núñez: En el tramo comprendido desde la intersección con la carrera 1a (Avenida Santander - Tenazas) hasta la intesección con la avenida Pedro de Heredia (India Catalina), en ambos sentidos viales.
+- Avenida Luis Carlos López: En el tramo comprendido entre la intesección de la Avenida Pedro de Heredia (India Catalina) hasta la intersección con la Calle 30 (Calle de la Media Luna - Antiguas Botas Viejas), en ambos sentidos.
+- Calle 30 que la conforman los siguientes tramos:
+  - Tramo (calle de la Media Luna), comprendido entre la intersección con la carrera 8a (Camellón de los mártires), hasta la intersección con la Avenida Playa del Pedregal.
+  - Tramo comprendido en la intersección con la playa del pedregal hasta la intersección con la carrera 20 (Calle Mompox), en ambos sentidos vehiculares.
+  - Tramo comprendido desde la intersección con la calle 20 (Calle Mompox - Colegio La Candelaria) hasta la intersección con la Avenida Pedro de Heredia (Texaco No. 3).
+  - Tramo comprendido desde la intersección con la Avenida Pedro de Heredia hasta la intersección con la carrera 38 (Iglesia María Auxiliadora) y carrera 48 (Amberes - Piedra de Bolivar).
+  - Tramo comprendido entre la intersección de la carrera 48 (Piedra de Bolivar) hasta la Transversal 54 (Clínica Blas de Lezo), denominado Avenida del Consulado.
+  - Tramo comprendido entre la intersección con la Transversal 54 (Clínica Blas de Lezo) hasta la carrera 71 (frente Biblioteca Jorge Artel).
+- Avenida del Lago: Tramo comprendido entre la intersección con carrera 17 (El Universal - Puente las Palmas), hasta la intersección con la transversla 38 (frente al Barrio El Bosque sector la Cuchilla).
+- Corredor de Carga: Desde la Glorieta del Fondo Rotatorio hasta la entrada del barrio Mnaga (Peaje Manga) en ambas calzaderas entre:
+  - Avenida Crisanto Luque desde la Transversal 38 (bBomba Michelin) hasta la Transversal 54 (La Purina).
+  - Diagonal 21 (Carretera del Bosque).
+  - Tramo de la Transversla 54 desde la Diagonal 21 (Frente a Gaseosas Postobón) hasta el CAI de Ceballos.
+  - Carrera 56 (vía hacia Pasacaballos), desde el CAI de Ceballos hasta la Glorieta del Fondo Rotatorio.
+- Avenida Crisanto Luque: En el tramo comprendido desde la transversal 38 hasta la Avenida Pedro de Heredia (Mercado de Bazurto).
+- Puente Román.
+- Vías internas de la ciudad Amurallada: en consencuencia no se podría ingresar a las vías internas de la ciudad amurallada, en especial por los boquetes de acceso. Las vías del centro amurallado afectadas con la medida son las siguientes:
+  - Sector Centro Amurallado: Calle 39, calle 39 A, calle 38, calle 37, calle 36, calle 35, calle 34, calle 32, calle 31.
+  - Sector Centro Amurallado: Carrera 11, carrera 10, carrera 9, carrera 8, carrera 7, carrera 6, carrera 4, carrera 3, carrera 2 (vía perimetral de la muralla).
+  - Sector Getsemaní: Calle 32 (Avenida Daniel Lemaitre), calle 25 (calle Larga), calle 24 (Calle del Arsenal) y todas las vías que conforman el sector.
+  - Sector Barrio la Matuna: Carrera 10 y carrera 12.
+
+#### Excepciones
+
+1. Vehículos automotores impulsados exclusivamente por motores eléctricos.
+2. Vehículos automotores híbridos-eléctricos, propulsados por motor de combustión y uno o más motores eléctricos.
+3. Caravanas presidencial, es decir, grupo de vehículos que hagan parte del esquema de seguridad de la Presidencia de la República y estén al servicio de actividades inherentes.
+4. Vehículos del servicio diplomático o consular. Automotores identificados con placasa especiales asignadas por el Ministerio de Relaciones Exteriores.
+5. Vehículos al servicio de organismo de seguridad del Estado. Los automotores que pertenezcan o hagan parte del cuerpo de seguridad del Estado, Fuerzas Militares, Armada Nacional, Policía Nacional, y Cuerpo Técnico de Investigación de la Fiscalía General de la Nación y los que ejerzan funciones legales de Policía Nacional.
+6. Vehículos asignados al Bogernador de Bolívar y al Alcalde Mayor de Cartagena de Indias.
+7. Vehículos de uso exclusivo de Alcaldes Locales, Secretarios de Despacho, Directores de Departamentos Administrativos, Directores Administrativos, Jefes de oficina y autoridades de tránsito, del orden Distrital y Departamental.
+8. Vehículos al servicio de autoridades judiciales. Automotores de uso exclusivo de jueces y magistrados/as con jurisdiacción y asiento permanente en la ciudad.
+9. Vehículos al servicio de Senadores y Representantes de la Cámara.
+10. Vehículos de uso exclusivo de Concejales del Distrito de Cartagena, Diputados del Departamento de Bolívar y miembros de Junta Administradoras Locales del Distrito.
+11. Vehículos al servicio de organismos de control: Procuraduría (Regional y Provincial), Contraloría (Departamental y Distrital), y Personería Distrital de Cartagena.
+12. Vehículos fúnebres. Vehículos destinados y/o adecuados técnicamente para el traslado de féretros.
+13. Vehículos de emergencia. Automotores debidamente identificados e iluminados, diespuestos para movilizar personas afectadas en la salud, para prevenir o atender desastres y/o calamidades o actividades policiales, debidamente registrados como tales con las normas y características que exige la actividad para la cual se matricule y los automotores que realizan atención médica domiciliaria, debidamente identificados, cuando en ellos se desplace personal médico en servicio.
+14. Vehículos al servicio de persona con discapacidad. Automotores que transporten o sean conducidos por personal con discapacidad permanente cuya condición motora, sensorial o mental limiten su movilidad, siempre y cuando cumplan con las normas establecidas para la conducción de vehículos.
+15. Vehículos al servicio de las empresas de servicios públicos domiciliarios. Automotores destinados o contratados por las empresas de servicios públicos domicialiarios para el mantenimiento, instalación y reparaación de las redes de servicio público, siempre y cuando cuenten con plena y pública identificación consistente en los logos de las empresas contratantes pintados o adheridos en la carrocería.
+16. Vehículos destinados al control de tráfico y grúas. Automotores tipo grúas y aquellos destinados al control de tráfico en el Distrito de Cartagena.
+17. Vehículos que transporten residuos hospitalarios.
+18. Vehículos de control de emisiones y vertimientos. Vehículos utilizados por organismos ambientales (EPA Y CARDIQUE), o quien haga sus veces para la revisión, atención y prevención de emisiones y vertimientos contaminantes, siempre y cuando tengan los logos pintados o adheridos a las corrocerías.
+19. Vehículos blindados. Automotores con nivel 3 o superior de blindaje inscrito como tales en el registro distrital automotor y autorizado el blindaje por la Superintendencia de Vigilancia y Seguridad Privada.
+20. Vehículos escolta: conducidos por personal armado autorizado y registrado ante la Superintendencia de Vigilancia y Seguridad Privada. Vehículos de vigilancia y seguridad privada.
+21. Vehículos de medios de comunicación. Automotores al servicio de los medios de comunicación, que porten pintados o adheridos en las corrocerías en forma visible los distintivos del medio de comunicación y que transporten personal o equipos técnicos de comunicación para el desarrollo de la labor periodística.
+22. Vehículos particulares de propiedad de las empresas prestadora de servicio turístico.
+23. Vehículos escolares de propiedad de los colegios e instituciones educativas que operan en el Distrito.
+24. Vehículos de propiedad de los médicos en ejercicio de sus funciones.
+25. Vehículos que distribuyan medicamentos y alimentos.
+26. Vehículos de transporte de valores externamente identificados.
