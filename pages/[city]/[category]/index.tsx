@@ -1,5 +1,4 @@
-import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
-import CategoryInfo from "components/category-info";
+import cities from "@mauriciorobayo/pyptron";
 import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
@@ -11,7 +10,6 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
-  categoryData: ICategoryData;
   categorySlug: string;
   cityName: string;
   citySlug: CityType;
@@ -24,7 +22,6 @@ const StyledMegaBanner = styled(MegaBanner)`
 `;
 
 export default function Category({
-  categoryData,
   categorySlug,
   cityName,
   citySlug,
@@ -50,10 +47,8 @@ export default function Category({
 
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
-  const aside = <CategoryInfo categoryData={categoryData} />;
-
   return (
-    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+    <Layout date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
       <DaysList categoryData={data} citySlug={citySlug} currentDate={date} />
     </Layout>

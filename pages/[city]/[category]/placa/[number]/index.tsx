@@ -1,5 +1,4 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
-import CategoryInfo from "components/category-info";
 import PypDate from "components/date";
 import Hours from "components/hours";
 import Layout from "components/layout";
@@ -90,8 +89,6 @@ export default function Category({
     </>
   );
 
-  const aside = <CategoryInfo categoryData={categoryData} />;
-
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
@@ -105,7 +102,7 @@ export default function Category({
     );
 
   return (
-    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+    <Layout date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
       <div>
         <Title>
@@ -135,10 +132,9 @@ export default function Category({
                     return (
                       <li key={data.date}>
                         <Link
-                          href={`${categoryData.slug}?d=${data.date.substr(
-                            0,
-                            10
-                          )}`}
+                          href={`/${citySlug}/${
+                            categoryData.slug
+                          }?d=${data.date.substr(0, 10)}`}
                         >
                           <a>
                             <PypDate date={data.date} />
