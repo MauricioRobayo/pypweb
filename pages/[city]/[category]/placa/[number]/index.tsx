@@ -1,11 +1,13 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
-import CategoryInfo from "components/category-info";
 import PypDate from "components/date";
 import Hours from "components/hours";
 import Layout from "components/layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
+import Post from "components/post";
 import MegaBanner from "components/the-moneytizer/mega-banner";
+import markdownToHtml from "lib/markdownToHtml";
+import getPostBySlugs from "lib/posts";
 import {
   getPypOptions,
   isCity,
@@ -17,15 +19,6 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import { PypOption } from "types";
-
-type CategoryProps = {
-  categoryData: ICategoryData;
-  cityName: string;
-  citySlug: string;
-  currentDate: number;
-  number: string;
-  pypOptions: PypOption[];
-};
 
 const StyledMegaBanner = styled(MegaBanner)`
   margin-bottom: 1rem;
@@ -60,12 +53,23 @@ const Semaphore = styled.div<SemaphoreProps>`
   width: 4rem;
 `;
 
+type CategoryProps = {
+  categoryData: ICategoryData;
+  cityName: string;
+  citySlug: string;
+  currentDate: number;
+  number: string;
+  post: string;
+  pypOptions: PypOption[];
+};
+
 export default function Category({
   categoryData,
   cityName,
   citySlug,
   currentDate,
   number,
+  post,
   pypOptions,
 }: CategoryProps) {
   const {
@@ -90,8 +94,6 @@ export default function Category({
     </>
   );
 
-  const aside = <CategoryInfo categoryData={categoryData} />;
-
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
@@ -103,6 +105,8 @@ export default function Category({
         Hoy <strong>no tienen restricción</strong> los {vehicleClassesString}.
       </div>
     );
+
+  const aside = <Post body={post} />;
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
@@ -135,10 +139,9 @@ export default function Category({
                     return (
                       <li key={data.date}>
                         <Link
-                          href={`${categoryData.slug}?d=${data.date.substr(
-                            0,
-                            10
-                          )}`}
+                          href={`/${citySlug}/${
+                            categoryData.slug
+                          }?d=${data.date.substr(0, 10)}`}
                         >
                           <a>
                             <PypDate date={data.date} />
@@ -200,6 +203,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
+
+  const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
+  const postHtml = await markdownToHtml(postMarkdown);
+
   return {
     props: {
       categoryData: getCategoryData({ days: 30 }),
@@ -207,6 +214,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       citySlug,
       currentDate: Date.now(),
       number: params?.number,
+      post: postHtml,
       pypOptions: getPypOptions(),
     },
   };

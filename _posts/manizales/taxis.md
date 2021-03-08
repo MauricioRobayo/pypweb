@@ -1,0 +1,10 @@
+#### Decretos
+
+- [Resolucion 114 del 29 de octubre de 2020](https://manizales.gov.co/wp-content/uploads/Resolucion-114-2020-Modifica-Resolucion-095-2020.pdf)
+- [Resolución 095 del 30 de septiembre de 2020](https://manizales.gov.co/wp-content/uploads/documentos_tramites_31760-2020_1601503389785_RESOLUCION-095-del-30-de-septiembre-de-2020-MEDIDAS-TRANSPORTE-PUBLICO-AISLAMIENTO-SELECTIVO-MES-DE-OCTUBRE.pdf)
+- [Resolución 092 de 2020](https://pyphoy.s3.amazonaws.com/docs/manizales/resolucion-092-de-2020.pdf)
+- [Resolución 091 de 2020](https://manizales.gov.co/wp-content/uploads/documentos_tramites_29384-2020_1600199886834_RESOLUCION-091-DE-2020-MODIFICA-LA-RESOLUCION-090-DE-2020-MEDIDAS-DE-TRANSPORTE-PUBLICO.pdf)
+- [Resolución 090 de 2020](https://manizales.gov.co/wp-content/uploads/documentos_tramites_29275-2020_1600183997152_Resolucion-090-2020-Prorroga-Vigencia-Resolucion-078-y-se-modifica-parcialmente-un-acto-administrativo-1.pdf)
+- [Resolución 078 de 2020](https://manizales.gov.co/wp-content/uploads/documentos_tramites_26957-2020_1598878256204_RESOLUCION-078-DE-2020-Medidas-Transporte-Publico-COVID19-AISLAMIENTO-SELECTIVO.pdf)
+- [Resolución 308 de 2019](https://pyphoy.s3.amazonaws.com/docs/manizales/resolucion-308-de-2019.pdf)
+- [Resolución 298 de 2017]()
