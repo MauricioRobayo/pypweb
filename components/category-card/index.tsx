@@ -52,13 +52,13 @@ export default function CategoryCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const categoryPath = `/${citySlug}/${categorySlug}`;
+  const categoryPath = `${citySlug}/${categorySlug}`;
 
   return (
     <article key={categoryName}>
       <Card>
         <Title>
-          <Link href={`/${categoryPath}`}>
+          <Link href={`${categoryPath}`}>
             <a>
               <Icon iconName={categoryName} />
               {categoryName}
@@ -81,7 +81,7 @@ export default function CategoryCard({
           </LicensePlate>
         </LicenseNumbers>
         <footer>
-          <Link href={`/${categoryPath}`}>
+          <Link href={`${categoryPath}`}>
             <a>
               <Button>Ver próximos 7 días →</Button>
             </a>

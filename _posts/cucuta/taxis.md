@@ -1,0 +1,16 @@
+#### Decretos
+
+- [Resolución 095 del 7 de septiembre de 2020](https://amc.gov.co/amc/?mdocs-file=4425)
+- [Resolución 090 del 14 de agosto de 2020](https://amc.gov.co/amc/?mdocs-file=3719)
+- [Decreto 0300 del 28 de febrero de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0300-del-28-de-febrero-de-2019.pdf)
+- [Decreto 0221 del 15 de enero de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0221-del-15-de-enero-de-2019.pdf)
+- [Decreto 0239 del 4 de abril del 2017](http://www.areacucuta.com/wp-content/uploads/2017/04/Decreto-Pico-y-Placa-Placa-y-D%C3%ADa.pdf)
+- [Decreto 0330 del 22 de mayo del 2017](http://cucutaonline.com/wp-content/uploads/2017/05/Decreto-0330-pico-placa-modificado.pdf)
+
+#### Observaciones
+
+Restricción de lunes a viernes según el último dígito de la placa en horario desde las 00:00 hasta las 23:59.
+
+#### Excepciones
+
+Restricción vehicular (PLACA - DÍA 24 HORAS) en la prestación del servicio transporte público terrestre automotor individual de pasajeros en el Área Metropolitana de Cúcuta, según el último dígito de la placa en horario desde las 00:00 hasta las 23:59 horas, restricción todos los días del calendario (incluidos sábados, domingos y festivos).

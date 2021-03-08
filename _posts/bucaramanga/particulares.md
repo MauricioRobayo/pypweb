@@ -1,0 +1,8 @@
+#### Decretos
+
+- [Resolución 115 de 2020](https://www.transitobucaramanga.gov.co/resolucion/archivos/115-05-2020.pdf)
+- [Resolución 004 de 2020](https://transitobucaramanga.gov.co/resolucion/archivos/004-01-2020.PDF)
+- [Resolución 108 de 2018](http://transitobucaramanga.gov.co/resolucion/archivos/108-03-2018.pdf)
+- [Resolución 435 de 2017](http://transitobucaramanga.gov.co/resolucion/archivos/435-08-2017.pdf)
+- [Resolución 782 de 2017](http://transitobucaramanga.gov.co/resolucion/archivos/782-12-2017.pdf)
+- [Resolución 783 de 2017](http://transitobucaramanga.gov.co/resolucion/archivos/783-12-2017.pdf)
