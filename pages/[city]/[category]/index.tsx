@@ -2,7 +2,10 @@ import cities from "@mauriciorobayo/pyptron";
 import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
+import Post from "components/post";
 import MegaBanner from "components/the-moneytizer/mega-banner";
+import markdownToHtml from "lib/markdownToHtml";
+import getPostBySlugs from "lib/posts";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
@@ -14,6 +17,7 @@ type CategoryProps = {
   cityName: string;
   citySlug: CityType;
   currentDate: number;
+  post: string;
   pypOptions: PypOption[];
 };
 
@@ -26,6 +30,7 @@ export default function Category({
   cityName,
   citySlug,
   currentDate,
+  post,
   pypOptions,
 }: CategoryProps) {
   const router = useRouter();
@@ -45,10 +50,12 @@ export default function Category({
     days: 8,
   });
 
+  const aside = <Post body={post} />;
+
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
   return (
-    <Layout date={date} pypOptions={pypOptions} title={title}>
+    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
       <DaysList categoryData={data} citySlug={citySlug} currentDate={date} />
     </Layout>
@@ -78,6 +85,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error("That's not a category");
   }
 
+  const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
+  const postHtml = await markdownToHtml(postMarkdown);
+
   const { getCategoryData } = categories[categorySlug];
 
   return {
@@ -87,6 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       citySlug,
       currentDate: Date.now(),
+      post: postHtml,
       pypOptions: getPypOptions(),
     },
   };
