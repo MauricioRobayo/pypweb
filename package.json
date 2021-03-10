@@ -13,7 +13,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@mauriciorobayo/pyptron": "^2.2.0",
+    "@mauriciorobayo/pyptron": "^2.2.1",
     "@types/classnames": "^2.2.11",
     "axe-core": "^4.1.2",
     "axios": "^0.21.1",
