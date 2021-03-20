@@ -4,7 +4,7 @@ const dateTimeFormatOptions = {
   timeZone: "America/Bogota",
   weekday: "long",
   year: "numeric",
-};
+} as const;
 
 const formatter = new Intl.DateTimeFormat("es-CO", dateTimeFormatOptions);
 
@@ -32,7 +32,7 @@ export function getLocalShortDateString(date: Date = new Date()): string {
     month: "numeric",
     timeZone: "America/Bogota",
     year: "numeric",
-  };
+  } as const;
   const f = new Intl.DateTimeFormat("es-CO", shortDateTimeFormatOptions);
   return f.format(date);
 }
