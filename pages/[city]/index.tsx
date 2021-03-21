@@ -72,9 +72,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const { name: cityName, categories } = cities[citySlug];
-
+  const date = new Date();
   const categoriesData = Object.values(categories).map((category) =>
-    category.getCategoryData()
+    category.getCategoryData({
+      day: date.getDate(),
+      month: date.getMonth() + 1,
+      year: date.getFullYear(),
+    })
   );
 
   return {
@@ -82,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categories: categoriesData,
       cityName,
       citySlug,
-      currentDate: Date.now(),
+      currentDate: date.getTime(),
       pypOptions: getPypOptions(),
     },
   };

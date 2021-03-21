@@ -46,8 +46,10 @@ export default function Category({
   }
 
   const data = cities[citySlug].categories[categorySlug].getCategoryData({
-    date,
+    day: date.getDate(),
     days: 8,
+    month: date.getMonth() + 1,
+    year: date.getFullYear(),
   });
 
   const aside = <Post body={post} />;
@@ -90,13 +92,20 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { getCategoryData } = categories[categorySlug];
 
+  const date = new Date();
+
   return {
     props: {
-      categoryData: getCategoryData({ days: 8 }),
+      categoryData: getCategoryData({
+        day: date.getDate(),
+        days: 8,
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+      }),
       categorySlug,
       cityName,
       citySlug,
-      currentDate: Date.now(),
+      currentDate: date.getTime(),
       post: postHtml,
       pypOptions: getPypOptions(),
     },

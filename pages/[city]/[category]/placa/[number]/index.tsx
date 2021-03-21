@@ -8,13 +8,7 @@ import Post from "components/post";
 import MegaBanner from "components/the-moneytizer/mega-banner";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import {
-  getPypOptions,
-  isCity,
-  listFormat,
-  NA,
-  pypNumbersToString,
-} from "lib/utils";
+import { getPypOptions, isCity, NA, pypNumbersToString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
@@ -74,13 +68,12 @@ export default function Category({
 }: CategoryProps) {
   const {
     slug: categorySlug,
-    data: [{ numbers, scheme, vehicleClasses, hours }],
+    data: [{ numbers, scheme, hours }],
   } = categoryData;
   const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
 
   const date = new Date(currentDate);
   const numbersString = pypNumbersToString(numbers);
-  const vehicleClassesString = listFormat(vehicleClasses);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
 
@@ -97,12 +90,12 @@ export default function Category({
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
-        Hoy tienen pico y placa los {vehicleClassesString} con placas{" "}
-        {schemeString} en <LicensePlate>{numbersString}</LicensePlate>.
+        Hoy tienen pico y placa {categoryData.name} con placas {schemeString} en{" "}
+        <LicensePlate>{numbersString}</LicensePlate>.
       </div>
     ) : (
       <div>
-        Hoy <strong>no tienen restricción</strong> los {vehicleClassesString}.
+        Hoy <strong>no tienen restricción</strong> {categoryData.name}.
       </div>
     );
 
@@ -113,7 +106,7 @@ export default function Category({
       <StyledMegaBanner />
       <div>
         <Title>
-          Los {vehicleClassesString} con {currentNumberLicense}{" "}
+          {categoryData.name} con {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
               ? "hoy tienen restricción en el siguiente horario:"
@@ -135,16 +128,21 @@ export default function Category({
             <NextDays>
               <ol>
                 {categoryData.data.slice(1).map((data) => {
+                  const dataDate = new Date(
+                    data.year,
+                    data.month + 1,
+                    data.day
+                  );
                   if (data.numbers.includes(Number(number))) {
                     return (
-                      <li key={data.date}>
+                      <li key={dataDate.toISOString()}>
                         <Link
                           href={`/${citySlug}/${
                             categoryData.slug
-                          }?d=${data.date.substr(0, 10)}`}
+                          }?d=${dataDate.toISOString().substr(0, 10)}`}
                         >
                           <a>
-                            <PypDate date={data.date} />
+                            <PypDate date={date} />
                           </a>
                         </Link>
                       </li>
@@ -206,13 +204,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
   const postHtml = await markdownToHtml(postMarkdown);
+  const date = new Date();
 
   return {
     props: {
-      categoryData: getCategoryData({ days: 30 }),
+      categoryData: getCategoryData({
+        day: date.getDate(),
+        days: 30,
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+      }),
       cityName,
       citySlug,
-      currentDate: Date.now(),
+      currentDate: date.getTime(),
       number: params?.number,
       post: postHtml,
       pypOptions: getPypOptions(),

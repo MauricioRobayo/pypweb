@@ -1,5 +1,5 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
-import { isPublicLicense, listFormat, NA, pypNumbersToString } from "lib/utils";
+import { isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
@@ -30,27 +30,27 @@ export default function DaysList({
   const {
     name: categoryName,
     slug: categorySlug,
-    data: [{ vehicleClasses, scheme }],
+    data: [{ scheme }],
   } = categoryData;
-  const vehicleClassesList = listFormat(vehicleClasses);
   const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
       <Title>
-        Se restringe la circulación de <strong>{vehicleClassesList}</strong>{" "}
+        Se restringe la circulación de vehículos <strong>{categoryName}</strong>{" "}
         según el <strong>{schemeMessage} dígito del número de la placa</strong>
       </Title>
       <div>
-        {categoryData.data.map(({ date, numbers, hours }) => {
+        {categoryData.data.map(({ year, month, day, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
+          const date = new Date(year, month + 1, day);
           return (
             <DayCard
-              key={date}
+              key={date.toISOString()}
               categoryName={categoryName}
               categorySlug={categorySlug}
               citySlug={citySlug}
               currentDate={currentDate}
-              date={date}
+              date={date.toISOString()}
               hasRestriction={numbersString !== NA}
               hours={hours}
               isPublicLicense={isPublicLicense(categoryName)}
