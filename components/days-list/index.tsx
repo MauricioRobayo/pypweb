@@ -42,7 +42,7 @@ export default function DaysList({
       <div>
         {categoryData.data.map(({ year, month, day, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
-          const date = new Date(year, month + 1, day);
+          const date = new Date(year, month - 1, day);
           return (
             <DayCard
               key={date.toISOString()}
