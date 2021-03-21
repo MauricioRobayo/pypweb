@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Decreto 0205 de 2009](https://pyphoy.s3.amazonaws.com/docs/barranquilla/decreto-0205-de-2009.pdf)

@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de Transporte Público vinculados a las modalidades de servicio de carga con capacidad menor a uno y medio (1.5) toneladas
+
 #### Decretos
 
 - [Decreto 20201000000075 del 2 de enero del 2020](http://www.popayan.gov.co/sites/default/files/decreto.pdf)

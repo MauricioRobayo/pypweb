@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Decreto 1483 de diciembre de 2018](http://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1483.PDF)

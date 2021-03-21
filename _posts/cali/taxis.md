@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis.
+
 #### Decretos
 
 - [Decreto 1283 de 2020 ](https://www.cali.gov.co/movilidad/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=descargar&idFile=46391)

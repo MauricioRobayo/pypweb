@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de servicio público de transporte terrestre individual de pasajeros en vehículos tipo taxi
+
 #### Decretos
 
 - [Decreto 344 del 15 de septiembre de 2020](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2020/DECRETO No. 1000-24 - 344 DEL 15 DE SEPTIEMBRE DE 2020.pdf)

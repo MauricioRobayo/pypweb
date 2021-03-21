@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores con capacidad de carga de treinta (30) toneladas o superior
+
 #### Decretos
 
 - [Decreto 222 del 25 de julio de 2018](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)

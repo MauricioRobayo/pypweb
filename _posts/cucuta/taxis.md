@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Resolución 095 del 7 de septiembre de 2020](https://amc.gov.co/amc/?mdocs-file=4425)

@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Motocicletas
+
 #### Decretos
 
 - [Decreto 540 del 8 de mayo de 2020](http://www.pereira.gov.co/Transparencia/Normatividad/DECRETOS/2020/DECRETO%20MUNICIPAL%20DE%20PEREIRA%20NO.%20540%20DE%2008%20DE%20MAYO%20DE%202020_ADOPCION%20DE%20DECRETO%20636%20DE%202020%20.pdf.pdf)

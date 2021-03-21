@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Resolucion 114 del 29 de octubre de 2020](https://manizales.gov.co/wp-content/uploads/Resolucion-114-2020-Modifica-Resolucion-095-2020.pdf)

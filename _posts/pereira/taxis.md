@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Decreto 602 del 30 de mayo de 2020](http://www.pereira.gov.co/Transparencia/Normatividad/DECRETOS/2020/DECRETO%20602%20DEL%2030%20DE%20MAYO%20DE%202020.pdf.pdf.pdf)

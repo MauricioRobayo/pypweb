@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Transporte público individual - taxis
+
 #### Decretos
 
 - [Decreto 1000-1250 del 3 de diciembre de 2019](https://www.ibague.gov.co/portal/admin/archivos/normatividad/2019/29732-DEC-20191231140146.PDF)

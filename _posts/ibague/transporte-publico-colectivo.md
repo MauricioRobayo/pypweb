@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Transporte público colectivo municipal de pasajeros
+
 #### Decretos
 
 - [Decreto 0387 del 11 de abril de 2016](http://www.ibague.gov.co/portal/admin/archivos/normatividad/2016/13967-DEC-20160415.pdf)

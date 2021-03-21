@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de servicio particular
+
 #### Decretos
 
 - [Decreto 0448 del 10 de diciembre de 2020](https://www.pasto.gov.co/index.php/decretos/decretos-2020?download=17682:dec-0448-10-dic-2020)

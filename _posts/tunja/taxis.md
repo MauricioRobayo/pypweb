@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Decreto 0265 del 31 de agosto de 2020](https://alcaldiatunja.micolombiadigital.gov.co/sites/alcaldiatunja/content/files/000969/48433_2020_decreto_0265_del_31ago2020.pdf)

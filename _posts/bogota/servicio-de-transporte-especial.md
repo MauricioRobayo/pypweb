@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de servicio público de transporte terrestre automotor especial, clase automóvil, camioneta o campero, con capacidad para cuatro (4) pasajeros (sin incluir conductor)
+
 #### Decretos
 
 - [Decreto 248 del 14 de junio de 2016](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=66359)

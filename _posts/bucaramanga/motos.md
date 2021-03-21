@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos tipo motocicletas
+
 #### Decretos
 
 - [Resolución 115 de 2020](https://www.transitobucaramanga.gov.co/resolucion/archivos/115-05-2020.pdf)

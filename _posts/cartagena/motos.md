@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos tipo motocicleta de cualquier modalidad y cilindraje, incluyendo cuatrimotos, tricimotos, motocarros y bicicletas con pedalea asistido con motor.
+
 #### Decretos
 
 - [Decreto 1198 del 1 de octubre de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)

@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de servicio particular
+
 #### Decretos
 
 - [Decreto 074 del 28 de febrero de 2020](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-074-del-28-de-febrero-de-2020.pdf)

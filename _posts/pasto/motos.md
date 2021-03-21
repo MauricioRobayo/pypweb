@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Motocicletas
+
 #### Decretos
 
 - [Decreto 0200 del 8 de julio de 2019](https://www.pasto.gov.co/index.php/decretos/decretos-2019?download=14705:dec_0200_08_jul_2019)

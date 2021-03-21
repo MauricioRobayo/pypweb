@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de toda clase de servicio particular y público (excepto servicio tipo taxi)
+
 #### Decretos
 
 - []()

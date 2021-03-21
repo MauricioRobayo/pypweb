@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de servicio particular
+
 #### Decretos
 
 - [Decreto 418 del 10 de diciembre del 2020](http://www.fusagasuga-cundinamarca.gov.co/Transparencia/Normatividad/DECRETO%20418%20DE%202020.pdf)

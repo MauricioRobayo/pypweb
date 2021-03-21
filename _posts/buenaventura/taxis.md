@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Transporte público individual - taxis
+
 #### Decretos
 
 - [Decreto 0368 del 8 de septiembre de 2020](https://www.buenaventura.gov.co/images/multimedia/20200908_decreto_no_0368___pico_y_placa_servicio_publico_septiembre_8_de_2020.pdf)

@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)

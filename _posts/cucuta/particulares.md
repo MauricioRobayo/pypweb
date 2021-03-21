@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores particulares de dos tiempos tipo motocicleta, mototriciclos, cuatrimotos y motocarros
+
 #### Decretos
 
 - [Resolución 0130 del 31 de julio de 2020](https://cucutanortedesantander.micolombiadigital.gov.co/sites/cucutanortedesantander/content/files/000775/38738_setra--resol-1302020-pyp-med.pdf)

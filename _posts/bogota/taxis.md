@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de transporte público individual de pasajeros - Taxis
+
 #### Decretos
 
 - [Decreto 660 del 27 de agosto de 2001](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=4643)

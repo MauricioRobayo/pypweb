@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos con peso bruto vehicular máximo superior a 8.500kg
+
 #### Decretos
 
 - [Decreto 840 de 2019](http://www.andi.com.co/Uploads/Decreto%20840%202019.pdf)

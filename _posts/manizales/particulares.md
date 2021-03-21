@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos automotores de servicio particular
+
 #### Decretos
 
 - [Decreto 0340 de 2020](https://manizales.gov.co/wp-content/uploads/CamScanner-04-13-2020-17.38.29_1.pdf)

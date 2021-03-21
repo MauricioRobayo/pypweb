@@ -1,3 +1,7 @@
+#### Tipos de vehículos
+
+- Vehículos de servicio público individual - taxis
+
 #### Decretos
 
 - [Resolución 277 del 27 de Abril de 2006]()
