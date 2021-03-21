@@ -1,9 +1,10 @@
 import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import Icon from "components/icon";
+import { format } from "date-fns";
 import { ALL_DIGITS } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import Date from "../date";
+import PypDate from "../date";
 import { isSameDate } from "../date/utils";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
@@ -52,7 +53,7 @@ type DayCardProps = {
   categorySlug: string;
   citySlug: string;
   currentDate: Date;
-  date: string;
+  date: Date;
   hasRestriction?: boolean;
   hours: IHourData[];
   isPublicLicense?: boolean;
@@ -78,16 +79,21 @@ export default function DayCard({
 
   return (
     <StyledCard
-      key={date}
+      key={date.toISOString()}
       hasRestriction={hasRestriction || false}
       isCurrentDate={isCurrentDate}
     >
       <div>
         <Title isCurrentDate={isCurrentDate}>
-          <Link href={`/${citySlug}/${categorySlug}?d=${date.substr(0, 10)}`}>
+          <Link
+            href={`/${citySlug}/${categorySlug}?d=${format(
+              date,
+              "yyyy-MM-dd"
+            )}`}
+          >
             <a>
               {isCurrentDate ? <Icon iconName={categoryName} /> : null}{" "}
-              <Date date={date} type="short" />
+              <PypDate date={date} type="short" />
             </a>
           </Link>
         </Title>

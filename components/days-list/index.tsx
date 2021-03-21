@@ -50,7 +50,7 @@ export default function DaysList({
               categorySlug={categorySlug}
               citySlug={citySlug}
               currentDate={currentDate}
-              date={date.toISOString()}
+              date={date}
               hasRestriction={numbersString !== NA}
               hours={hours}
               isPublicLicense={isPublicLicense(categoryName)}
