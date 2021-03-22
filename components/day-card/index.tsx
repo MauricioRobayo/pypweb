@@ -12,8 +12,10 @@ import LicensePlate from "../license-plate";
 const currentCardStyle = css`
   background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
+  color: white;
+  margin-bottom: 1rem;
   position: relative;
 `;
 
@@ -26,20 +28,39 @@ type StyleProps = {
   isCurrentDate?: boolean;
   hasRestriction?: boolean;
 };
+const StyledPypDate = styled(PypDate)<StyleProps>`
+  span {
+    color: ${({ isCurrentDate, hasRestriction }) =>
+      isCurrentDate && hasRestriction ? "white" : "#b5b5b5"};
+  }
+  .date {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+`;
 const StyledCard = styled.div<StyleProps>`
-  ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
-  ${({ hasRestriction }) => !hasRestriction && hasRestrictionStyle};
-
   align-items: center;
-  border: 1px solid #dbdbdb;
-  border-top: none;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
+  ${({ hasRestriction }) => !hasRestriction && hasRestrictionStyle};
 `;
 const Title = styled.div<StyleProps>`
   font-size: ${({ isCurrentDate }) => (isCurrentDate ? "1.25rem" : "1rem")};
-  margin-bottom: ${({ isCurrentDate }) => (isCurrentDate ? "1rem" : "0")};
+  margin-bottom: ${({ isCurrentDate, hasRestriction }) =>
+    isCurrentDate && hasRestriction ? "1rem" : "0"};
+  ${({ isCurrentDate, hasRestriction }) =>
+    isCurrentDate &&
+    hasRestriction &&
+    css`
+      a {
+        color: white;
+      }
+      a:hover {
+        color: white;
+      }
+    `}
 `;
 const LicenseWrapper = styled.div`
   text-align: right;
@@ -52,6 +73,7 @@ type DayCardProps = {
   categoryName: CategoryName;
   categorySlug: string;
   citySlug: string;
+  className?: string;
   currentDate: Date;
   date: Date;
   hasRestriction?: boolean;
@@ -65,6 +87,7 @@ export default function DayCard({
   categorySlug,
   categoryName,
   citySlug,
+  className,
   currentDate,
   date,
   numbersString,
@@ -80,6 +103,7 @@ export default function DayCard({
   return (
     <StyledCard
       key={date.toISOString()}
+      className={className}
       hasRestriction={hasRestriction || false}
       isCurrentDate={isCurrentDate}
     >
@@ -93,7 +117,12 @@ export default function DayCard({
           >
             <a>
               {isCurrentDate ? <Icon iconName={categoryName} /> : null}{" "}
-              <PypDate date={date} type="short" />
+              <StyledPypDate
+                date={date}
+                hasRestriction={hasRestriction}
+                isCurrentDate={isCurrentDate}
+                type="short"
+              />
             </a>
           </Link>
         </Title>
@@ -118,6 +147,7 @@ export default function DayCard({
 }
 
 DayCard.defaultProps = {
+  className: "",
   hasRestriction: true,
   isPublicLicense: false,
 };

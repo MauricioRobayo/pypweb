@@ -14,6 +14,9 @@ import Link from "next/link";
 import styled from "styled-components";
 import { PypOption } from "types";
 
+const StyledLayout = styled(Layout)`
+  text-align: center;
+`;
 const StyledMegaBanner = styled(MegaBanner)`
   margin-bottom: 1rem;
 `;
@@ -102,7 +105,12 @@ export default function Category({
   const aside = <Post body={post} />;
 
   return (
-    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+    <StyledLayout
+      aside={aside}
+      date={date}
+      pypOptions={pypOptions}
+      title={title}
+    >
       <StyledMegaBanner />
       <div>
         <Title>
@@ -160,7 +168,7 @@ export default function Category({
           numberSelected={number}
         />
       </div>
-    </Layout>
+    </StyledLayout>
   );
 }
 

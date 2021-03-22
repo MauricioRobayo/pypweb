@@ -4,11 +4,22 @@ import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
 
-type DaysListProps = {
-  citySlug: string;
-  categoryData: ICategoryData;
-  currentDate: Date;
-};
+const ListWrapper = styled.div`
+  & > div {
+    border-bottom: 1px solid #dbdbdb;
+    border-left: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+  }
+  & > div:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  & > div:nth-child(2) {
+    border-top: 1px solid #dbdbdb;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+`;
 
 const Article = styled.article`
   margin: auto;
@@ -22,6 +33,11 @@ const Title = styled.h3`
   text-align: center;
 `;
 
+type DaysListProps = {
+  citySlug: string;
+  categoryData: ICategoryData;
+  currentDate: Date;
+};
 export default function DaysList({
   citySlug,
   categoryData,
@@ -39,7 +55,7 @@ export default function DaysList({
         Se restringe la circulación de vehículos <strong>{categoryName}</strong>{" "}
         según el <strong>{schemeMessage} dígito del número de la placa</strong>
       </Title>
-      <div>
+      <ListWrapper>
         {categoryData.data.map(({ year, month, day, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
           const date = new Date(year, month - 1, day);
@@ -59,7 +75,7 @@ export default function DaysList({
             />
           );
         })}
-      </div>
+      </ListWrapper>
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
       </footer>

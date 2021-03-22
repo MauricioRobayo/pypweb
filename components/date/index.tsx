@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import {
   dateIsToday,
   getLocalLongDateString,
@@ -7,25 +6,18 @@ import {
 } from "./utils";
 
 type DateProps = {
-  date: Date | string;
+  className?: string;
+  date: Date;
   type?: "long" | "short";
 };
 
-const Small = styled.span`
-  color: #b5b5b5;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-`;
-
-export default function PypDate({ date: d, type = "long" }: DateProps) {
-  const date = typeof d === "string" ? new Date(d) : d;
-
+export default function PypDate({ className, date, type = "long" }: DateProps) {
   const isToday = dateIsToday(date);
 
   if (type === "long") {
     const localLongDateString = getLocalLongDateString(date);
     return (
-      <time dateTime={date.toISOString()}>
+      <time className={className} dateTime={date.toISOString()}>
         {isToday ? `Hoy ${localLongDateString}` : localLongDateString}
       </time>
     );
@@ -34,13 +26,16 @@ export default function PypDate({ date: d, type = "long" }: DateProps) {
   const localShortDateString = getLocalShortDateString(date);
   const weekdayName = getWeekdayName(date);
   return (
-    <time dateTime={date.toISOString()}>
-      <span>{isToday ? `Hoy ${weekdayName}` : weekdayName}</span>{" "}
-      <Small>{localShortDateString}</Small>
+    <time className={className} dateTime={date.toISOString()}>
+      <span className="day">
+        {isToday ? `Hoy ${weekdayName}` : weekdayName}
+      </span>{" "}
+      <span className="date">{localShortDateString}</span>
     </time>
   );
 }
 
 PypDate.defaultProps = {
+  className: "",
   type: "long",
 };

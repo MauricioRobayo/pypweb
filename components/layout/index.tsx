@@ -18,6 +18,7 @@ const StyledLayout = styled.div`
   header {
     margin: auto;
     max-width: ${({ theme }) => theme.maxWidth};
+    text-align: center;
 
     h1 {
       font-size: 2rem;
@@ -54,7 +55,6 @@ const Page = styled.div<PageProps>`
   flex: 1 1 100%;
   flex-direction: column;
   justify-content: ${({ isHome }) => (isHome ? "center" : "flex-start")};
-  text-align: center;
   width: ${({ isHome }) => (isHome ? "auto" : "100%")};
   main {
     align-items: center;
@@ -105,6 +105,7 @@ const Footer = styled.footer`
 
 type LayoutProps = {
   children: ReactNode;
+  className?: string;
   pypOptions: PypOption[];
   isHome?: boolean;
   aside?: ReactNode;
@@ -114,6 +115,7 @@ type LayoutProps = {
 
 export default function Layout({
   children,
+  className,
   isHome = false,
   aside,
   pypOptions,
@@ -121,7 +123,7 @@ export default function Layout({
   date,
 }: LayoutProps) {
   return (
-    <StyledLayout>
+    <StyledLayout className={className}>
       <Head>
         <title>{title}</title>
         <link href="/favicon.ico" rel="icon" />
@@ -165,6 +167,7 @@ export default function Layout({
 
 Layout.defaultProps = {
   aside: null,
+  className: "",
   isHome: false,
   title: "Pico y placa hoy",
 };
