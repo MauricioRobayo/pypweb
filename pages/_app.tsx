@@ -1,10 +1,17 @@
 import * as gtag from "lib/gtag";
 import { AppProps } from "next/app";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
+import NProgress from "nprogress";
 import { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "styles/global";
 import defaultTheme from "styles/theme";
+
+Router.events.on("routeChangeStart", () => {
+  NProgress.start();
+});
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 const isProduction = process.env.NODE_ENV === "production";
 
