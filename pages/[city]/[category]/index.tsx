@@ -59,7 +59,12 @@ export default function Category({
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledMegaBanner />
-      <DaysList categoryData={data} citySlug={citySlug} currentDate={date} />
+      <DaysList
+        categoryData={data}
+        cityName={cityName}
+        citySlug={citySlug}
+        currentDate={date}
+      />
     </Layout>
   );
 }

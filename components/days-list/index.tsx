@@ -1,8 +1,14 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
+import Breadcrumbs from "components/breadcrumbs";
 import { isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
+
+const StyledBreadcrumbs = styled(Breadcrumbs)`
+  margin: 1rem 0;
+  text-align: center;
+`;
 
 const ListWrapper = styled.div`
   & > div {
@@ -29,16 +35,18 @@ const Article = styled.article`
 const Title = styled.h3`
   font-size: 1.2rem;
   font-weight: normal;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 `;
 
 type DaysListProps = {
+  cityName: string;
   citySlug: string;
   categoryData: ICategoryData;
   currentDate: Date;
 };
 export default function DaysList({
+  cityName,
   citySlug,
   categoryData,
   currentDate,
@@ -55,6 +63,12 @@ export default function DaysList({
         Se restringe la circulación de vehículos <strong>{categoryName}</strong>{" "}
         según el <strong>{schemeMessage} dígito del número de la placa</strong>
       </Title>
+      <StyledBreadcrumbs
+        paths={[
+          { name: cityName, slug: citySlug },
+          { name: categoryName, slug: "" },
+        ]}
+      />
       <ListWrapper>
         {categoryData.data.map(({ year, month, day, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
