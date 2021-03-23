@@ -19,7 +19,7 @@ const currentCardStyle = css`
   position: relative;
 `;
 
-const hasRestrictionStyle = css`
+const isInactiveStyle = css`
   background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
   color: #b5b5b5;
 `;
@@ -31,7 +31,7 @@ type StyleProps = {
 const StyledPypDate = styled(PypDate)<StyleProps>`
   span {
     color: ${({ isCurrentDate, hasRestriction }) =>
-      isCurrentDate && hasRestriction ? "white" : "#b5b5b5"};
+      isCurrentDate && hasRestriction ? "white" : "inherit"};
   }
   .date {
     font-size: 0.85rem;
@@ -45,7 +45,7 @@ const StyledCard = styled.div<StyleProps>`
   justify-content: space-between;
   padding: 1rem;
   ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
-  ${({ hasRestriction }) => !hasRestriction && hasRestrictionStyle};
+  ${({ hasRestriction }) => !hasRestriction && isInactiveStyle};
 `;
 const Title = styled.div<StyleProps>`
   font-size: ${({ isCurrentDate }) => (isCurrentDate ? "1.25rem" : "1rem")};
