@@ -16,6 +16,7 @@ export function getPypOptions() {
   const pypOptions: { value: string; name: string }[] = [];
   Object.values(cities).forEach(
     ({ name: cityName, slug: citySlug, categories }) => {
+      pypOptions.push({ name: cityName, value: citySlug });
       Object.values(categories).forEach(
         ({ name: categoryName, slug: categorySlug }) => {
           pypOptions.push({
