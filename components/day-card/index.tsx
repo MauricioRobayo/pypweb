@@ -39,7 +39,8 @@ const StyledPypDate = styled(PypDate)<StyleProps>`
   }
 `;
 const StyledCard = styled.div<StyleProps>`
-  align-items: center;
+  align-items: ${({ isCurrentDate, hasRestriction }) =>
+    isCurrentDate && hasRestriction ? "flex-start" : "center"};
   display: flex;
   justify-content: space-between;
   padding: 1rem;
