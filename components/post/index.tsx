@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledPost = styled.div`
+  max-width: 720px;
   img {
     max-width: 100%;
   }
@@ -14,7 +15,6 @@ export default function Post({ body }: PostProps) {
   if (!body) {
     return null;
   }
-  /* eslint-disable react/no-danger */
-  return <StyledPost dangerouslySetInnerHTML={{ __html: body }} />;
-  /* eslint-enable */
+
+  return <StyledPost dangerouslySetInnerHTML={{ __html: body }} />; // eslint-disable-line react/no-danger
 }

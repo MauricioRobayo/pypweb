@@ -65,7 +65,6 @@ const Page = styled.div<PageProps>`
 `;
 
 const Aside = styled.aside`
-  max-width: ${({ theme }) => theme.maxWidth};
   padding: 1rem;
   h4 {
     font-weight: bold;
