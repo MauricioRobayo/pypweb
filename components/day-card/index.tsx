@@ -15,6 +15,7 @@ const currentCardStyle = css`
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
   color: white;
+  font-size: 1.25rem;
   margin-bottom: 1rem;
   position: relative;
 `;
@@ -39,36 +40,39 @@ const StyledPypDate = styled(PypDate)<StyleProps>`
   }
 `;
 const StyledCard = styled.div<StyleProps>`
-  align-items: ${({ isCurrentDate, hasRestriction }) =>
-    isCurrentDate && hasRestriction ? "flex-start" : "center"};
-  display: flex;
-  justify-content: space-between;
   padding: 1rem;
   ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
   ${({ hasRestriction }) => !hasRestriction && isInactiveStyle};
 `;
 const Title = styled.div<StyleProps>`
-  font-size: ${({ isCurrentDate }) => (isCurrentDate ? "1.25rem" : "1rem")};
-  margin-bottom: ${({ isCurrentDate, hasRestriction }) =>
-    isCurrentDate && hasRestriction ? "1rem" : "0"};
+  align-items: flex-end;
+  border-bottom: 1px solid white;
+  display: flex;
+  justify-content: space-between;
   ${({ isCurrentDate, hasRestriction }) =>
     isCurrentDate &&
     hasRestriction &&
     css`
-      a {
-        color: white;
-      }
-      a:hover {
-        color: white;
-      }
+      padding-bottom: 1rem;
     `}
 `;
-const LicenseWrapper = styled.div`
-  text-align: right;
+const LicenseWrapper = styled.div``;
+const StyledHours = styled(Hours)<StyleProps>`
+  text-align: center;
+  ${({ isCurrentDate, hasRestriction }) =>
+    isCurrentDate &&
+    hasRestriction &&
+    css`
+      font-size: 1rem;
+    `}
 `;
-const StyledHours = styled(Hours)`
-  text-align: left;
+
+const Description = styled.div`
+  font-size: 1rem;
+  padding-top: 0.5rem;
 `;
+
+const StyledLicensePlate = styled(LicensePlate)``;
 
 type DayCardProps = {
   categoryName: CategoryName;
@@ -97,7 +101,7 @@ export default function DayCard({
   hasRestriction,
   scheme,
 }: DayCardProps) {
-  const schemeString = scheme === "first" ? "Primer" : "Último";
+  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
 
@@ -108,8 +112,8 @@ export default function DayCard({
       hasRestriction={hasRestriction || false}
       isCurrentDate={isCurrentDate}
     >
-      <div>
-        <Title isCurrentDate={isCurrentDate}>
+      <Title hasRestriction={hasRestriction} isCurrentDate={isCurrentDate}>
+        <div>
           <Link
             href={`/${citySlug}/${categorySlug}?d=${format(
               date,
@@ -126,23 +130,30 @@ export default function DayCard({
               />
             </a>
           </Link>
-        </Title>
-        {hasRestriction && isCurrentDate ? (
-          <StyledHours date={currentDate} hours={hours} interactive />
-        ) : null}
-      </div>
-      <LicenseWrapper>
-        {hasRestriction && isCurrentDate ? <div>No circulan</div> : null}
-        <LicensePlate
-          isPublic={isPublicLicense}
-          size={isCurrentDate ? "large" : "medium"}
-        >
-          {numbersString}
-        </LicensePlate>
-        {hasRestriction && !isAllDigits && isCurrentDate ? (
-          <div>{schemeString} dígito de la placa</div>
-        ) : null}
-      </LicenseWrapper>
+          <Description>
+            {hasRestriction && !isAllDigits && isCurrentDate ? (
+              <div>No circulan placas {schemeString} en</div>
+            ) : null}
+          </Description>
+        </div>
+        <LicenseWrapper>
+          <StyledLicensePlate
+            isPublic={isPublicLicense}
+            size={isCurrentDate ? "large" : "medium"}
+          >
+            {numbersString}
+          </StyledLicensePlate>
+        </LicenseWrapper>
+      </Title>
+      {hasRestriction && isCurrentDate ? (
+        <StyledHours
+          date={currentDate}
+          hasRestriction={hasRestriction}
+          hours={hours}
+          interactive
+          isCurrentDate={isCurrentDate}
+        />
+      ) : null}
     </StyledCard>
   );
 }
