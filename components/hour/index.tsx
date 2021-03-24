@@ -19,26 +19,28 @@ export default function Hour({
   date,
   hourData: { hours, comment, days },
 }: HourProps) {
-  const hasComment = comment !== "";
-  const isAllDay = comment === ALL_DAY;
+  const hasComment = Boolean(comment);
 
   return (
     <>
-      {hasComment && !isAllDay ? <Comment>{comment}</Comment> : null}
+      {hasComment ? <Comment>{comment}</Comment> : null}
       <ul>
         {hours.map((hour, index) => {
           /* eslint-disable react/no-array-index-key */
+          const [start, end] = hour;
+          const isAllDay = start === "00:00" && end === "24:00";
+
           if (isEmptyArray(hour)) {
             return null;
           }
 
-          if (days.length > 0 && !days.includes(date.getDay())) {
+          if (days && !days.includes(date.getDay())) {
             return null;
           }
 
           if (isAllDay) {
             return (
-              <li key={index}>
+              <li key={JSON.stringify({ comment, days, hour })}>
                 <StyledHour>{ALL_DAY}</StyledHour>
               </li>
             );
