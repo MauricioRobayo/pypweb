@@ -150,7 +150,7 @@ export default function Category({
                           }?d=${dataDate.toISOString().substr(0, 10)}`}
                         >
                           <a>
-                            <PypDate date={date} />
+                            <PypDate date={dataDate} />
                           </a>
                         </Link>
                       </li>
