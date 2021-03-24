@@ -11,7 +11,6 @@ import LicensePlate from "../license-plate";
 
 const currentCardStyle = css`
   background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
-  border: none;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
   color: white;

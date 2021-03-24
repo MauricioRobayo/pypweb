@@ -16,6 +16,9 @@ const ListWrapper = styled.div`
     border-left: 1px solid #dbdbdb;
     border-right: 1px solid #dbdbdb;
   }
+  & > div:first-child {
+    border: none;
+  }
   & > div:last-child {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
