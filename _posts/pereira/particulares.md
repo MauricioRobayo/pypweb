@@ -12,14 +12,21 @@
 
 #### Observaciones
 
-Se establece como restricción del pico y placa, para los vehículos particulares y motos, el área al interior del perímeto delimitado por las siguientes vías e interseccones:
+Se establece como restricción de pico y placa para los vehículos particulares, vehículos oficiales, motocicletas, motocarros, mototriciclos y cuatrimotos, el área al interior del perímetro delimitado por las siguientes vías e intersecciones:
 
-- Partiendo del puente Mosquera (punto 1) se continúa por la Avenida del Río hasta la intersección Turín (punto 2). Este corredor en ambos sentidos no estará sometido a la mediada de pico y placa.
-- De la intersección Turín (punto 2) se continúa por la avenida 30 de agosto hasta la intersección Belmonte (punto 3). Este corredor, en ambos sentidos no estará sometido a la medida de pico y placa.
-- De la intersección Belmonte (punto 3) se continúa por la avenida de las Américas hasta l aintersección de la calle 17 con el Terminal de Transportes (punto 4) este corredor se excluye de la medida de pico y placa en ambos sentidos.
-- De la intersección de la calle 17 con el Terminal de Transporte (punto 4) hacia el norte, hasta la intersección de la calle 17 con carrera 13 (punto 5). Este corredor se excluye de la medida de pico y placa en ambos sentidos, con los lazos de unión de la calle 17 con la Avenida Belalcázar.
-- De la intersección de la call3 17 con carrera 13 (punto 5) se continúa por la avenida del Ferrocarril hasta el Viaducto y la carrera 6 con dirección a la Avenida del Rio-Puente Mosquera (Punto 1). Este corredor se excluye de la medida del pico y placa, con los lazos de unión de la Glorieta de Bavaria con la Avenida del Ferrocarril.
-- También se excluye de la restrcción del pico y placa el Viaducto César Gaviria Trujillo, y el tramo de la Avenida 30 de agosto, entre la intersección de Turín (punto 2) y la intersección de las carreras 13 y 14 con calle 17 (punto 5).
+- Glorieta Bavaria (punto 1) se continúa hacia la Avenida del Río hasta la intersección Turín (punto 2). Este corredor en ambos sentidos no estará sometido a la medida de pico y placa.
+- Desde la intersección Turín (punto 2) se continúa por la Avenida 30 de Agosto hasta la calle 18- Gobernación de Risaralda (punto 3). Este corredor, en ambos sentidos, no estará sometido a la medida de pico y placa.
+- De la calle 18- Gobernación de Risaralda (punto 3) se continúa por la Avenida Ferrocarril hasta Glorieta Bavaria (punto 1) Este corredor, en ambos sentidos, no estará sometido a la medida de pico y placa.
+- Tendrá medida restrictiva de pico y placa y no se podrá circular entre la carrera 1 (inclusive) a la carrera 12 (inclusive) y la calle 11 (inclusive) a la calle 45 (inclusive). Se podrá circular en la Avenida San Jerónimo (carrera 12 entre calles 16 y 26).
+
+Se excluye de la medida de restricción del pico y placa:
+
+- El Viaducto Cesar Gaviria Trujillo
+- La Avenida 30 de Agosto.
+- La Avenida del Río.
+- La Avenida Ferrocarril.
+- La Avenida San Jerónimo (Carrera 12 entre calles 16 y 26)
+- Avenida Paralela.
 
 #### Excepciones
 
@@ -41,4 +48,4 @@ Se establece como restricción del pico y placa, para los vehículos particulare
 
 #### Mapa
 
-![Mapa pico y placa Pereira 2019](https://pyphoy.s3.amazonaws.com/docs/pereira/mapa-pico-y-placa-pereira-2019.jpg)
+![Mapa pico y placa Pereira](/images/pico-y-placa-pereira.jpeg)
