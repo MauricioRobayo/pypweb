@@ -5,7 +5,7 @@
 #### Decretos
 
 - [Decreto 271 del 26 de julio de 2019]()
-- [Decreto 288 del 6 de julio 2017](https://pyphoy.s3.amazonaws.com/docs/soledad/decreto-288-del-6-de-julio-2017.pdf)
+- [Decreto 288 del 6 de julio 2017](/soledad/decreto-288-del-6-de-julio-2017.pdf)
 
 #### Observaciones
 

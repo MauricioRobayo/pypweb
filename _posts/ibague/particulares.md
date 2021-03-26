@@ -7,7 +7,7 @@
 - [Decreto 0393 del 27 de julio de 2020](https://www.ibague.gov.co/portal/admin/archivos/normatividad/2020/30873-DEC-20200727214054.PDF)
 - [Decreto 0099 del 6 de febrero de 2019](https://www.ibague.gov.co/portal/admin/archivos/normatividad/2019/23007-DEC-20190209.PDF)
 - [Decreto 0037 de 13 de Enero de 2017](http://www.ibague.gov.co/portal/admin/archivos/normatividad/2017/16370-DEC-20170116.pdf)
-- [Decreto 0946 de 2018](https://pyphoy.s3.amazonaws.com/docs/ibague/decreto-0946-de-2018.pdf)
+- [Decreto 0946 de 2018](/ibague/decreto-0946-de-2018.pdf)
 
 #### Observaciones
 

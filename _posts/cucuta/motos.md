@@ -4,8 +4,8 @@
 
 #### Decretos
 
-- [Decreto 0300 de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0300-de-2019.pdf)
-- [Decreto 0221 de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0221-de-2019.pdf)
+- [Decreto 0300 de 2019](/cucuta/decreto-0300-de-2019.pdf)
+- [Decreto 0221 de 2019](/cucuta/decreto-0221-de-2019.pdf)
 - [Decretos 0239 del 4 de abril del 2017](http://www.areacucuta.com/wp-content/uploads/2017/04/Decreto-Pico-y-Placa-Placa-y-D%C3%ADa.pdf)
 - [Decretos 0330 del 22 de mayo del 2017](http://cucutaonline.com/wp-content/uploads/2017/05/Decreto-0330-pico-placa-modificado.pdf)
 
@@ -43,4 +43,4 @@ Exceptúense de la medida del Pico y Placa los siguientes vehículos:
 
 #### Mapa
 
-![Mapa pico y placa Cúcuta 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/mapa-pico-y-placa-cucuta-2019.jpg)
+![Mapa pico y placa Cúcuta 2019](/cucuta/mapa-pico-y-placa-cucuta-2019.jpg)

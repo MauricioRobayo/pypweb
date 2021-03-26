@@ -5,10 +5,10 @@
 #### Decretos
 
 - [Decreto 1198 del 1 de octubre de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)
-- [Decreto 0500 del 16 de marzo del 2020](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-0500-del-16-de-marzo-del-2020.pdf)
+- [Decreto 0500 del 16 de marzo del 2020](/cartagena/decreto-0500-del-16-de-marzo-del-2020.pdf)
 - [Decreto 0017 del 3 de enero de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto-0017_2020-P.PDF)
-- [Decreto 1361 del 29 de noviembre de 2018](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-1361-del-29-de-noviembre-de-2018.pdf)
-- [Decreto 1550 del 30 de noviembre de 2017](https://pyphoy.s3.amazonaws.com/docs/cartagena/decreto-1550-del-30-de-noviembre-de-2017.pdf)
+- [Decreto 1361 del 29 de noviembre de 2018](/cartagena/decreto-1361-del-29-de-noviembre-de-2018.pdf)
+- [Decreto 1550 del 30 de noviembre de 2017](/cartagena/decreto-1550-del-30-de-noviembre-de-2017.pdf)
 
 #### Observaciones
 

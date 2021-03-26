@@ -6,8 +6,8 @@
 
 - [Resolución 0130 del 31 de julio de 2020](https://cucutanortedesantander.micolombiadigital.gov.co/sites/cucutanortedesantander/content/files/000775/38738_setra--resol-1302020-pyp-med.pdf)
 - [Resolución 0105 del 19 de junio de 2020](https://cucutanortedesantander.micolombiadigital.gov.co/sites/cucutanortedesantander/content/files/000765/38209_resolucion-0105-de-2020.PDF)
-- [Decreto 0300 del 28 de febrero de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0300-del-28-de-febrero-de-2019.pdf)
-- [Decreto 0221 del 15 de enero de 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/decreto-0221-del-15-de-enero-de-2019.pdf)
+- [Decreto 0300 del 28 de febrero de 2019](/cucuta/decreto-0300-del-28-de-febrero-de-2019.pdf)
+- [Decreto 0221 del 15 de enero de 2019](/cucuta/decreto-0221-del-15-de-enero-de-2019.pdf)
 - [Decreto 0239 del 4 de abril del 2017](http://www.areacucuta.com/wp-content/uploads/2017/04/Decreto-Pico-y-Placa-Placa-y-D%C3%ADa.pdf)
 - [Decreto 0330 del 22 de mayo del 2017](http://cucutaonline.com/wp-content/uploads/2017/05/Decreto-0330-pico-placa-modificado.pdf)
 
@@ -46,4 +46,4 @@ Exceptúense de la medida del Pico y Placa los siguientes vehículos:
 
 #### Mapa
 
-![Mapa pico y placa Cúcuta 2019](https://pyphoy.s3.amazonaws.com/docs/cucuta/mapa-pico-y-placa-cucuta-2019.jpg)
+![Mapa pico y placa Cúcuta 2019](/cucuta/mapa-pico-y-placa-cucuta-2019.jpg)

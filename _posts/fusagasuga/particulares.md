@@ -41,4 +41,4 @@ Se exceptuan de la restricción las siguientes categorías de vehículos automot
 
 #### Mapa
 
-![Mapa pico y placa Fusagasugá](https://pyphoy.s3.amazonaws.com/docs/fusagasuga/mapa-pico-y-placa-fusagasuga.jpg)
+![Mapa pico y placa Fusagasugá](/fusagasuga/mapa-pico-y-placa-fusagasuga.jpg)

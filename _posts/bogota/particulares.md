@@ -8,8 +8,8 @@
 - [Decreto 515 del 22 de noviembre de 2016](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=55963)
 - [Decreto 575 del 17 de diciembre de 2013](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=67497)
 - [Decreto 159 del 11 de abril de 2014](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=57155)
-- [Calendario pico y placa primer semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
-- [Calendario pico y placa segundo semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
+- [Calendario pico y placa primer semestre 2018 unificado](/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
+- [Calendario pico y placa segundo semestre 2018 unificado](/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
 
 #### Observaciones
 

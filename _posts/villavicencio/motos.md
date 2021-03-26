@@ -7,8 +7,8 @@
 - [Decreto 344 del 15 de septiembre de 2020](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2020/DECRETO No. 1000-24 - 344 DEL 15 DE SEPTIEMBRE DE 2020.pdf)
 - [Decreto 331 del 31 de agosto de 2020](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2020/DECRETO No. 1000-24 - 331 DEL 31 DE AGOSTO DE 2020.pdf)
 - [Decreto 347 del 24 de julio de 2019](http://www.villavicencio.gov.co/Transparencia/Normatividad/Decretos/Vigencia año 2019/DECRETO No 347 DEL 24 DE JULIO DE 2019.pdf)
-- [Decreto 222 del 25 de julio de 2018](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)
-- [Decreto 245 del 26 de julio de 2017](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-245-del-26-de-julio-de-2017.pdf)
+- [Decreto 222 del 25 de julio de 2018](/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)
+- [Decreto 245 del 26 de julio de 2017](/villavicencio/decreto-245-del-26-de-julio-de-2017.pdf)
 
 #### Observaciones
 

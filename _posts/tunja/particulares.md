@@ -34,4 +34,4 @@ La secretaría de Tránsito y Transporte de Tunja definirá las condiciones nece
 
 #### Mapa
 
-![Mapa pico y placa Tunja](https://pyphoy.s3.amazonaws.com/docs/tunja/mapa-pico-y-placa-tunja.jpg)
+![Mapa pico y placa Tunja](/tunja/mapa-pico-y-placa-tunja.jpg)

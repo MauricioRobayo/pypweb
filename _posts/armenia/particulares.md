@@ -6,8 +6,8 @@
 
 - [Decreto 327 del 15 de octubre de 2020](https://www.armenia.gov.co/wp-content/uploads/2020/10/decreto_327_transito.pdf)
 - [Decreto 96 del 10 de febrero de 2020](https://armenia.gov.co/wp-content/uploads/2020/2/GACETA_MUNICIPAL_2349-_FEBRERO_10_DE_2020.pdf)
-- [Decreto 083 de 2016](https://pyphoy.s3.amazonaws.com/docs/armenia/decreto-083-de-2016.pdf)
-- [Decreto 059 de 2019](https://pyphoy.s3.amazonaws.com/docs/armenia/decreto-059-de-2019.pdf)
+- [Decreto 083 de 2016](/armenia/decreto-083-de-2016.pdf)
+- [Decreto 059 de 2019](/armenia/decreto-059-de-2019.pdf)
 
 #### Observaciones
 

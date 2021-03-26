@@ -5,8 +5,8 @@
 #### Decretos
 
 - [Decreto 0340 de 2020](https://manizales.gov.co/wp-content/uploads/CamScanner-04-13-2020-17.38.29_1.pdf)
-- [Decreto 0475 de 2018](https://pyphoy.s3.amazonaws.com/docs/manizales/decreto-0475-de-2018.pdf)
-- [Decreto 0547 de 2017](https://pyphoy.s3.amazonaws.com/docs/manizales/decreto-0547-de-2017.pdf)
+- [Decreto 0475 de 2018](/manizales/decreto-0475-de-2018.pdf)
+- [Decreto 0547 de 2017](/manizales/decreto-0547-de-2017.pdf)
 
 #### Observaciones
 

@@ -5,8 +5,8 @@
 #### Decretos
 
 - [Decreto 152 del 25 de noviembre de 2020](https://ocananortedesantander.micolombiadigital.gov.co/sites/ocananortedesantander/content/files/000824/41171_decreto-152-de-25-de-noviembre-de-2020.pdf)
-- [Decreto 60 del 22 de octubre de 2018](https://pyphoy.s3.amazonaws.com/docs/ocana/decreto-60-del-22-de-octubre-de-2018.pdf)
-- [Estudio de tráfico pico y placa enero 2018](https://pyphoy.s3.amazonaws.com/docs/ocana/estudio-de-trafico-pico-y-placa-enero-2018.pdf)
+- [Decreto 60 del 22 de octubre de 2018](/ocana/decreto-60-del-22-de-octubre-de-2018.pdf)
+- [Estudio de tráfico pico y placa enero 2018](/ocana/estudio-de-trafico-pico-y-placa-enero-2018.pdf)
 
 #### Observaciones
 

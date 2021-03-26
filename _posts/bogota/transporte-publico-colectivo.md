@@ -5,8 +5,8 @@
 #### Decretos
 
 - [Decreto 444 de 2014](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=59702)
-- [Calendario pico y placa primer semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
-- [Calendario pico y placa segundo semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
+- [Calendario pico y placa primer semestre 2018 unificado](/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
+- [Calendario pico y placa segundo semestre 2018 unificado](/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
 
 #### Observaciones
 

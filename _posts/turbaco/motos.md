@@ -9,4 +9,4 @@
 
 #### Observaciones
 
-![pico y placa turbaco](https://pyphoy.s3.amazonaws.com/docs/turbaco/pico-y-placa-turbaco.jpg)
+![pico y placa turbaco](/turbaco/pico-y-placa-turbaco.jpg)

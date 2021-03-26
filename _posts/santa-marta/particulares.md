@@ -4,10 +4,10 @@
 
 #### Decretos
 
-- [Decreto 074 del 28 de febrero de 2020](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-074-del-28-de-febrero-de-2020.pdf)
+- [Decreto 074 del 28 de febrero de 2020](/santa-marta/decreto-074-del-28-de-febrero-de-2020.pdf)
 - [decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)
-- [Decreto 070 de 2018](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-070-de-2018.pdf)
-- [Decreto 349 de 2017](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-349-de-2017.pdf)
+- [Decreto 070 de 2018](/santa-marta/decreto-070-de-2018.pdf)
+- [Decreto 349 de 2017](/santa-marta/decreto-349-de-2017.pdf)
 
 #### Observaciones
 
@@ -47,4 +47,4 @@ Se autoriza la circulación solo por el día de llegada a los vehículos de los 
 
 #### Mapa
 
-![Mapa pico y placa santa marta](https://pyphoy.s3.amazonaws.com/docs/santa-marta/mapa pico-y-placa-santa-marta.jpg)
+![Mapa pico y placa santa marta](/santa-marta/mapa pico-y-placa-santa-marta.jpg)

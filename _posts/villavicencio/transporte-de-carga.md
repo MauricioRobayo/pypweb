@@ -4,10 +4,10 @@
 
 #### Decretos
 
-- [Decreto 222 del 25 de julio de 2018](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)
-- [Decreto 245 del 26 de julio de 2017](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-245-del-26-de-julio-de-2017.pdf)
-- [Decreto 010 del 24 de enero de 2017](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-010-del-24-de-enero-de-2017.pdf)
-- [Decreto 131 del 26 de enero de 2016](https://pyphoy.s3.amazonaws.com/docs/villavicencio/decreto-131-del-26-de-enero-de-2016.pdf)
+- [Decreto 222 del 25 de julio de 2018](/villavicencio/decreto-222-del-25-de-julio-de-2018.pdf)
+- [Decreto 245 del 26 de julio de 2017](/villavicencio/decreto-245-del-26-de-julio-de-2017.pdf)
+- [Decreto 010 del 24 de enero de 2017](/villavicencio/decreto-010-del-24-de-enero-de-2017.pdf)
+- [Decreto 131 del 26 de enero de 2016](/villavicencio/decreto-131-del-26-de-enero-de-2016.pdf)
 
 #### Observaciones
 

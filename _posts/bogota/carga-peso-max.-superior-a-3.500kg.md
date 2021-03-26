@@ -8,8 +8,8 @@
 - [Decreto 060 de 2019](https://es.scribd.com/document/400064441/Decreto-060-de-2019#fullscreen)
 - [Decreto 325 del 16 de agosto de 2006](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=21050)
 - [Decreto 174 de 2006](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=56330)
-- [Calendario pico y placa primer semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
-- [Calendario pico y placa segundo semestre 2018 unificado](https://pyphoy.s3.amazonaws.com/docs/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
+- [Calendario pico y placa primer semestre 2018 unificado](/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
+- [Calendario pico y placa segundo semestre 2018 unificado](/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
 
 #### Observaciones
 

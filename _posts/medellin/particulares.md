@@ -37,4 +37,4 @@
 
 #### Mapa
 
-![Mapa pico y placa Medellín 2019](https://pyphoy.s3.amazonaws.com/docs/medellin/mapa pico-y-placa-medellin-2019.jpg)
+![Mapa pico y placa Medellín 2019](/medellin/mapa pico-y-placa-medellin-2019.jpg)

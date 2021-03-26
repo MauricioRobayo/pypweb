@@ -5,8 +5,8 @@
 #### Decretos
 
 - [decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)
-- [Decreto 043 de 2019](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-043-de-2019.pdf)
-- [decreto 068 de 2018](https://pyphoy.s3.amazonaws.com/docs/santa-marta/decreto-068-de-2018.pdf)
+- [Decreto 043 de 2019](/santa-marta/decreto-043-de-2019.pdf)
+- [decreto 068 de 2018](/santa-marta/decreto-068-de-2018.pdf)
 
 #### Observaciones
 
