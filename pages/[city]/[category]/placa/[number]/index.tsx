@@ -138,7 +138,7 @@ export default function Category({
                 {categoryData.data.slice(1).map((data) => {
                   const dataDate = new Date(
                     data.year,
-                    data.month + 1,
+                    data.month - 1,
                     data.day
                   );
                   if (data.numbers.includes(Number(number))) {
