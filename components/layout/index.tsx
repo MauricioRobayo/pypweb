@@ -65,7 +65,7 @@ const Page = styled.div<PageProps>`
 `;
 
 const Aside = styled.aside`
-  padding: 1rem;
+  padding: 1rem 0;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;

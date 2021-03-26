@@ -52,7 +52,9 @@ export default function Category({
     year: date.getFullYear(),
   });
 
-  const aside = <Post body={post} />;
+  const aside = (
+    <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
+  );
 
   const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
 
