@@ -17,13 +17,6 @@ const classNames: Partial<Record<FormatType, string>> = {
   [FormatType.RECOMMENDED_CONTENT]: "outbrain-tm",
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 0 1rem;
-  width: 100%;
-`;
-
 const Banner = styled.div`
   ${() =>
     !isProduction &&
