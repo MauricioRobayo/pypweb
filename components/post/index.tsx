@@ -77,7 +77,9 @@ export default function Post({ editPath, body }: PostProps) {
               onMouseOut={handleMouseOut}
               onMouseOver={handleMouseOver}
             >
-              Editar en GitHub <StyledOpenIcon />
+              Editar en GitHub 
+              {' '}
+              <StyledOpenIcon />
             </StyledAnchor>
           </Link>
         </StyledLinkWrapper>
