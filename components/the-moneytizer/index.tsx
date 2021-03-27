@@ -9,12 +9,14 @@ const baseUrl = "//ads.themoneytizer.com/s";
 
 export enum FormatType {
   MEGABANNER = "1",
-  SKIN = "5",
   RECOMMENDED_CONTENT = "16",
+  SKIN = "5",
 }
 
-const classNames: Partial<Record<FormatType, string>> = {
+const classNames: Record<FormatType, string> = {
+  [FormatType.MEGABANNER]: "",
   [FormatType.RECOMMENDED_CONTENT]: "outbrain-tm",
+  [FormatType.SKIN]: "",
 };
 
 const Banner = styled.div`
