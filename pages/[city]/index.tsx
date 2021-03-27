@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
-import TheMoneytizer, { FormatType } from "components/the-moneytizer";
+import TheMoneytizer from "components/the-moneytizer";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
@@ -38,17 +38,11 @@ export default function City({
         {cityName}
       </h4>
       <p>
-        Las siguientes son las medidas de restricción vehicular vigentes para
-        {" "}
-        {cityName}
-        {' '}
-        durante el mes de
-        {" "}
-        {getLocalLongDateString().split(" ").slice(3).join(" ")}
-        , de acuerdo con
+        Las siguientes son las medidas de restricción vehicular vigentes para{" "}
+        {cityName} durante el mes de{" "}
+        {getLocalLongDateString().split(" ").slice(3).join(" ")}, de acuerdo con
         lo establecido por la Alcaldía de
-        {cityName}
-        :
+        {cityName}:
       </p>
       <ul>
         {categories.map(({ name: categoryName, slug: categorySlug }) => (
@@ -64,7 +58,7 @@ export default function City({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
-      <StyledTheMoneytizer formatType={FormatType.MEGABANNER} />
+      <StyledTheMoneytizer formatType="MEGABANNER" />
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
     </Layout>
   );
