@@ -33,7 +33,6 @@ const Banner = styled.div`
       font-weight: bold;
       height: 90px;
       justify-content: center;
-      max-width: 728px;
       text-transform: uppercase;
       width: 100%;
     `};
