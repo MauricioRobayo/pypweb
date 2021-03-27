@@ -11,7 +11,8 @@
     "start": "next start",
     "stylelint-check": "stylelint-config-prettier-check",
     "format": "prettier --write .",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mauriciorobayo/pyptron": "^2.5.0",
