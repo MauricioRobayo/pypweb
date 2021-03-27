@@ -76,9 +76,9 @@ export default function CategoryCard({
           <div>
             Placas
             {schemeString}
-{' '}
-en
-</div>
+            {' '}
+            en
+          </div>
         )}
         <LicenseNumbers>
           <LicensePlate isPublic={isPublicLicense(categorySlug)}>

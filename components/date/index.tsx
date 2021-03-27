@@ -30,7 +30,7 @@ export default function PypDate({ className, date, type = "long" }: DateProps) {
       <span className="day">
         {isToday ? `Hoy ${weekdayName}` : weekdayName}
       </span>
-{" "}
+      {" "}
       <span className="date">{localShortDateString}</span>
     </time>
   );
