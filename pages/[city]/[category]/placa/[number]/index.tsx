@@ -5,7 +5,7 @@ import Layout from "components/layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
-import MegaBanner from "components/the-moneytizer/mega-banner";
+import TheMoneytizer, { FormatType } from "components/the-moneytizer";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { getPypOptions, isCity, NA, pypNumbersToString } from "lib/utils";
@@ -17,7 +17,7 @@ import { PypOption } from "types";
 const StyledLayout = styled(Layout)`
   text-align: center;
 `;
-const StyledMegaBanner = styled(MegaBanner)`
+const StyledTheMoneytizer = styled(TheMoneytizer)`
   margin-bottom: 1rem;
 `;
 const Title = styled.h4`
@@ -140,7 +140,7 @@ export default function Category({
       pypOptions={pypOptions}
       title={title}
     >
-      <StyledMegaBanner />
+      <StyledTheMoneytizer formatType={FormatType.MEGABANNER} />
       <div>
         <Title>
           {categoryData.name}

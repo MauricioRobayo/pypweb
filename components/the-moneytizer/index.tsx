@@ -4,11 +4,16 @@ import styled, { css } from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
-const formatId = "1";
 const baseUrl = "//ads.themoneytizer.com/s";
 
-type MegaBannerProps = {
-  className?: string;
+export enum FormatType {
+  MEGABANNER = "1",
+  SKIN = "5",
+  RECOMMENDED_CONTENT = "16",
+}
+
+const classNames: Partial<Record<FormatType, string>> = {
+  [FormatType.RECOMMENDED_CONTENT]: "outbrain-tm",
 };
 
 const Wrapper = styled.div`
@@ -36,28 +41,37 @@ const Banner = styled.div`
     `};
 `;
 
-const MegaBanner = ({ className }: MegaBannerProps) => {
+type Props = {
+  className?: string;
+  formatType: FormatType;
+};
+
+const TheMoneytizer = ({ className, formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   if (isProduction) {
-    useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
+    useScript(div, `${baseUrl}/gen.js?type=${formatType}`);
     useScript(
       div,
-      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`
+      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatType}`
     );
   }
 
   return (
     <Wrapper className={className}>
-      <Banner ref={div} id={`${siteId}-${formatId}`}>
+      <Banner
+        ref={div}
+        className={classNames[formatType]}
+        id={`${siteId}-${formatType}`}
+      >
         {isProduction ? null : "MegaBanner"}
       </Banner>
     </Wrapper>
   );
 };
 
-MegaBanner.defaultProps = {
+TheMoneytizer.defaultProps = {
   className: undefined,
 };
 
-export default MegaBanner;
+export default TheMoneytizer;
