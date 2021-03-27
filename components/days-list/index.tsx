@@ -4,6 +4,7 @@ import { isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
+import Vidverto from "../vidverto";
 
 const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1rem 0;
@@ -59,6 +60,7 @@ export default function DaysList({
     slug: categorySlug,
     data: [{ scheme }],
   } = categoryData;
+  const [currentData, ...remainingData] = categoryData.data;
   const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
@@ -73,7 +75,22 @@ export default function DaysList({
         ]}
       />
       <ListWrapper>
-        {categoryData.data.map(({ year, month, day, numbers, hours }) => {
+        <DayCard
+          categoryName={categoryName}
+          categorySlug={categorySlug}
+          citySlug={citySlug}
+          currentDate={currentDate}
+          date={
+            new Date(currentData.year, currentData.month - 1, currentData.day)
+          }
+          hasRestriction={pypNumbersToString(currentData.numbers) !== NA}
+          hours={currentData.hours}
+          isPublicLicense={isPublicLicense(categoryName)}
+          numbersString={pypNumbersToString(currentData.numbers)}
+          scheme={scheme}
+        />
+        <Vidverto />
+        {remainingData.map(({ year, month, day, numbers, hours }) => {
           const numbersString = pypNumbersToString(numbers);
           const date = new Date(year, month - 1, day);
           return (
