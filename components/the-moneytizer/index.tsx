@@ -1,6 +1,6 @@
 import cn from "classnames";
 import useScript from "hooks/useScript";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import styled, { css } from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -46,10 +46,8 @@ type Props = {
 const TheMoneytizer = ({ className, formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
-  const formatId = useMemo(() => formatTypeId[formatType], [formatType]);
-  const formatClassName = useMemo(() => formatTypeClassName[formatType], [
-    formatType,
-  ]);
+  const formatId = formatTypeId[formatType];
+  const formatClassName = formatTypeClassName[formatType];
 
   if (isProduction) {
     useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
