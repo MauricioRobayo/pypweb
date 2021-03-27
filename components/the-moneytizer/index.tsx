@@ -1,22 +1,24 @@
 import cn from "classnames";
 import useScript from "hooks/useScript";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import styled, { css } from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
 const baseUrl = "//ads.themoneytizer.com/s";
 
-export enum FormatType {
-  MEGABANNER = "1",
-  RECOMMENDED_CONTENT = "16",
-  SKIN = "5",
-}
+export type FormatType = "MEGABANNER" | "RECOMMENDED_CONTENT" | "SKIN";
 
-const classNames: Record<FormatType, string> = {
-  [FormatType.MEGABANNER]: "",
-  [FormatType.RECOMMENDED_CONTENT]: "outbrain-tm",
-  [FormatType.SKIN]: "",
+const formatTypeId: Record<FormatType, number> = {
+  MEGABANNER: 1,
+  RECOMMENDED_CONTENT: 16,
+  SKIN: 5,
+};
+
+const formatTypeClassName: Record<FormatType, string> = {
+  MEGABANNER: "",
+  RECOMMENDED_CONTENT: "outbrain-tm",
+  SKIN: "",
 };
 
 const Banner = styled.div`
@@ -45,21 +47,26 @@ type Props = {
 const TheMoneytizer = ({ className, formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
+  const formatId = useMemo(() => formatTypeId[formatType], [formatType]);
+  const formatClassName = useMemo(() => formatTypeClassName[formatType], [
+    formatType,
+  ]);
+
   if (isProduction) {
-    useScript(div, `${baseUrl}/gen.js?type=${formatType}`);
+    useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
     useScript(
       div,
-      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatType}`
+      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`
     );
   }
 
   return (
     <Banner
       ref={div}
-      className={cn(className, classNames[formatType])}
-      id={`${siteId}-${formatType}`}
+      className={cn(className, formatClassName)}
+      id={`${siteId}-${formatId}`}
     >
-      {isProduction ? null : "MegaBanner"}
+      {isProduction ? null : formatType}
     </Banner>
   );
 };

@@ -3,7 +3,7 @@ import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
 import Post from "components/post";
-import TheMoneytizer, { FormatType } from "components/the-moneytizer";
+import TheMoneytizer from "components/the-moneytizer";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { CityType, getPypOptions, isCity } from "lib/utils";
@@ -60,7 +60,7 @@ export default function Category({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
-      <StyledTheMoneytizer formatType={FormatType.MEGABANNER} />
+      <StyledTheMoneytizer formatType="MEGABANNER" />
       <DaysList
         categoryData={data}
         cityName={cityName}
