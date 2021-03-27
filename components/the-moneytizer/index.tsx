@@ -1,3 +1,4 @@
+import cn from "classnames";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
 import styled, { css } from "styled-components";
@@ -58,15 +59,13 @@ const TheMoneytizer = ({ className, formatType }: Props) => {
   }
 
   return (
-    <Wrapper className={className}>
-      <Banner
-        ref={div}
-        className={classNames[formatType]}
-        id={`${siteId}-${formatType}`}
-      >
-        {isProduction ? null : "MegaBanner"}
-      </Banner>
-    </Wrapper>
+    <Banner
+      ref={div}
+      className={cn(className, classNames[formatType])}
+      id={`${siteId}-${formatType}`}
+    >
+      {isProduction ? null : "MegaBanner"}
+    </Banner>
   );
 };
 
