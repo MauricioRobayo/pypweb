@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
-import MegaBanner from "components/the-moneytizer/mega-banner";
+import TheMoneytizer, { FormatType } from "components/the-moneytizer";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
@@ -17,7 +17,7 @@ type CityProps = {
   currentDate: number;
 };
 
-const StyledMegaBanner = styled(MegaBanner)`
+const StyledTheMoneytizer = styled(TheMoneytizer)`
   margin-bottom: 1rem;
 `;
 
@@ -54,7 +54,7 @@ export default function City({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
-      <StyledMegaBanner />
+      <StyledTheMoneytizer formatType={FormatType.MEGABANNER} />
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
     </Layout>
   );

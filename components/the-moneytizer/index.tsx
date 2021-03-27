@@ -7,8 +7,14 @@ const siteId = "71116";
 const formatId = "1";
 const baseUrl = "//ads.themoneytizer.com/s";
 
-type MegaBannerProps = {
-  className?: string;
+export enum FormatType {
+  MEGABANNER = "1",
+  SKIN = "5",
+  RECOMMENDED_CONTENT = "16",
+}
+
+const classNames: Partial<Record<FormatType, string>> = {
+  [FormatType.RECOMMENDED_CONTENT]: "outbrain-tm",
 };
 
 const Wrapper = styled.div`
@@ -36,7 +42,12 @@ const Banner = styled.div`
     `};
 `;
 
-const MegaBanner = ({ className }: MegaBannerProps) => {
+type Props = {
+  className?: string;
+  formatType: FormatType;
+};
+
+const TheMoneytizer = ({ className, formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   if (isProduction) {
@@ -49,15 +60,19 @@ const MegaBanner = ({ className }: MegaBannerProps) => {
 
   return (
     <Wrapper className={className}>
-      <Banner ref={div} id={`${siteId}-${formatId}`}>
+      <Banner
+        ref={div}
+        className={classNames[formatType]}
+        id={`${siteId}-${formatId}`}
+      >
         {isProduction ? null : "MegaBanner"}
       </Banner>
     </Wrapper>
   );
 };
 
-MegaBanner.defaultProps = {
+TheMoneytizer.defaultProps = {
   className: undefined,
 };
 
-export default MegaBanner;
+export default TheMoneytizer;

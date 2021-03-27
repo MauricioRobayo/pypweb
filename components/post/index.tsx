@@ -1,3 +1,4 @@
+import TheMoneytizer, { FormatType } from "components/the-moneytizer";
 import Link from "next/link";
 import { useState } from "react";
 import { IoMdOpen } from "react-icons/io";
@@ -65,22 +66,23 @@ export default function Post({ editPath, body }: PostProps) {
   }
 
   return (
-    <Wrapper hover={linkHover}>
-      <StyledPost dangerouslySetInnerHTML={{ __html: body }} />
-      <StyledLinkWrapper>
-        <Link href={`${baseEditUrl}${editPath}`} passHref>
-          <StyledAnchor
-            onBlur={handleMouseOut}
-            onFocus={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            onMouseOver={handleMouseOver}
-          >
-            Editar en GitHub 
-            {' '}
-            <StyledOpenIcon />
-          </StyledAnchor>
-        </Link>
-      </StyledLinkWrapper>
-    </Wrapper>
+    <>
+      <Wrapper hover={linkHover}>
+        <StyledPost dangerouslySetInnerHTML={{ __html: body }} />
+        <StyledLinkWrapper>
+          <Link href={`${baseEditUrl}${editPath}`} passHref>
+            <StyledAnchor
+              onBlur={handleMouseOut}
+              onFocus={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              onMouseOver={handleMouseOver}
+            >
+              Editar en GitHub <StyledOpenIcon />
+            </StyledAnchor>
+          </Link>
+        </StyledLinkWrapper>
+      </Wrapper>
+      <TheMoneytizer formatType={FormatType.RECOMMENDED_CONTENT} />
+    </>
   );
 }
