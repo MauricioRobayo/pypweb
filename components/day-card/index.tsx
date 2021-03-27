@@ -1,7 +1,7 @@
-import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
+import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import Icon from "components/icon";
 import { format } from "date-fns";
-import { ALL_DIGITS } from "lib/utils";
+import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import PypDate from "../date";
@@ -79,12 +79,7 @@ type DayCardProps = {
   citySlug: string;
   className?: string;
   currentDate: Date;
-  date: Date;
-  hasRestriction?: boolean;
-  hours: IHourData[];
-  isPublicLicense?: boolean;
-  numbersString: string;
-  scheme: Scheme;
+  pypData: IPypDataResult;
 };
 
 export default function DayCard({
@@ -93,16 +88,16 @@ export default function DayCard({
   citySlug,
   className,
   currentDate,
-  date,
-  numbersString,
-  hours,
-  isPublicLicense,
-  hasRestriction,
-  scheme,
+  pypData,
 }: DayCardProps) {
+  const { day, hours, month, numbers, scheme, year } = pypData;
+  const date = new Date(year, month - 1, day);
+  const numbersString = pypNumbersToString(numbers);
+  const isPublic = isPublicLicense(categoryName);
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
+  const hasRestriction = numbersString !== NA;
 
   return (
     <StyledCard
@@ -140,7 +135,7 @@ export default function DayCard({
         </div>
         <LicenseWrapper>
           <StyledLicensePlate
-            isPublic={isPublicLicense}
+            isPublic={isPublic}
             size={isCurrentDate ? "large" : "medium"}
           >
             {numbersString}
@@ -162,6 +157,4 @@ export default function DayCard({
 
 DayCard.defaultProps = {
   className: "",
-  hasRestriction: true,
-  isPublicLicense: false,
 };

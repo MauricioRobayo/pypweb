@@ -1,6 +1,5 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Breadcrumbs from "components/breadcrumbs";
-import { isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
@@ -60,22 +59,13 @@ export default function DaysList({
     slug: categorySlug,
     data: [{ scheme }],
   } = categoryData;
-  const [currentData, ...remainingData] = categoryData.data;
+  const [currentPypData, ...nextPypData] = categoryData.data;
   const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
       <Title>
-        Se restringe la circulación de vehículos 
-        {' '}
-        <strong>{categoryName}</strong>
-        {" "}
-        según el 
-        {' '}
-        <strong>
-          {schemeMessage}
-          {' '}
-          dígito del número de la placa
-        </strong>
+        Se restringe la circulación de vehículos <strong>{categoryName}</strong>{" "}
+        según el <strong>{schemeMessage} dígito del número de la placa</strong>
       </Title>
       <StyledBreadcrumbs
         paths={[
@@ -89,35 +79,19 @@ export default function DaysList({
           categorySlug={categorySlug}
           citySlug={citySlug}
           currentDate={currentDate}
-          date={
-            new Date(currentData.year, currentData.month - 1, currentData.day)
-          }
-          hasRestriction={pypNumbersToString(currentData.numbers) !== NA}
-          hours={currentData.hours}
-          isPublicLicense={isPublicLicense(categoryName)}
-          numbersString={pypNumbersToString(currentData.numbers)}
-          scheme={scheme}
+          pypData={currentPypData}
         />
         <Vidverto />
-        {remainingData.map(({ year, month, day, numbers, hours }) => {
-          const numbersString = pypNumbersToString(numbers);
-          const date = new Date(year, month - 1, day);
-          return (
-            <DayCard
-              key={date.toISOString()}
-              categoryName={categoryName}
-              categorySlug={categorySlug}
-              citySlug={citySlug}
-              currentDate={currentDate}
-              date={date}
-              hasRestriction={numbersString !== NA}
-              hours={hours}
-              isPublicLicense={isPublicLicense(categoryName)}
-              numbersString={numbersString}
-              scheme={scheme}
-            />
-          );
-        })}
+        {nextPypData.map((pypData) => (
+          <DayCard
+            key={JSON.stringify(pypData)}
+            categoryName={categoryName}
+            categorySlug={categorySlug}
+            citySlug={citySlug}
+            currentDate={currentDate}
+            pypData={pypData}
+          />
+        ))}
       </ListWrapper>
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
