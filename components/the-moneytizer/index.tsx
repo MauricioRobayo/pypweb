@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
-const formatId = "1";
 const baseUrl = "//ads.themoneytizer.com/s";
 
 export enum FormatType {
@@ -51,10 +50,10 @@ const TheMoneytizer = ({ className, formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   if (isProduction) {
-    useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
+    useScript(div, `${baseUrl}/gen.js?type=${formatType}`);
     useScript(
       div,
-      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`
+      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatType}`
     );
   }
 
@@ -63,7 +62,7 @@ const TheMoneytizer = ({ className, formatType }: Props) => {
       <Banner
         ref={div}
         className={classNames[formatType]}
-        id={`${siteId}-${formatId}`}
+        id={`${siteId}-${formatType}`}
       >
         {isProduction ? null : "MegaBanner"}
       </Banner>
