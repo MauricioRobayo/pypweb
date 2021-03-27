@@ -75,9 +75,7 @@ export default function CategoryCard({
         {isAllDigits || !hasRestriction ? null : (
           <div>
             Placas
-            {schemeString}
-            {' '}
-            en
+            {schemeString} en
           </div>
         )}
         <LicenseNumbers>

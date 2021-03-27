@@ -82,50 +82,23 @@ export default function Category({
 
   const currentNumberLicense = hasRestriction ? (
     <>
-      placas 
-      {' '}
-      {schemeString}
-      {' '}
-      en 
-      {' '}
-      <LicensePlate>{numbersString}</LicensePlate>
+      placas {schemeString} en <LicensePlate>{numbersString}</LicensePlate>
     </>
   ) : (
     <>
-      placas 
-      {' '}
-      {schemeString}
-      {' '}
-      en 
-      {' '}
-      <LicensePlate>{number}</LicensePlate>
+      placas {schemeString} en <LicensePlate>{number}</LicensePlate>
     </>
   );
 
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
-        Hoy tienen pico y placa 
-        {' '}
-        {categoryData.name}
-        {' '}
-        con placas 
-        {' '}
-        {schemeString}
-        {' '}
-        en
-        {" "}
-        <LicensePlate>{numbersString}</LicensePlate>
-        .
+        Hoy tienen pico y placa {categoryData.name} con placas {schemeString} en{" "}
+        <LicensePlate>{numbersString}</LicensePlate>.
       </div>
     ) : (
       <div>
-        Hoy 
-        {' '}
-        <strong>no tienen restricción</strong> 
-        {' '}
-        {categoryData.name}
-        .
+        Hoy <strong>no tienen restricción</strong> {categoryData.name}.
       </div>
     );
 
@@ -143,11 +116,8 @@ export default function Category({
       <StyledTheMoneytizer formatType="MEGABANNER" />
       <div>
         <Title>
-          {categoryData.name}
-          {' '}
-          con
-          {currentNumberLicense}
-          {" "}
+          {categoryData.name} con
+          {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
               ? "hoy tienen restricción en el siguiente horario:"
@@ -165,9 +135,7 @@ export default function Category({
         <div>
           <Title>Prográmese</Title>
           <div>
-            <LicensePlate>{number}</LicensePlate>
-            {' '}
-            tiene pico y placa el próximo:
+            <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
             <NextDays>
               <ol>
                 {categoryData.data.slice(1).map((data) => {

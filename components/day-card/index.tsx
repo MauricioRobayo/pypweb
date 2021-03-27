@@ -120,8 +120,7 @@ export default function DayCard({
             )}`}
           >
             <a>
-              {isCurrentDate ? <Icon iconName={categoryName} /> : null}
-              {" "}
+              {isCurrentDate ? <Icon iconName={categoryName} /> : null}{" "}
               <StyledPypDate
                 date={date}
                 hasRestriction={hasRestriction}
@@ -134,9 +133,7 @@ export default function DayCard({
             {hasRestriction && !isAllDigits && isCurrentDate ? (
               <div>
                 No circulan placas
-                {schemeString}
-                {' '}
-                en
+                {schemeString} en
               </div>
             ) : null}
           </Description>
