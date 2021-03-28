@@ -154,7 +154,9 @@ export default function DayCard({
           </div>
           {licensePlate}
         </Title>
-        <StyledHours date={date} hours={hours} interactive />
+        {isInactive ? null : (
+          <StyledHours date={date} hours={hours} interactive />
+        )}
       </SelectedCard>
     );
   }
