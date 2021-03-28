@@ -5,64 +5,53 @@ import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import PypDate from "../date";
-import { isSameDate } from "../date/utils";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
 
-const currentCardStyle = css`
+const inactiveStyle = css`
+  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
+  color: #b5b5b5;
+`;
+
+type StyleProps = {
+  isSelected?: boolean;
+  isInactive?: boolean;
+};
+
+const BaseCard = styled.div<StyleProps>`
+  padding: 1rem;
+`;
+
+const RegularCard = styled(BaseCard)`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  ${({ isInactive }) => isInactive && inactiveStyle}
+`;
+
+const SelectedCard = styled(BaseCard)`
   background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
   color: white;
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  position: relative;
+  ${({ isInactive }) => isInactive && inactiveStyle}
 `;
 
-const isInactiveStyle = css`
-  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
-  color: #b5b5b5;
-`;
-
-type StyleProps = {
-  isCurrentDate?: boolean;
-  hasRestriction?: boolean;
-};
-const StyledPypDate = styled(PypDate)<StyleProps>`
-  span {
-    color: ${({ isCurrentDate, hasRestriction }) =>
-      isCurrentDate && hasRestriction ? "white" : "inherit"};
-  }
-  .date {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-  }
-`;
-const StyledCard = styled.div<StyleProps>`
-  padding: 1rem;
-  ${({ isCurrentDate }) => isCurrentDate && currentCardStyle};
-  ${({ hasRestriction }) => !hasRestriction && isInactiveStyle};
-`;
 const Title = styled.div<StyleProps>`
   align-items: flex-end;
   border-bottom: 1px solid white;
   display: flex;
   justify-content: space-between;
-  ${({ isCurrentDate, hasRestriction }) =>
-    isCurrentDate &&
-    hasRestriction &&
+  padding-bottom: 1rem;
+  ${({ isInactive }) =>
+    isInactive &&
     css`
-      padding-bottom: 1rem;
-    `}
-`;
-const LicenseWrapper = styled.div``;
-const StyledHours = styled(Hours)<StyleProps>`
-  text-align: center;
-  ${({ isCurrentDate, hasRestriction }) =>
-    isCurrentDate &&
-    hasRestriction &&
-    css`
-      font-size: 1rem;
+      align-items: center;
+      border-bottom: none;
+      padding-bottom: 0;
     `}
 `;
 
@@ -71,15 +60,37 @@ const Description = styled.div`
   padding-top: 0.5rem;
 `;
 
-const StyledLicensePlate = styled(LicensePlate)``;
+const StyledPypDate = styled(PypDate)<StyleProps>`
+  span {
+    ${({ isSelected, isInactive }) =>
+      isSelected &&
+      !isInactive &&
+      css`
+        color: white;
+      `};
+  }
+  .date {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+`;
+
+const StyledHours = styled(Hours)`
+  font-size: 1rem;
+  text-align: center;
+`;
+
+const StyledIcon = styled(Icon)`
+  margin-right: 0.5rem;
+`;
 
 type DayCardProps = {
   categoryName: CategoryName;
   categorySlug: string;
   citySlug: string;
   className?: string;
-  currentDate: Date;
   pypData: IPypDataResult;
+  isSelected?: boolean;
 };
 
 export default function DayCard({
@@ -87,7 +98,7 @@ export default function DayCard({
   categoryName,
   citySlug,
   className,
-  currentDate,
+  isSelected,
   pypData,
 }: DayCardProps) {
   const { day, hours, month, numbers, scheme, year } = pypData;
@@ -95,66 +106,72 @@ export default function DayCard({
   const numbersString = pypNumbersToString(numbers);
   const isPublic = isPublicLicense(categoryName);
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const isCurrentDate = isSameDate(date, currentDate);
   const isAllDigits = numbersString === ALL_DIGITS;
-  const hasRestriction = numbersString !== NA;
+  const isInactive = numbersString === NA;
+
+  const formattedDate = (
+    <Link href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}>
+      <a>
+        {isSelected ? <StyledIcon iconName={categoryName} /> : null}
+        <StyledPypDate
+          date={date}
+          isInactive={isInactive}
+          isSelected={isSelected}
+          type="short"
+        />
+      </a>
+    </Link>
+  );
+
+  const licensePlate = (
+    <div>
+      <LicensePlate isPublic={isPublic} size={isSelected ? "large" : "medium"}>
+        {numbersString}
+      </LicensePlate>
+    </div>
+  );
+
+  if (isSelected) {
+    return (
+      <SelectedCard
+        key={date.toISOString()}
+        className={className}
+        isInactive={isInactive}
+      >
+        <Title isInactive={isInactive}>
+          <div>
+            {formattedDate}
+            {isInactive ? null : (
+              <Description>
+                {isAllDigits ? null : (
+                  <div>
+                    No circulan placas
+                    {schemeString} en
+                  </div>
+                )}
+              </Description>
+            )}
+          </div>
+          {licensePlate}
+        </Title>
+        <StyledHours date={date} hours={hours} interactive />
+      </SelectedCard>
+    );
+  }
 
   return (
-    <StyledCard
+    <RegularCard
       key={date.toISOString()}
       className={className}
-      hasRestriction={hasRestriction || false}
-      isCurrentDate={isCurrentDate}
+      isInactive={isInactive}
     >
-      <Title hasRestriction={hasRestriction} isCurrentDate={isCurrentDate}>
-        <div>
-          <Link
-            href={`/${citySlug}/${categorySlug}?d=${format(
-              date,
-              "yyyy-MM-dd"
-            )}`}
-          >
-            <a>
-              {isCurrentDate ? <Icon iconName={categoryName} /> : null}{" "}
-              <StyledPypDate
-                date={date}
-                hasRestriction={hasRestriction}
-                isCurrentDate={isCurrentDate}
-                type="short"
-              />
-            </a>
-          </Link>
-          <Description>
-            {hasRestriction && !isAllDigits && isCurrentDate ? (
-              <div>
-                No circulan placas
-                {schemeString} en
-              </div>
-            ) : null}
-          </Description>
-        </div>
-        <LicenseWrapper>
-          <StyledLicensePlate
-            isPublic={isPublic}
-            size={isCurrentDate ? "large" : "medium"}
-          >
-            {numbersString}
-          </StyledLicensePlate>
-        </LicenseWrapper>
-      </Title>
-      {hasRestriction && isCurrentDate ? (
-        <StyledHours
-          date={currentDate}
-          hasRestriction={hasRestriction}
-          hours={hours}
-          interactive
-          isCurrentDate={isCurrentDate}
-        />
-      ) : null}
-    </StyledCard>
+      {formattedDate}
+      {licensePlate}
+    </RegularCard>
   );
 }
 
 DayCard.defaultProps = {
   className: "",
+  isSelected: false,
 };

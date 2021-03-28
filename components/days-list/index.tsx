@@ -11,22 +11,14 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const ListWrapper = styled.div`
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  margin-top: 1rem;
   & > div {
     border-bottom: 1px solid #dbdbdb;
-    border-left: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
-  }
-  & > div:first-child {
-    border: none;
   }
   & > div:last-child {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  & > div:nth-child(2) {
-    border-top: 1px solid #dbdbdb;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-bottom: none;
   }
 `;
 
@@ -46,13 +38,11 @@ type DaysListProps = {
   cityName: string;
   citySlug: string;
   categoryData: ICategoryData;
-  currentDate: Date;
 };
 export default function DaysList({
   cityName,
   citySlug,
   categoryData,
-  currentDate,
 }: DaysListProps) {
   const {
     name: categoryName,
@@ -73,22 +63,21 @@ export default function DaysList({
           { name: categoryName, slug: "" },
         ]}
       />
+      <DayCard
+        categoryName={categoryName}
+        categorySlug={categorySlug}
+        citySlug={citySlug}
+        isSelected
+        pypData={currentPypData}
+      />
+      <Vidverto />
       <ListWrapper>
-        <DayCard
-          categoryName={categoryName}
-          categorySlug={categorySlug}
-          citySlug={citySlug}
-          currentDate={currentDate}
-          pypData={currentPypData}
-        />
-        <Vidverto />
         {nextPypData.map((pypData) => (
           <DayCard
             key={JSON.stringify(pypData)}
             categoryName={categoryName}
             categorySlug={categorySlug}
             citySlug={citySlug}
-            currentDate={currentDate}
             pypData={pypData}
           />
         ))}
