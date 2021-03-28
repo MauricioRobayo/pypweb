@@ -69,7 +69,7 @@ const TheMoneytizer = ({ className, formatType }: Props) => {
 };
 
 TheMoneytizer.defaultProps = {
-  className: undefined,
+  className: "",
 };
 
 export default TheMoneytizer;
