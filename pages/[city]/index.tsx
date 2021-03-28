@@ -53,6 +53,7 @@ export default function City({
           </li>
         ))}
       </ul>
+      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </section>
   );
 
@@ -60,7 +61,6 @@ export default function City({
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledTheMoneytizer formatType="MEGABANNER" />
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
-      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </Layout>
   );
 }
