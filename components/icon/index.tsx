@@ -14,13 +14,18 @@ const iconsMap: Record<CategoryName, string> = {
 };
 
 type IconProps = {
+  className?: string;
   iconName: CategoryName;
 };
 
-const Icon = ({ iconName }: IconProps) => (
-  <span aria-label="iconName" role="img">
+const Icon = ({ iconName, className }: IconProps) => (
+  <span aria-label="iconName" className={className} role="img">
     {iconsMap[iconName]}
   </span>
 );
+
+Icon.defaultProps = {
+  className: "",
+};
 
 export default Icon;

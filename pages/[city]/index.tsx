@@ -53,6 +53,7 @@ export default function City({
           </li>
         ))}
       </ul>
+      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </section>
   );
 

@@ -1,9 +1,9 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Breadcrumbs from "components/breadcrumbs";
-import { isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import styled from "styled-components";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
+import Vidverto from "../vidverto";
 
 const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1rem 0;
@@ -11,22 +11,14 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const ListWrapper = styled.div`
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  margin-top: 1rem;
   & > div {
     border-bottom: 1px solid #dbdbdb;
-    border-left: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
-  }
-  & > div:first-child {
-    border: none;
   }
   & > div:last-child {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  & > div:nth-child(2) {
-    border-top: 1px solid #dbdbdb;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-bottom: none;
   }
 `;
 
@@ -46,19 +38,18 @@ type DaysListProps = {
   cityName: string;
   citySlug: string;
   categoryData: ICategoryData;
-  currentDate: Date;
 };
 export default function DaysList({
   cityName,
   citySlug,
   categoryData,
-  currentDate,
 }: DaysListProps) {
   const {
     name: categoryName,
     slug: categorySlug,
     data: [{ scheme }],
   } = categoryData;
+  const [currentPypData, ...nextPypData] = categoryData.data;
   const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
@@ -72,26 +63,24 @@ export default function DaysList({
           { name: categoryName, slug: "" },
         ]}
       />
+      <DayCard
+        categoryName={categoryName}
+        categorySlug={categorySlug}
+        citySlug={citySlug}
+        isSelected
+        pypData={currentPypData}
+      />
+      <Vidverto />
       <ListWrapper>
-        {categoryData.data.map(({ year, month, day, numbers, hours }) => {
-          const numbersString = pypNumbersToString(numbers);
-          const date = new Date(year, month - 1, day);
-          return (
-            <DayCard
-              key={date.toISOString()}
-              categoryName={categoryName}
-              categorySlug={categorySlug}
-              citySlug={citySlug}
-              currentDate={currentDate}
-              date={date}
-              hasRestriction={numbersString !== NA}
-              hours={hours}
-              isPublicLicense={isPublicLicense(categoryName)}
-              numbersString={numbersString}
-              scheme={scheme}
-            />
-          );
-        })}
+        {nextPypData.map((pypData) => (
+          <DayCard
+            key={JSON.stringify(pypData)}
+            categoryName={categoryName}
+            categorySlug={categorySlug}
+            citySlug={citySlug}
+            pypData={pypData}
+          />
+        ))}
       </ListWrapper>
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />

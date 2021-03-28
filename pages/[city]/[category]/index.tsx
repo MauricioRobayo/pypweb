@@ -61,12 +61,7 @@ export default function Category({
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledTheMoneytizer formatType="MEGABANNER" />
-      <DaysList
-        categoryData={data}
-        cityName={cityName}
-        citySlug={citySlug}
-        currentDate={date}
-      />
+      <DaysList categoryData={data} cityName={cityName} citySlug={citySlug} />
     </Layout>
   );
 }
