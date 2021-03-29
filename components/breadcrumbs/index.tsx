@@ -20,7 +20,7 @@ type Props = {
   paths: (Path | PathSelectProps)[];
 };
 
-const Breadcrumbs = ({ paths, className }: Props) => (
+const Breadcrumbs = ({ paths, className = "" }: Props) => (
   <Wrapper className={className}>
     {paths.map((path) => {
       if (isPathOptions(path)) {
@@ -49,9 +49,5 @@ const Breadcrumbs = ({ paths, className }: Props) => (
     })}
   </Wrapper>
 );
-
-Breadcrumbs.defaultProps = {
-  className: "",
-};
 
 export default Breadcrumbs;

@@ -10,10 +10,10 @@ type HoursProps = {
 };
 
 export default function Hours({
-  className,
+  className = "",
   date,
   hours,
-  interactive,
+  interactive = false,
 }: HoursProps) {
   return (
     /* eslint-disable react/no-array-index-key */
@@ -25,8 +25,3 @@ export default function Hours({
     /* eslint-enable */
   );
 }
-
-Hours.defaultProps = {
-  className: "",
-  interactive: false,
-};

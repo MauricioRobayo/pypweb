@@ -43,7 +43,7 @@ type Props = {
   formatType: FormatType;
 };
 
-const TheMoneytizer = ({ className, formatType }: Props) => {
+const TheMoneytizer = ({ className = "", formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   const formatId = formatTypeId[formatType];
@@ -66,10 +66,6 @@ const TheMoneytizer = ({ className, formatType }: Props) => {
       {isProduction ? null : formatType}
     </Banner>
   );
-};
-
-TheMoneytizer.defaultProps = {
-  className: "",
 };
 
 export default TheMoneytizer;

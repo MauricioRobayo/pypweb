@@ -1,4 +1,4 @@
-export default function Email({ color }: { color?: string }) {
+export default function Email({ color = "inherit" }: { color?: string }) {
   const emailCharactersCodes = [
     "105;",
     "110;",
@@ -26,7 +26,3 @@ export default function Email({ color }: { color?: string }) {
     />
   );
 }
-
-Email.defaultProps = {
-  color: "inherit",
-};

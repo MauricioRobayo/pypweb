@@ -103,7 +103,3 @@ export default function Select({ pypOptions, type = "main" }: SelectProps) {
     </>
   );
 }
-
-Select.defaultProps = {
-  type: "main",
-};

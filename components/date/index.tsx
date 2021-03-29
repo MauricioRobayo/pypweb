@@ -11,7 +11,11 @@ type DateProps = {
   type?: "long" | "short";
 };
 
-export default function PypDate({ className, date, type = "long" }: DateProps) {
+export default function PypDate({
+  className = "",
+  date,
+  type = "long",
+}: DateProps) {
   const isToday = dateIsToday(date);
 
   if (type === "long") {
@@ -34,8 +38,3 @@ export default function PypDate({ className, date, type = "long" }: DateProps) {
     </time>
   );
 }
-
-PypDate.defaultProps = {
-  className: "",
-  type: "long",
-};
