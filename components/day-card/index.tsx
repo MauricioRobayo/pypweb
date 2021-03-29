@@ -97,8 +97,8 @@ export default function DayCard({
   categorySlug,
   categoryName,
   citySlug,
-  className,
-  isSelected,
+  className = "",
+  isSelected = false,
   pypData,
 }: DayCardProps) {
   const { day, hours, month, numbers, scheme, year } = pypData;
@@ -172,8 +172,3 @@ export default function DayCard({
     </RegularCard>
   );
 }
-
-DayCard.defaultProps = {
-  className: "",
-  isSelected: false,
-};

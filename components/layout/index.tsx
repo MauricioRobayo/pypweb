@@ -114,11 +114,11 @@ type LayoutProps = {
 
 export default function Layout({
   children,
-  className,
+  className = "",
   isHome = false,
-  aside,
+  aside = null,
   pypOptions,
-  title,
+  title = "Pico y placa hoy",
   date,
 }: LayoutProps) {
   return (
@@ -163,10 +163,3 @@ export default function Layout({
     </StyledLayout>
   );
 }
-
-Layout.defaultProps = {
-  aside: null,
-  className: "",
-  isHome: false,
-  title: "Pico y placa hoy",
-};

@@ -18,14 +18,10 @@ type IconProps = {
   iconName: CategoryName;
 };
 
-const Icon = ({ iconName, className }: IconProps) => (
+const Icon = ({ iconName, className = "" }: IconProps) => (
   <span aria-label="iconName" className={className} role="img">
     {iconsMap[iconName]}
   </span>
 );
-
-Icon.defaultProps = {
-  className: "",
-};
 
 export default Icon;
