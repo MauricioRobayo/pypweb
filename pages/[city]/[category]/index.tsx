@@ -13,6 +13,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
+  categories: { name: string; slug: string }[];
   categorySlug: string;
   cityName: string;
   citySlug: CityType;
@@ -26,6 +27,7 @@ const StyledTheMoneytizer = styled(TheMoneytizer)`
 `;
 
 export default function Category({
+  categories,
   categorySlug,
   cityName,
   citySlug,
@@ -61,7 +63,12 @@ export default function Category({
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <StyledTheMoneytizer formatType="MEGABANNER" />
-      <DaysList categoryData={data} cityName={cityName} citySlug={citySlug} />
+      <DaysList
+        categories={categories}
+        categoryData={data}
+        cityName={cityName}
+        citySlug={citySlug}
+      />
     </Layout>
   );
 }
@@ -98,6 +105,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
+      categories: Object.values(categories).map(({ name, slug }) => ({
+        name,
+        slug,
+      })),
       categoryData: getCategoryData({
         day: date.getDate(),
         days: 8,
