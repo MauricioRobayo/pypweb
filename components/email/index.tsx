@@ -1,4 +1,12 @@
-export default function Email({ color = "inherit" }: { color?: string }) {
+import styled from "styled-components";
+
+const StyledEmail = styled.span`
+  color: ${({ color }) => color || "inherit"};
+`;
+
+type EmailProps = { color?: string };
+
+export default function Email({ color }: EmailProps) {
   const emailCharactersCodes = [
     "105;",
     "110;",
@@ -16,13 +24,13 @@ export default function Email({ color = "inherit" }: { color?: string }) {
     "111;",
     "109;",
   ];
-  /* eslint-disable react/no-danger */
   return (
-    <span
+    <StyledEmail
+      color={color}
+      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
         __html: `&#${emailCharactersCodes.join("&#")}`,
       }}
-      style={{ color }}
     />
   );
 }
