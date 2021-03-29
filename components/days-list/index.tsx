@@ -6,7 +6,7 @@ import NumberLinks from "../number-links";
 import Vidverto from "../vidverto";
 
 const StyledBreadcrumbs = styled(Breadcrumbs)`
-  margin: 1rem 0;
+  margin: 1.5rem 0 2rem;
   text-align: center;
 `;
 
@@ -30,16 +30,17 @@ const Article = styled.article`
 const Title = styled.h3`
   font-size: 1.2rem;
   font-weight: normal;
-  margin-bottom: 1rem;
   text-align: center;
 `;
 
 type DaysListProps = {
+  categories: { name: string; slug: string }[];
   cityName: string;
   citySlug: string;
   categoryData: ICategoryData;
 };
 export default function DaysList({
+  categories,
   cityName,
   citySlug,
   categoryData,
@@ -53,16 +54,19 @@ export default function DaysList({
   const schemeMessage = scheme === "first" ? "primer" : "último";
   return (
     <Article>
-      <Title>
-        Se restringe la circulación de vehículos <strong>{categoryName}</strong>{" "}
-        según el <strong>{schemeMessage} dígito del número de la placa</strong>
-      </Title>
-      <StyledBreadcrumbs
-        paths={[
-          { name: cityName, slug: citySlug },
-          { name: categoryName, slug: "" },
-        ]}
-      />
+      <header>
+        <Title>
+          Se restringe la circulación de vehículos{" "}
+          <strong>{categoryName}</strong> según el{" "}
+          <strong>{schemeMessage} dígito del número de la placa</strong>
+        </Title>
+        <StyledBreadcrumbs
+          paths={[
+            { name: cityName, slug: citySlug },
+            { options: categories, selected: categorySlug, title: "Categoría" },
+          ]}
+        />
+      </header>
       <DayCard
         categoryName={categoryName}
         categorySlug={categorySlug}

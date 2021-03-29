@@ -1,18 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import PathSelect, { Path, PathSelectProps } from "./select";
+
+const isPathOptions = (path: any): path is PathSelectProps => "title" in path;
 
 const Wrapper = styled.nav``;
-
-type Path = {
-  name: string;
-  slug: string;
-};
-
-type Props = {
-  className?: string;
-  paths: Path[];
-};
 
 const Anchor = styled.a`
   color: ${({ theme }) => theme.colors.linkColor};
@@ -22,13 +15,27 @@ const Anchor = styled.a`
   }
 `;
 
+type Props = {
+  className?: string;
+  paths: (Path | PathSelectProps)[];
+};
+
 const Breadcrumbs = ({ paths, className }: Props) => (
   <Wrapper className={className}>
-    {paths.map(({ name, slug }) => {
-      const key = `${name}/${slug}`;
-      if (slug === "") {
-        return <span key={key}>{name}</span>;
+    {paths.map((path) => {
+      if (isPathOptions(path)) {
+        const { options, selected, title } = path;
+        return (
+          <PathSelect
+            key={title}
+            options={options}
+            selected={selected}
+            title={title}
+          />
+        );
       }
+      const { name, slug } = path;
+      const key = `${name}/${slug}`;
       return (
         <React.Fragment key={key}>
           <span>
