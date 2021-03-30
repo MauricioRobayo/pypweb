@@ -3,6 +3,7 @@ import Icon from "components/icon";
 import { format } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
 import PypDate from "../date";
 import Hours from "../hours";
@@ -18,41 +19,63 @@ type StyleProps = {
   isInactive?: boolean;
 };
 
-const BaseCard = styled.div<StyleProps>`
-  padding: 1rem;
+const RegularCard = styled.div<StyleProps>`
+  a {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    transition: background-color 0.5s, color 0.5s;
+    ${({ isInactive }) => isInactive && inactiveStyle}
+  }
+  a:hover {
+    background-color: tomato;
+    color: white;
+    font-weight: bold;
+  }
 `;
 
-const RegularCard = styled(BaseCard)`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  ${({ isInactive }) => isInactive && inactiveStyle}
-`;
-
-const SelectedCard = styled(BaseCard)`
-  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
+const SelectedCard = styled.div<StyleProps>`
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
-  color: white;
   font-size: 1.25rem;
   margin-bottom: 1rem;
   ${({ isInactive }) => isInactive && inactiveStyle}
 `;
 
-const Title = styled.div<StyleProps>`
+const Header = styled.div<StyleProps>`
   align-items: flex-end;
-  border-bottom: 1px solid white;
+  background-color: tomato;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
   display: flex;
+  font-weight: bold;
   justify-content: space-between;
-  padding-bottom: 1rem;
+  padding: 1rem;
   ${({ isInactive }) =>
     isInactive &&
     css`
       align-items: center;
-      border-bottom: none;
-      padding-bottom: 0;
+      border-radius: 5px;
+      font-weight: normal;
+      ${inactiveStyle}
     `}
+`;
+
+const Body = styled.div<StyleProps>`
+  font-size: 1rem;
+  padding: 0 1rem 1rem;
+  h4 {
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
 `;
 
 const Description = styled.div`
@@ -110,17 +133,12 @@ export default function DayCard({
   const isInactive = numbersString === NA;
 
   const formattedDate = (
-    <Link href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}>
-      <a>
-        {isSelected ? <StyledIcon iconName={categoryName} /> : null}
-        <StyledPypDate
-          date={date}
-          isInactive={isInactive}
-          isSelected={isSelected}
-          type="short"
-        />
-      </a>
-    </Link>
+    <StyledPypDate
+      date={date}
+      isInactive={isInactive}
+      isSelected={isSelected}
+      type="short"
+    />
   );
 
   const licensePlate = (
@@ -138,24 +156,28 @@ export default function DayCard({
         className={className}
         isInactive={isInactive}
       >
-        <Title isInactive={isInactive}>
+        <Header isInactive={isInactive}>
           <div>
+            {isSelected ? <StyledIcon iconName={categoryName} /> : null}
             {formattedDate}
             {isInactive ? null : (
               <Description>
                 {isAllDigits ? null : (
-                  <div>
-                    No circulan placas
-                    {schemeString} en
-                  </div>
+                  <div>No circulan placas {schemeString} en</div>
                 )}
               </Description>
             )}
           </div>
           {licensePlate}
-        </Title>
+        </Header>
         {isInactive ? null : (
-          <StyledHours date={date} hours={hours} interactive />
+          <Body>
+            <h4>
+              <FcAlarmClock />
+              Horario
+            </h4>
+            <StyledHours date={date} hours={hours} interactive />
+          </Body>
         )}
       </SelectedCard>
     );
@@ -167,8 +189,14 @@ export default function DayCard({
       className={className}
       isInactive={isInactive}
     >
-      {formattedDate}
-      {licensePlate}
+      <Link
+        href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}
+      >
+        <a>
+          {formattedDate}
+          {licensePlate}
+        </a>
+      </Link>
     </RegularCard>
   );
 }
