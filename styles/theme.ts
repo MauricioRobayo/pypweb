@@ -9,8 +9,8 @@ const defaultTheme = {
     activeBackgroundColor: "hsl(217, 71%, 53%)",
     activeColor: "hsl(51, 100%, 56%)",
     ads: {
-      backgroundColor: "aliceblue",
-      color: "dodgerblue",
+      backgroundColor: "AliceBlue",
+      color: "DodgerBlue",
     },
     inactiveBackgroundColor: "hsl(0, 0%, 96%)",
     linkColor: "hsl(217, 71%, 53%)",
