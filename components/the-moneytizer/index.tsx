@@ -22,17 +22,18 @@ const formatTypeClassName: Record<FormatType, string> = {
 };
 
 const Banner = styled.div`
-  ${() =>
+  ${({ theme }) =>
     !isProduction &&
     css`
       align-items: center;
-      background-color: mistyrose;
+      background-color: ${theme.colors.ads.backgroundColor};
       border: 1px solid currentColor;
-      color: tomato;
+      color: ${theme.colors.ads.color};
       display: flex;
       font-weight: bold;
       height: 90px;
       justify-content: center;
+      max-width: ${theme.maxWidth};
       text-transform: uppercase;
       width: 100%;
     `};
