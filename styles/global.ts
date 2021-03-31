@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { size } from "./constants";
 import reset from "./reset";
 
 const GlobalStyle = createGlobalStyle`
@@ -17,6 +18,12 @@ const GlobalStyle = createGlobalStyle`
   }
   * {
     box-sizing: border-box;
+  }
+  html {
+    font-size: 14px;
+    @media only screen and (min-width: ${size.sm}) {
+      font-size: 16px;
+    }
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

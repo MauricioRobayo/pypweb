@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 
 export type Path = {
   name: string;
-  slug: string;
+  path: string;
 };
 
 export type PathSelectProps = {
@@ -27,8 +27,8 @@ const PathSelect = ({ options, selected, title }: PathSelectProps) => {
 
   return (
     <select onChange={onHandleChange} title={title} value={selectedPath}>
-      {options.map(({ name, slug }) => (
-        <option key={slug} value={slug}>
+      {options.map(({ name, path }) => (
+        <option key={path} value={path}>
           {name}
         </option>
       ))}

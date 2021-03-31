@@ -25,11 +25,11 @@ const RegularCard = styled.div<StyleProps>`
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s;
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
-    background-color: tomato;
+    background-color: salmon;
     color: white;
     font-weight: bold;
   }
@@ -38,7 +38,6 @@ const RegularCard = styled.div<StyleProps>`
 const SelectedCard = styled.div<StyleProps>`
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
-  font-size: 1.25rem;
   margin-bottom: 1rem;
   ${({ isInactive }) => isInactive && inactiveStyle}
 `;
@@ -64,7 +63,6 @@ const Header = styled.div<StyleProps>`
 `;
 
 const Body = styled.div<StyleProps>`
-  font-size: 1rem;
   padding: 0 1rem 1rem;
   h4 {
     align-items: center;
@@ -79,7 +77,6 @@ const Body = styled.div<StyleProps>`
 `;
 
 const Description = styled.div`
-  font-size: 1rem;
   padding-top: 0.5rem;
 `;
 
@@ -96,6 +93,13 @@ const StyledPypDate = styled(PypDate)<StyleProps>`
     font-size: 0.85rem;
     text-transform: uppercase;
   }
+`;
+
+const Warning = styled.div`
+  background-color: hsl(48, 100%, 85%);
+  color: ${({ theme }) => theme.colors.linkColor};
+  padding: 1rem;
+  text-align: center;
 `;
 
 const StyledHours = styled(Hours)`
@@ -131,6 +135,11 @@ export default function DayCard({
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
+  const today = new Date();
+  const isToday =
+    day === today.getDate() &&
+    month - 1 === today.getMonth() &&
+    year === today.getFullYear();
 
   const formattedDate = (
     <StyledPypDate
@@ -178,6 +187,16 @@ export default function DayCard({
             </h4>
             <StyledHours date={date} hours={hours} interactive />
           </Body>
+        )}
+        {isToday ? null : (
+          <Warning>
+            <p>
+              <Link href={`/${citySlug}/${categorySlug}`}>
+                <a>⚠️ Para ver la información del día de hoy haga click acá</a>
+              </Link>
+              .
+            </p>
+          </Warning>
         )}
       </SelectedCard>
     );

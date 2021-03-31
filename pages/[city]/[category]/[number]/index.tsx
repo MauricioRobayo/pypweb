@@ -1,4 +1,5 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import Breadcrumbs from "components/breadcrumbs";
 import PypDate from "components/date";
 import Hours from "components/hours";
 import Layout from "components/layout";
@@ -31,6 +32,10 @@ const NextDays = styled.div`
     margin-top: 1rem;
   }
 `;
+const StyledBreadcrumbs = styled(Breadcrumbs)`
+  margin: 1.5rem 0 2rem;
+  text-align: center;
+`;
 type SemaphoreProps = {
   hasRestriction?: boolean;
 };
@@ -52,6 +57,7 @@ const Semaphore = styled.div<SemaphoreProps>`
 
 type CategoryProps = {
   categoryData: ICategoryData;
+  categoryName: string;
   cityName: string;
   citySlug: string;
   currentDate: number;
@@ -62,6 +68,7 @@ type CategoryProps = {
 
 export default function Category({
   categoryData,
+  categoryName,
   cityName,
   citySlug,
   currentDate,
@@ -124,6 +131,20 @@ export default function Category({
               : "hoy no tienen restricción."}
           </strong>
         </Title>
+        <StyledBreadcrumbs
+          paths={[
+            { name: cityName, path: citySlug },
+            { name: categoryName, path: `${citySlug}/${categorySlug}` },
+            {
+              options: Array.from({ length: 10 }, (_, i) => ({
+                name: String(i),
+                path: String(i),
+              })),
+              selected: number,
+              title: "Número",
+            },
+          ]}
+        />
         {hasRestriction ? (
           <>
             <Hours date={date} hours={hours} />
@@ -208,7 +229,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
   const {
     categories: {
-      [categorySlug]: { getCategoryData },
+      [categorySlug]: { getCategoryData, name: categoryName },
     },
     name: cityName,
   } = cities[citySlug];
@@ -225,6 +246,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         month: date.getMonth() + 1,
         year: date.getFullYear(),
       }),
+      categoryName,
       cityName,
       citySlug,
       currentDate: date.getTime(),

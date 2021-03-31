@@ -34,7 +34,7 @@ const Breadcrumbs = ({ paths, className = "" }: Props) => (
           />
         );
       }
-      const { name, slug } = path;
+      const { name, path: slug } = path;
       const key = `${name}/${slug}`;
       return (
         <React.Fragment key={key}>

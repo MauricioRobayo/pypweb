@@ -69,7 +69,7 @@ export default function NumberLinks({
           return (
             <Link
               key={number}
-              href={`/${citySlug}/${categorySlug}/placa/${number}`}
+              href={`/${citySlug}/${categorySlug}/${number}`}
               passHref
             >
               <Anchor>
