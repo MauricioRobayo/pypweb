@@ -60,7 +60,7 @@ const Page = styled.div<PageProps>`
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.5rem;
   }
 `;
 
