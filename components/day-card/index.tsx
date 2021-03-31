@@ -39,14 +39,13 @@ const SelectedCard = styled.div<StyleProps>`
   border-radius: 5px;
   box-shadow: 0 0 10px 0 #7a7a7a;
   margin-bottom: 1rem;
+  overflow: hidden;
   ${({ isInactive }) => isInactive && inactiveStyle}
 `;
 
 const Header = styled.div<StyleProps>`
   align-items: flex-end;
   background-color: tomato;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   color: white;
   display: flex;
   font-weight: bold;
@@ -56,7 +55,6 @@ const Header = styled.div<StyleProps>`
     isInactive &&
     css`
       align-items: center;
-      border-radius: 5px;
       font-weight: normal;
       ${inactiveStyle}
     `}
@@ -192,7 +190,7 @@ export default function DayCard({
           <Warning>
             <p>
               <Link href={`/${citySlug}/${categorySlug}`}>
-                <a>⚠️ Para ver la información del día de hoy haga click acá</a>
+                <a>⚠️ Para ver la información de hoy haga click acá</a>
               </Link>
               .
             </p>
