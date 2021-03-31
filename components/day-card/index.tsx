@@ -25,11 +25,11 @@ const RegularCard = styled.div<StyleProps>`
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s;
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
-    background-color: tomato;
+    background-color: salmon;
     color: white;
     font-weight: bold;
   }
