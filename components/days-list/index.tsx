@@ -62,8 +62,15 @@ export default function DaysList({
         </Title>
         <StyledBreadcrumbs
           paths={[
-            { name: cityName, slug: citySlug },
-            { options: categories, selected: categorySlug, title: "Categoría" },
+            { name: cityName, path: citySlug },
+            {
+              options: categories.map(({ name, slug }) => ({
+                name,
+                path: slug,
+              })),
+              selected: categorySlug,
+              title: "Categoría",
+            },
           ]}
         />
       </header>

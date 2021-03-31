@@ -133,12 +133,12 @@ export default function Category({
         </Title>
         <StyledBreadcrumbs
           paths={[
-            { name: cityName, slug: citySlug },
-            { name: categoryName, slug: `${citySlug}/${categorySlug}` },
+            { name: cityName, path: citySlug },
+            { name: categoryName, path: `${citySlug}/${categorySlug}` },
             {
               options: Array.from({ length: 10 }, (_, i) => ({
-                name: i,
-                slug: i,
+                name: String(i),
+                path: String(i),
               })),
               selected: number,
               title: "Número",
