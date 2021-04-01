@@ -4,6 +4,7 @@
 
 #### Decretos
 
+- [Decreto 0010 del 5 de enero de 2021](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_0010.PDF6)
 - [Decreto 1198 del 1 de octubre de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)
 - [Decreto 0500 del 16 de marzo del 2020](/cartagena/decreto-0500-del-16-de-marzo-del-2020.pdf)
 - [Decreto 0017 del 3 de enero de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto-0017_2020-P.PDF)
