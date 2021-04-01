@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styled from "styled-components";
+import row from "./row";
 
 const Wrapper = styled.div`
   margin: 4rem 0 2rem;
@@ -12,73 +12,31 @@ const Title = styled.h4`
   margin-bottom: 1rem;
 `;
 
-type NumberProps = {
-  selected?: boolean;
-};
-const Number = styled.div<NumberProps>`
-  align-items: center;
-  background-color: ${({ selected, theme }) =>
-    selected ? "white" : theme.colors.linkColor};
-  border: 2px solid
-    ${({ selected, theme }) =>
-      selected ? "currentColor" : theme.colors.linkColor};
-  border-radius: 50%;
-  box-sizing: border-box;
-  cursor: ${({ selected }) => (selected ? "auto" : "pointer")};
-  display: inline-flex;
-  font-size: 1.25rem;
-  height: 0.5rem;
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  margin: 0.5rem;
-  padding: 1rem;
-  text-align: center;
-  width: 0.5rem;
-`;
-const Anchor = styled.a`
-  color: white;
-  &:hover {
-    color: white;
-  }
 `;
 
 type NumberLinksProps = {
   citySlug: string;
   categorySlug: string;
-  numberSelected?: string | null;
+  numberSelected?: string;
 };
 
 export default function NumberLinks({
   citySlug,
   categorySlug,
-  numberSelected = null,
+  numberSelected = "",
 }: NumberLinksProps) {
-  const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
+  const Row = row(numberSelected, `${citySlug}/${categorySlug}`);
   return (
     <Wrapper>
       <Title>¿Cuándo tengo pico y placa?</Title>
-      <div>
-        {numbers.map((number) => {
-          if (number === numberSelected) {
-            return (
-              <Number key={number} selected>
-                {number}
-              </Number>
-            );
-          }
-          return (
-            <Link
-              key={number}
-              href={`/${citySlug}/${categorySlug}/${number}`}
-              passHref
-            >
-              <Anchor>
-                <Number>{number}</Number>
-              </Anchor>
-            </Link>
-          );
-        })}
-      </div>
+      <Container>
+        <Row numbers={["0", "1", "2", "3", "4"]} />
+        <Row numbers={["5", "6", "7", "8", "9"]} />
+      </Container>
     </Wrapper>
   );
 }
