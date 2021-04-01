@@ -3,10 +3,10 @@ import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
 import TheMoneytizer from "components/the-moneytizer";
+import Vidverto from "components/vidverto";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
-import styled from "styled-components";
 import { PypOption } from "types";
 
 type CityProps = {
@@ -16,10 +16,6 @@ type CityProps = {
   pypOptions: PypOption[];
   currentDate: number;
 };
-
-const StyledTheMoneytizer = styled(TheMoneytizer)`
-  margin-bottom: 1rem;
-`;
 
 export default function City({
   categories,
@@ -59,8 +55,8 @@ export default function City({
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
-      <StyledTheMoneytizer formatType="MEGABANNER" />
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
+      <Vidverto />
     </Layout>
   );
 }
