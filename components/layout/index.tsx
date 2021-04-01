@@ -1,3 +1,4 @@
+import TheMoneytizer from "components/the-moneytizer";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -8,6 +9,10 @@ import PypDate from "../date";
 import Email from "../email";
 import LicensePlate from "../license-plate";
 import Select from "../select";
+
+const StyledTheMoneytizer = styled(TheMoneytizer)`
+  margin: 2rem auto 0;
+`;
 
 const StyledLayout = styled.div`
   align-items: center;
@@ -23,7 +28,7 @@ const StyledLayout = styled.div`
     h1 {
       font-size: 2rem;
       font-weight: bold;
-      margin: 2rem 0 1rem;
+      margin: 1rem 0 1rem;
     }
 
     h2 {
@@ -142,6 +147,7 @@ export default function Layout({
         </Navbar>
       )}
       <Page isHome={isHome}>
+        <StyledTheMoneytizer formatType="MEGABANNER" />
         <div>
           <header>
             <h1>{title}</h1>

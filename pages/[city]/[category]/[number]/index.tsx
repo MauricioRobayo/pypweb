@@ -6,7 +6,7 @@ import Layout from "components/layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
-import TheMoneytizer from "components/the-moneytizer";
+import Vidverto from "components/vidverto";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { getPypOptions, isCity, NA, pypNumbersToString } from "lib/utils";
@@ -17,9 +17,6 @@ import { PypOption } from "types";
 
 const StyledLayout = styled(Layout)`
   text-align: center;
-`;
-const StyledTheMoneytizer = styled(TheMoneytizer)`
-  margin-bottom: 1rem;
 `;
 const Title = styled.h4`
   font-size: 1.25rem;
@@ -52,7 +49,12 @@ const Semaphore = styled.div<SemaphoreProps>`
   height: 4rem;
   justify-content: center;
   justify-self: center;
+  margin: 0 auto 2rem;
   width: 4rem;
+`;
+
+const StyledVidverto = styled(Vidverto)`
+  margin: 1rem auto;
 `;
 
 type CategoryProps = {
@@ -89,11 +91,11 @@ export default function Category({
 
   const currentNumberLicense = hasRestriction ? (
     <>
-      placas {schemeString} en <LicensePlate>{numbersString}</LicensePlate>
+      <LicensePlate>{numbersString}</LicensePlate>
     </>
   ) : (
     <>
-      placas {schemeString} en <LicensePlate>{number}</LicensePlate>
+      <LicensePlate>{number}</LicensePlate>
     </>
   );
 
@@ -120,17 +122,7 @@ export default function Category({
       pypOptions={pypOptions}
       title={title}
     >
-      <StyledTheMoneytizer formatType="MEGABANNER" />
       <div>
-        <Title>
-          {categoryData.name} con
-          {currentNumberLicense}{" "}
-          <strong>
-            {hasRestriction
-              ? "hoy tienen restricción en el siguiente horario:"
-              : "hoy no tienen restricción."}
-          </strong>
-        </Title>
         <StyledBreadcrumbs
           paths={[
             { name: cityName, path: citySlug },
@@ -145,6 +137,17 @@ export default function Category({
             },
           ]}
         />
+        <Semaphore hasRestriction={hasRestriction}>{number}</Semaphore>
+        <Title>
+          Vehículos {categoryData.name.toLocaleLowerCase()} con placas{" "}
+          {schemeString} en
+          {currentNumberLicense}{" "}
+          <strong>
+            {hasRestriction
+              ? "hoy tienen restricción en el siguiente horario:"
+              : "hoy no tienen restricción."}
+          </strong>
+        </Title>
         {hasRestriction ? (
           <>
             <Hours date={date} hours={hours} />
@@ -152,7 +155,7 @@ export default function Category({
         ) : (
           todaysRestriction
         )}
-        <Semaphore>{number}</Semaphore>
+        <StyledVidverto />
         <div>
           <Title>Prográmese</Title>
           <div>

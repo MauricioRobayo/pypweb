@@ -5,6 +5,7 @@ import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
+import { padding } from "styles/mixins";
 import PypDate from "../date";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
@@ -24,8 +25,8 @@ const RegularCard = styled.div<StyleProps>`
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
     transition: background-color 0.5s;
+    ${padding}
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
@@ -48,9 +49,8 @@ const Header = styled.div<StyleProps>`
   background-color: tomato;
   color: white;
   display: flex;
-  font-weight: bold;
   justify-content: space-between;
-  padding: 1rem;
+  ${padding}
   ${({ isInactive }) =>
     isInactive &&
     css`
@@ -79,13 +79,17 @@ const Description = styled.div`
 `;
 
 const StyledPypDate = styled(PypDate)<StyleProps>`
-  span {
+  .day,
+  .date {
     ${({ isSelected, isInactive }) =>
       isSelected &&
       !isInactive &&
       css`
         color: white;
       `};
+  }
+  .day {
+    font-weight: bold;
   }
   .date {
     font-size: 0.85rem;

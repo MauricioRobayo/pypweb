@@ -20,14 +20,17 @@ const VideoPlaceholder = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
 `;
 
-const Vidverto = () => {
+type VidvertoProps = {
+  className?: string;
+};
+const Vidverto = ({ className = "" }: VidvertoProps) => {
   const divRef = useRef(null);
   useScript(divRef, scriptUrl, true);
 
   if (isProduction) {
     return (
       <>
-        <div ref={divRef} id={`_vidverto-${id}`} />
+        <div ref={divRef} className={className} id={`_vidverto-${id}`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -56,7 +59,9 @@ const Vidverto = () => {
     );
   }
 
-  return <VideoPlaceholder>Vidverto Add</VideoPlaceholder>;
+  return (
+    <VideoPlaceholder className={className}>Vidverto Add</VideoPlaceholder>
+  );
 };
 
 export default Vidverto;

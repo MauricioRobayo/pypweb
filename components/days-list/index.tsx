@@ -57,7 +57,7 @@ export default function DaysList({
       <header>
         <Title>
           Se restringe la circulación de vehículos{" "}
-          <strong>{categoryName}</strong> según el{" "}
+          <strong>{categoryName.toLowerCase()}</strong> según el{" "}
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
         <StyledBreadcrumbs

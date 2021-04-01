@@ -3,13 +3,11 @@ import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
 import Post from "components/post";
-import TheMoneytizer from "components/the-moneytizer";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import { PypOption } from "types";
 
 type CategoryProps = {
@@ -21,10 +19,6 @@ type CategoryProps = {
   post: string;
   pypOptions: PypOption[];
 };
-
-const StyledTheMoneytizer = styled(TheMoneytizer)`
-  margin-bottom: 1rem;
-`;
 
 export default function Category({
   categories,
@@ -53,16 +47,16 @@ export default function Category({
     month: date.getMonth() + 1,
     year: date.getFullYear(),
   });
+  const categoryName = data.name.toLowerCase();
 
   const aside = (
     <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
   );
 
-  const title = `Pico y placa ${data.name.toLowerCase()} en ${cityName}`;
+  const title = `Pico y placa ${categoryName} en ${cityName}`;
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
-      <StyledTheMoneytizer formatType="MEGABANNER" />
       <DaysList
         categories={categories}
         categoryData={data}
