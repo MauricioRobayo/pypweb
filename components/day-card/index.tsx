@@ -89,7 +89,12 @@ const StyledPypDate = styled(PypDate)<StyleProps>`
       `};
   }
   .day {
-    font-weight: bold;
+    ${({ isSelected, isInactive }) =>
+      isSelected &&
+      !isInactive &&
+      css`
+        font-weight: bold;
+      `};
   }
   .date {
     font-size: 0.85rem;
