@@ -4,7 +4,8 @@
 
 #### Decretos
 
-- [decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)
+- [Decreto 072 de 2021](https://www.santamarta.gov.co/sites/default/files/dec_072_de_30_mar_2021.pdf)
+- [Decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)
 - [Decreto 043 de 2019](/santa-marta/decreto-043-de-2019.pdf)
 - [decreto 068 de 2018](/santa-marta/decreto-068-de-2018.pdf)
 
