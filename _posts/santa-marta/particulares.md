@@ -3,7 +3,7 @@
 - Vehículos automotores de servicio particular
 
 #### Decretos
-
+- [Decreto 072 de 2021](https://www.santamarta.gov.co/sites/default/files/dec_072_de_30_mar_2021.pdf)
 - [Decreto 074 del 28 de febrero de 2020](/santa-marta/decreto-074-del-28-de-febrero-de-2020.pdf)
 - [decreto 508 de 2019](https://www.santamarta.gov.co/sites/default/files/decreto_508_de_4_dic_2019.pdf)
 - [Decreto 070 de 2018](/santa-marta/decreto-070-de-2018.pdf)
