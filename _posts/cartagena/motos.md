@@ -15,6 +15,8 @@
 
     - Los días pares solo circularán motocicletas cuyas placas terminen en números pares, incluyendo el 0.
     - Los días impares solo circularán motocicletas cuyas placas terminen en números impares.
+    - Día sin moto los segundos y últimos viernes de mes.
+    - prohíbe la circulación por el centro amurallado y barrio Getsemaní.
 
     Se exceptúan de esta medida:
 
