@@ -1,3 +1,5 @@
+import { isSameDay } from "date-fns";
+
 const dateTimeFormatOptions = {
   day: "numeric",
   month: "long",
@@ -37,18 +39,8 @@ export function getLocalShortDateString(date: Date = new Date()): string {
   return f.format(date);
 }
 
-export function isSameDate(date1: Date | string, date2: Date | string) {
-  const currentDate1 = new Date(date1);
-  const currentDate2 = new Date(date2);
-  const sameDate = currentDate1.getDate() === currentDate2.getDate();
-  const sameMonth = currentDate1.getMonth() === currentDate2.getMonth();
-  const sameYear = currentDate1.getFullYear() === currentDate2.getFullYear();
-
-  return sameDate && sameMonth && sameYear;
-}
-
-export function dateIsToday(date: Date | string): boolean {
-  return isSameDate(date, new Date());
+export function dateIsToday(date: Date): boolean {
+  return isSameDay(date, new Date());
 }
 
 export function isValidDateString(date: any): date is string {
