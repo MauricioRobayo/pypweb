@@ -30,6 +30,8 @@ const StyledOpenIcon = styled(IoMdOpen)`
 
 const StyledAnchor = styled.a`
   ${flexHorizontalCenterVerticalEnd}
+
+  justify-content: flex-end;
 `;
 
 const StyledLinkWrapper = styled.div`

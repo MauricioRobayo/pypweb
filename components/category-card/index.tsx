@@ -6,7 +6,7 @@ import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { IoArrowForward } from "react-icons/io5";
 import styled from "styled-components";
-import { camouflageLink } from "styles/mixins";
+import { camouflageLink, flexHorizontalCenterVerticalEnd } from "styles/mixins";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
@@ -27,9 +27,7 @@ const LicenseNumbers = styled.div`
   margin: 1rem 0;
 `;
 const SeeMore = styled.a`
-  align-items: flex-end;
-  display: flex;
-  justify-content: center;
+  ${flexHorizontalCenterVerticalEnd}
 `;
 const SeeMoreIcon = styled(IoArrowForward)`
   margin-left: 0.5rem;

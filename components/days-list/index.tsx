@@ -5,6 +5,7 @@ import Button from "components/button";
 import { memo, useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
 import styled from "styled-components";
+import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
 import Vidverto from "../vidverto";
@@ -54,6 +55,10 @@ const MoreIcon = styled(HiDownload)`
   margin-left: 0.5rem;
 `;
 
+const ErrorMessage = styled.div`
+  ${flexHorizontalCenterVerticalEnd}
+`;
+
 type DaysListProps = {
   categories: { name: string; slug: string }[];
   cityName: string;
@@ -70,6 +75,7 @@ function DaysList({
   getCategoryData,
 }: DaysListProps) {
   const [data, setData] = useState(categoryData.data);
+  const [error, setError] = useState(null);
   const {
     name: categoryName,
     slug: categorySlug,
@@ -84,8 +90,12 @@ function DaysList({
 
   const onClickHandler = () => {
     const { day, month, year } = data[data.length - 1];
-    const newData = getCategoryData({ day: day + 1, days: 8, month, year });
-    setData((d) => d.concat(newData.data));
+    try {
+      const newData = getCategoryData({ day: day + 1, days: 30, month, year });
+      setData((d) => d.concat(newData.data));
+    } catch (e) {
+      setError(e);
+    }
   };
 
   return (
@@ -129,12 +139,18 @@ function DaysList({
           />
         ))}
       </ListWrapper>
-      <MoreButtonWrapper>
-        <MoreButton onClick={onClickHandler}>
-          Cargar más información
-          <MoreIcon />
-        </MoreButton>
-      </MoreButtonWrapper>
+      {error ? (
+        <ErrorMessage>
+          <p>😢 No tenemos más información</p>
+        </ErrorMessage>
+      ) : (
+        <MoreButtonWrapper>
+          <MoreButton onClick={onClickHandler}>
+            Cargar más información
+            <MoreIcon />
+          </MoreButton>
+        </MoreButtonWrapper>
+      )}
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
       </footer>

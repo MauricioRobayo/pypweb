@@ -32,9 +32,7 @@ const RegularCard = styled.div<StyleProps>`
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
-    background-color: salmon;
-    color: white;
-    font-weight: bold;
+    border: 1px solid ${({ theme }) => theme.colors.linkColor};
   }
 `;
 

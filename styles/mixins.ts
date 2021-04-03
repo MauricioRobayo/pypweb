@@ -17,7 +17,7 @@ export const camouflageLink = css`
 `;
 
 export const flexHorizontalCenterVerticalEnd = css`
-  align-items: center;
+  align-items: flex-end;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `;
