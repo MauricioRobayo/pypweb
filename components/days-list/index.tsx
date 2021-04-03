@@ -2,7 +2,7 @@ import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Breadcrumbs from "components/breadcrumbs";
 import Button from "components/button";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
 import styled from "styled-components";
 import DayCard from "../day-card";
@@ -62,7 +62,7 @@ type DaysListProps = {
   getCategoryData: Category["getCategoryData"];
 };
 
-export default function DaysList({
+function DaysList({
   categories,
   cityName,
   citySlug,
@@ -141,3 +141,5 @@ export default function DaysList({
     </Article>
   );
 }
+
+export default memo(DaysList);
