@@ -25,6 +25,7 @@ const Number = styled.div<NumberProps>`
 `;
 const Anchor = styled.a`
   color: white;
+  text-decoration: none;
   &:hover {
     color: white;
   }

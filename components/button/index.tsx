@@ -17,10 +17,10 @@ const StyledButton = styled.button`
 type ButtonProps = {
   children: ReactNode;
   className?: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-const Button = ({ children, onClick, className }: ButtonProps) => (
+const Button = ({ children, onClick = () => null, className }: ButtonProps) => (
   <StyledButton className={className} onClick={onClick} type="button">
     {children}
   </StyledButton>

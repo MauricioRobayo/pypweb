@@ -33,13 +33,6 @@ const GlobalStyle = createGlobalStyle`
   strong {
     font-weight: bold;
   }
-  a {
-    color: inherit;
-    text-decoration: none;
-    &:hover {
-      color: ${({ theme }) => theme.colors.linkColor};
-    }
-  }
 `;
 
 export default GlobalStyle;

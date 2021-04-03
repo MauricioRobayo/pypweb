@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoMdOpen } from "react-icons/io";
 import styled, { css } from "styled-components";
+import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 
 const baseEditUrl =
   "https://github.com/MauricioRobayo/pypweb/edit/main/_posts/";
@@ -28,9 +29,7 @@ const StyledOpenIcon = styled(IoMdOpen)`
 `;
 
 const StyledAnchor = styled.a`
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
+  ${flexHorizontalCenterVerticalEnd}
 `;
 
 const StyledLinkWrapper = styled.div`

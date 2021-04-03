@@ -5,7 +5,7 @@ import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
-import { padding } from "styles/mixins";
+import { camouflageLink, responsivePaddingAround } from "styles/mixins";
 import PypDate from "../date";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
@@ -21,12 +21,13 @@ type StyleProps = {
 };
 
 const RegularCard = styled.div<StyleProps>`
+  ${camouflageLink}
   a {
     align-items: center;
     display: flex;
     justify-content: space-between;
     transition: background-color 0.5s;
-    ${padding}
+    ${responsivePaddingAround}
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
@@ -50,7 +51,7 @@ const Header = styled.div<StyleProps>`
   color: white;
   display: flex;
   justify-content: space-between;
-  ${padding}
+  ${responsivePaddingAround}
   ${({ isInactive }) =>
     isInactive &&
     css`
@@ -217,6 +218,7 @@ export default function DayCard({
     >
       <Link
         href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}
+        passHref
       >
         <a>
           {formattedDate}

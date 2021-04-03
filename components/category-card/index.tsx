@@ -1,11 +1,12 @@
 import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
-import Button from "components/button";
 import Hours from "components/hours";
 import Icon from "components/icon";
 import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { IoArrowForward } from "react-icons/io5";
 import styled from "styled-components";
+import { camouflageLink } from "styles/mixins";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
@@ -15,18 +16,23 @@ const Card = styled.div`
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
-
-  a:hover {
-    color: inherit;
-  }
 `;
 const Title = styled.h4`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  ${camouflageLink}
 `;
 const LicenseNumbers = styled.div`
   margin: 1rem 0;
+`;
+const SeeMore = styled.a`
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+`;
+const SeeMoreIcon = styled(IoArrowForward)`
+  margin-left: 0.5rem;
 `;
 
 type CategoryCardProps = {
@@ -84,10 +90,10 @@ export default function CategoryCard({
           </LicensePlate>
         </LicenseNumbers>
         <footer>
-          <Link href={`${categoryPath}`}>
-            <a>
-              <Button>Ver próximos 7 días →</Button>
-            </a>
+          <Link href={`${categoryPath}`} passHref>
+            <SeeMore>
+              Ver próximos 7 días <SeeMoreIcon />
+            </SeeMore>
           </Link>
         </footer>
       </Card>
