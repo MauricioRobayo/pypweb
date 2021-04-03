@@ -2,7 +2,7 @@ import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Breadcrumbs from "components/breadcrumbs";
 import Button from "components/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
 import styled from "styled-components";
 import DayCard from "../day-card";
@@ -37,8 +37,6 @@ const Title = styled.h3`
   text-align: center;
 `;
 
-// const appear = keyframes``;
-
 const MoreButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -63,6 +61,7 @@ type DaysListProps = {
   categoryData: ICategoryData;
   getCategoryData: Category["getCategoryData"];
 };
+
 export default function DaysList({
   categories,
   cityName,
@@ -78,11 +77,17 @@ export default function DaysList({
   } = categoryData;
   const [currentPypData, ...nextPypData] = data;
   const schemeMessage = scheme === "first" ? "primer" : "último";
+
+  useEffect(() => {
+    setData(categoryData.data);
+  }, [categoryData]);
+
   const onClickHandler = () => {
     const { day, month, year } = data[data.length - 1];
     const newData = getCategoryData({ day: day + 1, days: 8, month, year });
     setData((d) => d.concat(newData.data));
   };
+
   return (
     <Article>
       <header>
