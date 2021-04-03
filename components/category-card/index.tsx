@@ -77,10 +77,7 @@ export default function CategoryCard({
         ) : null}
 
         {isAllDigits || !hasRestriction ? null : (
-          <div>
-            Placas
-            {schemeString} en
-          </div>
+          <div>Placas {schemeString} en</div>
         )}
         <LicenseNumbers>
           <LicensePlate isPublic={isPublicLicense(categorySlug)}>
