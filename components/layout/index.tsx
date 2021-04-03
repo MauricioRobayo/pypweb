@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { camouflageLink } from "styles/mixins";
 import { PypOption } from "types";
 import CTA from "../call-to-action";
 import PypDate from "../date";
@@ -107,6 +108,10 @@ const Footer = styled.footer`
   }
 `;
 
+const Logo = styled.h2`
+  ${camouflageLink}
+`;
+
 type LayoutProps = {
   children: ReactNode;
   className?: string;
@@ -135,13 +140,13 @@ export default function Layout({
       {isHome ? null : (
         <Navbar>
           <nav>
-            <h2>
+            <Logo>
               <Link href="/">
                 <a>
                   <LicensePlate>PYPHOY</LicensePlate>
                 </a>
               </Link>
-            </h2>
+            </Logo>
             <Select pypOptions={pypOptions} />
           </nav>
         </Navbar>

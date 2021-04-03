@@ -3,9 +3,10 @@ import Icon from "components/icon";
 import { format } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { memo } from "react";
 import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
-import { padding } from "styles/mixins";
+import { camouflageLink, responsivePaddingAround } from "styles/mixins";
 import PypDate from "../date";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
@@ -21,18 +22,17 @@ type StyleProps = {
 };
 
 const RegularCard = styled.div<StyleProps>`
+  ${camouflageLink}
   a {
     align-items: center;
     display: flex;
     justify-content: space-between;
     transition: background-color 0.5s;
-    ${padding}
+    ${responsivePaddingAround}
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
-    background-color: salmon;
-    color: white;
-    font-weight: bold;
+    border: 1px solid ${({ theme }) => theme.colors.linkColor};
   }
 `;
 
@@ -50,7 +50,7 @@ const Header = styled.div<StyleProps>`
   color: white;
   display: flex;
   justify-content: space-between;
-  ${padding}
+  ${responsivePaddingAround}
   ${({ isInactive }) =>
     isInactive &&
     css`
@@ -127,7 +127,7 @@ type DayCardProps = {
   isSelected?: boolean;
 };
 
-export default function DayCard({
+function DayCard({
   categorySlug,
   categoryName,
   citySlug,
@@ -217,6 +217,7 @@ export default function DayCard({
     >
       <Link
         href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}
+        passHref
       >
         <a>
           {formattedDate}
@@ -226,3 +227,5 @@ export default function DayCard({
     </RegularCard>
   );
 }
+
+export default memo(DayCard);

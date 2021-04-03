@@ -41,13 +41,18 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const data = cities[citySlug].categories[categorySlug].getCategoryData({
+  const categoryName = cities[citySlug].categories[
+    categorySlug
+  ].name.toLowerCase();
+
+  const { getCategoryData } = cities[citySlug].categories[categorySlug];
+
+  const categoryData = getCategoryData({
     day: date.getDate(),
     days: 8,
     month: date.getMonth() + 1,
     year: date.getFullYear(),
   });
-  const categoryName = data.name.toLowerCase();
 
   const aside = (
     <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
@@ -59,9 +64,10 @@ export default function Category({
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <DaysList
         categories={categories}
-        categoryData={data}
+        categoryData={categoryData}
         cityName={cityName}
         citySlug={citySlug}
+        getCategoryData={getCategoryData}
       />
     </Layout>
   );

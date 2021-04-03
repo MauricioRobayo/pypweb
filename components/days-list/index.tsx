@@ -1,6 +1,11 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
+import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Breadcrumbs from "components/breadcrumbs";
+import Button from "components/button";
+import { memo, useEffect, useState } from "react";
+import { HiDownload } from "react-icons/hi";
 import styled from "styled-components";
+import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import DayCard from "../day-card";
 import NumberLinks from "../number-links";
 import Vidverto from "../vidverto";
@@ -13,7 +18,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 const ListWrapper = styled.div`
   border: 1px solid #dbdbdb;
   border-radius: 5px;
-  margin-top: 1rem;
+  margin: 1rem 0;
   & > div {
     border-bottom: 1px solid #dbdbdb;
   }
@@ -33,25 +38,66 @@ const Title = styled.h3`
   text-align: center;
 `;
 
+const MoreButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const MoreButton = styled(Button)`
+  && {
+    align-items: flex-end;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+const MoreIcon = styled(HiDownload)`
+  margin-left: 0.5rem;
+`;
+
+const ErrorMessage = styled.div`
+  ${flexHorizontalCenterVerticalEnd}
+`;
+
 type DaysListProps = {
   categories: { name: string; slug: string }[];
   cityName: string;
   citySlug: string;
   categoryData: ICategoryData;
+  getCategoryData: Category["getCategoryData"];
 };
-export default function DaysList({
+
+function DaysList({
   categories,
   cityName,
   citySlug,
   categoryData,
+  getCategoryData,
 }: DaysListProps) {
+  const [data, setData] = useState(categoryData.data);
+  const [error, setError] = useState(null);
   const {
     name: categoryName,
     slug: categorySlug,
     data: [{ scheme }],
   } = categoryData;
-  const [currentPypData, ...nextPypData] = categoryData.data;
+  const [currentPypData, ...nextPypData] = data;
   const schemeMessage = scheme === "first" ? "primer" : "último";
+
+  useEffect(() => {
+    setData(categoryData.data);
+  }, [categoryData]);
+
+  const onClickHandler = () => {
+    const { day, month, year } = data[data.length - 1];
+    try {
+      const newData = getCategoryData({ day: day + 1, days: 30, month, year });
+      setData((d) => d.concat(newData.data));
+    } catch (e) {
+      setError(e);
+    }
+  };
+
   return (
     <Article>
       <header>
@@ -93,9 +139,23 @@ export default function DaysList({
           />
         ))}
       </ListWrapper>
+      {error ? (
+        <ErrorMessage>
+          <p>😢 No tenemos más información</p>
+        </ErrorMessage>
+      ) : (
+        <MoreButtonWrapper>
+          <MoreButton onClick={onClickHandler}>
+            Cargar más información
+            <MoreIcon />
+          </MoreButton>
+        </MoreButtonWrapper>
+      )}
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
       </footer>
     </Article>
   );
 }
+
+export default memo(DaysList);

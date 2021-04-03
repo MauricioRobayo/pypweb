@@ -7,14 +7,6 @@ const isPathOptions = (path: any): path is PathSelectProps => "title" in path;
 
 const Wrapper = styled.nav``;
 
-const Anchor = styled.a`
-  color: ${({ theme }) => theme.colors.linkColor};
-  font-weight: bold;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 type Props = {
   className?: string;
   paths: (Path | PathSelectProps)[];
@@ -39,8 +31,8 @@ const Breadcrumbs = ({ paths, className = "" }: Props) => (
       return (
         <React.Fragment key={key}>
           <span>
-            <Link href={`/${slug}`} passHref>
-              <Anchor>{name}</Anchor>
+            <Link href={`/${slug}`}>
+              <a>{name}</a>
             </Link>
           </span>
           <span> / </span>
