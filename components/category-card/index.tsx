@@ -4,7 +4,6 @@ import Icon from "components/icon";
 import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
-import { IoArrowForward } from "react-icons/io5";
 import styled from "styled-components";
 import {
   camouflageLink,
@@ -36,10 +35,6 @@ const LicenseNumbers = styled.div`
 
 const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
-`;
-
-const SeeMoreIcon = styled(IoArrowForward)`
-  margin-left: 0.25rem;
 `;
 
 type CategoryCardProps = {
@@ -94,9 +89,7 @@ export default function CategoryCard({
       </LicenseNumbers>
       <footer>
         <Link href={`${categoryPath}`} passHref>
-          <SeeMore>
-            Ver próximos 7 días <SeeMoreIcon />
-          </SeeMore>
+          <SeeMore>Ver próximos 7 días</SeeMore>
         </Link>
       </footer>
     </Wrapper>
