@@ -6,31 +6,40 @@ import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { IoArrowForward } from "react-icons/io5";
 import styled from "styled-components";
-import { camouflageLink, flexHorizontalCenterVerticalEnd } from "styles/mixins";
+import {
+  camouflageLink,
+  flexHorizontalCenterVerticalEnd,
+  responsivePaddingAround,
+} from "styles/mixins";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
-const Card = styled.div`
+const Wrapper = styled.article`
   background-color: #f5f5f5;
   border: 2px solid #444;
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
+  ${responsivePaddingAround}
 `;
+
 const Title = styled.h4`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
   ${camouflageLink}
 `;
+
 const LicenseNumbers = styled.div`
   margin: 1rem 0;
 `;
+
 const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
 `;
+
 const SeeMoreIcon = styled(IoArrowForward)`
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 `;
 
 type CategoryCardProps = {
@@ -59,39 +68,37 @@ export default function CategoryCard({
   const categoryPath = `${citySlug}/${categorySlug}`;
 
   return (
-    <article key={categoryName}>
-      <Card>
-        <Title>
-          <Link href={`${categoryPath}`}>
-            <a>
-              <Icon iconName={categoryName} />
-              {categoryName}
-            </a>
-          </Link>
-        </Title>
-        {hasRestriction ? (
-          <div>
-            <div>No circulan en el siguiente horario</div>
-            <Hours date={date} hours={hours} interactive />
-          </div>
-        ) : null}
+    <Wrapper>
+      <Title>
+        <Link href={`${categoryPath}`}>
+          <a>
+            <Icon iconName={categoryName} />
+            {categoryName}
+          </a>
+        </Link>
+      </Title>
+      {hasRestriction ? (
+        <div>
+          <div>No circulan en el siguiente horario</div>
+          <Hours date={date} hours={hours} interactive />
+        </div>
+      ) : null}
 
-        {isAllDigits || !hasRestriction ? null : (
-          <div>Placas {schemeString} en</div>
-        )}
-        <LicenseNumbers>
-          <LicensePlate isPublic={isPublicLicense(categorySlug)}>
-            {numbersString}
-          </LicensePlate>
-        </LicenseNumbers>
-        <footer>
-          <Link href={`${categoryPath}`} passHref>
-            <SeeMore>
-              Ver próximos 7 días <SeeMoreIcon />
-            </SeeMore>
-          </Link>
-        </footer>
-      </Card>
-    </article>
+      {isAllDigits || !hasRestriction ? null : (
+        <div>Placas {schemeString} en</div>
+      )}
+      <LicenseNumbers>
+        <LicensePlate isPublic={isPublicLicense(categorySlug)}>
+          {numbersString}
+        </LicensePlate>
+      </LicenseNumbers>
+      <footer>
+        <Link href={`${categoryPath}`} passHref>
+          <SeeMore>
+            Ver próximos 7 días <SeeMoreIcon />
+          </SeeMore>
+        </Link>
+      </footer>
+    </Wrapper>
   );
 }

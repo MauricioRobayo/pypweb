@@ -5,9 +5,12 @@ import CategoryCard from "../category-card";
 
 const List = styled.div`
   display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   justify-content: center;
-  max-width: ${({ theme }) => theme.maxWidth};
+  max-width: 720px;
+  width: 100%;
 `;
 
 type CategoryListProps = {
