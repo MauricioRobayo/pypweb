@@ -167,8 +167,6 @@ function DayCard({
     </div>
   );
 
-  console.debug(`🔥 rendering`, { date });
-
   if (isSelected) {
     return (
       <SelectedCard
