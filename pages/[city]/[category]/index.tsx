@@ -47,7 +47,7 @@ export default function Category({
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
 
-  const data = getCategoryData({
+  const categoryData = getCategoryData({
     day: date.getDate(),
     days: 8,
     month: date.getMonth() + 1,
@@ -64,7 +64,7 @@ export default function Category({
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <DaysList
         categories={categories}
-        categoryData={data}
+        categoryData={categoryData}
         cityName={cityName}
         citySlug={citySlug}
         getCategoryData={getCategoryData}

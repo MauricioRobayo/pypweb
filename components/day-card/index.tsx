@@ -3,6 +3,7 @@ import Icon from "components/icon";
 import { format } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { memo } from "react";
 import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
 import { camouflageLink, responsivePaddingAround } from "styles/mixins";
@@ -128,7 +129,7 @@ type DayCardProps = {
   isSelected?: boolean;
 };
 
-export default function DayCard({
+function DayCard({
   categorySlug,
   categoryName,
   citySlug,
@@ -165,6 +166,8 @@ export default function DayCard({
       </LicensePlate>
     </div>
   );
+
+  console.debug(`🔥 rendering`, { date });
 
   if (isSelected) {
     return (
@@ -228,3 +231,5 @@ export default function DayCard({
     </RegularCard>
   );
 }
+
+export default memo(DayCard);
