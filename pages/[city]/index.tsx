@@ -7,7 +7,12 @@ import Vidverto from "components/vidverto";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import styled from "styled-components";
 import { PypOption } from "types";
+
+const StyledVidverto = styled(Vidverto)`
+  margin: 1rem 0 0.5rem;
+`;
 
 type CityProps = {
   categories: ICategoryData[];
@@ -56,7 +61,7 @@ export default function City({
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
-      <Vidverto />
+      <StyledVidverto />
     </Layout>
   );
 }
