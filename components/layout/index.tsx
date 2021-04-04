@@ -26,8 +26,6 @@ const RecommendedContent = styled(TheMoneytizer).attrs({
 
 const StyledLayout = styled.div`
   align-items: center;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 
   header {
@@ -81,6 +79,9 @@ const Page = styled.div<PageProps>`
 
 const Aside = styled.aside`
   ${responsivePaddingAround}
+
+  margin: 0 auto;
+  max-width: 720px;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;

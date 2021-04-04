@@ -38,7 +38,6 @@ const StyledLinkWrapper = styled.div`
 `;
 
 const StyledPost = styled.div`
-  max-width: 720px;
   text-align: left;
   img {
     max-width: 100%;
