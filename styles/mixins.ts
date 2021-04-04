@@ -21,3 +21,9 @@ export const flexHorizontalCenterVerticalEnd = css`
   display: flex;
   justify-content: center;
 `;
+
+export const flexCenter = css`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;

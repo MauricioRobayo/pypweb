@@ -2,7 +2,6 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
-import TheMoneytizer from "components/the-moneytizer";
 import Vidverto from "components/vidverto";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -54,7 +53,6 @@ export default function City({
           </li>
         ))}
       </ul>
-      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </section>
   );
 

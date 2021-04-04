@@ -4,29 +4,48 @@ import Icon from "components/icon";
 import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { FcAlarmClock } from "react-icons/fc";
 import styled from "styled-components";
 import {
   camouflageLink,
+  flexCenter,
   flexHorizontalCenterVerticalEnd,
-  responsivePaddingAround,
 } from "styles/mixins";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
 const Wrapper = styled.article`
-  background-color: #f5f5f5;
-  border: 2px solid #444;
   border-radius: 0.5rem;
-  padding: 1rem;
   text-align: center;
-  ${responsivePaddingAround}
 `;
 
 const Title = styled.h4`
+  background: ${({ theme }) => theme.colors.activeBackgroundColor};
+  border-radius: 5px 5px 0 0;
+  color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  padding: 1rem;
   ${camouflageLink}
+`;
+
+const Body = styled.div`
+  background-color: white;
+  border-left: 1px solid ${({ theme }) => theme.colors.activeBackgroundColor};
+  border-right: 1px solid ${({ theme }) => theme.colors.activeBackgroundColor};
+  padding: 1rem;
+`;
+
+const Footer = styled.footer`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.activeBackgroundColor};
+  border-left: 1px solid ${({ theme }) => theme.colors.activeBackgroundColor};
+  border-radius: 0 0 5px 5px;
+  border-right: 1px solid ${({ theme }) => theme.colors.activeBackgroundColor};
+  padding: 1rem;
+`;
+
+const HoursTitle = styled.div`
+  ${flexCenter}
 `;
 
 const LicenseNumbers = styled.div`
@@ -35,6 +54,10 @@ const LicenseNumbers = styled.div`
 
 const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
+`;
+
+const StyledIcon = styled(Icon)`
+  margin-right: 0.5rem;
 `;
 
 type CategoryCardProps = {
@@ -67,31 +90,34 @@ export default function CategoryCard({
       <Title>
         <Link href={`${categoryPath}`}>
           <a>
-            <Icon iconName={categoryName} />
+            <StyledIcon iconName={categoryName} />
             {categoryName}
           </a>
         </Link>
       </Title>
-      {hasRestriction ? (
-        <div>
-          <div>No circulan en el siguiente horario</div>
-          <Hours date={date} hours={hours} interactive />
-        </div>
-      ) : null}
-
-      {isAllDigits || !hasRestriction ? null : (
-        <div>Placas {schemeString} en</div>
-      )}
-      <LicenseNumbers>
-        <LicensePlate isPublic={isPublicLicense(categorySlug)}>
-          {numbersString}
-        </LicensePlate>
-      </LicenseNumbers>
-      <footer>
+      <Body>
+        {isAllDigits || !hasRestriction ? null : (
+          <div>No circulan placas {schemeString} en</div>
+        )}
+        <LicenseNumbers>
+          <LicensePlate isPublic={isPublicLicense(categorySlug)}>
+            {numbersString}
+          </LicensePlate>
+        </LicenseNumbers>
+        {hasRestriction ? (
+          <div>
+            <HoursTitle>
+              <FcAlarmClock /> Horario
+            </HoursTitle>
+            <Hours date={date} hours={hours} interactive />
+          </div>
+        ) : null}
+      </Body>
+      <Footer>
         <Link href={`${categoryPath}`} passHref>
           <SeeMore>Ver próximos 7 días</SeeMore>
         </Link>
-      </footer>
+      </Footer>
     </Wrapper>
   );
 }
