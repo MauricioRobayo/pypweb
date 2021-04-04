@@ -21,7 +21,7 @@ const MegaBanner = styled(TheMoneytizer).attrs({
 const RecommendedContent = styled(TheMoneytizer).attrs({
   formatType: "RECOMMENDED_CONTENT",
 })`
-  margin: 2rem auto;
+  margin-bottom: 2rem;
 `;
 
 const StyledLayout = styled.div`
