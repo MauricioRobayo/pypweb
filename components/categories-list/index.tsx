@@ -9,7 +9,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
-  max-width: 720px;
+  max-width: ${({ theme }) => theme.maxWidth};
   width: 100%;
 `;
 

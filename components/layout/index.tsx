@@ -3,7 +3,7 @@ import Vidverto from "components/vidverto";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { camouflageLink, responsivePaddingAround } from "styles/mixins";
 import { PypOption } from "types";
 import CTA from "../call-to-action";
@@ -21,7 +21,7 @@ const MegaBanner = styled(TheMoneytizer).attrs({
 const RecommendedContent = styled(TheMoneytizer).attrs({
   formatType: "RECOMMENDED_CONTENT",
 })`
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 `;
 
 const StyledLayout = styled.div`
@@ -67,7 +67,6 @@ type PageProps = {
 };
 const Page = styled.div<PageProps>`
   display: flex;
-  flex: 1 1 100%;
   flex-direction: column;
   justify-content: ${({ isHome }) => (isHome ? "center" : "flex-start")};
   width: ${({ isHome }) => (isHome ? "auto" : "100%")};
@@ -77,10 +76,17 @@ const Page = styled.div<PageProps>`
     flex-direction: column;
     padding: 0.5rem;
   }
+  ${({ isHome }) =>
+    isHome &&
+    css`
+      flex: 1 1 100%;
+    `}
 `;
 
 const Aside = styled.aside`
   ${responsivePaddingAround}
+
+  max-width: 720px;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
@@ -105,7 +111,7 @@ const Aside = styled.aside`
   }
 `;
 
-const Footer = styled.footer`
+const Footer = styled.footer<PageProps>`
   background-color: hsl(0, 0%, 98%);
   border-top: 1px solid hsl(0, 0%, 88%);
   font-size: 0.85rem;
@@ -115,6 +121,11 @@ const Footer = styled.footer`
   p {
     margin: 0.5rem;
   }
+  ${({ isHome }) =>
+    isHome &&
+    css`
+      margin-top: auto;
+    `}
 `;
 
 const Logo = styled.h2`
@@ -175,9 +186,13 @@ export default function Layout({
           {isHome ? <Vidverto /> : <CTA />}
         </div>
       </Page>
-      {aside ? <Aside>{aside}</Aside> : null}
-      {isHome ? null : <RecommendedContent />}
-      <Footer>
+      {aside ? (
+        <Aside>
+          {aside}
+          {isHome ? null : <RecommendedContent />}
+        </Aside>
+      ) : null}
+      <Footer isHome={isHome}>
         <p>PICO Y PLACA HOY</p>
         <Email />
       </Footer>
