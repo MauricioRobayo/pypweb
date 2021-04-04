@@ -14,19 +14,9 @@ export function isCity(city: any): city is CityType {
 
 export function getPypOptions() {
   const pypOptions: { value: string; name: string }[] = [];
-  Object.values(cities).forEach(
-    ({ name: cityName, slug: citySlug, categories }) => {
-      pypOptions.push({ name: cityName, value: citySlug });
-      Object.values(categories).forEach(
-        ({ name: categoryName, slug: categorySlug }) => {
-          pypOptions.push({
-            name: `${cityName} / ${categoryName}`,
-            value: `${citySlug}/${categorySlug}`,
-          });
-        }
-      );
-    }
-  );
+  Object.values(cities).forEach(({ name: cityName, slug: citySlug }) => {
+    pypOptions.push({ name: cityName, value: citySlug });
+  });
   return pypOptions;
 }
 

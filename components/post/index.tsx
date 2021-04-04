@@ -1,4 +1,3 @@
-import TheMoneytizer from "components/the-moneytizer";
 import Link from "next/link";
 import { useState } from "react";
 import { IoMdOpen } from "react-icons/io";
@@ -83,7 +82,6 @@ export default function Post({ editPath, body }: PostProps) {
           </Link>
         </StyledLinkWrapper>
       </Wrapper>
-      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </>
   );
 }

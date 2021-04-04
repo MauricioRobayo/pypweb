@@ -6,7 +6,11 @@ import Link from "next/link";
 import { memo } from "react";
 import { FcAlarmClock } from "react-icons/fc";
 import styled, { css } from "styled-components";
-import { camouflageLink, responsivePaddingAround } from "styles/mixins";
+import {
+  camouflageLink,
+  flexCenter,
+  responsivePaddingAround,
+} from "styles/mixins";
 import PypDate from "../date";
 import Hours from "../hours";
 import LicensePlate from "../license-plate";
@@ -63,10 +67,9 @@ const Header = styled.div<StyleProps>`
 const Body = styled.div<StyleProps>`
   padding: 0 1rem 1rem;
   h4 {
-    align-items: center;
-    display: flex;
+    ${flexCenter}
+
     font-size: 1.25rem;
-    justify-content: center;
     margin: 0.5rem 0;
     svg {
       margin-right: 0.5rem;

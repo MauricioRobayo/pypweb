@@ -16,10 +16,11 @@ const GlobalStyle = createGlobalStyle`
       url("/fonts/LicensePlate.woff") format("woff"),
       url("/fonts/LicensePlate.woff2") format("woff2");
   }
-  * {
-    box-sizing: border-box;
-  }
+  *, *::before, *::after {
+  box-sizing: border-box;
+}
   html {
+    box-sizing: border-box;
     font-size: 14px;
     @media only screen and (min-width: ${size.sm}) {
       font-size: 16px;

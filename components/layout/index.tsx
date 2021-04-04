@@ -1,9 +1,10 @@
 import TheMoneytizer from "components/the-moneytizer";
+import Vidverto from "components/vidverto";
 import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
 import styled from "styled-components";
-import { camouflageLink } from "styles/mixins";
+import { camouflageLink, responsivePaddingAround } from "styles/mixins";
 import { PypOption } from "types";
 import CTA from "../call-to-action";
 import PypDate from "../date";
@@ -11,8 +12,16 @@ import Email from "../email";
 import LicensePlate from "../license-plate";
 import Select from "../select";
 
-const StyledTheMoneytizer = styled(TheMoneytizer)`
+const MegaBanner = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER",
+})`
   margin: 2rem auto 0;
+`;
+
+const RecommendedContent = styled(TheMoneytizer).attrs({
+  formatType: "RECOMMENDED_CONTENT",
+})`
+  margin: 2rem auto;
 `;
 
 const StyledLayout = styled.div`
@@ -71,7 +80,7 @@ const Page = styled.div<PageProps>`
 `;
 
 const Aside = styled.aside`
-  padding: 1rem 0;
+  ${responsivePaddingAround}
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
@@ -152,7 +161,7 @@ export default function Layout({
         </Navbar>
       )}
       <Page isHome={isHome}>
-        <StyledTheMoneytizer formatType="MEGABANNER" />
+        <MegaBanner />
         <div>
           <header>
             <h1>{title}</h1>
@@ -163,10 +172,11 @@ export default function Layout({
         </div>
         <div>
           <main>{children}</main>
-          {isHome ? null : <CTA />}
+          {isHome ? <Vidverto /> : <CTA />}
         </div>
       </Page>
       {aside ? <Aside>{aside}</Aside> : null}
+      {isHome ? null : <RecommendedContent />}
       <Footer>
         <p>PICO Y PLACA HOY</p>
         <Email />

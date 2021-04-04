@@ -6,7 +6,7 @@ declare module "styled-components" {
 
 const defaultTheme = {
   colors: {
-    activeBackgroundColor: "hsl(217, 71%, 53%)",
+    activeBackgroundColor: "dodgerBlue",
     activeColor: "hsl(51, 100%, 56%)",
     ads: {
       backgroundColor: "AliceBlue",

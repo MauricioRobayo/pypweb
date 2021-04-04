@@ -2,12 +2,16 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
-import TheMoneytizer from "components/the-moneytizer";
 import Vidverto from "components/vidverto";
 import { CityType, getPypOptions, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
+import styled from "styled-components";
 import { PypOption } from "types";
+
+const StyledVidverto = styled(Vidverto)`
+  margin: 1rem 0 0.5rem;
+`;
 
 type CityProps = {
   categories: ICategoryData[];
@@ -49,14 +53,13 @@ export default function City({
           </li>
         ))}
       </ul>
-      <TheMoneytizer formatType="RECOMMENDED_CONTENT" />
     </section>
   );
 
   return (
     <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
-      <Vidverto />
+      <StyledVidverto />
     </Layout>
   );
 }

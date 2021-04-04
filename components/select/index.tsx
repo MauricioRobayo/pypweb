@@ -8,6 +8,7 @@ type WrapperProps = {
 };
 
 const Wrapper = styled.div<WrapperProps>`
+  align-items: center;
   background: white;
   border: 1px solid lightgray;
   border-radius: 0.4rem;
@@ -26,11 +27,14 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  &::placeholder {
+    color: gray;
+  }
 `;
 
 const SearchIcon = styled.span`
   display: inline-block;
-  fill: currentColor;
+  fill: gray;
   height: 1rem;
   width: 1rem;
 
@@ -91,7 +95,7 @@ export default function Select({ pypOptions, type = "main" }: SelectProps) {
           id="pypOption"
           list="pyp-options"
           onChange={onChangeHandler}
-          placeholder="Ciudad / Categoría"
+          placeholder="Ciudad"
           value={selectedOption}
         />
       </Wrapper>
