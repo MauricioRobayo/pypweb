@@ -1,7 +1,7 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import styled from "styled-components";
 import { CityType } from "../../lib/utils";
-import CategoryCard from "../category-card";
+import CategoryCard from "./category-card";
 
 const List = styled.div`
   display: grid;
@@ -9,6 +9,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
+  margin-top: 1rem;
   max-width: ${({ theme }) => theme.maxWidth};
   width: 100%;
 `;

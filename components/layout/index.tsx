@@ -115,17 +115,13 @@ const Footer = styled.footer<PageProps>`
   background-color: hsl(0, 0%, 98%);
   border-top: 1px solid hsl(0, 0%, 88%);
   font-size: 0.85rem;
+  margin-top: auto;
   padding: 0.5rem 0 1rem;
   text-align: center;
   width: 100%;
   p {
     margin: 0.5rem;
   }
-  ${({ isHome }) =>
-    isHome &&
-    css`
-      margin-top: auto;
-    `}
 `;
 
 const Logo = styled.h2`
