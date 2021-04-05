@@ -7,7 +7,8 @@
   "plugins": ["stylelint-order"],
   "rules": {
     "value-keyword-case": null,
-    "order/properties-alphabetical-order": true
+    "order/properties-alphabetical-order": true,
+    "function-name-case": null
   },
   "ignoreFiles": [".next/**"]
 }

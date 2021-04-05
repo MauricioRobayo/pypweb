@@ -26,9 +26,9 @@ const Banner = styled.div`
     !isProduction &&
     css`
       align-items: center;
-      background-color: ${theme.colors.ads.backgroundColor};
+      background-color: ${theme.colors.ad.backgroundColor};
       border: 1px solid currentColor;
-      color: ${theme.colors.ads.color};
+      color: ${theme.colors.ad.color};
       display: flex;
       font-weight: bold;
       height: 90px;
