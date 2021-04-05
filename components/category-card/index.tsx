@@ -44,13 +44,15 @@ const Footer = styled.footer`
   padding: 1rem;
 `;
 
+const HoursWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
 const HoursTitle = styled.div`
   ${flexCenter}
 `;
 
-const LicenseNumbers = styled.div`
-  margin: 1rem 0;
-`;
+const LicenseNumbers = styled.div``;
 
 const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
@@ -87,7 +89,7 @@ export default function CategoryCard({
 
   return (
     <Wrapper>
-      <Title>
+      <Title hasRestriction={hasRestriction}>
         <Link href={`${categoryPath}`}>
           <a>
             <StyledIcon iconName={categoryName} />
@@ -105,12 +107,12 @@ export default function CategoryCard({
           </LicensePlate>
         </LicenseNumbers>
         {hasRestriction ? (
-          <div>
+          <HoursWrapper>
             <HoursTitle>
               <FcAlarmClock /> Horario
             </HoursTitle>
             <Hours date={date} hours={hours} interactive />
-          </div>
+          </HoursWrapper>
         ) : null}
       </Body>
       <Footer>
