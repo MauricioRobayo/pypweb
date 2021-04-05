@@ -66,6 +66,10 @@ const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
 `;
 
+const Description = styled.div`
+  margin-bottom: 1rem;
+`;
+
 const StyledIcon = inlineIcon(Icon);
 const StyledFcAlarmClock = inlineIcon(FcAlarmClock);
 const StyledFcCalendar = inlineIcon(FcCalendar);
@@ -107,7 +111,7 @@ export default function CategoryCard({
       </Title>
       <Body>
         {isAllDigits || !hasRestriction ? null : (
-          <div>No circulan placas {schemeString} en</div>
+          <Description>No circulan placas {schemeString} en</Description>
         )}
         <LicenseNumbers>
           <LicensePlate isPublic={isPublicLicense(categorySlug)}>
