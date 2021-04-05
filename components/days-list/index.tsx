@@ -6,9 +6,9 @@ import { memo, useEffect, useState } from "react";
 import { HiDownload } from "react-icons/hi";
 import styled from "styled-components";
 import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
-import DayCard from "../day-card";
 import NumberLinks from "../number-links";
 import Vidverto from "../vidverto";
+import DayCard from "./day-card";
 
 const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1.5rem 0 2rem;

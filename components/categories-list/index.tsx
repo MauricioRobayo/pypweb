@@ -1,7 +1,7 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import styled from "styled-components";
 import { CityType } from "../../lib/utils";
-import CategoryCard from "../category-card";
+import CategoryCard from "./category-card";
 
 const List = styled.div`
   display: grid;
