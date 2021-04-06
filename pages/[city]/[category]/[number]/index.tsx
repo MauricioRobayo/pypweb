@@ -23,6 +23,7 @@ const StyledLayout = styled(Layout)`
 
 const Title = styled.h4`
   font-size: 1.25rem;
+  margin-bottom: 1rem;
 `;
 
 const ListWrapper = styled.ol`
@@ -105,7 +106,7 @@ export default function Category({
   const todaysRestriction =
     numbersString !== NA ? (
       <div>
-        Hoy tienen pico y placa {categoryData.name} con placas {schemeString} en{" "}
+        Hoy tienen pico y placa placas {schemeString} en{" "}
         <LicensePlate>{numbersString}</LicensePlate>.
       </div>
     ) : (
