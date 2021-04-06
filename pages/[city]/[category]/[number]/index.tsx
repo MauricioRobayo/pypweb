@@ -33,25 +33,6 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1.5rem 0 2rem;
   text-align: center;
 `;
-type SemaphoreProps = {
-  hasRestriction?: boolean;
-};
-const Semaphore = styled.div<SemaphoreProps>`
-  align-items: center;
-  background-color: ${({ hasRestriction }) =>
-    hasRestriction ? "red" : "limegreen"};
-  border: 4px solid #444;
-  border-radius: 50%;
-  color: white;
-  display: inline-flex;
-  font-size: 2rem;
-  font-weight: bold;
-  height: 4rem;
-  justify-content: center;
-  justify-self: center;
-  margin: 0 auto 2rem;
-  width: 4rem;
-`;
 
 const StyledVidverto = styled(Vidverto)`
   margin: 1rem auto;
@@ -137,11 +118,8 @@ export default function Category({
             },
           ]}
         />
-        <Semaphore hasRestriction={hasRestriction}>{number}</Semaphore>
         <Title>
-          Vehículos {categoryData.name.toLocaleLowerCase()} con placas{" "}
-          {schemeString} en
-          {currentNumberLicense}{" "}
+          Placas {schemeString} en {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
               ? "hoy tienen restricción en el siguiente horario:"
