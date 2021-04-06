@@ -50,7 +50,7 @@ const SelectedCard = styled.div<StyleProps>`
 
 const Header = styled.div<StyleProps>`
   align-items: flex-end;
-  background-color: tomato;
+  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
   color: white;
   display: flex;
   justify-content: space-between;
