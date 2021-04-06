@@ -7,50 +7,53 @@ import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
 import Vidverto from "components/vidverto";
+import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { getPypOptions, isCity, NA, pypNumbersToString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
+import { camouflageLink } from "styles/mixins";
 import { PypOption } from "types";
 
 const StyledLayout = styled(Layout)`
   text-align: center;
 `;
+
 const Title = styled.h4`
   font-size: 1.25rem;
 `;
-const NextDays = styled.div`
-  li {
-    margin-top: 0.5rem;
+
+const ListWrapper = styled.ol`
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  margin: 1rem;
+`;
+
+const ListItem = styled.li`
+  border-bottom: 1px solid #dbdbdb;
+  &:last-child {
+    border-bottom: none;
   }
-  li:first-child {
-    margin-top: 1rem;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
+    color: white;
+  }
+  ${camouflageLink}
+`;
+
+const Anchor = styled.a`
+  display: block;
+  padding: 1rem;
+  &:hover {
+    text-decoration: underline;
   }
 `;
+
 const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1.5rem 0 2rem;
   text-align: center;
-`;
-type SemaphoreProps = {
-  hasRestriction?: boolean;
-};
-const Semaphore = styled.div<SemaphoreProps>`
-  align-items: center;
-  background-color: ${({ hasRestriction }) =>
-    hasRestriction ? "red" : "limegreen"};
-  border: 4px solid #444;
-  border-radius: 50%;
-  color: white;
-  display: inline-flex;
-  font-size: 2rem;
-  font-weight: bold;
-  height: 4rem;
-  justify-content: center;
-  justify-self: center;
-  margin: 0 auto 2rem;
-  width: 4rem;
 `;
 
 const StyledVidverto = styled(Vidverto)`
@@ -137,11 +140,8 @@ export default function Category({
             },
           ]}
         />
-        <Semaphore hasRestriction={hasRestriction}>{number}</Semaphore>
         <Title>
-          Vehículos {categoryData.name.toLocaleLowerCase()} con placas{" "}
-          {schemeString} en
-          {currentNumberLicense}{" "}
+          Placas {schemeString} en {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
               ? "hoy tienen restricción en el siguiente horario:"
@@ -160,33 +160,29 @@ export default function Category({
           <Title>Prográmese</Title>
           <div>
             <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-            <NextDays>
-              <ol>
-                {categoryData.data.slice(1).map((data) => {
-                  const dataDate = new Date(
-                    data.year,
-                    data.month - 1,
-                    data.day
+            <ListWrapper>
+              {categoryData.data.slice(1).map((data) => {
+                const dataDate = new Date(data.year, data.month - 1, data.day);
+                if (data.numbers.includes(Number(number))) {
+                  return (
+                    <ListItem key={dataDate.toISOString()}>
+                      <Link
+                        href={`/${citySlug}/${categoryData.slug}?d=${format(
+                          dataDate,
+                          "yyyy-MM-dd"
+                        )}`}
+                        passHref
+                      >
+                        <Anchor>
+                          <PypDate date={dataDate} />
+                        </Anchor>
+                      </Link>
+                    </ListItem>
                   );
-                  if (data.numbers.includes(Number(number))) {
-                    return (
-                      <li key={dataDate.toISOString()}>
-                        <Link
-                          href={`/${citySlug}/${
-                            categoryData.slug
-                          }?d=${dataDate.toISOString().substr(0, 10)}`}
-                        >
-                          <a>
-                            <PypDate date={dataDate} />
-                          </a>
-                        </Link>
-                      </li>
-                    );
-                  }
-                  return null;
-                })}
-              </ol>
-            </NextDays>
+                }
+                return null;
+              })}
+            </ListWrapper>
           </div>
         </div>
         <NumberLinks
