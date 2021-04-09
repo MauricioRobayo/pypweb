@@ -3,7 +3,7 @@ import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Breadcrumbs from "components/breadcrumbs";
 import Button from "components/button";
 import { memo, useEffect, useState } from "react";
-import { HiDownload } from "react-icons/hi";
+import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import NumberLinks from "../number-links";
@@ -45,14 +45,14 @@ const MoreButtonWrapper = styled.div`
 
 const MoreButton = styled(Button)`
   && {
-    align-items: flex-end;
+    align-items: center;
     display: flex;
     justify-content: center;
   }
 `;
 
-const MoreIcon = styled(HiDownload)`
-  margin-left: 0.5rem;
+const MoreIcon = styled(HiOutlinePlusCircle)`
+  margin-right: 0.25rem;
 `;
 
 const ErrorMessage = styled.div`
@@ -146,8 +146,8 @@ function DaysList({
       ) : (
         <MoreButtonWrapper>
           <MoreButton onClick={onClickHandler}>
-            Cargar más información
             <MoreIcon />
+            Ver más días
           </MoreButton>
         </MoreButtonWrapper>
       )}
