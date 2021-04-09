@@ -147,7 +147,7 @@ function DaysList({
         <MoreButtonWrapper>
           <MoreButton onClick={onClickHandler}>
             <MoreIcon />
-            Ver más fechas
+            Ver más días
           </MoreButton>
         </MoreButtonWrapper>
       )}
