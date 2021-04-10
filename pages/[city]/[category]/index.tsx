@@ -61,7 +61,14 @@ export default function Category({
   const title = `Pico y placa ${categoryName} en ${cityName}`;
 
   return (
-    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+    <Layout
+      aside={aside}
+      categoryName={categoryName}
+      cityName={cityName}
+      date={date}
+      pypOptions={pypOptions}
+      title={title}
+    >
       <DaysList
         categories={categories}
         categoryData={categoryData}
