@@ -57,7 +57,13 @@ export default function City({
   );
 
   return (
-    <Layout aside={aside} date={date} pypOptions={pypOptions} title={title}>
+    <Layout
+      aside={aside}
+      cityName={cityName}
+      date={date}
+      pypOptions={pypOptions}
+      title={title}
+    >
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
       <StyledVidverto />
     </Layout>

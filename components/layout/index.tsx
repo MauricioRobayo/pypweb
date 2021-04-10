@@ -2,6 +2,7 @@ import TheMoneytizer from "components/the-moneytizer";
 import Vidverto from "components/vidverto";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
 import { camouflageLink, responsivePaddingAround } from "styles/mixins";
@@ -131,15 +132,18 @@ const Logo = styled.h2`
 type LayoutProps = {
   children: ReactNode;
   className?: string;
+  categoryName?: string;
+  cityName?: string;
   pypOptions: PypOption[];
   isHome?: boolean;
   aside?: ReactNode;
   title?: string;
   date: Date;
 };
-
 export default function Layout({
   children,
+  categoryName = "",
+  cityName = "",
   className = "",
   isHome = false,
   aside = null,
@@ -147,11 +151,36 @@ export default function Layout({
   title = "Pico y placa hoy",
   date,
 }: LayoutProps) {
+  const router = useRouter();
+
+  let description = `Horario, días, fechas, placas, números, decretos, sanciones y toda la información vigente del pico y placa`;
+  if (categoryName) {
+    description += ` para ${categoryName}`;
+  }
+  if (cityName) {
+    description += ` en ${cityName}`;
+  }
+
   return (
     <StyledLayout className={className}>
       <Head>
         <title>{title}</title>
         <link href="/favicon.ico" rel="icon" />
+        <meta content={description} name="description" />
+
+        {/* Open Graph */}
+        <meta
+          key="ogurl"
+          content={`${router.basePath}${router.asPath}`}
+          property="og:url"
+        />
+        <meta
+          key="ogsitename"
+          content="Pico y placa hoy"
+          property="og:site_name"
+        />
+        <meta key="ogtitle" content={title} property="og:title" />
+        <meta key="ogdesc" content={description} property="og:description" />
       </Head>
       {isHome ? null : (
         <Navbar>

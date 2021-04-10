@@ -122,6 +122,8 @@ export default function Category({
   return (
     <StyledLayout
       aside={aside}
+      categoryName={categoryName}
+      cityName={cityName}
       date={date}
       pypOptions={pypOptions}
       title={title}
