@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { PypOption } from "types";
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem 0 0.5rem;
+  margin: 1rem 0;
 `;
 
 type CityProps = {

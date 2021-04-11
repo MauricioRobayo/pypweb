@@ -17,8 +17,8 @@ const VideoPlaceholder = styled.div`
   font-weight: bold;
   height: 320px;
   justify-content: center;
-  max-width: 100%;
-  width: ${({ theme }) => theme.maxWidth};
+  max-width: ${({ theme }) => theme.maxWidth};
+  width: 100%;
 `;
 
 type VidvertoProps = {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import row from "./row";
 
 const Wrapper = styled.div`
-  margin: 4rem 0 2rem;
+  margin: 2rem 0;
   text-align: center;
 `;
 
