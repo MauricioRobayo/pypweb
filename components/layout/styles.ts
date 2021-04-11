@@ -71,13 +71,14 @@ export const Main = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
 `;
 
 export const Aside = styled.aside`
   ${responsivePaddingAround}
 
   max-width: 720px;
+  width: 100%;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
