@@ -13,6 +13,7 @@ import {
   Aside,
   Footer,
   Logo,
+  Main,
   MegaBanner,
   Navbar,
   Page,
@@ -103,7 +104,7 @@ export default function Layout({
           </header>
         </div>
         <div>
-          <main>{children}</main>
+          <Main>{children}</Main>
           {isHome ? <Vidverto /> : <CTA />}
         </div>
       </Page>

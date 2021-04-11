@@ -60,17 +60,18 @@ export const Page = styled.div<PageProps>`
   flex-direction: column;
   justify-content: ${({ isHome }) => (isHome ? "center" : "flex-start")};
   width: ${({ isHome }) => (isHome ? "auto" : "100%")};
-  main {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-  }
   ${({ isHome }) =>
     isHome &&
     css`
       flex: 1 1 100%;
     `}
+`;
+
+export const Main = styled.main`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
 `;
 
 export const Aside = styled.aside`
