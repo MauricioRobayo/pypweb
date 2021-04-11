@@ -28,7 +28,7 @@ const ListWrapper = styled.div`
 `;
 
 const Article = styled.article`
-  margin: auto;
+  margin: 1rem auto;
   max-width: ${({ theme }) => theme.maxWidth};
 `;
 
