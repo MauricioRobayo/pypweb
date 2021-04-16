@@ -1,9 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { size } from "./constants";
-import reset from "./reset";
 
 const GlobalStyle = createGlobalStyle`
-  ${reset};
   @font-face {
     font-family: "LicensePlate";
     font-style: normal;

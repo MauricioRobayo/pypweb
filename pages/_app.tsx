@@ -4,6 +4,7 @@ import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
 import { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
+import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
 import defaultTheme from "styles/theme";
 
@@ -32,6 +33,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <Normalize />
       <GlobalStyle />
       <Component {...pageProps} />
     </ThemeProvider>
