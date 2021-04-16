@@ -12,3 +12,15 @@
 #### Observaciones
 
 Restringir la circulación de vehículos automotores particulares tipo motocicleta, mototriciclos, cuatrimotos, motocarros, durante los días hábiles, en el cuadrante comprendido entre la calle 25 a la calle 11 y entre la carrera 22 y la carrera 13, inclusive.
+
+#### Excepciones
+
+1. Motocicletas adscritas a la empresas legalmente constituidas y que presten servicio de mensajería o domicilio, previa inscripción ante la Secretaría de Tránsito y Transporte de Armenia, presentando el contrato de trabajo respectivo, certificado de existencia y representación legal vigente expedido por la Cámara de Comercio con fecha de expedición no mayor de 30 días, RUT, comprobante de pago de parafiscales y seguridad social del último mes, fotocopia de cédula de ciudadanía, fotocopia de la licencia de conducción del conductor, fotocopia de la licencia de tránsito del vehículo, seguro obligatorio vigente así como la revisión técnico mecánica vigente, y encontrarse a paz y salvo por concepto de infracciones de tránsito.
+2. Motocicletas pertenecientes a empresas dedicadas al servicio de seguridad y vigilancia privada o de escoltas, siempre y cuando están prestando el servicio y planamente identificados.
+3. Motocicletas pertenecientes a las Fuerzas Armadas, Policía Nacional y a la Fiscalía General de la Nación.
+4. Motocicletas, moto triciclos que transporten personas con discapacidad únicamente cuando se utilicen como medio de transporte de estas personas, siempre y cuando la persona esté utilizando la motocicleta. Para efectos se deberá presentar el certificado médico correspondiente.
+5. Motocicletas dedicadas a la vigilancia control y regulación del tránsito durante la prestación del servicio.
+6. Motocicletas pertenecientes a los organismos de socorro y de atención de emergencias, para efectos deberán estar plenamente identificados.
+7. Motocicletas utilizadas para el mantenimiento y seguimiento de los servicios públicos pertenecientes a las empresas prestadoras o sus contratistas siempre y cuando el conductor se encuentre debidamente identificado y en prestación del servicio.
+8. Motocicletas impulsadas exclusivamente por motores eléctricos.
+9. Los vehículos particulares tipo motocicleta, moto triciclo, cuatrimotos y motocarros del personal necesario para la prestación de todo tipo de servicio integral de salud.
