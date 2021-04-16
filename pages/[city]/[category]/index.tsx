@@ -62,7 +62,7 @@ export default function Category({
 
   return (
     <Layout
-      aside={aside}
+      aside={requestedDate ? null : aside}
       categoryName={categoryName}
       cityName={cityName}
       date={date}
