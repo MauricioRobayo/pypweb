@@ -29,7 +29,9 @@ const Title = styled.h4`
 const ListWrapper = styled.ol`
   border: 1px solid #dbdbdb;
   border-radius: 5px;
-  margin: 1rem;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
 `;
 
 const ListItem = styled.li`

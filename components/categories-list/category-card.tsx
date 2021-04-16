@@ -31,6 +31,7 @@ const Title = styled.h4`
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
+  margin: 0;
   padding: 1rem;
   ${camouflageLink}
 `;
