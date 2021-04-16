@@ -58,7 +58,7 @@ export default function CategoryCard({
           <Description>No circulan placas {schemeString} en</Description>
         )}
         <LicenseNumbers>
-          <LicensePlate isPublic={isPublicLicense(categorySlug)}>
+          <LicensePlate isPublic={isPublicLicense(categorySlug)} size="large">
             {numbersString}
           </LicensePlate>
         </LicenseNumbers>
