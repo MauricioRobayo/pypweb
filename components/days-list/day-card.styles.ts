@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import {
   boxShadow,
   camouflageLink,
-  flexCenter,
   responsivePaddingAround,
 } from "styles/mixins";
 import PypDate from "../date";
@@ -64,16 +63,7 @@ export const Header = styled.div<StyleProps>`
 `;
 
 export const Body = styled.div<StyleProps>`
-  padding: 0 1rem 1rem;
-  h4 {
-    ${flexCenter}
-
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
-    svg {
-      margin-right: 0.5rem;
-    }
-  }
+  padding: 1rem;
 `;
 
 export const Description = styled.div`

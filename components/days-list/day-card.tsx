@@ -3,7 +3,6 @@ import { format, isSameDay } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { memo } from "react";
-import { FcAlarmClock } from "react-icons/fc";
 import LicensePlate from "../license-plate";
 import {
   Body,
@@ -83,10 +82,6 @@ function DayCard({
         </Header>
         {isInactive ? null : (
           <Body>
-            <h4>
-              <FcAlarmClock />
-              Horario
-            </h4>
             <StyledHours date={date} hours={hours} interactive />
           </Body>
         )}

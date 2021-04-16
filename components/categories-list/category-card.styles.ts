@@ -1,19 +1,16 @@
 import Icon from "components/icon";
 import { lighten } from "polished";
-import { FcAlarmClock, FcCalendar } from "react-icons/fc";
+import { FcCalendar } from "react-icons/fc";
 import styled, { DefaultTheme } from "styled-components";
 import {
   boxShadow,
   camouflageLink,
-  flexCenter,
   flexHorizontalCenterVerticalEnd,
+  inlineIcon,
 } from "styles/mixins";
 
 const activeBackgroundColor = ({ theme }: { theme: DefaultTheme }) =>
   theme.colors.activeBackgroundColor;
-const inlineIcon = (component: any) => styled(component)`
-  margin-right: 0.5rem;
-`;
 
 export const Wrapper = styled.article`
   ${boxShadow()}
@@ -49,10 +46,6 @@ export const HoursWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export const HoursTitle = styled.div`
-  ${flexCenter}
-`;
-
 export const LicenseNumbers = styled.div``;
 
 export const SeeMore = styled.a`
@@ -64,5 +57,4 @@ export const Description = styled.div`
 `;
 
 export const StyledIcon = inlineIcon(Icon);
-export const StyledFcAlarmClock = inlineIcon(FcAlarmClock);
 export const StyledFcCalendar = inlineIcon(FcCalendar);

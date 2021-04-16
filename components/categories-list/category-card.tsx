@@ -7,11 +7,9 @@ import {
   Body,
   Description,
   Footer,
-  HoursTitle,
   HoursWrapper,
   LicenseNumbers,
   SeeMore,
-  StyledFcAlarmClock,
   StyledFcCalendar,
   StyledIcon,
   Title,
@@ -66,9 +64,6 @@ export default function CategoryCard({
         </LicenseNumbers>
         {hasRestriction ? (
           <HoursWrapper>
-            <HoursTitle>
-              <StyledFcAlarmClock /> Horario
-            </HoursTitle>
             <Hours date={date} hours={hours} interactive />
           </HoursWrapper>
         ) : null}
