@@ -1,0 +1,70 @@
+import Icon from "components/icon";
+import { lighten } from "polished";
+import { FcAlarmClock, FcCalendar } from "react-icons/fc";
+import styled, { DefaultTheme } from "styled-components";
+import {
+  camouflageLink,
+  flexCenter,
+  flexHorizontalCenterVerticalEnd,
+} from "styles/mixins";
+
+const activeBackgroundColor = ({ theme }: { theme: DefaultTheme }) =>
+  theme.colors.activeBackgroundColor;
+const inlineIcon = (component: any) => styled(component)`
+  margin-right: 0.5rem;
+`;
+
+export const Wrapper = styled.article`
+  border-radius: 0.5rem;
+  text-align: center;
+`;
+
+export const Title = styled.h4`
+  background: ${activeBackgroundColor};
+  border-radius: 5px 5px 0 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 1rem;
+  ${camouflageLink}
+`;
+
+export const Body = styled.div`
+  background-color: white;
+  border-left: 1px solid ${activeBackgroundColor};
+  border-right: 1px solid ${activeBackgroundColor};
+  padding: 1rem;
+`;
+
+export const Footer = styled.footer`
+  background-color: ${({ theme }) =>
+    lighten(0.4, activeBackgroundColor({ theme }))};
+  border-bottom: 1px solid ${activeBackgroundColor};
+  border-left: 1px solid ${activeBackgroundColor};
+  border-radius: 0 0 5px 5px;
+  border-right: 1px solid ${activeBackgroundColor};
+  padding: 1rem;
+`;
+
+export const HoursWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
+export const HoursTitle = styled.div`
+  ${flexCenter}
+`;
+
+export const LicenseNumbers = styled.div``;
+
+export const SeeMore = styled.a`
+  ${flexHorizontalCenterVerticalEnd}
+`;
+
+export const Description = styled.div`
+  margin-bottom: 1rem;
+`;
+
+export const StyledIcon = inlineIcon(Icon);
+export const StyledFcAlarmClock = inlineIcon(FcAlarmClock);
+export const StyledFcCalendar = inlineIcon(FcCalendar);
