@@ -16,7 +16,7 @@ const inlineIcon = (component: any) => styled(component)`
 `;
 
 export const Wrapper = styled.article`
-  ${boxShadow}
+  ${boxShadow()}
 
   border-radius: 0.5rem;
   text-align: center;

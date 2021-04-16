@@ -1,8 +1,8 @@
 import { css } from "styled-components";
 import { size } from "./constants";
 
-export const boxShadow = css`
-  box-shadow: rgb(122 122 122) 0 0 10px 0;
+export const boxShadow = (blurRadius = 10) => css`
+  box-shadow: rgb(122 122 122) 0 0 ${blurRadius}px 0;
 `;
 
 export const responsivePaddingAround = css`

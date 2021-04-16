@@ -21,21 +21,25 @@ type StyleProps = {
 
 export const RegularCard = styled.div<StyleProps>`
   ${camouflageLink}
+
   a {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    position: relative;
     transition: background-color 0.5s;
     ${responsivePaddingAround}
     ${({ isInactive }) => isInactive && inactiveStyle}
   }
   a:hover {
-    border: 1px solid ${({ theme }) => theme.colors.linkColor};
+    ${boxShadow()}
+
+    z-index: 1000;
   }
 `;
 
 export const SelectedCard = styled.div<StyleProps>`
-  ${boxShadow}
+  ${boxShadow()}
 
   border-radius: 5px;
   margin-bottom: 1rem;
