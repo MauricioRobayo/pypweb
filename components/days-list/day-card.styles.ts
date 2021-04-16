@@ -1,6 +1,7 @@
 import Icon from "components/icon";
 import styled, { css } from "styled-components";
 import {
+  boxShadow,
   camouflageLink,
   flexCenter,
   responsivePaddingAround,
@@ -34,8 +35,9 @@ export const RegularCard = styled.div<StyleProps>`
 `;
 
 export const SelectedCard = styled.div<StyleProps>`
+  ${boxShadow}
+
   border-radius: 5px;
-  box-shadow: 0 0 10px 0 #7a7a7a;
   margin-bottom: 1rem;
   overflow: hidden;
   ${({ isInactive }) => isInactive && inactiveStyle}
