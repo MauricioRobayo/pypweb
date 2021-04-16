@@ -16,7 +16,7 @@ import {
   StyledIcon,
   Title,
   Wrapper,
-} from "./styles";
+} from "./category-card.styles";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 

@@ -1,5 +1,5 @@
 import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
-import { format } from "date-fns";
+import { format, isSameDay } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { memo } from "react";
@@ -15,7 +15,7 @@ import {
   StyledIcon,
   StyledPypDate,
   Warning,
-} from "./styles";
+} from "./day-card.styles";
 
 type DayCardProps = {
   categoryName: CategoryName;
@@ -41,11 +41,7 @@ function DayCard({
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
-  const today = new Date();
-  const isToday =
-    day === today.getDate() &&
-    month - 1 === today.getMonth() &&
-    year === today.getFullYear();
+  const isToday = isSameDay(date, new Date());
 
   const formattedDate = (
     <StyledPypDate
