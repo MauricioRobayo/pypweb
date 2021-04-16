@@ -49,8 +49,6 @@ export default `
   dl,
   dt,
   dd,
-  ol,
-  ul,
   li,
   fieldset,
   form,
@@ -108,10 +106,6 @@ export default `
   }
   body {
     line-height: 1;
-  }
-  ol,
-  ul {
-    list-style: none;
   }
   blockquote,
   q {

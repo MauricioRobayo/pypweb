@@ -89,14 +89,6 @@ export const Aside = styled.aside`
   ol {
     list-style-type: number;
   }
-  ul {
-    list-style-type: disc;
-  }
-  ul,
-  ol {
-    list-style-position: outside;
-    margin-left: 1rem;
-  }
   li,
   p {
     padding: 0.25rem 0;
