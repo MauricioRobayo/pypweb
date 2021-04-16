@@ -31,8 +31,8 @@ export default function Hour({
     <>
       {hasComment ? <Comment>{comment}</Comment> : null}
       <HourList>
-        {hours.map((hour, index) => {
-          /* eslint-disable react/no-array-index-key */
+        {hours.map((hour) => {
+          const key = JSON.stringify({ comment, days, hour });
           const [start, end] = hour;
           const isAllDay = start === "00:00" && end === "24:00";
 
@@ -53,13 +53,12 @@ export default function Hour({
           }
 
           return (
-            <HourItem key={index}>
+            <HourItem key={key}>
               <StyledHour>
                 {hour.map((hour24) => convert24toAMPM(hour24)).join(" a ")}
               </StyledHour>
             </HourItem>
           );
-          /* eslint-enable */
         })}
       </HourList>
     </>
