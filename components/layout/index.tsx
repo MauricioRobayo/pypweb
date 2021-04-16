@@ -1,4 +1,3 @@
-import Vidverto from "components/vidverto";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -19,6 +18,7 @@ import {
   Page,
   RecommendedContent,
   StyledLayout,
+  StyledVidverto,
 } from "./styles";
 
 type LayoutProps = {
@@ -105,7 +105,7 @@ export default function Layout({
         </div>
         <div>
           <Main>{children}</Main>
-          {isHome ? <Vidverto /> : <CTA />}
+          {isHome ? <StyledVidverto /> : <CTA />}
         </div>
       </Page>
       {aside ? (

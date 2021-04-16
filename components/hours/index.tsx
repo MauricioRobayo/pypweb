@@ -1,6 +1,6 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
-import Hour from "../hour";
+import Hour from "./hour";
 
 type HoursProps = {
   className?: string;

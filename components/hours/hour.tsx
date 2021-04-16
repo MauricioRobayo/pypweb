@@ -10,6 +10,11 @@ const Comment = styled.div`
 const StyledHour = styled.div`
   margin-top: 0.25rem;
 `;
+const HourList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+const HourItem = styled.li``;
 
 type HourProps = {
   hourData: IHourData;
@@ -24,7 +29,7 @@ export default function Hour({
   return (
     <>
       {hasComment ? <Comment>{comment}</Comment> : null}
-      <ul>
+      <HourList>
         {hours.map((hour, index) => {
           /* eslint-disable react/no-array-index-key */
           const [start, end] = hour;
@@ -40,22 +45,22 @@ export default function Hour({
 
           if (isAllDay) {
             return (
-              <li key={JSON.stringify({ comment, days, hour })}>
+              <HourItem key={JSON.stringify({ comment, days, hour })}>
                 <StyledHour>{ALL_DAY}</StyledHour>
-              </li>
+              </HourItem>
             );
           }
 
           return (
-            <li key={index}>
+            <HourItem key={index}>
               <StyledHour>
                 {hour.map((hour24) => convert24toAMPM(hour24)).join(" a ")}
               </StyledHour>
-            </li>
+            </HourItem>
           );
           /* eslint-enable */
         })}
-      </ul>
+      </HourList>
     </>
   );
 }
