@@ -1,6 +1,11 @@
 import TheMoneytizer from "components/the-moneytizer";
+import Vidverto from "components/vidverto";
 import styled, { css } from "styled-components";
 import { camouflageLink, responsivePaddingAround } from "styles/mixins";
+
+export const StyledVidverto = styled(Vidverto)`
+  margin-top: 1rem;
+`;
 
 export const MegaBanner = styled(TheMoneytizer).attrs({
   formatType: "MEGABANNER",
