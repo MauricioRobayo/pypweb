@@ -3,19 +3,15 @@ import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 import { PypOption } from "types";
 
-type WrapperProps = {
-  type: "main" | "normal";
-};
-
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div`
   align-items: center;
   background: white;
   border: 1px solid lightgray;
   border-radius: 0.4rem;
   display: flex;
   justify-content: flex-start;
-  margin: ${({ type }) => (type === "main" ? "0.5rem 0" : "0")};
-  padding: ${({ type }) => (type === "main" ? "0.5rem" : "0.25rem")};
+  margin: 0.5rem 0;
+  padding: 0.5rem;
   &:focus-within {
     box-shadow: 0 0 0.25rem 0 ${({ theme }) => theme.colors.linkColor};
   }
@@ -24,6 +20,7 @@ const Wrapper = styled.div<WrapperProps>`
 const Input = styled.input`
   border: none;
   flex: 1 1 100%;
+  padding-left: 0.25rem;
   &:focus {
     outline: none;
   }
@@ -37,7 +34,6 @@ const SearchIcon = styled.span`
   fill: gray;
   height: 1rem;
   width: 1rem;
-
   svg {
     display: block;
     height: 100%;
@@ -47,10 +43,9 @@ const SearchIcon = styled.span`
 
 type SelectProps = {
   pypOptions: PypOption[];
-  type?: "main" | "normal";
 };
 
-export default function Select({ pypOptions, type = "main" }: SelectProps) {
+export default function Select({ pypOptions }: SelectProps) {
   const [selectedOption, setSelectedOption] = useState("");
   const router = useRouter();
 
@@ -80,7 +75,7 @@ export default function Select({ pypOptions, type = "main" }: SelectProps) {
 
   return (
     <>
-      <Wrapper type={type}>
+      <Wrapper>
         <SearchIcon>
           <svg
             focusable="false"

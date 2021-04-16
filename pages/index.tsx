@@ -17,7 +17,7 @@ export default function Home({
   const date = new Date(currentDate);
   return (
     <Layout date={date} isHome pypOptions={selectOptions}>
-      <Select pypOptions={selectOptions} type="main" />
+      <Select pypOptions={selectOptions} />
     </Layout>
   );
 }

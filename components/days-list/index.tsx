@@ -1,63 +1,19 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Category from "@mauriciorobayo/pyptron/dist/models/category";
-import Breadcrumbs from "components/breadcrumbs";
-import Button from "components/button";
 import { memo, useEffect, useState } from "react";
-import { HiOutlinePlusCircle } from "react-icons/hi";
-import styled from "styled-components";
-import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import NumberLinks from "../number-links";
 import Vidverto from "../vidverto";
 import DayCard from "./day-card";
-
-const StyledBreadcrumbs = styled(Breadcrumbs)`
-  margin: 1.5rem 0 2rem;
-  text-align: center;
-`;
-
-const ListWrapper = styled.div`
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  margin: 1rem 0;
-  & > div {
-    border-bottom: 1px solid #dbdbdb;
-  }
-  & > div:last-child {
-    border-bottom: none;
-  }
-`;
-
-const Article = styled.article`
-  margin: 1rem auto;
-  max-width: ${({ theme }) => theme.maxWidth};
-`;
-
-const Title = styled.h3`
-  font-size: 1.2rem;
-  font-weight: normal;
-  text-align: center;
-`;
-
-const MoreButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const MoreButton = styled(Button)`
-  && {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-`;
-
-const MoreIcon = styled(HiOutlinePlusCircle)`
-  margin-right: 0.25rem;
-`;
-
-const ErrorMessage = styled.div`
-  ${flexHorizontalCenterVerticalEnd}
-`;
+import {
+  Article,
+  ErrorMessage,
+  ListWrapper,
+  MoreButton,
+  MoreButtonWrapper,
+  MoreIcon,
+  StyledBreadcrumbs,
+  Title,
+} from "./styles";
 
 type DaysListProps = {
   categories: { name: string; slug: string }[];

@@ -12,6 +12,7 @@ const StyledHour = styled.div`
 `;
 const HourList = styled.ul`
   list-style: none;
+  margin: 0.5rem 0 0 0;
   padding: 0;
 `;
 const HourItem = styled.li``;

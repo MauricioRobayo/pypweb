@@ -1,79 +1,22 @@
 import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import Hours from "components/hours";
-import Icon from "components/icon";
 import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
-import { lighten } from "polished";
-import { FcAlarmClock, FcCalendar } from "react-icons/fc";
-import styled, { DefaultTheme } from "styled-components";
 import {
-  camouflageLink,
-  flexCenter,
-  flexHorizontalCenterVerticalEnd,
-} from "styles/mixins";
+  Body,
+  Description,
+  Footer,
+  HoursWrapper,
+  LicenseNumbers,
+  SeeMore,
+  StyledFcCalendar,
+  StyledIcon,
+  Title,
+  Wrapper,
+} from "./category-card.styles";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
-const activeBackgroundColor = ({ theme }: { theme: DefaultTheme }) =>
-  theme.colors.activeBackgroundColor;
-const inlineIcon = (component: any) => styled(component)`
-  margin-right: 0.5rem;
-`;
-
-const Wrapper = styled.article`
-  border-radius: 0.5rem;
-  text-align: center;
-`;
-
-const Title = styled.h4`
-  background: ${activeBackgroundColor};
-  border-radius: 5px 5px 0 0;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 0;
-  padding: 1rem;
-  ${camouflageLink}
-`;
-
-const Body = styled.div`
-  background-color: white;
-  border-left: 1px solid ${activeBackgroundColor};
-  border-right: 1px solid ${activeBackgroundColor};
-  padding: 1rem;
-`;
-
-const Footer = styled.footer`
-  background-color: ${({ theme }) =>
-    lighten(0.4, activeBackgroundColor({ theme }))};
-  border-bottom: 1px solid ${activeBackgroundColor};
-  border-left: 1px solid ${activeBackgroundColor};
-  border-radius: 0 0 5px 5px;
-  border-right: 1px solid ${activeBackgroundColor};
-  padding: 1rem;
-`;
-
-const HoursWrapper = styled.div`
-  margin-top: 1rem;
-`;
-
-const HoursTitle = styled.div`
-  ${flexCenter}
-`;
-
-const LicenseNumbers = styled.div``;
-
-const SeeMore = styled.a`
-  ${flexHorizontalCenterVerticalEnd}
-`;
-
-const Description = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const StyledIcon = inlineIcon(Icon);
-const StyledFcAlarmClock = inlineIcon(FcAlarmClock);
-const StyledFcCalendar = inlineIcon(FcCalendar);
 
 type CategoryCardProps = {
   categoryName: CategoryName;
@@ -115,15 +58,12 @@ export default function CategoryCard({
           <Description>No circulan placas {schemeString} en</Description>
         )}
         <LicenseNumbers>
-          <LicensePlate isPublic={isPublicLicense(categorySlug)}>
+          <LicensePlate isPublic={isPublicLicense(categorySlug)} size="large">
             {numbersString}
           </LicensePlate>
         </LicenseNumbers>
         {hasRestriction ? (
           <HoursWrapper>
-            <HoursTitle>
-              <StyledFcAlarmClock /> Horario
-            </HoursTitle>
             <Hours date={date} hours={hours} interactive />
           </HoursWrapper>
         ) : null}
