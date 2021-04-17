@@ -1,13 +1,29 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { ALL_DAY, isEmptyArray } from "lib/utils";
+import Countdown from "components/countdown";
+import { ALL_DAY } from "lib/utils";
 import styled from "styled-components";
-import { convert24toAMPM } from "./utils";
+import { flexCenter } from "styles/mixins";
+import { calculateHoursWithEndTime, NextType } from "./utils";
 
+type StyledCountdownProps = {
+  type: NextType;
+};
+const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
+  background-color: ${({ type }) =>
+    type === NextType.START ? "limegreen" : "red"};
+  border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  padding: 0 0.25rem;
+`;
 const Comment = styled.div`
   font-weight: bold;
   margin: 1rem 0 0;
 `;
 const StyledHour = styled.div`
+  ${flexCenter}
+
   margin-top: 0.25rem;
 `;
 const HourList = styled.ul`
@@ -20,23 +36,24 @@ const HourItem = styled.li``;
 type HourProps = {
   hourData: IHourData;
   date: Date;
+  interactive?: boolean;
 };
 export default function Hour({
   date,
   hourData: { hours, comment, days },
+  interactive = false,
 }: HourProps) {
   const hasComment = Boolean(comment);
+  const calculatedHoursWithEndTime = calculateHoursWithEndTime(hours);
 
   return (
     <>
       {hasComment ? <Comment>{comment}</Comment> : null}
       <HourList>
-        {hours.map((hour, index) => {
-          /* eslint-disable react/no-array-index-key */
-          const [start, end] = hour;
-          const isAllDay = start === "00:00" && end === "24:00";
+        {calculatedHoursWithEndTime.map((hour) => {
+          const key = JSON.stringify({ comment, days, hour });
 
-          if (isEmptyArray(hour)) {
+          if (hour.length === 0) {
             return null;
           }
 
@@ -44,22 +61,26 @@ export default function Hour({
             return null;
           }
 
-          if (isAllDay) {
-            return (
-              <HourItem key={JSON.stringify({ comment, days, hour })}>
-                <StyledHour>{ALL_DAY}</StyledHour>
-              </HourItem>
-            );
-          }
+          const [formattedHour, endTime, endType] = hour;
 
           return (
-            <HourItem key={index}>
+            <HourItem key={key}>
               <StyledHour>
-                {hour.map((hour24) => convert24toAMPM(hour24)).join(" a ")}
+                {formattedHour === ALL_DAY ? (
+                  <span>{ALL_DAY}</span>
+                ) : (
+                  <>
+                    {formattedHour}
+                    {interactive &&
+                    endTime !== undefined &&
+                    endType !== undefined ? (
+                      <StyledCountdown endTime={endTime} type={endType} />
+                    ) : null}
+                  </>
+                )}
               </StyledHour>
             </HourItem>
           );
-          /* eslint-enable */
         })}
       </HourList>
     </>

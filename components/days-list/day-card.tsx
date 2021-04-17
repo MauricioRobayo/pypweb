@@ -82,7 +82,7 @@ function DayCard({
         </Header>
         {isInactive ? null : (
           <Body>
-            <StyledHours date={date} hours={hours} interactive />
+            <StyledHours date={date} hours={hours} interactive={isToday} />
           </Body>
         )}
         {isToday ? null : (
