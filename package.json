@@ -11,8 +11,8 @@
     "start": "next start",
     "stylelint-check": "stylelint-config-prettier-check",
     "format": "prettier --write .",
-    "postinstall": "git config core.hooksPath .githooks",
-    "prepare": "git config core.hooksPath .githooks"
+    "postinstall": "git config core.hooksPath .githooks || true",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@mauriciorobayo/pyptron": "^2.10.1",
