@@ -40,7 +40,12 @@ export default function Hours({
       ) : null}
       <div className={cn(className, { interactive })}>
         {hours.map((hourData, index) => (
-          <Hour key={index} date={date} hourData={hourData} />
+          <Hour
+            key={index}
+            date={date}
+            hourData={hourData}
+            interactive={interactive}
+          />
         ))}
       </div>
     </>
