@@ -13,7 +13,8 @@ const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
     type === NextType.START ? "limegreen" : "red"};
   border-radius: 4px;
   color: white;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: bold;
   margin-left: 0.5rem;
   padding: 0 0.25rem;
 `;
