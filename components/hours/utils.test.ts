@@ -85,6 +85,11 @@ describe("calculateHoursWithEndTime", () => {
       new Date(2021, 0, 1, 19, 0, 0),
       [["7:00am a 9:00am"], ["11:30am a 2:00pm"], ["5:30pm a 7:00pm"]],
     ],
+    [
+      [["6:00", "5:00"]],
+      new Date(2021, 0, 1, 7, 0, 0),
+      [["6:00am a 5:00am", new Date(2021, 0, 2, 5, 0, 0, 0), NextType.END]],
+    ],
   ];
 
   it.each(cases)(

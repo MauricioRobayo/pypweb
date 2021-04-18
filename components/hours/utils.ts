@@ -42,7 +42,7 @@ export const nextEndTime = (
   endDate.setMinutes(parseInt(endTimeMinute, 10));
   startDate.setSeconds(0);
 
-  if (startTime === endTime) {
+  if (startTime >= endTime) {
     endDate.setDate(endDate.getDate() + 1);
   }
 
