@@ -40,9 +40,12 @@ export const nextEndTime = (
   const endDate = new Date(date);
   endDate.setHours(parseInt(endTimeHour, 10));
   endDate.setMinutes(parseInt(endTimeMinute, 10));
-  startDate.setSeconds(0);
+  endDate.setSeconds(0);
 
-  if (startTime >= endTime) {
+  if (
+    parseInt(startTime.replace(":", ""), 10) >=
+    parseInt(endTime.replace(":", ""), 10)
+  ) {
     endDate.setDate(endDate.getDate() + 1);
   }
 
