@@ -12,7 +12,7 @@ const Countdown = ({ className = "", endTime }: CountDownProps) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown(formatDistance(endTime));
-    }, 1000);
+    }, 60 * 1000);
 
     return () => clearInterval(timeout);
   }, [countdown]);
