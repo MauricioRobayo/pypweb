@@ -56,12 +56,13 @@ export const nextEndTime = (
   return [];
 };
 
+export type CalculatedHours = ([string, Date, NextType] | [string] | [])[];
 export const calculateHoursWithEndTime = (
   hours: IHourData["hours"],
   date = new Date()
-): ([string, Date, NextType] | [string] | [])[] => {
+) => {
   let alreadyDisplayedTimeEnd = false;
-  const result: ([string, Date, NextType] | [string] | [])[] = [];
+  const result: CalculatedHours = [];
 
   hours.forEach((hour) => {
     if (hour.length === 0) {
