@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  background-color: #0f266e;
-  color: white;
+  background-color: ${({ theme }) => theme.colors.mainDark};
+  color: ${({ theme }) => theme.colors.mainComplement};
   padding: 1rem;
   text-align: center;
   width: 100%;

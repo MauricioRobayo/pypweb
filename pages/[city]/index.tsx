@@ -1,9 +1,9 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import Vidverto from "components/ads/vidverto";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
 import { cityOptions, CityOptions } from "components/select/utils";
-import Vidverto from "components/vidverto";
 import { CityType, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";

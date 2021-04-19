@@ -11,10 +11,13 @@ const licenseFontSize = {
   medium: "1em",
   small: "0.75em",
 };
-const BG_COLOR = "#f7c000";
-const PUBLIC_BG_COLOR = "white";
+
+export const PRIVATE_BG_COLOR = "#f7c000";
+export const PUBLIC_BG_COLOR = "#ffffff";
+
 const getBackgroundColor = ({ isPublic }: StyledLicensePlateProps) =>
-  isPublic ? PUBLIC_BG_COLOR : BG_COLOR;
+  isPublic ? PUBLIC_BG_COLOR : PRIVATE_BG_COLOR;
+
 const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
   align-items: center;
   background-color: ${getBackgroundColor};

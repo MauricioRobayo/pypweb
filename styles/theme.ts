@@ -6,18 +6,21 @@ declare module "styled-components" {
 
 const defaultTheme = {
   colors: {
-    activeBackgroundColor: "dodgerBlue",
-    activeColor: "hsl(51, 100%, 56%)",
-    ad: {
-      backgroundColor: "AliceBlue",
-      color: "DodgerBlue",
-    },
-    danger: "tomato",
-    inactiveBackgroundColor: "hsl(0, 0%, 96%)",
-    linkColor: "hsl(217, 71%, 53%)",
-    success: "limeGreen",
+    danger: "#DC3545",
+    main: "#1E90FF",
+    mainComplement: "#FFFFFF",
+    mainDark: "#0052a3",
+    mainLight: "#F0F8FF",
+    secondary: "#ADB5BD",
+    secondaryDark: "#495057",
+    secondaryLight: "#DEE2E6",
+    secondaryLighter: "#F8F9FA",
+    success: "#22BB33",
+    warning: "#FFC107",
+    warningLighter: "#FFF3CD",
   },
   maxWidth: "570px",
+  maxWidthWider: "720px",
 };
 
 export default defaultTheme;

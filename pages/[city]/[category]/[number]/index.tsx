@@ -1,4 +1,5 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import Vidverto from "components/ads/vidverto";
 import Breadcrumbs from "components/breadcrumbs";
 import PypDate from "components/date";
 import Hours from "components/hours";
@@ -7,7 +8,6 @@ import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
 import { cityOptions, CityOptions } from "components/select/utils";
-import Vidverto from "components/vidverto";
 import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
@@ -40,7 +40,7 @@ const ListItem = styled.li`
     border-bottom: none;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
+    background-color: ${({ theme }) => theme.colors.main};
     color: white;
   }
   ${camouflageLink}
@@ -60,7 +60,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto;
+  margin: 1rem 0;
 `;
 
 type CategoryProps = {

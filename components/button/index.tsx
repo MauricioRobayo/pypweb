@@ -2,14 +2,13 @@ import { MouseEventHandler, ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: white;
-  border: 2px solid #444;
+  background-color: ${({ theme }) => theme.colors.mainComplement};
+  border: 2px solid ${({ theme }) => theme.colors.secondaryDark};
   border-radius: 0.5em;
   display: inline-block;
   padding: 0.5em 1em;
   &:hover {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
-    color: #444;
     cursor: pointer;
   }
 `;

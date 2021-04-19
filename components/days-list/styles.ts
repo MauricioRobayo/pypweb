@@ -10,14 +10,11 @@ export const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 export const ListWrapper = styled.div`
-  border: 1px solid #dbdbdb;
+  border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 5px;
   margin: 1rem 0;
-  & > div {
-    border-bottom: 1px solid #dbdbdb;
-  }
-  & > div:last-child {
-    border-bottom: none;
+  & > div:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   }
 `;
 

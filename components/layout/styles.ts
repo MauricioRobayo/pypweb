@@ -1,7 +1,7 @@
-import TheMoneytizer from "components/the-moneytizer";
-import Vidverto from "components/vidverto";
+import TheMoneytizer from "components/ads/the-moneytizer";
+import Vidverto from "components/ads/vidverto";
 import styled, { css } from "styled-components";
-import { camouflageLink, responsivePaddingAround } from "styles/mixins";
+import { camouflageLink } from "styles/mixins";
 
 export const StyledVidverto = styled(Vidverto)`
   margin: 1rem 0;
@@ -43,8 +43,8 @@ export const StyledLayout = styled.div`
 `;
 
 export const Navbar = styled.div`
-  background-color: hsl(0, 0%, 98%);
-  border-bottom: 1px solid hsl(0, 0%, 88%);
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   padding: 0.5rem 1rem;
   width: 100%;
   nav {
@@ -76,20 +76,16 @@ export const Main = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 `;
 
 export const Aside = styled.aside`
-  ${responsivePaddingAround}
-
-  max-width: 720px;
+  max-width: ${({ theme }) => theme.maxWidthWider};
+  padding: 0.5rem 1rem;
   width: 100%;
   h4 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
-  }
-  a {
-    color: ${({ theme }) => theme.colors.linkColor};
   }
   ol {
     list-style-type: number;
@@ -101,8 +97,8 @@ export const Aside = styled.aside`
 `;
 
 export const Footer = styled.footer<PageProps>`
-  background-color: hsl(0, 0%, 98%);
-  border-top: 1px solid hsl(0, 0%, 88%);
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  border-top: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   font-size: 0.85rem;
   margin-top: auto;
   padding: 0.5rem 0 1rem;

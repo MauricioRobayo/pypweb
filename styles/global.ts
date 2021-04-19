@@ -18,19 +18,16 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
   html {
-    box-sizing: border-box;
     font-size: 14px;
     @media only screen and (min-width: ${size.sm}) {
       font-size: 16px;
     }
   }
   body {
+    color: ${({ theme }) => theme.colors.secondaryDark};
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    line-height: normal;
-  }
-  strong {
-    font-weight: bold;
+    line-height: normal
   }
 `;
 

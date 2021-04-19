@@ -7,10 +7,9 @@ type NumberProps = {
 const Number = styled.div<NumberProps>`
   align-items: center;
   background-color: ${({ selected, theme }) =>
-    selected ? "white" : theme.colors.linkColor};
+    selected ? "white" : theme.colors.main};
   border: 2px solid
-    ${({ selected, theme }) =>
-      selected ? "currentColor" : theme.colors.linkColor};
+    ${({ selected, theme }) => (selected ? "currentColor" : theme.colors.main)};
   border-radius: 50%;
   box-sizing: border-box;
   cursor: ${({ selected }) => (selected ? "auto" : "pointer")};
@@ -24,10 +23,10 @@ const Number = styled.div<NumberProps>`
   width: 0.5rem;
 `;
 const Anchor = styled.a`
-  color: white;
+  color: ${({ theme }) => theme.colors.mainComplement};
   text-decoration: none;
   &:hover {
-    color: white;
+    color: ${({ theme }) => theme.colors.mainComplement};
   }
 `;
 

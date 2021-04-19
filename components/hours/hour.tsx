@@ -9,14 +9,12 @@ type StyledCountdownProps = {
   type: NextType;
 };
 const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
-  background-color: ${({ type }) =>
-    type === NextType.START ? "limegreen" : "red"};
+  background-color: ${({ type, theme }) =>
+    type === NextType.START ? theme.colors.success : theme.colors.danger};
   border-radius: 4px;
   color: white;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-left: 0.5rem;
-  padding: 0 0.25rem;
+  margin-left: 0.25rem;
+  padding: 0 0.5rem;
 `;
 const Comment = styled.div`
   font-weight: bold;
@@ -31,6 +29,18 @@ const HourList = styled.ul`
   list-style: none;
   margin: 0.5rem 0 0 0;
   padding: 0;
+`;
+const HourWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+`;
+const CountdownWrapper = styled.div`
+  color: ${({ theme }) => theme.colors.secondary};
+  display: flex;
+  font-size: 0.75rem;
+  line-height: 1.75;
+  margin-top: 0.25rem;
 `;
 const HourItem = styled.li``;
 
@@ -70,14 +80,21 @@ export default function Hour({
                 {formattedHour === ALL_DAY ? (
                   <span>{ALL_DAY}</span>
                 ) : (
-                  <>
+                  <HourWrapper>
                     {formattedHour}
                     {interactive &&
                     endTime !== undefined &&
                     endType !== undefined ? (
-                      <StyledCountdown endTime={endTime} type={endType} />
+                      <CountdownWrapper>
+                        <span>
+                          {endType === NextType.START
+                            ? "inicia en"
+                            : "termina en"}
+                        </span>
+                        <StyledCountdown endTime={endTime} type={endType} />
+                      </CountdownWrapper>
                     ) : null}
-                  </>
+                  </HourWrapper>
                 )}
               </StyledHour>
             </HourItem>

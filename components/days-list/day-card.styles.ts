@@ -1,16 +1,19 @@
+import PypDate from "components/date";
+import Hours from "components/hours";
 import Icon from "components/icon";
+import { RiErrorWarningFill } from "react-icons/ri";
 import styled, { css } from "styled-components";
 import {
   boxShadow,
   camouflageLink,
+  flexCenter,
+  inlineIconLeft,
   responsivePaddingAround,
 } from "styles/mixins";
-import PypDate from "../date";
-import Hours from "../hours";
 
 const inactiveStyle = css`
-  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
-  color: #b5b5b5;
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 type StyleProps = {
@@ -48,8 +51,8 @@ export const SelectedCard = styled.div<StyleProps>`
 
 export const Header = styled.div<StyleProps>`
   align-items: flex-end;
-  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
-  color: white;
+  background-color: ${({ theme }) => theme.colors.main};
+  color: ${({ theme }) => theme.colors.mainComplement};
   display: flex;
   justify-content: space-between;
   ${responsivePaddingAround}
@@ -77,7 +80,7 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
       isSelected &&
       !isInactive &&
       css`
-        color: white;
+        color: ${({ theme }) => theme.colors.mainComplement};
       `};
   }
   .day {
@@ -95,10 +98,17 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
 `;
 
 export const Warning = styled.div`
-  background-color: hsl(48, 100%, 85%);
-  color: ${({ theme }) => theme.colors.linkColor};
+  background-color: ${({ theme }) => theme.colors.warningLighter};
   padding: 1rem;
   text-align: center;
+  a {
+    ${flexCenter}
+  }
+`;
+
+export const WarningIcon = styled(inlineIconLeft(RiErrorWarningFill))`
+  color: ${({ theme }) => theme.colors.warning};
+  font-size: 1.25rem;
 `;
 
 export const StyledHours = styled(Hours)`
@@ -106,6 +116,4 @@ export const StyledHours = styled(Hours)`
   text-align: center;
 `;
 
-export const StyledIcon = styled(Icon)`
-  margin-right: 0.5rem;
-`;
+export const VehicleIcon = inlineIconLeft(Icon);

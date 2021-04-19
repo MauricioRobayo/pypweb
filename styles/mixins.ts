@@ -1,8 +1,17 @@
+import { ComponentType } from "react";
 import styled, { css } from "styled-components";
 import { size } from "./constants";
 
-export const inlineIcon = (component: any) => styled(component)`
+export const inlineIconLeft = <T>(component: ComponentType<T>) => styled(
+  component
+)`
   margin-right: 0.5rem;
+`;
+
+export const inlineIconRight = <T>(component: ComponentType<T>) => styled(
+  component
+)`
+  margin-left: 0.5rem;
 `;
 
 export const boxShadow = (blurRadius = 10) => css`
