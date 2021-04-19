@@ -3,12 +3,12 @@ import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
 import Layout from "components/layout";
 import Post from "components/post";
+import { cityOptions, CityOptions } from "components/select/utils";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import { CityType, getPypOptions, isCity } from "lib/utils";
+import { CityType, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { PypOption } from "types";
 
 type CategoryProps = {
   categories: { name: string; slug: string }[];
@@ -17,7 +17,7 @@ type CategoryProps = {
   citySlug: CityType;
   currentDate: number;
   post: string;
-  pypOptions: PypOption[];
+  selectOptions: CityOptions;
 };
 
 export default function Category({
@@ -27,7 +27,7 @@ export default function Category({
   citySlug,
   currentDate,
   post,
-  pypOptions,
+  selectOptions,
 }: CategoryProps) {
   const router = useRouter();
   const { d: requestedDate } = router.query;
@@ -66,7 +66,7 @@ export default function Category({
       categoryName={categoryName}
       cityName={cityName}
       date={date}
-      pypOptions={pypOptions}
+      selectOptions={selectOptions}
       title={title}
     >
       <DaysList
@@ -127,7 +127,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       citySlug,
       currentDate: date.getTime(),
       post: postHtml,
-      pypOptions: getPypOptions(),
+      selectOptions: cityOptions(),
     },
   };
 };

@@ -1,8 +1,8 @@
+import { CityOptions } from "components/select/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import { PypOption } from "types";
 import CTA from "../call-to-action";
 import PypDate from "../date";
 import Email from "../email";
@@ -29,7 +29,7 @@ type LayoutProps = {
   categoryName?: string;
   date: Date;
   isHome?: boolean;
-  pypOptions: PypOption[];
+  selectOptions: CityOptions;
   selectedNumber?: number;
   title?: string;
 };
@@ -41,7 +41,7 @@ export default function Layout({
   className = "",
   date,
   isHome = false,
-  pypOptions,
+  selectOptions,
   selectedNumber,
   title = "Pico y placa hoy",
 }: LayoutProps) {
@@ -89,7 +89,11 @@ export default function Layout({
                 </a>
               </Link>
             </Logo>
-            <Select pypOptions={pypOptions} />
+            <Select
+              name="ciudad"
+              options={selectOptions}
+              placeholder="Ciudad"
+            />
           </nav>
         </Navbar>
       )}
