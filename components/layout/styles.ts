@@ -1,7 +1,7 @@
 import TheMoneytizer from "components/the-moneytizer";
 import Vidverto from "components/vidverto";
 import styled, { css } from "styled-components";
-import { camouflageLink, responsivePaddingAround } from "styles/mixins";
+import { camouflageLink } from "styles/mixins";
 
 export const StyledVidverto = styled(Vidverto)`
   margin: 1rem 0;
@@ -76,13 +76,12 @@ export const Main = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 `;
 
 export const Aside = styled.aside`
-  ${responsivePaddingAround}
-
   max-width: 720px;
+  padding: 0.5rem 1rem;
   width: 100%;
   h4 {
     font-weight: bold;
