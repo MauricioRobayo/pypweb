@@ -12,14 +12,6 @@ export function isCity(city: any): city is CityType {
   return typeof city === "string" && city in cities;
 }
 
-export function getPypOptions() {
-  const pypOptions: { value: string; name: string }[] = [];
-  Object.values(cities).forEach(({ name: cityName, slug: citySlug }) => {
-    pypOptions.push({ name: cityName, value: citySlug });
-  });
-  return pypOptions;
-}
-
 export function hasAllDigits(numbers: number[]) {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].every((num) => numbers.includes(num));
 }

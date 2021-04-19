@@ -2,12 +2,12 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
+import { cityOptions, CityOptions } from "components/select/utils";
 import Vidverto from "components/vidverto";
-import { CityType, getPypOptions, isCity } from "lib/utils";
+import { CityType, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
-import { PypOption } from "types";
 
 const StyledVidverto = styled(Vidverto)`
   margin: 1rem 0;
@@ -17,7 +17,7 @@ type CityProps = {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
-  pypOptions: PypOption[];
+  selectOptions: CityOptions;
   currentDate: number;
 };
 
@@ -26,7 +26,7 @@ export default function City({
   cityName,
   citySlug,
   currentDate,
-  pypOptions,
+  selectOptions,
 }: CityProps) {
   const title = `Pico y placa ${cityName}`;
   const date = new Date(currentDate);
@@ -61,7 +61,7 @@ export default function City({
       aside={aside}
       cityName={cityName}
       date={date}
-      pypOptions={pypOptions}
+      selectOptions={selectOptions}
       title={title}
     >
       <CategoriesList categories={categories} citySlug={citySlug} date={date} />
@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       citySlug,
       currentDate: date.getTime(),
-      pypOptions: getPypOptions(),
+      selectOptions: cityOptions(),
     },
   };
 };

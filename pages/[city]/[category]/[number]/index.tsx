@@ -6,16 +6,16 @@ import Layout from "components/layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
+import { cityOptions, CityOptions } from "components/select/utils";
 import Vidverto from "components/vidverto";
 import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import { getPypOptions, isCity, NA, pypNumbersToString } from "lib/utils";
+import { isCity, NA, pypNumbersToString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
-import { PypOption } from "types";
 
 const StyledLayout = styled(Layout)`
   text-align: center;
@@ -71,7 +71,7 @@ type CategoryProps = {
   currentDate: number;
   number: string;
   post: string;
-  pypOptions: PypOption[];
+  selectOptions: CityOptions;
 };
 
 export default function Category({
@@ -82,7 +82,7 @@ export default function Category({
   currentDate,
   number,
   post,
-  pypOptions,
+  selectOptions,
 }: CategoryProps) {
   const {
     slug: categorySlug,
@@ -127,7 +127,7 @@ export default function Category({
       categoryName={categoryName}
       cityName={cityName}
       date={date}
-      pypOptions={pypOptions}
+      selectOptions={selectOptions}
       title={title}
     >
       <div>
@@ -256,7 +256,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       currentDate: date.getTime(),
       number: params?.number,
       post: postHtml,
-      pypOptions: getPypOptions(),
+      selectOptions: cityOptions(),
     },
   };
 };
