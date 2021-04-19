@@ -1,25 +1,12 @@
 /* eslint-disable react/no-danger */
 
+import AdPlaceholder from "components/ads/placeholder";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
-import styled from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const id = "981cceae08e42e6301d86ae909b97156";
 const scriptUrl = "https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js";
-
-const VideoPlaceholder = styled.div`
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.ad.backgroundColor};
-  border: 1px solid currentColor;
-  color: ${({ theme }) => theme.colors.ad.color};
-  display: flex;
-  font-weight: bold;
-  height: 320px;
-  justify-content: center;
-  max-width: ${({ theme }) => theme.maxWidth};
-  width: 100%;
-`;
 
 type VidvertoProps = {
   className?: string;
@@ -60,9 +47,7 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
     );
   }
 
-  return (
-    <VideoPlaceholder className={className}>Vidverto Add</VideoPlaceholder>
-  );
+  return <AdPlaceholder className={className} height="320px" name="Vidverto" />;
 };
 
 export default Vidverto;

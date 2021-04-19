@@ -1,5 +1,5 @@
-import TheMoneytizer from "components/the-moneytizer";
-import Vidverto from "components/vidverto";
+import TheMoneytizer from "components/ads/the-moneytizer";
+import Vidverto from "components/ads/vidverto";
 import styled, { css } from "styled-components";
 import { camouflageLink } from "styles/mixins";
 

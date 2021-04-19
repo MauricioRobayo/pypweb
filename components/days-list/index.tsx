@@ -1,8 +1,8 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Category from "@mauriciorobayo/pyptron/dist/models/category";
+import Vidverto from "components/ads/vidverto";
 import { memo, useEffect, useState } from "react";
 import NumberLinks from "../number-links";
-import Vidverto from "../vidverto";
 import DayCard from "./day-card";
 import {
   Article,

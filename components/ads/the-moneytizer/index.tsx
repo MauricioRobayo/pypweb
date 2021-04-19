@@ -1,7 +1,7 @@
 import cn from "classnames";
+import AdPlaceholder from "components/ads/placeholder";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
-import styled, { css } from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
@@ -20,25 +20,6 @@ const formatTypeClassName: Record<FormatType, string> = {
   RECOMMENDED_CONTENT: "outbrain-tm",
   SKIN: "",
 };
-
-const Banner = styled.div`
-  ${({ theme }) =>
-    !isProduction &&
-    css`
-      align-items: center;
-      background-color: ${theme.colors.ad.backgroundColor};
-      border: 1px solid currentColor;
-      color: ${theme.colors.ad.color};
-      display: flex;
-      font-weight: bold;
-      height: 90px;
-      justify-content: center;
-      margin: auto;
-      max-width: 720px;
-      text-transform: uppercase;
-      width: 100%;
-    `};
-`;
 
 type Props = {
   className?: string;
@@ -59,14 +40,18 @@ const TheMoneytizer = ({ className = "", formatType }: Props) => {
     );
   }
 
+  if (isProduction) {
+    return (
+      <div
+        ref={div}
+        className={cn(className, formatClassName)}
+        id={`${siteId}-${formatId}`}
+      />
+    );
+  }
+
   return (
-    <Banner
-      ref={div}
-      className={cn(className, formatClassName)}
-      id={`${siteId}-${formatId}`}
-    >
-      {isProduction ? null : formatType}
-    </Banner>
+    <AdPlaceholder className={className} height="90px" name={formatType} />
   );
 };
 
