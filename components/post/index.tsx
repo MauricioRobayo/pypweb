@@ -2,7 +2,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoMdOpen } from "react-icons/io";
 import styled, { css } from "styled-components";
-import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
+import {
+  flexHorizontalCenterVerticalEnd,
+  inlineIconRight,
+} from "styles/mixins";
 
 const baseEditUrl =
   "https://github.com/MauricioRobayo/pypweb/edit/main/_posts/";
@@ -18,14 +21,12 @@ const Wrapper = styled.div<WrapperProps>`
   ${({ hover, theme }) =>
     hover &&
     css`
-      background-color: ${theme.colors.lightSecondary};
-      border: 2px solid ${theme.colors.link};
+      background-color: ${theme.colors.secondaryLighter};
+      border: 2px solid ${theme.colors.main};
     `};
 `;
 
-const StyledOpenIcon = styled(IoMdOpen)`
-  margin-left: 0.5rem;
-`;
+const OpenIcon = inlineIconRight(IoMdOpen);
 
 const StyledAnchor = styled.a`
   ${flexHorizontalCenterVerticalEnd}
@@ -76,7 +77,7 @@ export default function Post({ editPath, body }: PostProps) {
               onMouseOut={handleMouseOut}
               onMouseOver={handleMouseOver}
             >
-              Editar en GitHub <StyledOpenIcon />
+              Editar en GitHub <OpenIcon />
             </StyledAnchor>
           </Link>
         </StyledLinkWrapper>

@@ -43,8 +43,8 @@ export const StyledLayout = styled.div`
 `;
 
 export const Navbar = styled.div`
-  background-color: hsl(0, 0%, 98%);
-  border-bottom: 1px solid hsl(0, 0%, 88%);
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   padding: 0.5rem 1rem;
   width: 100%;
   nav {
@@ -87,9 +87,6 @@ export const Aside = styled.aside`
     font-weight: bold;
     margin: 1rem 0 0.5rem;
   }
-  a {
-    color: ${({ theme }) => theme.colors.link};
-  }
   ol {
     list-style-type: number;
   }
@@ -100,8 +97,8 @@ export const Aside = styled.aside`
 `;
 
 export const Footer = styled.footer<PageProps>`
-  background-color: hsl(0, 0%, 98%);
-  border-top: 1px solid hsl(0, 0%, 88%);
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  border-top: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   font-size: 0.85rem;
   margin-top: auto;
   padding: 0.5rem 0 1rem;

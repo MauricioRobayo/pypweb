@@ -14,21 +14,18 @@ type StyledSelectProps = {
 };
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
-  border: 1px solid lightgray;
+  border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 0.4rem;
-  color: ${({ isShowingPlaceholder }) =>
-    isShowingPlaceholder ? "gray" : "#444"};
+  color: ${({ isShowingPlaceholder, theme }) =>
+    isShowingPlaceholder ? theme.colors.secondary : theme.colors.secondaryDark};
   grid-column: 1 / 1;
   grid-row: 1 / 1;
   margin: 0.5rem 0;
   padding: 0.5rem;
-  &:focus-within {
-    box-shadow: 0 0 0.25rem 0 ${({ theme }) => theme.colors.link};
-  }
 `;
 
 const Option = styled.option`
-  color: #444;
+  color: ${({ theme }) => theme.colors.secondaryDark};
 `;
 
 const Caret = styled.div`

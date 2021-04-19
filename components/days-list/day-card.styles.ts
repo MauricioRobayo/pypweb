@@ -3,14 +3,15 @@ import styled, { css } from "styled-components";
 import {
   boxShadow,
   camouflageLink,
+  inlineIconLeft,
   responsivePaddingAround,
 } from "styles/mixins";
 import PypDate from "../date";
 import Hours from "../hours";
 
 const inactiveStyle = css`
-  background-color: ${({ theme }) => theme.colors.lightSecondary};
-  color: #b5b5b5;
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 type StyleProps = {
@@ -49,7 +50,7 @@ export const SelectedCard = styled.div<StyleProps>`
 export const Header = styled.div<StyleProps>`
   align-items: flex-end;
   background-color: ${({ theme }) => theme.colors.main};
-  color: white;
+  color: ${({ theme }) => theme.colors.mainComplement};
   display: flex;
   justify-content: space-between;
   ${responsivePaddingAround}
@@ -77,7 +78,7 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
       isSelected &&
       !isInactive &&
       css`
-        color: white;
+        color: ${({ theme }) => theme.colors.mainComplement};
       `};
   }
   .day {
@@ -95,8 +96,7 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
 `;
 
 export const Warning = styled.div`
-  background-color: hsl(48, 100%, 85%);
-  color: ${({ theme }) => theme.colors.link};
+  background-color: ${({ theme }) => theme.colors.warning};
   padding: 1rem;
   text-align: center;
 `;
@@ -106,6 +106,4 @@ export const StyledHours = styled(Hours)`
   text-align: center;
 `;
 
-export const StyledIcon = styled(Icon)`
-  margin-right: 0.5rem;
-`;
+export const StyledIcon = inlineIconLeft(Icon);

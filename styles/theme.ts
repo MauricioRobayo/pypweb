@@ -6,17 +6,17 @@ declare module "styled-components" {
 
 const defaultTheme = {
   colors: {
-    ad: {
-      backgroundColor: "#F0F8FF",
-      color: "#1E90FF",
-    },
     danger: "#DC3545",
-    lightMain: "#F0F8FF",
-    lightSecondary: "#F8F9FA",
-    link: "#0D6EFD",
     main: "#1E90FF",
-    secondary: "#444444",
-    success: "#198754",
+    mainComplement: "#FFFFFF",
+    mainDark: "#0052a3",
+    mainLight: "#F0F8FF",
+    secondary: "#ADB5BD",
+    secondaryDark: "#495057",
+    secondaryLight: "#DEE2E6",
+    secondaryLighter: "#F8F9FA",
+    success: "#22BB33",
+    warning: "#FFF3CD",
   },
   maxWidth: "570px",
 };

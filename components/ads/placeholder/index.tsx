@@ -4,7 +4,7 @@ const StyledAdPlaceholder = styled.div<
   Pick<AdPlaceholderProps, "height" | "width" | "maxWidth">
 >`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.lightMain};
+  background-color: ${({ theme }) => theme.colors.mainLight};
   border: 1px solid currentColor;
   color: ${({ theme }) => theme.colors.main};
   display: flex;

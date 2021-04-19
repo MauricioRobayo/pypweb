@@ -36,7 +36,7 @@ const HourWrapper = styled.div`
   flex-direction: column;
 `;
 const CountdownWrapper = styled.div`
-  color: gray;
+  color: ${({ theme }) => theme.colors.secondary};
   display: flex;
   font-size: 0.75rem;
   line-height: 1.75;

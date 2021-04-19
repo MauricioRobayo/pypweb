@@ -2,7 +2,7 @@ import { IHourData } from "@mauriciorobayo/pyptron";
 import cn from "classnames";
 import { FcAlarmClock } from "react-icons/fc";
 import styled from "styled-components";
-import { flexCenter, inlineIcon } from "styles/mixins";
+import { flexCenter, inlineIconLeft } from "styles/mixins";
 import Hour from "./hour";
 
 const HoursTitle = styled.h4`
@@ -12,7 +12,7 @@ const HoursTitle = styled.h4`
   margin: 0;
 `;
 
-const StyledAlarmClock = inlineIcon(FcAlarmClock);
+const StyledAlarmClock = inlineIconLeft(FcAlarmClock);
 
 type HoursProps = {
   className?: string;

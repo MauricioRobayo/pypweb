@@ -5,7 +5,7 @@ import {
   boxShadow,
   camouflageLink,
   flexHorizontalCenterVerticalEnd,
-  inlineIcon,
+  inlineIconLeft,
 } from "styles/mixins";
 
 export const Wrapper = styled.article`
@@ -32,7 +32,7 @@ export const Body = styled.div`
 `;
 
 export const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.lightMain};
+  background-color: ${({ theme }) => theme.colors.mainLight};
   border-radius: 0 0 5px 5px;
   padding: 1rem;
 `;
@@ -51,5 +51,5 @@ export const Description = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const StyledIcon = inlineIcon(Icon);
-export const StyledFcCalendar = inlineIcon(FcCalendar);
+export const StyledIcon = inlineIconLeft(Icon);
+export const StyledFcCalendar = inlineIconLeft(FcCalendar);
