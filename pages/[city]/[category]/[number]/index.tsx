@@ -60,7 +60,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto;
+  margin: 1rem 0;
 `;
 
 type CategoryProps = {
