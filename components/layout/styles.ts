@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { camouflageLink, responsivePaddingAround } from "styles/mixins";
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem;
+  margin: 1rem 0;
 `;
 
 export const MegaBanner = styled(TheMoneytizer).attrs({
