@@ -1,16 +1,12 @@
 import Icon from "components/icon";
-import { lighten } from "polished";
 import { FcCalendar } from "react-icons/fc";
-import styled, { DefaultTheme } from "styled-components";
+import styled from "styled-components";
 import {
   boxShadow,
   camouflageLink,
   flexHorizontalCenterVerticalEnd,
   inlineIcon,
 } from "styles/mixins";
-
-const activeBackgroundColor = ({ theme }: { theme: DefaultTheme }) =>
-  theme.colors.activeBackgroundColor;
 
 export const Wrapper = styled.article`
   ${boxShadow()}
@@ -20,7 +16,7 @@ export const Wrapper = styled.article`
 `;
 
 export const Title = styled.h4`
-  background: ${activeBackgroundColor};
+  background: ${({ theme }) => theme.colors.main};
   border-radius: 5px 5px 0 0;
   color: white;
   font-size: 1.2rem;
@@ -36,8 +32,7 @@ export const Body = styled.div`
 `;
 
 export const Footer = styled.footer`
-  background-color: ${({ theme }) =>
-    lighten(0.4, activeBackgroundColor({ theme }))};
+  background-color: ${({ theme }) => theme.colors.lightMain};
   border-radius: 0 0 5px 5px;
   padding: 1rem;
 `;

@@ -40,7 +40,7 @@ const ListItem = styled.li`
     border-bottom: none;
   }
   &:hover {
-    background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
+    background-color: ${({ theme }) => theme.colors.main};
     color: white;
   }
   ${camouflageLink}

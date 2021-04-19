@@ -88,7 +88,7 @@ export const Aside = styled.aside`
     margin: 1rem 0 0.5rem;
   }
   a {
-    color: ${({ theme }) => theme.colors.linkColor};
+    color: ${({ theme }) => theme.colors.link};
   }
   ol {
     list-style-type: number;

@@ -7,10 +7,9 @@ type NumberProps = {
 const Number = styled.div<NumberProps>`
   align-items: center;
   background-color: ${({ selected, theme }) =>
-    selected ? "white" : theme.colors.linkColor};
+    selected ? "white" : theme.colors.link};
   border: 2px solid
-    ${({ selected, theme }) =>
-      selected ? "currentColor" : theme.colors.linkColor};
+    ${({ selected, theme }) => (selected ? "currentColor" : theme.colors.link)};
   border-radius: 50%;
   box-sizing: border-box;
   cursor: ${({ selected }) => (selected ? "auto" : "pointer")};

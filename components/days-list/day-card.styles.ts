@@ -9,7 +9,7 @@ import PypDate from "../date";
 import Hours from "../hours";
 
 const inactiveStyle = css`
-  background-color: ${({ theme }) => theme.colors.inactiveBackgroundColor};
+  background-color: ${({ theme }) => theme.colors.lightSecondary};
   color: #b5b5b5;
 `;
 
@@ -48,7 +48,7 @@ export const SelectedCard = styled.div<StyleProps>`
 
 export const Header = styled.div<StyleProps>`
   align-items: flex-end;
-  background-color: ${({ theme }) => theme.colors.activeBackgroundColor};
+  background-color: ${({ theme }) => theme.colors.main};
   color: white;
   display: flex;
   justify-content: space-between;
@@ -96,7 +96,7 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
 
 export const Warning = styled.div`
   background-color: hsl(48, 100%, 85%);
-  color: ${({ theme }) => theme.colors.linkColor};
+  color: ${({ theme }) => theme.colors.link};
   padding: 1rem;
   text-align: center;
 `;

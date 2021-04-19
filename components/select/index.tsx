@@ -23,7 +23,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   margin: 0.5rem 0;
   padding: 0.5rem;
   &:focus-within {
-    box-shadow: 0 0 0.25rem 0 ${({ theme }) => theme.colors.linkColor};
+    box-shadow: 0 0 0.25rem 0 ${({ theme }) => theme.colors.link};
   }
 `;
 

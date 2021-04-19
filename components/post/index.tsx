@@ -18,8 +18,8 @@ const Wrapper = styled.div<WrapperProps>`
   ${({ hover, theme }) =>
     hover &&
     css`
-      background-color: ${theme.colors.inactiveBackgroundColor};
-      border: 2px solid ${theme.colors.linkColor};
+      background-color: ${theme.colors.lightSecondary};
+      border: 2px solid ${theme.colors.link};
     `};
 `;
 
