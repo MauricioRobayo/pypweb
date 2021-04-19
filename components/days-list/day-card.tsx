@@ -1,9 +1,9 @@
 import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import LicensePlate from "components/license-plate";
 import { format, isSameDay } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { memo } from "react";
-import LicensePlate from "../license-plate";
 import {
   Body,
   Description,
@@ -11,9 +11,10 @@ import {
   RegularCard,
   SelectedCard,
   StyledHours,
-  StyledIcon,
   StyledPypDate,
+  VehicleIcon,
   Warning,
+  WarningIcon,
 } from "./day-card.styles";
 
 type DayCardProps = {
@@ -68,7 +69,7 @@ function DayCard({
       >
         <Header isInactive={isInactive}>
           <div>
-            {isSelected ? <StyledIcon iconName={categoryName} /> : null}
+            {isSelected ? <VehicleIcon iconName={categoryName} /> : null}
             {formattedDate}
             {isInactive ? null : (
               <Description>
@@ -89,9 +90,11 @@ function DayCard({
           <Warning>
             <p>
               <Link href={`/${citySlug}/${categorySlug}`}>
-                <a>⚠️ Para ver la información de hoy haga click acá</a>
+                <a>
+                  <WarningIcon />
+                  Para ver la información de hoy haga click acá
+                </a>
               </Link>
-              .
             </p>
           </Warning>
         )}

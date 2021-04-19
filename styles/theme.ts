@@ -16,9 +16,11 @@ const defaultTheme = {
     secondaryLight: "#DEE2E6",
     secondaryLighter: "#F8F9FA",
     success: "#22BB33",
-    warning: "#FFF3CD",
+    warning: "#FFC107",
+    warningLighter: "#FFF3CD",
   },
   maxWidth: "570px",
+  maxWidthWider: "720px",
 };
 
 export default defaultTheme;

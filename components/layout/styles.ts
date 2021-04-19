@@ -80,7 +80,7 @@ export const Main = styled.main`
 `;
 
 export const Aside = styled.aside`
-  max-width: 720px;
+  max-width: ${({ theme }) => theme.maxWidthWider};
   padding: 0.5rem 1rem;
   width: 100%;
   h4 {

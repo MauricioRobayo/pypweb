@@ -1,13 +1,15 @@
+import PypDate from "components/date";
+import Hours from "components/hours";
 import Icon from "components/icon";
+import { RiErrorWarningFill } from "react-icons/ri";
 import styled, { css } from "styled-components";
 import {
   boxShadow,
   camouflageLink,
+  flexCenter,
   inlineIconLeft,
   responsivePaddingAround,
 } from "styles/mixins";
-import PypDate from "../date";
-import Hours from "../hours";
 
 const inactiveStyle = css`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
@@ -96,9 +98,17 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
 `;
 
 export const Warning = styled.div`
-  background-color: ${({ theme }) => theme.colors.warning};
+  background-color: ${({ theme }) => theme.colors.warningLighter};
   padding: 1rem;
   text-align: center;
+  a {
+    ${flexCenter}
+  }
+`;
+
+export const WarningIcon = styled(inlineIconLeft(RiErrorWarningFill))`
+  color: ${({ theme }) => theme.colors.warning};
+  font-size: 1.25rem;
 `;
 
 export const StyledHours = styled(Hours)`
@@ -106,4 +116,4 @@ export const StyledHours = styled(Hours)`
   text-align: center;
 `;
 
-export const StyledIcon = inlineIconLeft(Icon);
+export const VehicleIcon = inlineIconLeft(Icon);
