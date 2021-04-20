@@ -49,11 +49,11 @@ type HourProps = {
   date: Date;
   interactive?: boolean;
 };
-export default function Hour({
+const Hour = ({
   date,
   hourData: { hours, comment, days },
   interactive = false,
-}: HourProps) {
+}: HourProps) => {
   const [calculatedHoursWithEndTime, setCalculatedHoursWithEndTime] = useState(
     calculateHoursWithEndTime(hours)
   );
@@ -62,7 +62,9 @@ export default function Hour({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCalculatedHoursWithEndTime(calculateHoursWithEndTime(hours));
+      if (new Date().getSeconds() === 0) {
+        setCalculatedHoursWithEndTime(calculateHoursWithEndTime(hours));
+      }
     }, 1000);
 
     return () => clearInterval(interval);
@@ -115,4 +117,6 @@ export default function Hour({
       </HourList>
     </>
   );
-}
+};
+
+export default Hour;
