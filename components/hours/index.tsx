@@ -1,5 +1,4 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import cn from "classnames";
 import { FcAlarmClock } from "react-icons/fc";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";
@@ -38,7 +37,7 @@ export default function Hours({
           Horario
         </HoursTitle>
       ) : null}
-      <div className={cn(className, { interactive })}>
+      <div className={className}>
         {hours.map((hourData, index) => (
           <Hour
             key={index}

@@ -7,11 +7,13 @@ const List = styled.div`
   display: grid;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   justify-content: center;
   margin-top: 1rem;
   max-width: ${({ theme }) => theme.maxWidth};
   width: 100%;
+  & > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 `;
 
 type CategoryListProps = {

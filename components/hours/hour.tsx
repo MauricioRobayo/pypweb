@@ -10,17 +10,17 @@ type StyledCountdownProps = {
   type: NextType;
 };
 const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
+  align-items: center;
   display: flex;
   font-size: 0.75rem;
-  line-height: 1.5;
   margin-top: 0.25rem;
   .countdown {
     background-color: ${({ type, theme }) =>
       type === NextType.START ? theme.colors.success : theme.colors.danger};
-    border-radius: 4px;
+    border-radius: 8px;
     color: white;
     margin-left: 0.25rem;
-    padding: 0 0.5rem;
+    padding: 0.1rem 0.5rem;
   }
 `;
 const Comment = styled.div`
@@ -49,11 +49,11 @@ type HourProps = {
   date: Date;
   interactive?: boolean;
 };
-export default function Hour({
+const Hour = ({
   date,
   hourData: { hours, comment, days },
   interactive = false,
-}: HourProps) {
+}: HourProps) => {
   const [calculatedHoursWithEndTime, setCalculatedHoursWithEndTime] = useState(
     calculateHoursWithEndTime(hours)
   );
@@ -62,7 +62,9 @@ export default function Hour({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCalculatedHoursWithEndTime(calculateHoursWithEndTime(hours));
+      if (new Date().getSeconds() === 0) {
+        setCalculatedHoursWithEndTime(calculateHoursWithEndTime(hours));
+      }
     }, 1000);
 
     return () => clearInterval(interval);
@@ -115,4 +117,6 @@ export default function Hour({
       </HourList>
     </>
   );
-}
+};
+
+export default Hour;
