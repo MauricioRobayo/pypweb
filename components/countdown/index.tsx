@@ -1,18 +1,32 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { formatDistance } from "./utils";
+
+const Message = styled.span`
+  color: ${({ theme }) => theme.colors.secondary};
+`;
 
 type CountDownProps = {
   endTime: Date;
   className?: string;
+  message?: string;
 };
 
-const Countdown = ({ className = "", endTime }: CountDownProps) => {
-  const [countdown, setCountdown] = useState(formatDistance(endTime));
+const Countdown = ({
+  className = "",
+  endTime,
+  message = "",
+}: CountDownProps) => {
+  const [countdown, setCountdown] = useState("");
+
+  useEffect(() => {
+    setCountdown(formatDistance(endTime));
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown(formatDistance(endTime));
-    }, 60 * 1000);
+    }, 1000);
 
     return () => clearInterval(timeout);
   }, [countdown]);
@@ -21,7 +35,12 @@ const Countdown = ({ className = "", endTime }: CountDownProps) => {
     return null;
   }
 
-  return <div className={className}>{countdown}</div>;
+  return (
+    <div className={className}>
+      {message === "" ? null : <Message>{message}</Message>}
+      <div className="countdown">{countdown}</div>
+    </div>
+  );
 };
 
 export default Countdown;

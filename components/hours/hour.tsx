@@ -9,12 +9,18 @@ type StyledCountdownProps = {
   type: NextType;
 };
 const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
-  background-color: ${({ type, theme }) =>
-    type === NextType.START ? theme.colors.success : theme.colors.danger};
-  border-radius: 4px;
-  color: white;
-  margin-left: 0.25rem;
-  padding: 0 0.5rem;
+  display: flex;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+  .countdown {
+    background-color: ${({ type, theme }) =>
+      type === NextType.START ? theme.colors.success : theme.colors.danger};
+    border-radius: 4px;
+    color: white;
+    margin-left: 0.25rem;
+    padding: 0 0.5rem;
+  }
 `;
 const Comment = styled.div`
   font-weight: bold;
@@ -34,13 +40,6 @@ const HourWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-`;
-const CountdownWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.secondary};
-  display: flex;
-  font-size: 0.75rem;
-  line-height: 1.75;
-  margin-top: 0.25rem;
 `;
 const HourItem = styled.li``;
 
@@ -85,14 +84,15 @@ export default function Hour({
                     {interactive &&
                     endTime !== undefined &&
                     endType !== undefined ? (
-                      <CountdownWrapper>
-                        <span>
-                          {endType === NextType.START
+                      <StyledCountdown
+                        endTime={endTime}
+                        message={
+                          endType === NextType.START
                             ? "inicia en"
-                            : "termina en"}
-                        </span>
-                        <StyledCountdown endTime={endTime} type={endType} />
-                      </CountdownWrapper>
+                            : "termina en"
+                        }
+                        type={endType}
+                      />
                     ) : null}
                   </HourWrapper>
                 )}

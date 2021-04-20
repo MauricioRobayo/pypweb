@@ -17,33 +17,36 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
 
   if (isProduction) {
     return (
-      <>
-        <div ref={divRef} className={className} id={`_vidverto-${id}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            (() => {
-              window.aries = window.aries || {};
-              window.aries.v1 = window.aries.v1 || {commands: []};
+      // we need this initial wrapper as vidverto adds a sibling to the
+      // inner div. To add spacing around it we wrap it in another div.
+      <div className={className}>
+        <div ref={divRef} id={`_vidverto-${id}`}>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (() => {
+                window.aries = window.aries || {};
+                window.aries.v1 = window.aries.v1 || {commands: []};
 
-              const aries = window.aries.v1;
+                const aries = window.aries.v1;
 
-              aries.commands.push(() => {
-                const zoneId = '6552';
-                const anchor = document.getElementById('_vidverto-${id}');
+                aries.commands.push(() => {
+                  const zoneId = '6552';
+                  const anchor = document.getElementById('_vidverto-${id}');
 
-                anchor.removeAttribute('id');
+                  anchor.removeAttribute('id');
 
-                aries.mount(zoneId, anchor, {
-                  width: 720,
-                  height: 405,
+                  aries.mount(zoneId, anchor, {
+                    width: 720,
+                    height: 405,
+                  });
                 });
-              });
-            })();
-          `,
-          }}
-        />
-      </>
+              })();
+            `,
+            }}
+          />
+        </div>
+      </div>
     );
   }
 

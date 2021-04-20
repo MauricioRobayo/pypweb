@@ -2,10 +2,14 @@ import { useRouter } from "next/router";
 import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+type WrapperProps = {
+  narrow?: boolean;
+};
+const Wrapper = styled.div<WrapperProps>`
   align-items: center;
   display: grid;
   grid-template: 1 /1;
+  max-width: ${({ narrow, theme }) => (narrow ? theme.maxWidthNarrow : "100%")};
   width: 100%;
 `;
 
@@ -14,6 +18,7 @@ type StyledSelectProps = {
 };
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
+  background: ${({ theme }) => theme.colors.mainComplement};
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 0.4rem;
   color: ${({ isShowingPlaceholder, theme }) =>
@@ -47,9 +52,15 @@ type SelectProps = {
   }[];
   name: string;
   placeholder: string;
+  narrow?: boolean;
 };
 
-const Select = ({ name, options, placeholder }: SelectProps) => {
+const Select = ({
+  name,
+  options,
+  placeholder,
+  narrow = false,
+}: SelectProps) => {
   const [selected, setSelected] = useState("");
   const router = useRouter();
 
@@ -71,7 +82,7 @@ const Select = ({ name, options, placeholder }: SelectProps) => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper narrow={narrow}>
       <StyledSelect
         isShowingPlaceholder={selected === ""}
         name={name}

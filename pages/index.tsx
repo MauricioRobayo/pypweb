@@ -17,7 +17,12 @@ export default function Home({
   const date = new Date(currentDate);
   return (
     <Layout date={date} isHome selectOptions={selectOptions}>
-      <Select name="ciudad" options={selectOptions} placeholder="Ciudad" />
+      <Select
+        name="ciudad"
+        narrow
+        options={selectOptions}
+        placeholder="Ciudad"
+      />
     </Layout>
   );
 }

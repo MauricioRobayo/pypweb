@@ -1,13 +1,13 @@
+import CTA from "components/call-to-action";
+import PypDate from "components/date";
+import Email from "components/email";
+import LicensePlate from "components/license-plate";
+import Select from "components/select";
 import { CityOptions } from "components/select/utils";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import CTA from "../call-to-action";
-import PypDate from "../date";
-import Email from "../email";
-import LicensePlate from "../license-plate";
-import Select from "../select";
 import {
   Aside,
   Footer,

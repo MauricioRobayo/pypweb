@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { camouflageLink } from "styles/mixins";
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem 0;
+  margin-top: 1rem;
 `;
 
 export const MegaBanner = styled(TheMoneytizer).attrs({
@@ -16,7 +16,7 @@ export const MegaBanner = styled(TheMoneytizer).attrs({
 export const RecommendedContent = styled(TheMoneytizer).attrs({
   formatType: "RECOMMENDED_CONTENT",
 })`
-  margin: 2rem 0;
+  margin: 2rem auto;
 `;
 
 export const StyledLayout = styled.div`

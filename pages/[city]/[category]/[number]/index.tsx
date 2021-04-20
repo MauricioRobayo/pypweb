@@ -23,7 +23,7 @@ const StyledLayout = styled(Layout)`
 
 const Title = styled.h4`
   font-size: 1.25rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 `;
 
 const ListWrapper = styled.ol`
@@ -60,7 +60,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem 0;
+  margin: 1rem auto 0;
 `;
 
 type CategoryProps = {
@@ -155,7 +155,7 @@ export default function Category({
         </Title>
         {hasRestriction ? (
           <>
-            <Hours date={date} hours={hours} />
+            <Hours date={date} hours={hours} interactive />
           </>
         ) : (
           todaysRestriction
