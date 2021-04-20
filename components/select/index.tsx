@@ -14,6 +14,7 @@ type StyledSelectProps = {
 };
 const StyledSelect = styled.select<StyledSelectProps>`
   appearance: none;
+  background: ${({ theme }) => theme.colors.mainComplement};
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 0.4rem;
   color: ${({ isShowingPlaceholder, theme }) =>
