@@ -17,7 +17,11 @@ const Countdown = ({
   endTime,
   message = "",
 }: CountDownProps) => {
-  const [countdown, setCountdown] = useState(formatDistance(endTime));
+  const [countdown, setCountdown] = useState("");
+
+  useEffect(() => {
+    setCountdown(formatDistance(endTime));
+  }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
