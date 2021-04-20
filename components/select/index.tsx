@@ -3,7 +3,7 @@ import { ChangeEventHandler, useEffect, useState } from "react";
 import styled from "styled-components";
 
 type WrapperProps = {
-  narrow: boolean;
+  narrow?: boolean;
 };
 const Wrapper = styled.div<WrapperProps>`
   align-items: center;
@@ -55,7 +55,12 @@ type SelectProps = {
   narrow?: boolean;
 };
 
-const Select = ({ name, options, placeholder, narrow }: SelectProps) => {
+const Select = ({
+  name,
+  options,
+  placeholder,
+  narrow = false,
+}: SelectProps) => {
   const [selected, setSelected] = useState("");
   const router = useRouter();
 
