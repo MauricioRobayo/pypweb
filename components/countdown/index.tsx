@@ -22,7 +22,7 @@ const Countdown = ({
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCountdown(formatDistance(endTime));
-    }, 60 * 1000);
+    }, 1000);
 
     return () => clearInterval(timeout);
   }, [countdown]);
