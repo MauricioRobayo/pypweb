@@ -4,7 +4,7 @@ import { ALL_DAY } from "lib/utils";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { flexCenter } from "styles/mixins";
-import { CalculatedHours, calculateHoursWithEndTime, NextType } from "./utils";
+import { calculateHoursWithEndTime, NextType } from "./utils";
 
 type StyledCountdownProps = {
   type: NextType;
@@ -54,10 +54,9 @@ export default function Hour({
   hourData: { hours, comment, days },
   interactive = false,
 }: HourProps) {
-  const [
-    calculatedHoursWithEndTime,
-    setCalculatedHoursWithEndTime,
-  ] = useState<CalculatedHours>([]);
+  const [calculatedHoursWithEndTime, setCalculatedHoursWithEndTime] = useState(
+    calculateHoursWithEndTime(hours)
+  );
 
   const hasComment = Boolean(comment);
 
