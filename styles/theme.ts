@@ -20,6 +20,7 @@ const defaultTheme = {
     warningLighter: "#FFF3CD",
   },
   maxWidth: "570px",
+  maxWidthNarrow: "320px",
   maxWidthWider: "720px",
 };
 
