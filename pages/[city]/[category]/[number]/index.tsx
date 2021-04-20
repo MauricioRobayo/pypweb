@@ -60,7 +60,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)`
 `;
 
 const StyledVidverto = styled(Vidverto)`
-  margin-top: 1rem;
+  margin: 1rem auto 0;
 `;
 
 type CategoryProps = {
@@ -155,7 +155,7 @@ export default function Category({
         </Title>
         {hasRestriction ? (
           <>
-            <Hours date={date} hours={hours} />
+            <Hours date={date} hours={hours} interactive />
           </>
         ) : (
           todaysRestriction
