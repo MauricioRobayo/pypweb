@@ -91,6 +91,7 @@ export default function Layout({
             </Logo>
             <Select
               name="ciudad"
+              narrow
               options={selectOptions}
               placeholder="Ciudad"
             />
