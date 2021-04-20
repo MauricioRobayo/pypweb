@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   align-items: center;
   display: grid;
   grid-template: 1 /1;
+  max-width: ${({ theme }) => theme.maxWidth};
   width: 100%;
 `;
 
