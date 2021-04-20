@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { formatDistance } from "./utils";
 
@@ -17,19 +16,7 @@ const Countdown = ({
   endTime,
   message = "",
 }: CountDownProps) => {
-  const [countdown, setCountdown] = useState("");
-
-  useEffect(() => {
-    setCountdown(formatDistance(endTime));
-  }, []);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setCountdown(formatDistance(endTime));
-    }, 1000);
-
-    return () => clearInterval(timeout);
-  }, [countdown]);
+  const countdown = formatDistance(endTime);
 
   if (countdown === "") {
     return null;
