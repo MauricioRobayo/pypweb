@@ -48,3 +48,25 @@ export function isPublicLicense(categoryName: string) {
     lowerCaseName.includes(category)
   );
 }
+
+export const formatter = new Intl.DateTimeFormat("es-CO", {
+  day: "numeric",
+  fractionalSecondDigits: 3,
+  hour: "numeric",
+  hour12: true,
+  minute: "numeric",
+  month: "numeric",
+  second: "numeric",
+  timeZone: "America/Bogota",
+  weekday: "long",
+  year: "numeric",
+});
+
+export const colombianDateParts = (date: Date) => {
+  const parts = formatter.formatToParts(date);
+  return Object.fromEntries(
+    parts
+      .filter(({ type }) => ["year", "month", "day"].includes(type))
+      .map(({ type, value }) => [type, Number(value)])
+  );
+};
