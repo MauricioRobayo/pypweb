@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { useState } from "react";
 import { IoMdOpen } from "react-icons/io";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   flexHorizontalCenterVerticalEnd,
   inlineIconRight,
@@ -10,20 +9,10 @@ import {
 const baseEditUrl =
   "https://github.com/MauricioRobayo/pypweb/edit/main/_posts/";
 
-type WrapperProps = {
-  hover: boolean;
-};
-const Wrapper = styled.div<WrapperProps>`
-  border: 2px solid transparent;
+const Wrapper = styled.div`
   border-radius: 4px;
   padding: 1rem;
   position: relative;
-  ${({ hover, theme }) =>
-    hover &&
-    css`
-      background-color: ${theme.colors.secondaryLighter};
-      border: 2px solid ${theme.colors.main};
-    `};
 `;
 
 const OpenIcon = inlineIconRight(IoMdOpen);
@@ -51,32 +40,17 @@ type PostProps = {
 };
 
 export default function Post({ editPath, body }: PostProps) {
-  const [linkHover, setLinkHover] = useState(false);
-
-  const handleMouseOver = () => {
-    setLinkHover(true);
-  };
-
-  const handleMouseOut = () => {
-    setLinkHover(false);
-  };
-
   if (!body) {
     return null;
   }
 
   return (
     <>
-      <Wrapper hover={linkHover}>
+      <Wrapper>
         <StyledPost dangerouslySetInnerHTML={{ __html: body }} />
         <StyledLinkWrapper>
           <Link href={`${baseEditUrl}${editPath}`} passHref>
-            <StyledAnchor
-              onBlur={handleMouseOut}
-              onFocus={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              onMouseOver={handleMouseOver}
-            >
+            <StyledAnchor>
               Editar en GitHub <OpenIcon />
             </StyledAnchor>
           </Link>
