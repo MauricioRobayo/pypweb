@@ -65,19 +65,33 @@ export default function Layout({
         <link href="/favicon.ico" rel="icon" />
         <meta content={description} name="description" />
 
-        {/* Open Graph */}
         <meta
-          key="ogurl"
+          key="og_url"
           content={`${router.basePath}${router.asPath}`}
           property="og:url"
         />
         <meta
-          key="ogsitename"
+          key="og_site_name"
           content="Pico y placa hoy"
           property="og:site_name"
         />
-        <meta key="ogtitle" content={title} property="og:title" />
-        <meta key="ogdesc" content={description} property="og:description" />
+        <meta key="og_title" content={title} property="og:title" />
+        <meta
+          key="ogDescription"
+          content={description}
+          property="og:description"
+        />
+        <meta
+          key="og_image"
+          content="/apple-touch-icon.png"
+          property="og:image"
+        />
+        <meta
+          key="image_alt"
+          content="Pico y placa hoy"
+          property="og:image:alt"
+        />
+        <meta key="og_type" content="website" property="og:type" />
 
         <link
           href="/apple-touch-icon.png"
