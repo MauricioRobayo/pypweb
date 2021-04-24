@@ -38,6 +38,7 @@ export const StyledLayout = styled.div`
 
     h2 {
       font-size: 1.2rem;
+      margin: 1rem 0 0;
     }
   }
 `;
