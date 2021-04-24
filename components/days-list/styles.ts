@@ -26,6 +26,7 @@ export const Article = styled.article`
 export const Title = styled.h3`
   font-size: 1.2rem;
   font-weight: normal;
+  margin: 0 0 1rem;
   text-align: center;
 `;
 

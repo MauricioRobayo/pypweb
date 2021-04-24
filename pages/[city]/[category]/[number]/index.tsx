@@ -23,6 +23,7 @@ const StyledLayout = styled(Layout)`
 
 const Title = styled.h4`
   font-size: 1.25rem;
+  font-weight: normal;
   margin: 1rem 0;
 `;
 
@@ -106,14 +107,10 @@ export default function Category({
   );
 
   const todaysRestriction =
-    numbersString !== NA ? (
+    numbersString === NA ? null : (
       <div>
         Hoy tienen pico y placa placas {schemeString} en{" "}
         <LicensePlate>{numbersString}</LicensePlate>.
-      </div>
-    ) : (
-      <div>
-        Hoy <strong>no tienen restricción</strong> {categoryData.name}.
       </div>
     );
 
@@ -149,7 +146,7 @@ export default function Category({
           Placas {schemeString} en {currentNumberLicense}{" "}
           <strong>
             {hasRestriction
-              ? "hoy tienen restricción en el siguiente horario:"
+              ? "hoy tienen restricción."
               : "hoy no tienen restricción."}
           </strong>
         </Title>
