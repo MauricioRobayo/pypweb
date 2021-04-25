@@ -57,7 +57,7 @@ export const formatter = new Intl.DateTimeFormat("es-CO", {
   minute: "numeric",
   month: "numeric",
   second: "numeric",
-  // timeZone: "America/Bogota",
+  timeZone: "America/Bogota",
   weekday: "long",
   year: "numeric",
 });
