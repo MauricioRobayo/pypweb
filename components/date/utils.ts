@@ -3,7 +3,6 @@ import { isSameDay } from "date-fns";
 const dateTimeFormatOptions = {
   day: "numeric",
   month: "long",
-  timeZone: "America/Bogota",
   weekday: "long",
   year: "numeric",
 } as const;
@@ -32,7 +31,6 @@ export function getLocalShortDateString(date: Date = new Date()): string {
   const shortDateTimeFormatOptions = {
     day: "numeric",
     month: "numeric",
-    timeZone: "America/Bogota",
     year: "numeric",
   } as const;
   const f = new Intl.DateTimeFormat("es-CO", shortDateTimeFormatOptions);
