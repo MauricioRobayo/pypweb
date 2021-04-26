@@ -6,7 +6,7 @@ import Post from "components/post";
 import { cityOptions, CityOptions } from "components/select/utils";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import { CityType, colombianDateParts, isCity } from "lib/utils";
+import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
@@ -46,7 +46,7 @@ export default function Category({
   ].name.toLowerCase();
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
-  const { year, month, day } = colombianDateParts(date);
+  const { year, month, day } = dateParts(date);
 
   const categoryData = getCategoryData({
     day,
@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { getCategoryData } = categories[categorySlug];
 
   const date = new Date();
-  const { year, month, day } = colombianDateParts(date);
+  const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
 
   return {
     props: {

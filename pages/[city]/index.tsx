@@ -4,7 +4,7 @@ import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
 import Layout from "components/layout";
 import { cityOptions, CityOptions } from "components/select/utils";
-import { CityType, colombianDateParts, isCity } from "lib/utils";
+import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { name: cityName, categories } = cities[citySlug];
   const date = new Date();
-  const { year, month, day } = colombianDateParts(date);
+  const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
 
   const categoriesData = Object.values(categories).map((category) =>
     category.getCategoryData({

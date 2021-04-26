@@ -11,7 +11,13 @@ import { cityOptions, CityOptions } from "components/select/utils";
 import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import { colombianDateParts, isCity, NA, pypNumbersToString } from "lib/utils";
+import {
+  AMERICA_BOGOTA,
+  dateParts,
+  isCity,
+  NA,
+  pypNumbersToString,
+} from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import styled from "styled-components";
@@ -238,7 +244,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
   const postHtml = await markdownToHtml(postMarkdown);
   const date = new Date();
-  const { year, month, day } = colombianDateParts(date);
+  const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
 
   return {
     props: {
