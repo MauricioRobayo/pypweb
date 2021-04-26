@@ -1,6 +1,6 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
 import Countdown from "components/countdown";
-import { ALL_DAY } from "lib/utils";
+import { ALL_DAY, AMERICA_BOGOTA } from "lib/utils";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { flexCenter } from "styles/mixins";
@@ -61,7 +61,7 @@ const Hour = ({
   const hasComment = Boolean(comment);
 
   const isColombiaTimezone =
-    Intl.DateTimeFormat().resolvedOptions().timeZone === "America/Bogota";
+    Intl.DateTimeFormat().resolvedOptions().timeZone === AMERICA_BOGOTA;
 
   useEffect(() => {
     const interval = setInterval(() => {

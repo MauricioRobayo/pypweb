@@ -3,6 +3,7 @@ import cities from "@mauriciorobayo/pyptron";
 export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
+export const AMERICA_BOGOTA = "America/Bogota";
 
 export const isProduction = process.env.NODE_ENV === "production";
 
@@ -49,24 +50,18 @@ export function isPublicLicense(categoryName: string) {
   );
 }
 
-export const formatter = new Intl.DateTimeFormat("es-CO", {
-  day: "numeric",
-  fractionalSecondDigits: 3,
-  hour: "numeric",
-  hour12: true,
-  minute: "numeric",
-  month: "numeric",
-  second: "numeric",
-  timeZone: "America/Bogota",
-  weekday: "long",
-  year: "numeric",
-});
-
-export const colombianDateParts = (date: Date) => {
+export const dateParts = (date: Date, timeZone?: string) => {
+  const options = {
+    day: "numeric",
+    month: "numeric",
+    timeZone,
+    year: "numeric",
+  } as const;
+  const formatter = new Intl.DateTimeFormat("en", options);
   const parts = formatter.formatToParts(date);
   return Object.fromEntries(
     parts
       .filter(({ type }) => ["year", "month", "day"].includes(type))
       .map(({ type, value }) => [type, Number(value)])
-  );
+  ) as Record<"year" | "month" | "day", number>;
 };
