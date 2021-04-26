@@ -60,6 +60,9 @@ const Hour = ({
 
   const hasComment = Boolean(comment);
 
+  const isColombiaTimezone =
+    Intl.DateTimeFormat().resolvedOptions().timeZone === "America/Bogota";
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (new Date().getSeconds() === 0) {
@@ -96,6 +99,7 @@ const Hour = ({
                   <HourWrapper>
                     {formattedHour}
                     {interactive &&
+                    isColombiaTimezone &&
                     endTime !== undefined &&
                     endType !== undefined ? (
                       <StyledCountdown
