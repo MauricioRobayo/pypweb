@@ -16,4 +16,4 @@ jobs:
           git config --global user.name 'Mauricio Robayo'
           git config --global user.email 'MauricioRobayo@users.noreply.github.com'
           git commit -am "chore: shrink PDFs file size"
-          git push origin HEAD:${GITHUB_REF##*/}
+          git push origin HEAD:${GITHUB_REF}
