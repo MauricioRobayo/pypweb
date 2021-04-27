@@ -1,0 +1,16 @@
+name: Shrink PDFs
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install ghostscript
+        run: sudo apt install ghostscript
+      - name: Shrink PDFs
+        run: find . -name "*.pdf" -type f -print0|while IFS= read -r -d '' file;do ./scripts/shrinkpdf.sh "$file" "${file/.pdf/.min.pdf}";mv -v "${file/.pdf/.min.pdf}" "${file}";done
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: shrink PDFs"
