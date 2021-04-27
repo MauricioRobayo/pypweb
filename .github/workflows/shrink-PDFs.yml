@@ -14,7 +14,7 @@ jobs:
           URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"
           FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename' | grep "\.pdf$")
           if [ -n "$FILES" ]; then
-            for file in $FILES; do
+            IFS=$'\n';for file in $FILES; do
               ./scripts/shrinkpdf.sh "$file" "${file/.pdf/.min.pdf}"
               mv -v "${file/.pdf/.min.pdf}" "${file}"
             done
