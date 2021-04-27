@@ -4,7 +4,7 @@
 
 #### Decretos
 
-- [Decreto del 28 de febrero de 2021](http://popayan.gov.co/ciudadanos/la-alcaldia/normatividad/decretos?body_value=Pico+&field_loa_fecha_norma_value%5Bvalue%5D%5Byear%5D=)
+- [Decreto 20211000000535 del 28 de febrero de 2021](/popayan/decreto-20211000000535-del-28-de-febrero-de-2021.pdf)
 - [Decreto 20201000000075 del 2 de enero del 2020](http://www.popayan.gov.co/sites/default/files/decreto.pdf)
 - [Decreto 222 del 25 de julio de 2018](/popayan/decreto-222-del-25-de-julio-de-2018.pdf)
 - [Decreto 245 del 26 de julio de 2017](/popayan/decreto-245-del-26-de-julio-de-2017.pdf)
