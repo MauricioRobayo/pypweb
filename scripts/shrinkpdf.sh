@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Added to avoid CodeFactor CI shellcheck errors:
+# shellcheck disable=SC2086,SC2046,SC2166,SC2005,SC2236
+
 # http://www.alfredklomp.com/programming/shrinkpdf
 # Licensed under the 3-clause BSD license:
 #
