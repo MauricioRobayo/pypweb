@@ -10,9 +10,9 @@ module.exports = {
         source: "/:city/:category/placa/:number",
       },
       {
-        destination: "/popayan/transporte-de-carga",
+        destination: "/popayan/transporte-de-carga-menor-a-1.500kg",
         permanent: true,
-        source: "/popayan/transporte-de-carga-menor-a-1.500kg",
+        source: "/popayan/transporte-de-carga",
       },
     ];
   },
