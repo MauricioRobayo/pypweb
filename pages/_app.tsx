@@ -1,4 +1,4 @@
-import * as gtag from "lib/gtag";
+import { pageview } from "lib/gtag";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       if (isProduction) {
-        gtag.pageview(url);
+        pageview(url);
       }
     };
     router.events.on("routeChangeComplete", handleRouteChange);
