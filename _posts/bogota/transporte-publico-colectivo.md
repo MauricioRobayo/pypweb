@@ -4,10 +4,12 @@
 
 #### Decretos
 
+- [Decreto 126 del 10 de mayo de 2020](/bogota/decreto-126-del-10-de-mayo-de-2020.pdf)
 - [Decreto 444 de 2014](http://www.alcaldiabogota.gov.co/sisjur/normas/Norma1.jsp?i=59702)
-- [Calendario pico y placa primer semestre 2018 unificado](/bogota/calendario-pico-y-placa-primer-semestre-2018-unificado.pdf)
-- [Calendario pico y placa segundo semestre 2018 unificado](/bogota/calendario-pico-y-placa-segundo-semestre-2018-unificado.pdf)
+- [Calendario pico y placa primer semestre 2021](/bogota/calendario-pico-y-placa-primer-semestre-2021.pdf)
+- [Calendario pico y placa primer semestre 2018](/bogota/calendario-pico-y-placa-primer-semestre-2018.pdf)
+- [Calendario pico y placa segundo semestre 2018](/bogota/calendario-pico-y-placa-segundo-semestre-2018.pdf)
 
 #### Observaciones
 
-Los vehículos de servicio público de transporte colectivo de pasajeros con restricción, podrán circular con no más de un (1) acompañante, únicamente para atender labores de mantenimiento, alistamiento, reparación o revisión técnico mecánica, portando en un lugar visible aviso que exprese claramente que se encuentran fuera de servicio.
+Durante la vigencia del estado de calamidad pública declarado en Bogotá D.C., con ocasión de la pandemia por Coronavirus COVID-19 se permitirá la circulación de vehículos de transporte público colectivo sin restricción alguna en el perímetro urbano de Bogotá. Por lo tanto, no se aplicarán las restricciones establecidad en el Decreto Distrital 444 del 14 de octubre de 2014 y en el Artículo 8º del Decreto Distrital 174 de 2006, corregido por el Decreto Distrital 325 del 16 de agosto de 2006.
