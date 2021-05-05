@@ -1,5 +1,5 @@
 import Icon from "components/icon";
-import { FcCalendar } from "react-icons/fc";
+import { FcInfo } from "react-icons/fc";
 import styled from "styled-components";
 import {
   boxShadow,
@@ -53,4 +53,4 @@ export const Description = styled.div`
 `;
 
 export const StyledIcon = inlineIconLeft(Icon);
-export const StyledFcCalendar = inlineIconLeft(FcCalendar);
+export const InfoIcon = inlineIconLeft(FcInfo);
