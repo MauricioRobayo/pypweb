@@ -10,7 +10,6 @@ import {
   HoursWrapper,
   LicenseNumbers,
   SeeMore,
-  StyledFcCalendar,
   StyledIcon,
   Title,
   Wrapper,
@@ -70,10 +69,7 @@ export default function CategoryCard({
       </Body>
       <Footer>
         <Link href={`${categoryPath}`} passHref>
-          <SeeMore>
-            <StyledFcCalendar />
-            Ver próximos 7 días
-          </SeeMore>
+          <SeeMore>Más información</SeeMore>
         </Link>
       </Footer>
     </Wrapper>
