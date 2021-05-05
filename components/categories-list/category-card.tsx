@@ -8,6 +8,7 @@ import {
   Description,
   Footer,
   HoursWrapper,
+  InfoIcon,
   LicenseNumbers,
   SeeMore,
   StyledIcon,
@@ -69,7 +70,10 @@ export default function CategoryCard({
       </Body>
       <Footer>
         <Link href={`${categoryPath}`} passHref>
-          <SeeMore>Más información</SeeMore>
+          <SeeMore>
+            <InfoIcon />
+            Más información
+          </SeeMore>
         </Link>
       </Footer>
     </Wrapper>
