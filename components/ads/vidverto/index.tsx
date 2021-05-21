@@ -65,14 +65,13 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
     return (
       // we need this initial wrapper as vidverto adds a sibling to the
       // inner div. To add spacing around it we wrap it in another div.
-      <div className={className}>
-        <div ref={divRef} id={`_vidverto-${id}`}>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: script,
-            }}
-          />
-        </div>
+      <div ref={divRef} className={className}>
+        <div id={`_vidverto-${id}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: script,
+          }}
+        />
       </div>
     );
   }
