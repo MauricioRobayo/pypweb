@@ -10,7 +10,11 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem 0;
+  margin: 1rem 0 0;
+`;
+
+const StyledCategoriesList = styled(CategoriesList)`
+  margin: 1rem 0 2rem;
 `;
 
 type CityProps = {
@@ -65,7 +69,11 @@ export default function City({
       title={title}
     >
       <StyledVidverto />
-      <CategoriesList categories={categories} citySlug={citySlug} date={date} />
+      <StyledCategoriesList
+        categories={categories}
+        citySlug={citySlug}
+        date={date}
+      />
     </Layout>
   );
 }
