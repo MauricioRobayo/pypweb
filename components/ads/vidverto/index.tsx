@@ -64,16 +64,13 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
   useScript({
     async: true,
     id: "vidverto-async-script-1",
-    prepend: true,
     ref: divRef,
     src: scriptUrl,
   });
 
   useScript({
-    async: true,
     id: "vidverto-async-script-2",
     innerHTML: script,
-    prepend: true,
     ref: divRef,
   });
 
