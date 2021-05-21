@@ -8,7 +8,6 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 1rem;
   max-width: ${({ theme }) => theme.maxWidth};
   width: 100%;
   & > *:not(:last-child) {
@@ -20,15 +19,17 @@ type CategoryListProps = {
   citySlug: CityType;
   categories: ICategoryData[];
   date: Date;
+  className?: string;
 };
 
 export default function CategoriesList({
   categories,
   citySlug,
   date,
+  className = "",
 }: CategoryListProps) {
   return (
-    <List>
+    <List className={className}>
       {categories.map(
         ({
           slug: categorySlug,
