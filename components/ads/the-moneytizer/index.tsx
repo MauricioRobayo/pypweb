@@ -33,11 +33,16 @@ const TheMoneytizer = ({ className = "", formatType }: Props) => {
   const formatClassName = formatTypeClassName[formatType];
 
   if (isProduction) {
-    useScript(div, `${baseUrl}/gen.js?type=${formatId}`);
-    useScript(
-      div,
-      `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`
-    );
+    useScript({
+      id: "the-moneytizer-script-1",
+      ref: div,
+      src: `${baseUrl}/gen.js?type=${formatId}`,
+    });
+    useScript({
+      id: "the-moneytizer-script-2",
+      ref: div,
+      src: `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`,
+    });
   }
 
   if (isProduction) {
