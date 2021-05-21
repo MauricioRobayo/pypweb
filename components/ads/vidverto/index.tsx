@@ -54,22 +54,33 @@ type VidvertoProps = {
   className?: string;
 };
 const Vidverto = ({ className = "" }: VidvertoProps) => {
-  const divRef = useRef(null);
-  useScript({ async: true, prepend: true, ref: divRef, url: scriptUrl });
   const { isMobile } = useDeviceDetect();
-
-  const script = isMobile ? mobileScript : desktopScript;
+  const script =
+    // eslint-disable-next-line no-nested-ternary
+    isMobile === null ? "" : isMobile ? mobileScript : desktopScript;
   const id = isMobile ? mobileId : desktopId;
+  const divRef = useRef<HTMLDivElement>(null);
+
+  useScript({
+    async: true,
+    id: "vidverto-async-script-1",
+    prepend: true,
+    ref: divRef,
+    src: scriptUrl,
+  });
+
+  useScript({
+    async: true,
+    id: "vidverto-async-script-2",
+    innerHTML: script,
+    prepend: true,
+    ref: divRef,
+  });
 
   if (isProduction) {
     return (
       <div ref={divRef} className={className}>
         <div id={`_vidverto-${id}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: script,
-          }}
-        />
       </div>
     );
   }

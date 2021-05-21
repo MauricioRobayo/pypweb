@@ -2,35 +2,49 @@ import React, { useEffect } from "react";
 
 const useScript = ({
   ref,
-  url,
+  src,
+  id,
+  innerHTML,
   async = false,
   prepend = false,
 }: {
   ref: React.RefObject<HTMLDivElement>;
-  url: string;
+  src?: string;
+  id: string;
+  innerHTML?: string;
   async?: boolean;
   prepend?: boolean;
 }) => {
   useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src = url;
-    script.async = async;
-
-    if (ref.current) {
-      if (prepend) {
-        ref.current.prepend(script);
-      } else {
-        ref.current.append(script);
-      }
+    if (!ref.current) {
+      return;
     }
 
-    return () => {
-      if (ref.current) {
-        ref.current.removeChild(script);
+    const oldScript = document.getElementById(id) as HTMLScriptElement;
+    if (oldScript) {
+      if (src) {
+        oldScript.src = src;
+      } else if (innerHTML) {
+        oldScript.innerHTML = innerHTML;
       }
-    };
-  }, [url]);
+      return;
+    }
+
+    const newScript = document.createElement("script");
+    newScript.id = id;
+    if (src) {
+      newScript.src = src;
+    } else if (innerHTML) {
+      newScript.innerHTML = innerHTML;
+    }
+    newScript.async = async;
+
+    if (prepend) {
+      ref.current.prepend(newScript);
+    } else {
+      ref.current.append(newScript);
+    }
+  }, [src, innerHTML]);
 };
 
 export default useScript;
