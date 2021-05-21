@@ -55,7 +55,7 @@ type VidvertoProps = {
 };
 const Vidverto = ({ className = "" }: VidvertoProps) => {
   const divRef = useRef(null);
-  useScript(divRef, scriptUrl, true);
+  useScript({ async: true, prepend: true, ref: divRef, url: scriptUrl });
   const { isMobile } = useDeviceDetect();
 
   const script = isMobile ? mobileScript : desktopScript;
