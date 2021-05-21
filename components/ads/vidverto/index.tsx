@@ -63,8 +63,6 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
 
   if (isProduction) {
     return (
-      // we need this initial wrapper as vidverto adds a sibling to the
-      // inner div. To add spacing around it we wrap it in another div.
       <div ref={divRef} className={className}>
         <div id={`_vidverto-${id}`} />
         <script
