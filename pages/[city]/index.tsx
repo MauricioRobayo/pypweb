@@ -64,8 +64,8 @@ export default function City({
       selectOptions={selectOptions}
       title={title}
     >
-      <CategoriesList categories={categories} citySlug={citySlug} date={date} />
       <StyledVidverto />
+      <CategoriesList categories={categories} citySlug={citySlug} date={date} />
     </Layout>
   );
 }
