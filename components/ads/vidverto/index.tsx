@@ -7,8 +7,8 @@ import { useRef } from "react";
 
 const isProduction = process.env.NODE_ENV === "production";
 const scriptUrl = "https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js";
-const desktopId = "981cceae08e42e6301d86ae909b97156";
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
+const desktopId = "981cceae08e42e6301d86ae909b97156";
 
 const mobileScript = `(() => {
   window.aries = window.aries || {};
