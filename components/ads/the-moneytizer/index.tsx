@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
-const baseUrl = "https//ads.themoneytizer.com/s";
+const baseUrl = "https://ads.themoneytizer.com/s";
 
 export type FormatType =
   | "MEGABANNER"
