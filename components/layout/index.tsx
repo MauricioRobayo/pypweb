@@ -146,8 +146,14 @@ export default function Layout({
         </div>
         <div>
           <Main>{children}</Main>
-          <MegaBannerBottom formatType="MEGABANNER_BOTTOM" />
-          {isHome ? <StyledVidverto /> : <CTA />}
+          {isHome ? (
+            <StyledVidverto />
+          ) : (
+            <>
+              <MegaBannerBottom formatType="MEGABANNER_BOTTOM" />
+              <CTA />
+            </>
+          )}
         </div>
       </Page>
       {aside ? (
