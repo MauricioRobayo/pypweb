@@ -14,6 +14,7 @@ import {
   Logo,
   Main,
   MegaBanner,
+  MegaBannerBottom,
   Navbar,
   Page,
   RecommendedContent,
@@ -145,6 +146,7 @@ export default function Layout({
         </div>
         <div>
           <Main>{children}</Main>
+          <MegaBannerBottom formatType="MEGABANNER_BOTTOM" />
           {isHome ? <StyledVidverto /> : <CTA />}
         </div>
       </Page>

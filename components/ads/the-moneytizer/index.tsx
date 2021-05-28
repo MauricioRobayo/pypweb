@@ -7,16 +7,22 @@ const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
 const baseUrl = "//ads.themoneytizer.com/s";
 
-export type FormatType = "MEGABANNER" | "RECOMMENDED_CONTENT" | "SKIN";
+export type FormatType =
+  | "MEGABANNER"
+  | "MEGABANNER_BOTTOM"
+  | "RECOMMENDED_CONTENT"
+  | "SKIN";
 
 const formatTypeId: Record<FormatType, number> = {
   MEGABANNER: 1,
+  MEGABANNER_BOTTOM: 28,
   RECOMMENDED_CONTENT: 16,
   SKIN: 5,
 };
 
 const formatTypeClassName: Record<FormatType, string> = {
   MEGABANNER: "",
+  MEGABANNER_BOTTOM: "",
   RECOMMENDED_CONTENT: "outbrain-tm",
   SKIN: "",
 };
