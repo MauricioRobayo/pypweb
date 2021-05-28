@@ -13,6 +13,12 @@ export const MegaBanner = styled(TheMoneytizer).attrs({
   margin: 2rem auto 0;
 `;
 
+export const MegaBannerBottom = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER_BOTTOM",
+})`
+  margin: 0 auto 2rem;
+`;
+
 export const RecommendedContent = styled(TheMoneytizer).attrs({
   formatType: "RECOMMENDED_CONTENT",
 })`
