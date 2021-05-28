@@ -150,7 +150,7 @@ export default function Layout({
             <StyledVidverto />
           ) : (
             <>
-              <MegaBannerBottom formatType="MEGABANNER_BOTTOM" />
+              <MegaBannerBottom />
               <CTA />
             </>
           )}
