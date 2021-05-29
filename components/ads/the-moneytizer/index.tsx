@@ -40,12 +40,12 @@ const TheMoneytizer = ({ className = "", formatType }: Props) => {
 
   if (isProduction) {
     useScript({
-      id: `the-moneytizer-script-${formatId}`,
+      id: `the-moneytizer-script-1-${formatId}`,
       ref: div,
       src: `${baseUrl}/gen.js?type=${formatId}`,
     });
     useScript({
-      id: `the-moneytizer-script-${formatId}`,
+      id: `the-moneytizer-script-2-${formatId}`,
       ref: div,
       src: `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`,
     });
