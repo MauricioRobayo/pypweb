@@ -69,11 +69,6 @@ export default class MyDocument extends Document {
                   __html: theMoneytizer,
                 }}
               />
-              <script
-                async
-                src="https://ads.vidoomy.com/picoyplacahoy_16476.js"
-                type="text/javascript"
-              />
             </>
           )}
           <link href="/nprogress.css" rel="stylesheet" type="text/css" />
