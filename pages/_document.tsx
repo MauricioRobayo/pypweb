@@ -8,8 +8,8 @@ import Document, {
   NextScript,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import consentBanner from "../lib/consent-banner";
 import { GA_TRACKING_ID } from "../lib/gtag";
-import theMoneytizer from "../lib/the-moneytizer";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          {isProduction && (
+          {isProduction ? (
             <>
               {/* Global Site Tag (gtag.js) - Google Analytics */}
               <script
@@ -66,11 +66,11 @@ export default class MyDocument extends Document {
               <script
                 async
                 dangerouslySetInnerHTML={{
-                  __html: theMoneytizer,
+                  __html: consentBanner,
                 }}
               />
             </>
-          )}
+          ) : null}
           <link href="/nprogress.css" rel="stylesheet" type="text/css" />
         </Head>
         <body>
