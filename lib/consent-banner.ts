@@ -1,4 +1,5 @@
 export default `
+<!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
 (function() {
     var host = 'www.themoneytizer.com';
     var element = document.createElement('script');
@@ -156,4 +157,5 @@ export default `
         var uspInterval = setInterval(checkIfUspIsReady, 6000);
     }
 })();
+<!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
 `;
