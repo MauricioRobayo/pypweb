@@ -1,7 +1,7 @@
 import TheMoneytizer from "components/ads/the-moneytizer";
 import Vidverto from "components/ads/vidverto";
 import PypDate from "components/date";
-import Email from "components/email";
+import { Footer } from "components/Footer";
 import HomeLayout from "components/layout/HomeLayout";
 import Select from "components/select";
 import { cityOptions } from "components/select/utils";
@@ -81,19 +81,6 @@ export const Aside = styled.aside`
   }
 `;
 
-export const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.secondaryLighter};
-  border-top: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  font-size: 0.85rem;
-  margin-top: auto;
-  padding: 0.5rem 0 1rem;
-  text-align: center;
-  width: 100%;
-  p {
-    margin: 0.5rem;
-  }
-`;
-
 export const Logo = styled.h2`
   ${camouflageLink}
 `;
@@ -134,10 +121,7 @@ export default function Home({
           <StyledVidverto />
         </div>
       </Page>
-      <Footer>
-        <p>PICO Y PLACA HOY</p>
-        <Email />
-      </Footer>
+      <Footer />
     </>
   );
 }
