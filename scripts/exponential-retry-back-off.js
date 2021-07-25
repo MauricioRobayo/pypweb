@@ -4,8 +4,7 @@ const axios = require("axios").default;
 
 const maxTimeInHours = 8;
 const timeoutMs = 2000;
-const webhook =
-  "https://api.vercel.com/v1/integrations/deploy/prj_MQlxIz5zQP4GMibWntBaE9r3ws4B/zrVrtysmCF";
+const webhook = process.argv[2];
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 let lapseInSeconds = 2;
