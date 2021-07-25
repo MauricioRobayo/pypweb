@@ -1,13 +1,15 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import TheMoneytizer from "components/ads/the-moneytizer";
 import Vidverto from "components/ads/vidverto";
+import { Aside } from "components/Aside";
 import Breadcrumbs from "components/breadcrumbs";
+import CTA from "components/call-to-action";
 import PypDate from "components/date";
+import { Header } from "components/Header";
 import Hours from "components/hours";
-import { Layout } from "components/Layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
-import { cityOptions, CityOptions } from "components/select/utils";
 import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
@@ -23,8 +25,37 @@ import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
 
-const StyledLayout = styled(Layout)`
+const Main = styled.main`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
   text-align: center;
+`;
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+const MegaBanner = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER",
+})`
+  margin: 2rem auto 0;
+`;
+
+const MegaBannerBottom = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER_BOTTOM",
+})`
+  margin: 0 auto 2rem;
+`;
+
+const RecommendedContent = styled(TheMoneytizer).attrs({
+  formatType: "RECOMMENDED_CONTENT",
+})`
+  margin: 2rem auto;
 `;
 
 const Title = styled.h4`
@@ -78,7 +109,6 @@ type CategoryProps = {
   currentDate: number;
   number: string;
   post: string;
-  selectOptions: CityOptions;
 };
 
 export default function Category({
@@ -89,15 +119,13 @@ export default function Category({
   currentDate,
   number,
   post,
-  selectOptions,
 }: CategoryProps) {
   const {
     slug: categorySlug,
     data: [{ numbers, scheme, hours }],
   } = categoryData;
-  const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
-
   const date = new Date(currentDate);
+  const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
@@ -120,86 +148,92 @@ export default function Category({
       </div>
     );
 
-  const aside = (
-    <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
-  );
-
   return (
-    <StyledLayout
-      aside={aside}
-      categoryName={categoryName}
-      cityName={cityName}
-      date={date}
-      selectOptions={selectOptions}
-      title={title}
-    >
-      <div>
-        <StyledBreadcrumbs
-          paths={[
-            { name: cityName, path: citySlug },
-            { name: categoryName, path: `${citySlug}/${categorySlug}` },
-            {
-              options: Array.from({ length: 10 }, (_, i) => ({
-                name: String(i),
-                path: String(i),
-              })),
-              selected: number,
-              title: "Número",
-            },
-          ]}
-        />
-        <Title>
-          Placas {schemeString} en {currentNumberLicense}{" "}
-          <strong>
-            {hasRestriction
-              ? "hoy tienen restricción."
-              : "hoy no tienen restricción."}
-          </strong>
-        </Title>
-        {hasRestriction ? (
-          <>
-            <Hours date={date} hours={hours} interactive />
-          </>
-        ) : (
-          todaysRestriction
-        )}
-        <StyledVidverto />
-        <div>
-          <Title>Prográmese</Title>
+    <>
+      <Page>
+        <MegaBanner />
+        <Header date={date} title={title} />
+        <Main>
           <div>
-            <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-            <ListWrapper>
-              {categoryData.data.slice(1).map((data) => {
-                const dataDate = new Date(data.year, data.month - 1, data.day);
-                if (data.numbers.includes(Number(number))) {
-                  return (
-                    <ListItem key={dataDate.toISOString()}>
-                      <Link
-                        href={`/${citySlug}/${categoryData.slug}?d=${format(
-                          dataDate,
-                          "yyyy-MM-dd"
-                        )}`}
-                        passHref
-                      >
-                        <Anchor>
-                          <PypDate date={dataDate} />
-                        </Anchor>
-                      </Link>
-                    </ListItem>
-                  );
-                }
-                return null;
-              })}
-            </ListWrapper>
+            <StyledBreadcrumbs
+              paths={[
+                { name: cityName, path: citySlug },
+                { name: categoryName, path: `${citySlug}/${categorySlug}` },
+                {
+                  options: Array.from({ length: 10 }, (_, i) => ({
+                    name: String(i),
+                    path: String(i),
+                  })),
+                  selected: number,
+                  title: "Número",
+                },
+              ]}
+            />
+            <Title>
+              Placas {schemeString} en {currentNumberLicense}{" "}
+              <strong>
+                {hasRestriction
+                  ? "hoy tienen restricción."
+                  : "hoy no tienen restricción."}
+              </strong>
+            </Title>
+            {hasRestriction ? (
+              <>
+                <Hours date={date} hours={hours} interactive />
+              </>
+            ) : (
+              todaysRestriction
+            )}
+            <StyledVidverto />
+            <div>
+              <Title>Prográmese</Title>
+              <div>
+                <LicensePlate>{number}</LicensePlate> tiene pico y placa el
+                próximo:
+                <ListWrapper>
+                  {categoryData.data.slice(1).map((data) => {
+                    const dataDate = new Date(
+                      data.year,
+                      data.month - 1,
+                      data.day
+                    );
+                    if (data.numbers.includes(Number(number))) {
+                      return (
+                        <ListItem key={dataDate.toISOString()}>
+                          <Link
+                            href={`/${citySlug}/${categoryData.slug}?d=${format(
+                              dataDate,
+                              "yyyy-MM-dd"
+                            )}`}
+                            passHref
+                          >
+                            <Anchor>
+                              <PypDate date={dataDate} />
+                            </Anchor>
+                          </Link>
+                        </ListItem>
+                      );
+                    }
+                    return null;
+                  })}
+                </ListWrapper>
+              </div>
+            </div>
+            <NumberLinks
+              categorySlug={categorySlug}
+              citySlug={citySlug}
+              numberSelected={number}
+            />
           </div>
-        </div>
-        <NumberLinks
-          categorySlug={categorySlug}
-          citySlug={citySlug}
-          numberSelected={number}
-        />
-      </div>
-    </StyledLayout>
+        </Main>
+        <MegaBannerBottom />
+        <CTA />
+      </Page>
+      <Aside>
+        <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
+        <RecommendedContent />
+      </Aside>
+    </>
   );
 }
 
@@ -260,7 +294,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       currentDate: date.getTime(),
       number: params?.number,
       post: postHtml,
-      selectOptions: cityOptions(),
     },
   };
 };

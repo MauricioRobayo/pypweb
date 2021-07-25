@@ -1,4 +1,5 @@
 import { Footer } from "components/Footer";
+import { Navbar } from "components/Navbar";
 import { ReactNode } from "react";
 import styled from "styled-components";
 
@@ -15,6 +16,7 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <StyledLayout>
+      <Navbar />
       {children}
       <Footer />
     </StyledLayout>

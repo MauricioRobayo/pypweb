@@ -1,3 +1,4 @@
+import { Layout } from "components/Layout";
 import { pageview } from "lib/gtag";
 import { NextPage } from "next";
 import { AppProps } from "next/app";
@@ -18,7 +19,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const isProduction = process.env.NODE_ENV === "production";
 
 type Page<P = {}> = NextPage<P> & {
-  getLayout: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactElement) => ReactNode;
 };
 
 type CustomAppProps = AppProps & {
@@ -27,7 +28,8 @@ type CustomAppProps = AppProps & {
 
 const App = ({ Component, pageProps }: CustomAppProps) => {
   const router = useRouter();
-  const getLayout = Component.getLayout || ((page: ReactNode) => page);
+  const getLayout =
+    Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
 
   useEffect(() => {
     const handleRouteChange = (url: URL) => {

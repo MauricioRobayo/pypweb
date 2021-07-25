@@ -9,6 +9,19 @@ export const isProduction = process.env.NODE_ENV === "production";
 
 export type CityType = keyof typeof cities;
 
+export type CityOptions = {
+  label: string;
+  value: string;
+}[];
+
+export const cityOptions = (): CityOptions => {
+  const pypOptions: { value: string; label: string }[] = [];
+  Object.values(cities).forEach(({ name: cityName, slug: citySlug }) => {
+    pypOptions.push({ label: cityName, value: citySlug });
+  });
+  return pypOptions;
+};
+
 export function isCity(city: any): city is CityType {
   return typeof city === "string" && city in cities;
 }
