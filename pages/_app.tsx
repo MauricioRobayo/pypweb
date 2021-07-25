@@ -1,8 +1,9 @@
 import { pageview } from "lib/gtag";
+import { NextPage } from "next";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
-import { useEffect } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
@@ -16,8 +17,17 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const App = ({ Component, pageProps }: AppProps) => {
+type Page<P = {}> = NextPage<P> & {
+  getLayout: (page: ReactElement) => ReactNode;
+};
+
+type CustomAppProps = AppProps & {
+  Component: Page;
+};
+
+const App = ({ Component, pageProps }: CustomAppProps) => {
   const router = useRouter();
+  const getLayout = Component.getLayout || ((page: ReactNode) => page);
 
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -35,7 +45,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ThemeProvider theme={defaultTheme}>
       <Normalize />
       <GlobalStyle />
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
   );
 };
