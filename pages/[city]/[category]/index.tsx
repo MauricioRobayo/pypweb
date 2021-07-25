@@ -1,7 +1,7 @@
 import cities from "@mauriciorobayo/pyptron";
 import { isValidDateString } from "components/date/utils";
 import DaysList from "components/days-list";
-import Layout from "components/layout";
+import { Layout } from "components/Layout";
 import Post from "components/post";
 import { cityOptions, CityOptions } from "components/select/utils";
 import markdownToHtml from "lib/markdownToHtml";
@@ -41,9 +41,8 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const categoryName = cities[citySlug].categories[
-    categorySlug
-  ].name.toLowerCase();
+  const categoryName =
+    cities[citySlug].categories[categorySlug].name.toLowerCase();
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
   const { year, month, day } = dateParts(date);

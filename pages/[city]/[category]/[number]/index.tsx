@@ -3,7 +3,7 @@ import Vidverto from "components/ads/vidverto";
 import Breadcrumbs from "components/breadcrumbs";
 import PypDate from "components/date";
 import Hours from "components/hours";
-import Layout from "components/layout";
+import { Layout } from "components/Layout";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";

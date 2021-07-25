@@ -2,7 +2,7 @@ import TheMoneytizer from "components/ads/the-moneytizer";
 import Vidverto from "components/ads/vidverto";
 import PypDate from "components/date";
 import { Footer } from "components/Footer";
-import HomeLayout from "components/layout/HomeLayout";
+import { HomeLayout } from "components/Layout";
 import Select from "components/select";
 import { cityOptions } from "components/select/utils";
 import { InferGetStaticPropsType } from "next";

@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import Vidverto from "components/ads/vidverto";
 import CategoriesList from "components/categories-list";
 import { getLocalLongDateString } from "components/date/utils";
-import Layout from "components/layout";
+import { Layout } from "components/Layout";
 import { cityOptions, CityOptions } from "components/select/utils";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
