@@ -4,8 +4,13 @@ const axios = require("axios").default;
 
 const maxTimeInHours = 8;
 const timeoutMs = 2000;
-const webhook = process.argv[2];
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const webhook = process.argv[2];
+
+if (!webhook) {
+  console.error("No webhook provided!");
+  process.exit(1);
+}
 
 let lapseInSeconds = 2;
 
