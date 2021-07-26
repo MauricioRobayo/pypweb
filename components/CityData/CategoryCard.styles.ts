@@ -1,4 +1,4 @@
-import Icon from "components/Icon";
+import { Icon } from "components/Icon";
 import { FcInfo } from "react-icons/fc";
 import styled from "styled-components";
 import {
