@@ -27,7 +27,7 @@ type CategoryListProps = {
   className?: string;
 };
 
-export default function CategoriesList({
+export default function CityData({
   categories,
   citySlug,
   date,

@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
-import { CategoriesList } from "components/CategoriesList";
+import { CityData } from "components/CityData";
 import { Header } from "components/Header";
 import { getLocalLongDateString } from "components/PypDate/utils";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
@@ -45,7 +45,7 @@ const RecommendedContent = styled(TheMoneytizer).attrs({
   margin: 2rem auto;
 `;
 
-const StyledCategoriesList = styled(CategoriesList)`
+const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
 
@@ -73,7 +73,7 @@ export default function City({
         <MegaBanner />
         <Header date={date} title={pageTitle} />
         <Main>
-          <StyledCategoriesList
+          <StyledCityData
             categories={categories}
             citySlug={citySlug}
             date={date}
