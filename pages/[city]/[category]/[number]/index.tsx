@@ -1,31 +1,17 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
-import Vidverto from "components/ads/vidverto";
 import { Aside } from "components/Aside";
-import Breadcrumbs from "components/breadcrumbs";
 import CTA from "components/call-to-action";
 import { Header } from "components/Header";
-import Hours from "components/hours";
-import LicensePlate from "components/license-plate";
-import NumberLinks from "components/number-links";
+import { NumbersPage } from "components/Numbers";
 import Post from "components/post";
-import { PypDate } from "components/PypDate";
-import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
-import {
-  AMERICA_BOGOTA,
-  dateParts,
-  isCity,
-  NA,
-  pypNumbersToString,
-} from "lib/utils";
+import { AMERICA_BOGOTA, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { baseTitle, description } from "next-seo.config";
-import Link from "next/link";
 import styled from "styled-components";
-import { camouflageLink } from "styles/mixins";
 
 const Main = styled.main`
   align-items: center;
@@ -60,49 +46,6 @@ const RecommendedContent = styled(TheMoneytizer).attrs({
   margin: 2rem auto;
 `;
 
-const Title = styled.h4`
-  font-size: 1.25rem;
-  font-weight: normal;
-  margin: 1rem 0;
-`;
-
-const ListWrapper = styled.ol`
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  list-style: none;
-  margin: 1rem 0;
-  padding: 0;
-`;
-
-const ListItem = styled.li`
-  border-bottom: 1px solid #dbdbdb;
-  &:last-child {
-    border-bottom: none;
-  }
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.main};
-    color: white;
-  }
-  ${camouflageLink}
-`;
-
-const Anchor = styled.a`
-  display: block;
-  padding: 1rem;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const StyledBreadcrumbs = styled(Breadcrumbs)`
-  margin: 1.5rem 0 2rem;
-  text-align: center;
-`;
-
-const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 0;
-`;
-
 type CategoryProps = {
   categoryData: ICategoryData;
   categoryName: string;
@@ -124,33 +67,14 @@ export default function Category({
 }: CategoryProps) {
   const {
     slug: categorySlug,
-    data: [{ numbers, scheme, hours }],
+    data: [{ scheme }],
   } = categoryData;
   const date = new Date(currentDate);
-  const numbersString = pypNumbersToString(numbers);
-  const hasRestriction = numbers.includes(Number(number));
+
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const title = `${categoryName.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
   const pageDescription = `${description} ${title}`;
-
-  const currentNumberLicense = hasRestriction ? (
-    <>
-      <LicensePlate>{numbersString}</LicensePlate>
-    </>
-  ) : (
-    <>
-      <LicensePlate>{number}</LicensePlate>
-    </>
-  );
-
-  const todaysRestriction =
-    numbersString === NA ? null : (
-      <div>
-        Hoy tienen pico y placa placas {schemeString} en{" "}
-        <LicensePlate>{numbersString}</LicensePlate>.
-      </div>
-    );
 
   return (
     <>
@@ -159,77 +83,15 @@ export default function Category({
         <MegaBanner />
         <Header date={date} title={pageTitle} />
         <Main>
-          <div>
-            <StyledBreadcrumbs
-              paths={[
-                { name: cityName, path: citySlug },
-                { name: categoryName, path: `${citySlug}/${categorySlug}` },
-                {
-                  options: Array.from({ length: 10 }, (_, i) => ({
-                    name: String(i),
-                    path: String(i),
-                  })),
-                  selected: number,
-                  title: "Número",
-                },
-              ]}
-            />
-            <Title>
-              Placas {schemeString} en {currentNumberLicense}{" "}
-              <strong>
-                {hasRestriction
-                  ? "hoy tienen restricción."
-                  : "hoy no tienen restricción."}
-              </strong>
-            </Title>
-            {hasRestriction ? (
-              <>
-                <Hours date={date} hours={hours} interactive />
-              </>
-            ) : (
-              todaysRestriction
-            )}
-            <StyledVidverto />
-            <div>
-              <Title>Prográmese</Title>
-              <div>
-                <LicensePlate>{number}</LicensePlate> tiene pico y placa el
-                próximo:
-                <ListWrapper>
-                  {categoryData.data.slice(1).map((data) => {
-                    const dataDate = new Date(
-                      data.year,
-                      data.month - 1,
-                      data.day
-                    );
-                    if (data.numbers.includes(Number(number))) {
-                      return (
-                        <ListItem key={dataDate.toISOString()}>
-                          <Link
-                            href={`/${citySlug}/${categoryData.slug}?d=${format(
-                              dataDate,
-                              "yyyy-MM-dd"
-                            )}`}
-                            passHref
-                          >
-                            <Anchor>
-                              <PypDate date={dataDate} />
-                            </Anchor>
-                          </Link>
-                        </ListItem>
-                      );
-                    }
-                    return null;
-                  })}
-                </ListWrapper>
-              </div>
-            </div>
-            <NumberLinks
-              categorySlug={categorySlug}
-              citySlug={citySlug}
-              numberSelected={number}
-            />
-          </div>
+          <NumbersPage
+            categoryData={categoryData}
+            categoryName={categoryName}
+            cityName={cityName}
+            citySlug={citySlug}
+            date={date}
+            number={number}
+            schemeString={schemeString}
+          />
         </Main>
         <MegaBannerBottom />
         <CTA />
