@@ -1,5 +1,5 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
-import Vidverto from "components/ads/vidverto";
+import { Vidverto } from "components/Ads";
 import { CityType } from "lib/utils";
 import styled from "styled-components";
 import CategoryCard from "./CategoryCard";

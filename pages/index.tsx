@@ -1,5 +1,4 @@
-import TheMoneytizer from "components/ads/the-moneytizer";
-import Vidverto from "components/ads/vidverto";
+import { TheMoneytizer, Vidverto } from "components/Ads";
 import { Header } from "components/Header";
 import { HomeLayout } from "components/Layout";
 import Select from "components/select";

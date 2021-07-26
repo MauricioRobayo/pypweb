@@ -1,5 +1,5 @@
 import cn from "classnames";
-import AdPlaceholder from "components/ads/placeholder";
+import { Placeholder } from "components/Ads";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
 
@@ -61,9 +61,7 @@ const TheMoneytizer = ({ className = "", formatType }: Props) => {
     );
   }
 
-  return (
-    <AdPlaceholder className={className} height="90px" name={formatType} />
-  );
+  return <Placeholder className={className} height="90px" name={formatType} />;
 };
 
 export default TheMoneytizer;

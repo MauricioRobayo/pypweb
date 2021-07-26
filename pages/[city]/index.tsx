@@ -1,5 +1,5 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
-import TheMoneytizer from "components/ads/the-moneytizer";
+import { TheMoneytizer } from "components/Ads";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
 import { CityData } from "components/CityData";

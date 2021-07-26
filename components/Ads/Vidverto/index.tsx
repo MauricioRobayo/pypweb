@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 
-import AdPlaceholder from "components/ads/placeholder";
+import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
@@ -82,7 +82,7 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
     );
   }
 
-  return <AdPlaceholder className={className} height="320px" name="Vidverto" />;
+  return <Placeholder className={className} height="320px" name="Vidverto" />;
 };
 
 export default Vidverto;

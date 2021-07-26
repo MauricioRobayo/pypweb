@@ -1,4 +1,4 @@
-import Vidverto from "components/ads/vidverto";
+import { Vidverto } from "components/Ads";
 import Breadcrumbs from "components/breadcrumbs";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
