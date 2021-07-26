@@ -3,7 +3,6 @@ import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Vidverto from "components/ads/vidverto";
 import { memo, useEffect, useState } from "react";
 import NumberLinks from "../number-links";
-import DayCard from "./DayCard";
 import {
   Article,
   ErrorMessage,
@@ -13,7 +12,8 @@ import {
   MoreIcon,
   StyledBreadcrumbs,
   Title,
-} from "./styles";
+} from "./CategoryData.styles";
+import DayCard from "./DayCard";
 
 type DaysListProps = {
   categories: { name: string; slug: string }[];
@@ -23,7 +23,7 @@ type DaysListProps = {
   getCategoryData: Category["getCategoryData"];
 };
 
-function DaysList({
+function CategoryData({
   categories,
   cityName,
   citySlug,
@@ -114,4 +114,4 @@ function DaysList({
   );
 }
 
-export default memo(DaysList);
+export default memo(CategoryData);

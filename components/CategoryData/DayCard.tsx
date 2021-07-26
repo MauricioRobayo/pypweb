@@ -15,7 +15,7 @@ import {
   VehicleIcon,
   Warning,
   WarningIcon,
-} from "./day-card.styles";
+} from "./DayCard.styles";
 
 type DayCardProps = {
   categoryName: CategoryName;

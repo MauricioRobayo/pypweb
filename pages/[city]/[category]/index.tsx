@@ -2,7 +2,7 @@ import cities from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
-import { DaysList } from "components/DaysList";
+import { CategoryData } from "components/CategoryData";
 import { Header } from "components/Header";
 import Post from "components/post";
 import { isValidDateString } from "components/PypDate/utils";
@@ -99,7 +99,7 @@ export default function Category({
         <MegaBanner />
         <Header date={date} title={pageTitle} />
         <Main>
-          <DaysList
+          <CategoryData
             categories={categories}
             categoryData={categoryData}
             cityName={cityName}

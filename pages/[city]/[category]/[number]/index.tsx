@@ -3,7 +3,7 @@ import TheMoneytizer from "components/ads/the-moneytizer";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
 import { Header } from "components/Header";
-import { NumbersPage } from "components/Numbers";
+import { NumbersData } from "components/NumbersData";
 import Post from "components/post";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
@@ -81,7 +81,7 @@ export default function Category({
         <MegaBanner />
         <Header date={date} title={pageTitle} />
         <Main>
-          <NumbersPage
+          <NumbersData
             categoryData={categoryData}
             categoryName={categoryName}
             cityName={cityName}
