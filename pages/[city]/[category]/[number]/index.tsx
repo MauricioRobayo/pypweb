@@ -21,6 +21,8 @@ import {
   pypNumbersToString,
 } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
@@ -125,10 +127,12 @@ export default function Category({
     data: [{ numbers, scheme, hours }],
   } = categoryData;
   const date = new Date(currentDate);
-  const title = `Pico y placa ${categoryData.name.toLowerCase()} en ${cityName} placa ${number}`;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
+  const title = `${categoryName} en ${cityName} placas ${schemeString} ${number}`;
+  const pageTitle = `${baseTitle} ${title}`;
+  const pageDescription = `${description} ${title}`;
 
   const currentNumberLicense = hasRestriction ? (
     <>
@@ -150,9 +154,10 @@ export default function Category({
 
   return (
     <>
+      <NextSeo description={pageDescription} title={pageTitle} />
       <Page>
         <MegaBanner />
-        <Header date={date} title={title} />
+        <Header date={date} title={pageTitle} />
         <Main>
           <div>
             <StyledBreadcrumbs

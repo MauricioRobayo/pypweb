@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
-  margin: auto;
+  align-self: center;
   max-width: ${({ theme }) => theme.maxWidth};
   text-align: center;
 `;

@@ -1,5 +1,3 @@
-import { isSameDay } from "date-fns";
-
 const dateTimeFormatOptions = {
   day: "numeric",
   month: "long",
@@ -35,10 +33,6 @@ export function getLocalShortDateString(date: Date = new Date()): string {
   } as const;
   const f = new Intl.DateTimeFormat("es-CO", shortDateTimeFormatOptions);
   return f.format(date);
-}
-
-export function dateIsToday(date: Date): boolean {
-  return isSameDay(date, new Date());
 }
 
 export function isValidDateString(date: any): date is string {

@@ -1,5 +1,5 @@
+import { isToday as isDateToday } from "date-fns";
 import {
-  dateIsToday,
   getLocalLongDateString,
   getLocalShortDateString,
   getWeekdayName,
@@ -16,7 +16,7 @@ export default function PypDate({
   date,
   type = "long",
 }: DateProps) {
-  const isToday = dateIsToday(date);
+  const isToday = isDateToday(date);
 
   if (type === "long") {
     const localLongDateString = getLocalLongDateString(date);

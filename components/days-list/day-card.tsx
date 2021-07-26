@@ -1,6 +1,6 @@
 import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import LicensePlate from "components/license-plate";
-import { format, isSameDay } from "date-fns";
+import { format, isToday as isDateToday } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { memo } from "react";
@@ -41,7 +41,7 @@ function DayCard({
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
-  const isToday = isSameDay(date, new Date());
+  const isToday = isDateToday(date);
 
   const formattedDate = (
     <StyledPypDate

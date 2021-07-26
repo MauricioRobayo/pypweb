@@ -8,6 +8,8 @@ import { getLocalLongDateString } from "components/date/utils";
 import { Header } from "components/Header";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
@@ -66,13 +68,15 @@ export default function City({
   currentDate,
 }: CityProps) {
   const date = new Date(currentDate);
-  const title = `Pico y placa ${cityName}`;
+  const pageTitle = `${baseTitle} ${cityName}`;
+  const pageDescription = `${description} ${cityName}`;
 
   return (
     <>
+      <NextSeo description={pageDescription} title={pageTitle} />
       <Page>
         <MegaBanner />
-        <Header date={date} title={title} />
+        <Header date={date} title={pageTitle} />
         <Main>
           <StyledVidverto />
           <StyledCategoriesList

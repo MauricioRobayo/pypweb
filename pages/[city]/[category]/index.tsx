@@ -10,6 +10,8 @@ import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
@@ -86,13 +88,16 @@ export default function Category({
     year,
   });
 
-  const title = `Pico y placa ${categoryName} en ${cityName}`;
+  const title = `${categoryName} en ${cityName}`;
+  const pageTitle = `${baseTitle} ${title} `;
+  const pageDescription = `${description} ${title}`;
 
   return (
     <>
+      <NextSeo description={pageDescription} title={pageTitle} />
       <Page>
         <MegaBanner />
-        <Header date={date} title={title} />
+        <Header date={date} title={pageTitle} />
         <Main>
           <DaysList
             categories={categories}
