@@ -1,4 +1,4 @@
-import Email from "components/email";
+import { Email } from "components/Email";
 import React from "react";
 import styled from "styled-components";
 
