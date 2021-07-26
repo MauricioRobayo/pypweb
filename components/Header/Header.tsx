@@ -1,4 +1,4 @@
-import PypDate from "components/date";
+import PypDate from "components/PypDate";
 import { ReactNode } from "react";
 import styled from "styled-components";
 

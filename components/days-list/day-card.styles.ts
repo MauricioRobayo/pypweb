@@ -1,6 +1,6 @@
-import PypDate from "components/date";
 import Hours from "components/hours";
 import Icon from "components/icon";
+import PypDate from "components/PypDate";
 import { RiErrorWarningFill } from "react-icons/ri";
 import styled, { css } from "styled-components";
 import {
