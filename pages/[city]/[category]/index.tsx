@@ -4,7 +4,7 @@ import { Aside } from "components/Aside";
 import { CategoryData } from "components/CategoryData";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
-import Post from "components/post";
+import { Post } from "components/Post";
 import { isValidDateString } from "components/PypDate/utils";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";

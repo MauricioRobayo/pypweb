@@ -4,7 +4,7 @@ import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
 import { NumbersData } from "components/NumbersData";
-import Post from "components/post";
+import { Post } from "components/Post";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { AMERICA_BOGOTA, dateParts, isCity } from "lib/utils";
