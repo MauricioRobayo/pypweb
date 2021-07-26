@@ -1,11 +1,11 @@
 import { Layout } from "components/Layout";
 import { pageview } from "lib/gtag";
 import { NextPage } from "next";
-import { DefaultSeo, NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
-import { ReactElement, ReactNode, useEffect } from "react";
+import React, { ReactElement, ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
@@ -46,13 +46,14 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
   }, [router.events]);
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <NextSeo {...defaultConfig} />
-      <Normalize />
-      <GlobalStyle />
-      <DefaultSeo />
-      {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
+    <>
+      <DefaultSeo {...defaultConfig} />
+      <ThemeProvider theme={defaultTheme}>
+        <Normalize />
+        <GlobalStyle />
+        {getLayout(<Component {...pageProps} />)}
+      </ThemeProvider>
+    </>
   );
 };
 

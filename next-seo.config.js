@@ -49,6 +49,7 @@ export const defaultConfig = {
       name: "theme-color",
     },
   ],
+  defaultTitle: title,
   description,
   openGraph: {
     images: [
@@ -64,5 +65,5 @@ export const defaultConfig = {
     type: "website",
     updated_time: `${new Date().toISOString().slice(0, 10)}T00:00:00.000-05:00`,
   },
-  title,
+  titleTemplate: `%s | ${title}`,
 };
