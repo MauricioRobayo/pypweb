@@ -2,7 +2,7 @@ import { IHourData } from "@mauriciorobayo/pyptron";
 import { FcAlarmClock } from "react-icons/fc";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";
-import Hour from "./hour";
+import Hour from "./Hour";
 
 const HoursTitle = styled.h4`
   ${flexCenter}
