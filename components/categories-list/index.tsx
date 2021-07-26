@@ -1,7 +1,12 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
+import Vidverto from "components/ads/vidverto";
+import { CityType } from "lib/utils";
 import styled from "styled-components";
-import { CityType } from "../../lib/utils";
 import CategoryCard from "./category-card";
+
+const StyledVidverto = styled(Vidverto)`
+  margin-top: 1rem;
+`;
 
 const List = styled.div`
   display: grid;
@@ -29,25 +34,28 @@ export default function CategoriesList({
   className = "",
 }: CategoryListProps) {
   return (
-    <List className={className}>
-      {categories.map(
-        ({
-          slug: categorySlug,
-          name: categoryName,
-          data: [{ numbers, scheme, hours }],
-        }) => (
-          <CategoryCard
-            key={categorySlug}
-            categoryName={categoryName}
-            categorySlug={categorySlug}
-            citySlug={citySlug}
-            date={date}
-            hours={hours}
-            numbers={numbers}
-            scheme={scheme}
-          />
-        )
-      )}
-    </List>
+    <>
+      <StyledVidverto />
+      <List className={className}>
+        {categories.map(
+          ({
+            slug: categorySlug,
+            name: categoryName,
+            data: [{ numbers, scheme, hours }],
+          }) => (
+            <CategoryCard
+              key={categorySlug}
+              categoryName={categoryName}
+              categorySlug={categorySlug}
+              citySlug={citySlug}
+              date={date}
+              hours={hours}
+              numbers={numbers}
+              scheme={scheme}
+            />
+          )
+        )}
+      </List>
+    </>
   );
 }

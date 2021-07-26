@@ -1,6 +1,5 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
-import Vidverto from "components/ads/vidverto";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
 import CategoriesList from "components/categories-list";
@@ -19,10 +18,6 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
-`;
-
-const StyledVidverto = styled(Vidverto)`
-  margin-top: 1rem;
 `;
 
 const Page = styled.div`
@@ -78,7 +73,6 @@ export default function City({
         <MegaBanner />
         <Header date={date} title={pageTitle} />
         <Main>
-          <StyledVidverto />
           <StyledCategoriesList
             categories={categories}
             citySlug={citySlug}
