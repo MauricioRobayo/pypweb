@@ -5,7 +5,7 @@ import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
-import React, { ReactElement, ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
@@ -21,7 +21,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const isProduction = process.env.NODE_ENV === "production";
 
 type Page<P = {}> = NextPage<P> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactNode) => ReactNode;
 };
 
 type CustomAppProps = AppProps & {
