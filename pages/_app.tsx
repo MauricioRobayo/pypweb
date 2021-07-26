@@ -1,6 +1,7 @@
 import { Layout } from "components/Layout";
 import { pageview } from "lib/gtag";
 import { NextPage } from "next";
+import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { Router, useRouter } from "next/router";
 import NProgress from "nprogress";
@@ -27,6 +28,8 @@ type CustomAppProps = AppProps & {
 };
 
 const App = ({ Component, pageProps }: CustomAppProps) => {
+  const title = "Pico y placa hoy";
+  const description = `Horario, días, fechas, placas, números, decretos, sanciones y toda la información vigente del pico y placa`;
   const router = useRouter();
   const getLayout =
     Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
@@ -47,6 +50,72 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
     <ThemeProvider theme={defaultTheme}>
       <Normalize />
       <GlobalStyle />
+      <DefaultSeo
+        additionalLinkTags={[
+          {
+            href: "/favicon-32x32.png",
+            rel: "icon",
+            sizes: "32x32",
+            type: "image/png",
+          },
+          {
+            href: "/favicon-16x16.png",
+            rel: "icon",
+            sizes: "16x16",
+            type: "image/png",
+          },
+          {
+            href: "/favicon.ico",
+            rel: "icon",
+          },
+          {
+            href: "/apple-touch-icon.png",
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+          },
+          {
+            href: "/site.webmanifest",
+            rel: "manifest",
+          },
+          {
+            href: "/safari-pinned-tab.svg",
+            rel: "mask-icon",
+          },
+          {
+            color: "#f7c100",
+            href: "/safari-pinned-tab.svg",
+            rel: "mask-icon",
+          },
+        ]}
+        additionalMetaTags={[
+          {
+            content: "#ffc40d",
+            name: "msapplication-TileColor",
+          },
+          {
+            content: "#f7c100",
+            name: "theme-color",
+          },
+        ]}
+        description={description}
+        openGraph={{
+          description,
+          images: [
+            {
+              alt: "Pico y placa hoy",
+              height: 512,
+              url: "/android-chrome-512x512.png",
+              width: 512,
+            },
+          ],
+          locale: "es_CO",
+          site_name: title,
+          title,
+          type: "website",
+          url: "https://www.pyphoy.com/",
+        }}
+        title={title}
+      />
       {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
   );
