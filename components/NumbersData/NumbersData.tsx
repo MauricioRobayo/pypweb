@@ -1,5 +1,5 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
-import Hours from "components/hours";
+import { Hours } from "components/Hours";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import { PypDate } from "components/PypDate";

@@ -1,4 +1,4 @@
-import Hours from "components/hours";
+import { Hours } from "components/Hours";
 import Icon from "components/icon";
 import { PypDate } from "components/PypDate";
 import { RiErrorWarningFill } from "react-icons/ri";

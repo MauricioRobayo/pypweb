@@ -1,5 +1,5 @@
 import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
-import Hours from "components/hours";
+import { Hours } from "components/Hours";
 import LicensePlate from "components/license-plate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
