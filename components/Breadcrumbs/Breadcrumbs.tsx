@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import PathSelect, { Path, PathSelectProps } from "./select";
+import PathSelect, { Path, PathSelectProps } from "./Select";
 
 const isPathOptions = (path: any): path is PathSelectProps => "title" in path;
 

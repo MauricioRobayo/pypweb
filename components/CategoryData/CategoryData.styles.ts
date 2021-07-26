@@ -1,4 +1,4 @@
-import Breadcrumbs from "components/breadcrumbs";
+import { Breadcrumbs } from "components/Breadcrumbs";
 import Button from "components/button";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
