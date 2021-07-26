@@ -2,7 +2,7 @@ import cities from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
-import DaysList from "components/days-list";
+import { DaysList } from "components/DaysList";
 import { Header } from "components/Header";
 import Post from "components/post";
 import { isValidDateString } from "components/PypDate/utils";

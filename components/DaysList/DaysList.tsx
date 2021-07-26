@@ -3,7 +3,7 @@ import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import Vidverto from "components/ads/vidverto";
 import { memo, useEffect, useState } from "react";
 import NumberLinks from "../number-links";
-import DayCard from "./day-card";
+import DayCard from "./DayCard";
 import {
   Article,
   ErrorMessage,
