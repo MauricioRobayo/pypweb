@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import row from "./row";
+import row from "./Row";
 
 const Wrapper = styled.div`
   margin: 2rem 0;
