@@ -2,7 +2,7 @@ import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Vidverto from "components/ads/vidverto";
 import { CityType } from "lib/utils";
 import styled from "styled-components";
-import CategoryCard from "./category-card";
+import CategoryCard from "./CategoryCard";
 
 const StyledVidverto = styled(Vidverto)`
   margin-top: 1rem;

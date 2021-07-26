@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import TheMoneytizer from "components/ads/the-moneytizer";
 import { Aside } from "components/Aside";
 import CTA from "components/call-to-action";
-import CategoriesList from "components/categories-list";
+import { CategoriesList } from "components/CategoriesList";
 import { getLocalLongDateString } from "components/date/utils";
 import { Header } from "components/Header";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
