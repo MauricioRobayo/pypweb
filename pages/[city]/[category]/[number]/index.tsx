@@ -9,7 +9,7 @@ import Hours from "components/hours";
 import LicensePlate from "components/license-plate";
 import NumberLinks from "components/number-links";
 import Post from "components/post";
-import PypDate from "components/PypDate";
+import { PypDate } from "components/PypDate";
 import { format } from "date-fns";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
