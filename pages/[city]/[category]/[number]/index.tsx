@@ -69,7 +69,6 @@ export default function Category({
     data: [{ scheme }],
   } = categoryData;
   const date = new Date(currentDate);
-
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const title = `${categoryName.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
