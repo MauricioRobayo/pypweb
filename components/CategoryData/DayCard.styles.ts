@@ -1,5 +1,5 @@
 import { Hours } from "components/Hours";
-import Icon from "components/icon";
+import Icon from "components/Icon";
 import { PypDate } from "components/PypDate";
 import { RiErrorWarningFill } from "react-icons/ri";
 import styled, { css } from "styled-components";
