@@ -1,7 +1,7 @@
 import { TheMoneytizer, Vidverto } from "components/Ads";
 import { Header } from "components/Header";
 import { HomeLayout } from "components/Layout";
-import Select from "components/select";
+import { Select } from "components/Select";
 import { cityOptions } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
 import React, { ReactNode } from "react";

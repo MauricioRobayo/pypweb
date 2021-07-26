@@ -1,5 +1,5 @@
 import LicensePlate from "components/license-plate";
-import Select from "components/select";
+import { Select } from "components/Select";
 import { cityOptions } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
