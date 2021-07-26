@@ -18,7 +18,6 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
-  text-align: center;
 `;
 
 const Page = styled.div`

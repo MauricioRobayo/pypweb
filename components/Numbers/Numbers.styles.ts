@@ -3,6 +3,10 @@ import Breadcrumbs from "components/breadcrumbs";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
 
+export const Wrapper = styled.div`
+  text-align: center;
+`;
+
 export const Title = styled.h4`
   font-size: 1.25rem;
   font-weight: normal;

@@ -14,6 +14,7 @@ import {
   StyledBreadcrumbs,
   StyledVidverto,
   Title,
+  Wrapper,
 } from "./Numbers.styles";
 
 type NumbersPageProps = {
@@ -60,7 +61,7 @@ export default function NumbersPage({
     );
 
   return (
-    <div>
+    <Wrapper>
       <StyledBreadcrumbs
         paths={[
           { name: cityName, path: citySlug },
@@ -91,40 +92,38 @@ export default function NumbersPage({
         todaysRestriction
       )}
       <StyledVidverto />
+      <Title>Prográmese</Title>
       <div>
-        <Title>Prográmese</Title>
-        <div>
-          <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-          <ListWrapper>
-            {categoryData.data.slice(1).map((data) => {
-              const dataDate = new Date(data.year, data.month - 1, data.day);
-              if (data.numbers.includes(Number(number))) {
-                return (
-                  <ListItem key={dataDate.toISOString()}>
-                    <Link
-                      href={`/${citySlug}/${categoryData.slug}?d=${format(
-                        dataDate,
-                        "yyyy-MM-dd"
-                      )}`}
-                      passHref
-                    >
-                      <Anchor>
-                        <PypDate date={dataDate} />
-                      </Anchor>
-                    </Link>
-                  </ListItem>
-                );
-              }
-              return null;
-            })}
-          </ListWrapper>
-        </div>
+        <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
+        <ListWrapper>
+          {categoryData.data.slice(1).map((data) => {
+            const dataDate = new Date(data.year, data.month - 1, data.day);
+            if (data.numbers.includes(Number(number))) {
+              return (
+                <ListItem key={dataDate.toISOString()}>
+                  <Link
+                    href={`/${citySlug}/${categoryData.slug}?d=${format(
+                      dataDate,
+                      "yyyy-MM-dd"
+                    )}`}
+                    passHref
+                  >
+                    <Anchor>
+                      <PypDate date={dataDate} />
+                    </Anchor>
+                  </Link>
+                </ListItem>
+              );
+            }
+            return null;
+          })}
+        </ListWrapper>
       </div>
       <NumberLinks
         categorySlug={categorySlug}
         citySlug={citySlug}
         numberSelected={number}
       />
-    </div>
+    </Wrapper>
   );
 }
