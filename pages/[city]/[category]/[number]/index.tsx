@@ -130,7 +130,7 @@ export default function Category({
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const title = `${categoryName} en ${cityName} placas ${schemeString} ${number}`;
+  const title = `${categoryName.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
   const pageDescription = `${description} ${title}`;
 
