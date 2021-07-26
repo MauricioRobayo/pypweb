@@ -11,11 +11,11 @@ type CountDownProps = {
   message?: string;
 };
 
-const Countdown = ({
+export default function Countdown({
   className = "",
   endTime,
   message = "",
-}: CountDownProps) => {
+}: CountDownProps) {
   const countdown = formatDistance(endTime);
 
   if (countdown === "") {
@@ -28,6 +28,4 @@ const Countdown = ({
       <div className="countdown">{countdown}</div>
     </div>
   );
-};
-
-export default Countdown;
+}
