@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const formatDistance = (endTime: Date, startTime = new Date()) => {
   const ONE_MINUTE = 60 * 1000;
   const distance = Math.max(
