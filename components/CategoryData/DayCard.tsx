@@ -1,5 +1,5 @@
 import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
-import LicensePlate from "components/license-plate";
+import { LicensePlate } from "components/LicensePlate";
 import { format, isToday as isDateToday } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";

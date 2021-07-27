@@ -1,4 +1,4 @@
-import LicensePlate from "components/license-plate";
+import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
 import { cityOptions } from "lib/utils";
 import Link from "next/link";
