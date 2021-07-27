@@ -1,14 +1,51 @@
 import cities from "@mauriciorobayo/pyptron";
-import { isValidDateString } from "components/date/utils";
-import DaysList from "components/days-list";
-import Layout from "components/layout";
-import Post from "components/post";
-import { cityOptions, CityOptions } from "components/select/utils";
+import { TheMoneytizer } from "components/Ads";
+import { Aside } from "components/Aside";
+import { CategoryData } from "components/CategoryData";
+import { CTA } from "components/CTA";
+import { Header } from "components/Header";
+import { Post } from "components/Post";
+import { isValidDateString } from "components/PypDate/utils";
 import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
+import styled from "styled-components";
+
+const Main = styled.main`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+`;
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+`;
+
+const MegaBanner = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER",
+})`
+  margin: 2rem auto 0;
+`;
+
+const MegaBannerBottom = styled(TheMoneytizer).attrs({
+  formatType: "MEGABANNER_BOTTOM",
+})`
+  margin: 0 auto 2rem;
+`;
+
+const RecommendedContent = styled(TheMoneytizer).attrs({
+  formatType: "RECOMMENDED_CONTENT",
+})`
+  margin: 2rem auto;
+`;
 
 type CategoryProps = {
   categories: { name: string; slug: string }[];
@@ -17,9 +54,7 @@ type CategoryProps = {
   citySlug: CityType;
   currentDate: number;
   post: string;
-  selectOptions: CityOptions;
 };
-
 export default function Category({
   categories,
   categorySlug,
@@ -27,7 +62,6 @@ export default function Category({
   citySlug,
   currentDate,
   post,
-  selectOptions,
 }: CategoryProps) {
   const router = useRouter();
   const { d: requestedDate } = router.query;
@@ -41,9 +75,8 @@ export default function Category({
     date = new Date(currentDate);
   }
 
-  const categoryName = cities[citySlug].categories[
-    categorySlug
-  ].name.toLowerCase();
+  const categoryName =
+    cities[citySlug].categories[categorySlug].name.toLowerCase();
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
   const { year, month, day } = dateParts(date);
@@ -55,29 +88,33 @@ export default function Category({
     year,
   });
 
-  const aside = (
-    <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
-  );
-
-  const title = `Pico y placa ${categoryName} en ${cityName}`;
+  const title = `${categoryName} en ${cityName}`;
+  const pageTitle = `${baseTitle} ${title} `;
+  const pageDescription = `${description} ${title}`;
 
   return (
-    <Layout
-      aside={requestedDate ? null : aside}
-      categoryName={categoryName}
-      cityName={cityName}
-      date={date}
-      selectOptions={selectOptions}
-      title={title}
-    >
-      <DaysList
-        categories={categories}
-        categoryData={categoryData}
-        cityName={cityName}
-        citySlug={citySlug}
-        getCategoryData={getCategoryData}
-      />
-    </Layout>
+    <>
+      <NextSeo description={pageDescription} title={pageTitle} />
+      <Page>
+        <MegaBanner />
+        <Header date={date} title={pageTitle} />
+        <Main>
+          <CategoryData
+            categories={categories}
+            categoryData={categoryData}
+            cityName={cityName}
+            citySlug={citySlug}
+            getCategoryData={getCategoryData}
+          />
+        </Main>
+        <MegaBannerBottom />
+        <CTA />
+      </Page>
+      <Aside>
+        <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
+        <RecommendedContent />
+      </Aside>
+    </>
   );
 }
 
@@ -129,7 +166,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       citySlug,
       currentDate: date.getTime(),
       post: postHtml,
-      selectOptions: cityOptions(),
     },
   };
 };
