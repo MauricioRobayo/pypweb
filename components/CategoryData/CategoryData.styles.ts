@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
-import Button from "components/Button";
+import { Button } from "components/Button";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
