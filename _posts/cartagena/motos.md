@@ -4,10 +4,10 @@
 
 #### Decretos
 
-- [Decreto 0011 del 5 de enero de 2021](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_0011.PDF)
-- [Decreto 1198 del 1 de octubre de 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)
+- [Decreto 0011 del 5 de enero del 2021](/cartagena/decreto-0010-del-5-de-enero-del-2021.pdf)
+- [Decreto 1198 del 1 de octubre del 2020](https://www.transitocartagena.gov.co/links/Decretos/Decretos_2018/Decreto_1198.PDF)
 - [Decreto 0500 del 16 de marzo del 2020](/cartagena/decreto-0500-del-16-de-marzo-del-2020.pdf)
-- [Decreto 1035 del 5 de septiembre de 2018](/cartagena/decreto-1035-del-5-de-septiembre-de-2018.pdf)
+- [Decreto 1035 del 5 de septiembre del 2018](/cartagena/decreto-1035-del-5-de-septiembre-de-2018.pdf)
 
 #### Observaciones
 
