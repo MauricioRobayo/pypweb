@@ -1,36 +1,20 @@
-import styled from "styled-components";
+import { useState } from "react";
+import ObfuscatedEmail from "./ObfuscatedEmail";
 
-const StyledEmail = styled.span`
-  color: ${({ color }) => color || "inherit"};
-`;
+type EmailProps = {
+  className?: string;
+  email: string;
+};
+export default function Email({ className, email }: EmailProps) {
+  const [hovered, setHovered] = useState(false);
 
-type EmailProps = { color?: string };
+  function handleHover() {
+    setHovered(true);
+  }
 
-export default function Email({ color }: EmailProps) {
-  const emailCharactersCodes = [
-    "105;",
-    "110;",
-    "102;",
-    "111;",
-    "064;",
-    "112;",
-    "121;",
-    "112;",
-    "104;",
-    "111;",
-    "121;",
-    "046;",
-    "099;",
-    "111;",
-    "109;",
-  ];
   return (
-    <StyledEmail
-      color={color}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: `&#${emailCharactersCodes.join("&#")}`,
-      }}
-    />
+    <span className={className} onFocus={handleHover} onMouseOver={handleHover}>
+      {hovered ? email : <ObfuscatedEmail email={email} />}
+    </span>
   );
 }

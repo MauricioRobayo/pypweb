@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <StyledFooter>
       <p>PICO Y PLACA HOY</p>
-      <Email />
+      <Email email="info@pyphoy.com" />
     </StyledFooter>
   );
 }
