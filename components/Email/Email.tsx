@@ -17,8 +17,14 @@ const SegmentWrapper = styled.span<SegmentWrapperProps>`
 type EmailProps = {
   className?: string;
   email: string;
+  displayText?: string;
 };
-export default function Email({ className, email }: EmailProps) {
+export default function Email({
+  className,
+  email,
+  displayText = "",
+}: EmailProps) {
+  const text = displayText || email;
   const [hovered, setHovered] = useState(false);
 
   function handleHover() {
@@ -33,8 +39,8 @@ export default function Email({ className, email }: EmailProps) {
       onMouseOver={handleHover}
     >
       {hovered
-        ? email
-        : email.split("@").map((emailSegment, index) => (
+        ? text
+        : text.split("@").map((emailSegment, index) => (
             <SegmentWrapper key={emailSegment} first={index === 0}>
               {emailSegment}
             </SegmentWrapper>
