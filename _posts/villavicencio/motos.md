@@ -4,6 +4,7 @@
 
 #### Decretos
 
+- [Decreto 1000-24/391 del 30 de octubre de 2020](/villavicencio/decreto-1000-24-391-del-30-de-octubre-de-2020.pdf)
 - [Decreto 1000-24/344 del 15 de septiembre del 2020](/villavicencio/decreto-1000-24-344-del-15-de-septiembre-del-2020.pdf)
 - [Decreto 1000-24/331 del 31 de agosto del 2020](/villavicencio/decreto-1000-24-331-del-31-de-agosto-del-2020.pdf)
 - [Decreto 1000-21/347 del 24 de julio de 2019](/villavicencio/decreto-1000-21-347-del-24-julio-del-2019.pdf)
