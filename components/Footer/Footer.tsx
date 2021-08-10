@@ -15,11 +15,16 @@ const StyledFooter = styled.footer`
   }
 `;
 
+const StyledEmail = styled(Email)`
+  color: inherit;
+  text-decoration: none;
+`;
+
 export default function Footer() {
   return (
     <StyledFooter>
       <p>PICO Y PLACA HOY</p>
-      <Email />
+      <StyledEmail email="info@pyphoy.com" />
     </StyledFooter>
   );
 }

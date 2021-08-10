@@ -1,36 +1,50 @@
-import styled from "styled-components";
+import { useState } from "react";
+import styled, { css } from "styled-components";
 
-const StyledEmail = styled.span`
-  color: ${({ color }) => color || "inherit"};
+type SegmentWrapperProps = {
+  first: boolean;
+};
+const SegmentWrapper = styled.span<SegmentWrapperProps>`
+  ${({ first }) =>
+    first &&
+    css`
+      &::after {
+        content: "\x00040";
+      }
+    `}
 `;
 
-type EmailProps = { color?: string };
+type EmailProps = {
+  className?: string;
+  email: string;
+  displayText?: string;
+};
+export default function Email({
+  className,
+  email,
+  displayText = "",
+}: EmailProps) {
+  const text = displayText || email;
+  const [hovered, setHovered] = useState(false);
 
-export default function Email({ color }: EmailProps) {
-  const emailCharactersCodes = [
-    "105;",
-    "110;",
-    "102;",
-    "111;",
-    "064;",
-    "112;",
-    "121;",
-    "112;",
-    "104;",
-    "111;",
-    "121;",
-    "046;",
-    "099;",
-    "111;",
-    "109;",
-  ];
+  function handleHover() {
+    setHovered(true);
+  }
+
   return (
-    <StyledEmail
-      color={color}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: `&#${emailCharactersCodes.join("&#")}`,
-      }}
-    />
+    <a
+      className={className}
+      href={hovered ? `mailto:${email}` : "#"}
+      onFocus={handleHover}
+      onMouseOver={handleHover}
+    >
+      {hovered
+        ? text
+        : text.split("@").map((emailSegment, index) => (
+            <SegmentWrapper key={emailSegment} first={index === 0}>
+              {emailSegment}
+            </SegmentWrapper>
+          ))}
+    </a>
   );
 }

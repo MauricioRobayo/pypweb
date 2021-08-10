@@ -5,19 +5,20 @@ import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
 
-const StyledNavbar = styled.div`
+const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   padding: 0.5rem 1rem;
   width: 100%;
-  nav {
-    align-items: center;
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: auto 1fr;
-    margin: auto;
-    max-width: ${({ theme }) => theme.maxWidth};
-  }
+`;
+
+const Row = styled.div`
+  align-items: center;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto 1fr;
+  margin: auto;
+  max-width: ${({ theme }) => theme.maxWidth};
 `;
 
 export const Logo = styled.h2`
@@ -27,7 +28,7 @@ export const Logo = styled.h2`
 export default function Navbar() {
   return (
     <StyledNavbar>
-      <nav>
+      <Row>
         <Logo>
           <Link href="/">
             <a>
@@ -36,7 +37,7 @@ export default function Navbar() {
           </Link>
         </Logo>
         <Select name="ciudad" options={cityOptions()} placeholder="Ciudad" />
-      </nav>
+      </Row>
     </StyledNavbar>
   );
 }
