@@ -4,6 +4,7 @@
 
 #### Decretos
 
+- [Decreto 199 del 21 de junio de 2021](/cucuta/decreto-199-del-21-de-junio-de-2021.pdf)
 - [Resolución 0130 del 31 de julio de 2020](https://cucutanortedesantander.micolombiadigital.gov.co/sites/cucutanortedesantander/content/files/000775/38738_setra--resol-1302020-pyp-med.pdf)
 - [Resolución 0105 del 19 de junio de 2020](https://cucutanortedesantander.micolombiadigital.gov.co/sites/cucutanortedesantander/content/files/000765/38209_resolucion-0105-de-2020.PDF)
 - [Decreto 0300 del 28 de febrero de 2019](/cucuta/decreto-0300-del-28-de-febrero-de-2019.pdf)
@@ -43,6 +44,9 @@ Exceptúense de la medida del Pico y Placa los siguientes vehículos:
 - Vehículos oficiales: gerentes departamentales de la Contraloría de la República, Contralor Departamental del Norte de Santander, Contralor Municipal de Cúcuta, Personero Municipal de Cúcuta, Magistrados de los Tribunales de Cúcuta, Jueces y Fiscales, Concejales del Municipio de Cúcuta, Diputados del Departamento Norte de Santander.
 - Vehículos y grúas destinados al control del tráfico en la ciudad de San José de Cúcuta.
 - Los vehículos con placa nacional de propiedad de los medios de comunicación que estén debidamente identificados.
+- Los vehículos de placa nacional eléctricos y de cero emisiones contaminantes.
+- Los vehículos de placa nacional híbridos de fábrica cuya motorización sea por combustión (diésel, gasolina o hidrógeno) y funcionen, alternada o simultáneamente con motor eléctrico.
+- Los vehículos motorizados con bio-gas, etanos, hidrógeno o cualquier otro combustible biodegradable que no impacte negativamente el medio ambiente.
 
 #### Mapa
 
