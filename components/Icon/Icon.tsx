@@ -1,4 +1,5 @@
 import { CategoryName } from "@mauriciorobayo/pyptron";
+import { ReEmoji } from "components/ReEmoji";
 
 const iconsMap: Record<CategoryName, string> = {
   [CategoryName.MOTOS]: "🛵",
@@ -21,7 +22,7 @@ type IconProps = {
 
 const Icon = ({ iconName, className = "" }: IconProps) => (
   <span aria-label="iconName" className={className} role="img">
-    {iconsMap[iconName]}
+    <ReEmoji emoji={iconsMap[iconName]} />
   </span>
 );
 

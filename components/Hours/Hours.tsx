@@ -1,5 +1,5 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { FcAlarmClock } from "react-icons/fc";
+import { ReEmoji } from "components/ReEmoji";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";
 import Hour from "./Hour";
@@ -11,7 +11,7 @@ const HoursTitle = styled.h4`
   margin: 0;
 `;
 
-const StyledAlarmClock = inlineIconLeft(FcAlarmClock);
+const EmojiLeft = inlineIconLeft(ReEmoji);
 
 type HoursProps = {
   className?: string;
@@ -33,7 +33,7 @@ export default function Hours({
     <>
       {showTitle ? (
         <HoursTitle>
-          <StyledAlarmClock />
+          <EmojiLeft emoji="⏰" />
           Horario
         </HoursTitle>
       ) : null}

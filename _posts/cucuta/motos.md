@@ -4,6 +4,7 @@
 
 #### Decretos
 
+- [Decreto 199 del 21 de junio de 2021](/cucuta/decreto-199-del-21-de-junio-de-2021.pdf)
 - [Decreto 0300 de 2019](/cucuta/decreto-0300-de-2019.pdf)
 - [Decreto 0221 de 2019](/cucuta/decreto-0221-de-2019.pdf)
 - [Decretos 0239 del 4 de abril del 2017](http://www.areacucuta.com/wp-content/uploads/2017/04/Decreto-Pico-y-Placa-Placa-y-D%C3%ADa.pdf)
@@ -37,9 +38,13 @@ Exceptúense de la medida del Pico y Placa los siguientes vehículos:
 - Vehículos debidamente acreditados para transporte especial (escolar y turismo).
 - Vehículos oficiales al servicio de Magistrados, Jueces, Fiscales y personal de la Veeduría de la Defensoría del Pueblo en ejercicio de sus funciones.
 - Particulares de placa nacional y oficiales al servicio de magistrados, jueces y fiscales y personas de la Veeduría de la Defensoría del Pueblo en ejercicio de sus funciones.
-
+- Vehículos oficiales al servicio del Ministerio Público: Procurador Regional y Procuradores Provinciales, y Defensor del Pueblo.
+- Vehículos oficiales: gerentes departamentales de la Contraloría de la República, Contralor Departamental del Norte de Santander, Contralor Municipal de Cúcuta, Personero Municipal de Cúcuta, Magistrados de los Tribunales de Cúcuta, Jueces y Fiscales, Concejales del Municipio de Cúcuta, Diputados del Departamento Norte de Santander.
 - Vehículos y grúas destinados al control del tráfico en la ciudad de San José de Cúcuta.
 - Los vehículos con placa nacional de propiedad de los medios de comunicación que estén debidamente identificados.
+- Los vehículos de placa nacional eléctricos y de cero emisiones contaminantes.
+- Los vehículos de placa nacional híbridos de fábrica cuya motorización sea por combustión (diésel, gasolina o hidrógeno) y funcionen, alternada o simultáneamente con motor eléctrico.
+- Los vehículos motorizados con bio-gas, etanos, hidrógeno o cualquier otro combustible biodegradable que no impacte negativamente el medio ambiente.
 
 #### Mapa
 

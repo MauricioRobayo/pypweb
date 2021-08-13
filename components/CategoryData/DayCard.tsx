@@ -7,6 +7,7 @@ import { memo } from "react";
 import {
   Body,
   Description,
+  EmojiLeft,
   Header,
   RegularCard,
   SelectedCard,
@@ -14,7 +15,6 @@ import {
   StyledPypDate,
   VehicleIcon,
   Warning,
-  WarningIcon,
 } from "./DayCard.styles";
 
 type DayCardProps = {
@@ -91,7 +91,7 @@ function DayCard({
             <p>
               <Link href={`/${citySlug}/${categorySlug}`}>
                 <a>
-                  <WarningIcon />
+                  <EmojiLeft emoji="⚠" />
                   Para ver la información de hoy haga click acá
                 </a>
               </Link>
