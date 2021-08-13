@@ -42,20 +42,6 @@ export function pypNumbersToString(numbers: number[]) {
   return numbers.join("-");
 }
 
-export function listFormat(array: string[]) {
-  return array
-    .reduce((formattedList, listElement, index) => {
-      if (index === 0) {
-        return listElement.toLowerCase();
-      }
-      if (index === array.length - 1) {
-        return `${formattedList} y ${listElement.toLowerCase()}`;
-      }
-      return `${formattedList}, ${listElement.toLowerCase()}`;
-    }, "")
-    .replace(/\.$/, "");
-}
-
 export function isPublicLicense(categoryName: string) {
   const lowerCaseName = categoryName.toLowerCase();
   return ["taxis", "público"].some((category) =>
