@@ -22,7 +22,7 @@ type TwemojiProps = {
   height?: string;
   width?: string;
   className?: string;
-  source: "Twitter" | "GitHub";
+  source?: "Twitter" | "GitHub";
 };
 const Twemoji = ({
   emoji,
