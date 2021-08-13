@@ -1,3 +1,4 @@
+import { SelfAd } from "components/Ads";
 import { Email } from "components/Email";
 import React from "react";
 import styled from "styled-components";
@@ -23,6 +24,9 @@ const StyledEmail = styled(Email)`
 export default function Footer() {
   return (
     <StyledFooter>
+      <p>
+        <SelfAd />
+      </p>
       <p>PICO Y PLACA HOY</p>
       <StyledEmail email="info@pyphoy.com" />
     </StyledFooter>

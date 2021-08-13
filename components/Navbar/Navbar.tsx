@@ -1,3 +1,4 @@
+import { SelfAd } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
 import { cityOptions } from "lib/utils";
@@ -12,13 +13,18 @@ const StyledNavbar = styled.nav`
   width: 100%;
 `;
 
-const Row = styled.div`
+const Main = styled.div`
   align-items: center;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: auto 1fr;
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
+`;
+const SelfAdWrapper = styled.div`
+  display: grid;
+  margin-top: 0.5rem;
+  place-items: center;
 `;
 
 export const Logo = styled.h2`
@@ -28,7 +34,10 @@ export const Logo = styled.h2`
 export default function Navbar() {
   return (
     <StyledNavbar>
-      <Row>
+      <SelfAdWrapper>
+        <SelfAd />
+      </SelfAdWrapper>
+      <Main>
         <Logo>
           <Link href="/">
             <a>
@@ -37,7 +46,7 @@ export default function Navbar() {
           </Link>
         </Logo>
         <Select name="ciudad" options={cityOptions()} placeholder="Ciudad" />
-      </Row>
+      </Main>
     </StyledNavbar>
   );
 }
