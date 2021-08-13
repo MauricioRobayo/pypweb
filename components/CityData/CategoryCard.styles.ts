@@ -53,4 +53,4 @@ export const Description = styled.div`
 `;
 
 export const StyledIcon = inlineIconLeft(Icon);
-export const InfoIcon = inlineIconLeft(ReEmoji);
+export const EmojiLeft = inlineIconLeft(ReEmoji);

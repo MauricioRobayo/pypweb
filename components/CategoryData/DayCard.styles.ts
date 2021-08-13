@@ -106,7 +106,7 @@ export const Warning = styled.div`
   }
 `;
 
-export const WarningIcon = inlineIconLeft(ReEmoji);
+export const EmojiLeft = inlineIconLeft(ReEmoji);
 
 export const StyledHours = styled(Hours)`
   font-size: 1rem;

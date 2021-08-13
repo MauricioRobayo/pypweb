@@ -1,4 +1,5 @@
 import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
+import { EmojiLeft } from "components/CategoryData/DayCard.styles";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
@@ -8,7 +9,6 @@ import {
   Description,
   Footer,
   HoursWrapper,
-  InfoIcon,
   LicenseNumbers,
   SeeMore,
   StyledIcon,
@@ -71,7 +71,7 @@ export default function CategoryCard({
       <Footer>
         <Link href={`${categoryPath}`} passHref>
           <SeeMore>
-            <InfoIcon emoji="ℹ" />
+            <EmojiLeft emoji="ℹ" />
             Más información
           </SeeMore>
         </Link>
