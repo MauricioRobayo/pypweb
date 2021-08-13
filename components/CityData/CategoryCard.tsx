@@ -71,7 +71,7 @@ export default function CategoryCard({
       <Footer>
         <Link href={`${categoryPath}`} passHref>
           <SeeMore>
-            <InfoIcon />
+            <InfoIcon emoji="ℹ" />
             Más información
           </SeeMore>
         </Link>

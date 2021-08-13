@@ -5,7 +5,7 @@ const Wrapper = styled.span`
   line-height: 0;
 `;
 
-const StyledImg = styled.img<Pick<TwemojiProps, "height" | "width">>`
+const StyledImg = styled.img<Pick<ReEmojiProps, "height" | "width">>`
   display: inline-block;
   height: ${({ height }) => height};
   width: ${({ width }) => width};
@@ -17,20 +17,20 @@ const sources = {
   Twitter: "https://twemoji.maxcdn.com/v/latest/svg/{unicode}.svg",
 };
 
-type TwemojiProps = {
+type ReEmojiProps = {
   emoji: string;
   height?: string;
   width?: string;
   className?: string;
   source?: "Twitter" | "GitHub";
 };
-const Twemoji = ({
+const ReEmoji = ({
   emoji,
   className = "",
   height = "1em",
   width = "auto",
   source = "Twitter",
-}: TwemojiProps) => {
+}: ReEmojiProps) => {
   const unicode = emoji.codePointAt(0)?.toString(16);
 
   if (!unicode) {
@@ -50,4 +50,4 @@ const Twemoji = ({
   );
 };
 
-export default memo(Twemoji);
+export default memo(ReEmoji);

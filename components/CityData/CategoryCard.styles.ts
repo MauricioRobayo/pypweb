@@ -1,5 +1,5 @@
 import { Icon } from "components/Icon";
-import { FcInfo } from "react-icons/fc";
+import { ReEmoji } from "components/ReEmoji";
 import styled from "styled-components";
 import {
   boxShadow,
@@ -53,4 +53,4 @@ export const Description = styled.div`
 `;
 
 export const StyledIcon = inlineIconLeft(Icon);
-export const InfoIcon = inlineIconLeft(FcInfo);
+export const InfoIcon = inlineIconLeft(ReEmoji);

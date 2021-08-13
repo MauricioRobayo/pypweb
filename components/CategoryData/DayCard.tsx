@@ -91,7 +91,7 @@ function DayCard({
             <p>
               <Link href={`/${citySlug}/${categorySlug}`}>
                 <a>
-                  <WarningIcon />
+                  <WarningIcon emoji="⚠" />
                   Para ver la información de hoy haga click acá
                 </a>
               </Link>

@@ -1,7 +1,7 @@
 import { Hours } from "components/Hours";
 import { Icon } from "components/Icon";
 import { PypDate } from "components/PypDate";
-import { RiErrorWarningFill } from "react-icons/ri";
+import { ReEmoji } from "components/ReEmoji";
 import styled, { css } from "styled-components";
 import {
   boxShadow,
@@ -106,10 +106,7 @@ export const Warning = styled.div`
   }
 `;
 
-export const WarningIcon = styled(inlineIconLeft(RiErrorWarningFill))`
-  color: ${({ theme }) => theme.colors.warning};
-  font-size: 1.25rem;
-`;
+export const WarningIcon = inlineIconLeft(ReEmoji);
 
 export const StyledHours = styled(Hours)`
   font-size: 1rem;
