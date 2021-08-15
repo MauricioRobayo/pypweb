@@ -5,6 +5,7 @@ import {
   useState,
 } from "react";
 import styled, { css } from "styled-components";
+import { percentEncodeParams } from "./utils";
 
 type SegmentWrapperProps = {
   first: boolean;
@@ -40,13 +41,7 @@ export default function Email({
   const [hovered, setHovered] = useState(false);
   const emailUrl = new URL(`mailto:${email}`);
 
-  if (body) {
-    emailUrl.searchParams.set("body", body);
-  }
-
-  if (subject) {
-    emailUrl.searchParams.set("subject", subject);
-  }
+  emailUrl.search = percentEncodeParams({ body, subject });
 
   function handleHover() {
     setHovered(true);
