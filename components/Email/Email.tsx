@@ -41,6 +41,7 @@ export default function Email({
   const [hovered, setHovered] = useState(false);
   const emailUrl = new URL(`mailto:${email}`);
 
+  // https://github.com/whatwg/url/issues/18#issuecomment-369865339
   emailUrl.search = percentEncodeParams({ body, subject });
 
   function handleHover() {
