@@ -14,6 +14,7 @@ export function percentEncodeParams(params: {
         https://datatracker.ietf.org/doc/html/rfc6068#ref-STD66
   */
   return Object.entries(params)
+    .filter(([, value]) => Boolean(value))
     .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
     .join("&");
 }
