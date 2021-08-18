@@ -1,6 +1,6 @@
-import { Email } from "components/Email";
 import { ReEmoji } from "components/ReEmoji";
 import React from "react";
+import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 import { inlineIconLeft, inlineIconRight } from "styles/mixins";
 
@@ -18,7 +18,7 @@ export default function Self() {
     <StyledEmail
       body="Quisiera recibir información acerca de las opciones para anunciar con ustedes."
       email="publicidad@pyphoy.com"
-      rel="noreferrer"
+      rel="noreferrer noopener"
       subject="Solicitud info publicidad"
       target="_blank"
     >

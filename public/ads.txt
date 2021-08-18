@@ -917,6 +917,7 @@ tremorhub.com,7klg6-61u97,DIRECT,1a4e959a1b50034a
 tremorhub.com,ewut4-b6zwq,RESELLER,1a4e959a1b50034a
 tremorhub.com,q017o-78mlk,RESELLER,1a4e959a1b50034a
 tremorhub.com,z87wm,RESELLER,1a4e959a1b50034a
+triplelift.com, 10899, DIRECT, 6c33edb13117fd86
 triplelift.com, 6478, DIRECT, 6c33edb13117fd86
 triplelift.com,4338,DIRECT,6c33edb13117fd86
 triplelift.com,8495,RESELLER,6c33edb13117fd86
