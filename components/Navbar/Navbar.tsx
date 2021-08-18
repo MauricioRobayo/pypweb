@@ -1,4 +1,3 @@
-import { SelfAd } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
 import { cityOptions } from "lib/utils";
@@ -21,11 +20,6 @@ const Main = styled.div`
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
 `;
-const SelfAdWrapper = styled.div`
-  display: grid;
-  margin-top: 0.5rem;
-  place-items: center;
-`;
 
 export const Logo = styled.h2`
   ${camouflageLink}
@@ -34,9 +28,6 @@ export const Logo = styled.h2`
 export default function Navbar() {
   return (
     <StyledNavbar>
-      <SelfAdWrapper>
-        <SelfAd />
-      </SelfAdWrapper>
       <Main>
         <Logo>
           <Link href="/">
