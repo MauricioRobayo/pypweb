@@ -1,6 +1,6 @@
 import { SelfAd } from "components/Ads";
-import { Email } from "components/Email";
 import React from "react";
+import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
