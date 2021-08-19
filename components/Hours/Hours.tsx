@@ -1,5 +1,5 @@
 import { IHourData } from "@mauriciorobayo/pyptron";
-import { ReEmoji } from "components/ReEmoji";
+import { Emoji } from "components/Emoji";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";
 import Hour from "./Hour";
@@ -11,7 +11,7 @@ const HoursTitle = styled.h4`
   margin: 0;
 `;
 
-const EmojiLeft = inlineIconLeft(ReEmoji);
+const EmojiLeft = inlineIconLeft(Emoji);
 
 type HoursProps = {
   className?: string;
