@@ -1,5 +1,5 @@
+import { Emoji } from "components/Emoji";
 import { Icon } from "components/Icon";
-import { ReEmoji } from "components/ReEmoji";
 import styled from "styled-components";
 import {
   boxShadow,
@@ -53,4 +53,4 @@ export const Description = styled.div`
 `;
 
 export const StyledIcon = inlineIconLeft(Icon);
-export const EmojiLeft = inlineIconLeft(ReEmoji);
+export const EmojiLeft = inlineIconLeft(Emoji);
