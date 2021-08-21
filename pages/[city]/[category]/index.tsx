@@ -63,9 +63,7 @@ export default function Category({
       getCategoryData={getCategoryData}
     />
   );
-  const aside = (
-    <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
-  );
+  const aside = <Post body={post} />;
 
   return (
     <Page

@@ -28,7 +28,6 @@ export default function Category({
   post,
 }: CategoryProps) {
   const {
-    slug: categorySlug,
     data: [{ scheme }],
   } = categoryData;
   const date = new Date(currentDate);
@@ -47,9 +46,7 @@ export default function Category({
       schemeString={schemeString}
     />
   );
-  const aside = (
-    <Post body={post} editPath={`${citySlug}/${categorySlug}.md`} />
-  );
+  const aside = <Post body={post} />;
 
   return (
     <Page
