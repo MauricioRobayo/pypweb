@@ -1,0 +1,20 @@
+#### Tipos de vehículos
+
+- Transporte público individual - taxis
+
+#### Decretos
+
+- [Decreto 221 del 6 de agosto de 2021](/envigado/decreto-0000221-del-6-de-agosto-de-2021.pdf)
+- [Decreto 363 del 31 de julio de 2020](/envigado/decreto-0000363-del-31-de-julio-de-2020.pdf)
+
+### Observaciones
+
+Para vehículos de transporte público individual, y únicamente para efectos de reparación y mantenimiento, se les permitirá circular el día de la restricción sin ocupantes y sin la silla de atrás. En caso de no cumplir cualquiera de los anteriores requisitos, se impondrán las sanciones pertinentes.
+
+#### Excepciones
+
+Estarán exentos de la medida de pico y placa establecida los siguientes vehículos:
+
+1. Vehículos tipo taxi de combustible eléctrico e híbrido: Este tipo de vehículos no requiren solicitud de inscripción previa, independiente del Organismo de Tránsito en el cual se encuentren matriculados, siempre y cuando, el uso de este combustible se encuentre registrado en la licencia de tránsito.
+2. Vehículos tipo taxi que usen gas natural comprimido vehícular desde fábrica o aquellos que hayan registrado el cambio de combustible en la licencia de tránsito no requieren solicitud de inscripción previa, independiente del Organismo de Tránsito en el cual se encuentren matriculados.
+3. Los vehículos tipo taxi estarán autorizados para circular sin pasajeros el día de la medida de pico y placa, única y exclisivamente para realizar actividades de reparaación y mantenimiento del vehículo.
