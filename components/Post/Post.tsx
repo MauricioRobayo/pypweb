@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  border-radius: 4px;
-  position: relative;
-`;
-
 const StyledPost = styled.div`
   text-align: left;
   img {
@@ -21,11 +16,5 @@ export function Post({ body }: PostProps) {
     return null;
   }
 
-  return (
-    <>
-      <Wrapper>
-        <StyledPost dangerouslySetInnerHTML={{ __html: body }} />
-      </Wrapper>
-    </>
-  );
+  return <StyledPost dangerouslySetInnerHTML={{ __html: body }} />;
 }
