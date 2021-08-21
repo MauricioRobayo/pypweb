@@ -7,21 +7,6 @@
 - [Decreto municipal 398 de 2020](https://normograma.info/medellin/normograma/docs/pdf/mjd_alcamed_0398_2020.pdf)
 - [Decreto 0116 de 2018](https://www.medellin.gov.co/movilidad/jdownloads/Normas/Normatividad/Decretos%20Municipales/2018/decreto_0116_de_2018.pdf)
 
-#### Observaciones
-
-Aplica para todos los municipios del Área Metropolitana del Valle de Aburrá:
-
-- Medellín
-- Bello
-- Itagüí
-- Envigado
-- Caldas
-- Copacabana
-- La Estrella
-- Girardota
-- Sabaneta
-- Barbosa
-
 #### Excepciones
 
 - Vehículos de emergencia (ambulancias incluidas las veterinarias, bomberos y todos aquellos que transporten equipo y material logístico para atención de emergencias, así como los que prestan atención médica personalizada) y los vehículos requeridos para la atención de siniestros, siempre que se encuentren demarcados con identificación permanente trasera.
