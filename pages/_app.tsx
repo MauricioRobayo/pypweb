@@ -9,7 +9,7 @@ import React, { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
-import defaultTheme from "styles/theme";
+import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
 
 const isProduction = process.env.NODE_ENV === "production";
