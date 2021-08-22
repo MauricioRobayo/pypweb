@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-type NumberProps = {
+type StyledNumberProps = {
   selected?: boolean;
 };
-const Number = styled.div<NumberProps>`
+const StyledNumber = styled.div<StyledNumberProps>`
   align-items: center;
   background-color: ${({ selected, theme }) =>
     selected ? "white" : theme.colors.main};
@@ -30,35 +30,28 @@ const Anchor = styled.a`
   }
 `;
 
-type NumbersProps = {
+type NumberProps = {
+  number: string;
   selectedNumber: string;
   basePath: string;
 };
-export function Numbers({ selectedNumber, basePath }: NumbersProps) {
-  const rows = [
-    ["0", "1", "2", "3", "4"],
-    ["5", "6", "7", "8", "9"],
-  ];
-  return rows.map((numbers) => {
+export default function Number({
+  number,
+  selectedNumber,
+  basePath,
+}: NumberProps) {
+  if (number === selectedNumber) {
     return (
-      <div key={numbers.toString()}>
-        {numbers.map((number) => {
-          if (number === selectedNumber) {
-            return (
-              <Number key={number} selected>
-                {number}
-              </Number>
-            );
-          }
-          return (
-            <Link key={number} href={`/${basePath}/${number}`} passHref>
-              <Anchor>
-                <Number>{number}</Number>
-              </Anchor>
-            </Link>
-          );
-        })}
-      </div>
+      <StyledNumber key={number} selected>
+        {number}
+      </StyledNumber>
     );
-  });
+  }
+  return (
+    <Link key={number} href={`/${basePath}/${number}`} passHref>
+      <Anchor>
+        <StyledNumber>{number}</StyledNumber>
+      </Anchor>
+    </Link>
+  );
 }

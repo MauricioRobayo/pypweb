@@ -2,7 +2,7 @@ import { ICategoryData } from "@mauriciorobayo/pyptron";
 import Category from "@mauriciorobayo/pyptron/dist/models/category";
 import { Vidverto } from "components/Ads";
 import { memo, useEffect, useState } from "react";
-import { NumberLinks } from "../NumberLinks";
+import { NumberLinks } from "../NumberMenu";
 import {
   Article,
   ErrorMessage,

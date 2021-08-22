@@ -1,7 +1,7 @@
 import { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
-import { NumberLinks } from "components/NumberLinks";
+import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
 import { format } from "date-fns";
 import { NA, pypNumbersToString } from "lib/utils";

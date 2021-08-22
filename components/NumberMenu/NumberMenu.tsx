@@ -18,17 +18,17 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-type NumberLinksProps = {
+type NumberMenuProps = {
   citySlug: string;
   categorySlug: string;
   selectedNumber?: string;
 };
 
-export default function NumberLinks({
+export default function NumberMenu({
   citySlug,
   categorySlug,
   selectedNumber = "",
-}: NumberLinksProps) {
+}: NumberMenuProps) {
   return (
     <Wrapper>
       <Title>¿Cuándo tengo pico y placa?</Title>
