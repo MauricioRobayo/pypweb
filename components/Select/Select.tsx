@@ -62,24 +62,24 @@ const Select = ({
   narrow = false,
 }: SelectProps) => {
   const [selected, setSelected] = useState("");
-  const router = useRouter();
+  const { push, events } = useRouter();
 
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { value } = event.target;
 
     setSelected(value);
-    router.push(`/${value}`);
+    push(`/${value}`);
   };
 
   const routeChangeCompleteHandler = () => setSelected("");
 
   useEffect(() => {
-    router.events.on("routeChangeComplete", routeChangeCompleteHandler);
+    events.on("routeChangeComplete", routeChangeCompleteHandler);
 
     return () => {
-      router.events.off("routeChangeComplete", routeChangeCompleteHandler);
+      events.off("routeChangeComplete", routeChangeCompleteHandler);
     };
-  }, []);
+  }, [events]);
 
   return (
     <Wrapper narrow={narrow}>
