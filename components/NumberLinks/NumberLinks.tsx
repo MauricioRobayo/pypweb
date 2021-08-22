@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "./Row";
+import { Numbers } from "./Numbers";
 
 const Wrapper = styled.div`
   margin: 2rem 0;
@@ -33,15 +33,9 @@ export default function NumberLinks({
     <Wrapper>
       <Title>¿Cuándo tengo pico y placa?</Title>
       <Container>
-        <Row
+        <Numbers
           selectedNumber={selectedNumber}
           basePath={`${citySlug}/${categorySlug}`}
-          numbers={["0", "1", "2", "3", "4"]}
-        />
-        <Row
-          selectedNumber={selectedNumber}
-          basePath={`${citySlug}/${categorySlug}`}
-          numbers={["5", "6", "7", "8", "9"]}
         />
       </Container>
     </Wrapper>
