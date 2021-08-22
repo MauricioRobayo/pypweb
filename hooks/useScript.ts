@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-const useScript = ({
+const isProduction = process.env.NODE_ENV === "production";
+
+function useScript({
   ref,
   src,
   id,
@@ -14,8 +16,12 @@ const useScript = ({
   innerHTML?: string;
   async?: boolean;
   prepend?: boolean;
-}) => {
+}) {
   useEffect(() => {
+    if (!isProduction) {
+      return;
+    }
+
     if (!ref.current) {
       return;
     }
@@ -44,7 +50,7 @@ const useScript = ({
     } else {
       ref.current.append(newScript);
     }
-  }, [src, innerHTML]);
-};
+  }, [src, innerHTML, async, prepend, ref, id]);
+}
 
 export default useScript;

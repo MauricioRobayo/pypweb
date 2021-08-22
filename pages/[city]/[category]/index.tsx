@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     throw new Error("That's not a category");
   }
 
-  const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
+  const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
 
   const { getCategoryData } = categories[categorySlug];

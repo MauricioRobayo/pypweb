@@ -34,16 +34,12 @@ export default function City({
   );
   const aside = (
     <section>
-      <h4>
-        Pico y placa vigente en
-        {cityName}
-      </h4>
+      <h4>Pico y placa vigente en {cityName}</h4>
       <p>
         Las siguientes son las medidas de restricción vehicular vigentes para{" "}
         {cityName} durante el mes de{" "}
         {getLocalLongDateString().split(" ").slice(3).join(" ")}, de acuerdo con
-        lo establecido por la Alcaldía de
-        {cityName}:
+        lo establecido por la Alcaldía de {cityName}:
       </p>
       <ul>
         {categories.map(({ name: categoryName, slug: categorySlug }) => (

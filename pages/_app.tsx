@@ -3,20 +3,14 @@ import { pageview } from "lib/gtag";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
-import { Router, useRouter } from "next/router";
-import NProgress from "nprogress";
+import { useRouter } from "next/router";
+import NextNprogress from "nextjs-progressbar";
 import React, { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
-import defaultTheme from "styles/theme";
+import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
-
-Router.events.on("routeChangeStart", () => {
-  NProgress.start();
-});
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -51,6 +45,13 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
       <ThemeProvider theme={defaultTheme}>
         <Normalize />
         <GlobalStyle />
+        <NextNprogress
+          color={defaultTheme.colors.main}
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </>

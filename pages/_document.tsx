@@ -71,7 +71,6 @@ export default class MyDocument extends Document {
               />
             </>
           ) : null}
-          <link href="/nprogress.css" rel="stylesheet" type="text/css" />
         </Head>
         <body>
           <Main />
