@@ -30,28 +30,30 @@ const Anchor = styled.a`
   }
 `;
 
-const row =
-  (numberSelected: string, basePath: string) =>
-  ({ numbers }: { numbers: string[] }) =>
-    (
-      <div>
-        {numbers.map((number) => {
-          if (number === numberSelected) {
-            return (
-              <Number key={number} selected>
-                {number}
-              </Number>
-            );
-          }
+type RowProps = {
+  selectedNumber: string;
+  basePath: string;
+  numbers: string[];
+};
+export function Row({ selectedNumber, basePath, numbers }: RowProps) {
+  return (
+    <div>
+      {numbers.map((number) => {
+        if (number === selectedNumber) {
           return (
-            <Link key={number} href={`/${basePath}/${number}`} passHref>
-              <Anchor>
-                <Number>{number}</Number>
-              </Anchor>
-            </Link>
+            <Number key={number} selected>
+              {number}
+            </Number>
           );
-        })}
-      </div>
-    );
-
-export default row;
+        }
+        return (
+          <Link key={number} href={`/${basePath}/${number}`} passHref>
+            <Anchor>
+              <Number>{number}</Number>
+            </Anchor>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}

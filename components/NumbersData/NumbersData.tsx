@@ -122,7 +122,7 @@ export default function NumbersPage({
       <NumberLinks
         categorySlug={categorySlug}
         citySlug={citySlug}
-        numberSelected={number}
+        selectedNumber={number}
       />
     </Wrapper>
   );
