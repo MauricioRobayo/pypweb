@@ -3,10 +3,11 @@ import { CategoryData } from "components/CategoryData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { isValidDateString } from "components/PypDate/utils";
-import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
 
@@ -16,7 +17,7 @@ type CategoryProps = {
   cityName: string;
   citySlug: CityType;
   currentDate: number;
-  post: string;
+  mdxSource: MDXRemoteSerializeResult;
 };
 export default function Category({
   categories,
@@ -24,7 +25,7 @@ export default function Category({
   cityName,
   citySlug,
   currentDate,
-  post,
+  mdxSource,
 }: CategoryProps) {
   const router = useRouter();
   const { d: requestedDate } = router.query;
@@ -63,7 +64,7 @@ export default function Category({
       getCategoryData={getCategoryData}
     />
   );
-  const aside = <Post body={post} />;
+  const aside = <Post mdxSource={mdxSource} />;
 
   return (
     <Page
@@ -100,7 +101,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
-  const postHtml = await markdownToHtml(postMarkdown);
+  const mdxSource = await serialize(postMarkdown);
 
   const { getCategoryData } = categories[categorySlug];
 
@@ -123,7 +124,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       citySlug,
       currentDate: date.getTime(),
-      post: postHtml,
+      mdxSource,
     },
   };
 };
