@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 const useScript = ({
   ref,
   src,
@@ -16,6 +18,10 @@ const useScript = ({
   prepend?: boolean;
 }) => {
   useEffect(() => {
+    if (!isProduction) {
+      return;
+    }
+
     if (!ref.current) {
       return;
     }
