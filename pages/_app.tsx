@@ -3,20 +3,13 @@ import { pageview } from "lib/gtag";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
-import { Router, useRouter } from "next/router";
-import NProgress from "nprogress";
+import { useRouter } from "next/router";
 import React, { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
 import defaultTheme from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
-
-Router.events.on("routeChangeStart", () => {
-  NProgress.start();
-});
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
 
 const isProduction = process.env.NODE_ENV === "production";
 
