@@ -1,20 +1,15 @@
-import styled from "styled-components";
-
-const StyledPost = styled.div`
-  text-align: left;
-  img {
-    max-width: 100%;
-  }
-`;
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Image from "next/image";
+import TweetEmbed from "react-tweet-embed";
 
 type PostProps = {
-  body: string;
+  mdxSource: MDXRemoteSerializeResult;
 };
 
-export function Post({ body }: PostProps) {
-  if (!body) {
+export function Post({ mdxSource }: PostProps) {
+  if (!mdxSource) {
     return null;
   }
 
-  return <StyledPost dangerouslySetInnerHTML={{ __html: body }} />;
+  return <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />;
 }

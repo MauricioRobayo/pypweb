@@ -2,10 +2,11 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
-import markdownToHtml from "lib/markdownToHtml";
 import getPostBySlugs from "lib/posts";
 import { AMERICA_BOGOTA, dateParts, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 
 type CategoryProps = {
@@ -15,7 +16,7 @@ type CategoryProps = {
   citySlug: string;
   currentDate: number;
   number: string;
-  post: string;
+  mdxSource: MDXRemoteSerializeResult;
 };
 
 export default function Category({
@@ -25,7 +26,7 @@ export default function Category({
   citySlug,
   currentDate,
   number,
-  post,
+  mdxSource,
 }: CategoryProps) {
   const {
     data: [{ scheme }],
@@ -46,7 +47,7 @@ export default function Category({
       schemeString={schemeString}
     />
   );
-  const aside = <Post body={post} />;
+  const aside = <Post mdxSource={mdxSource} />;
 
   return (
     <Page
@@ -98,7 +99,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } = cities[citySlug];
 
   const postMarkdown = getPostBySlugs(`${citySlug}/${categorySlug}`);
-  const postHtml = await markdownToHtml(postMarkdown);
+  const mdxSource = await serialize(postMarkdown);
   const date = new Date();
   const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
 
@@ -114,8 +115,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       citySlug,
       currentDate: date.getTime(),
+      mdxSource,
       number: params?.number,
-      post: postHtml,
     },
   };
 };
