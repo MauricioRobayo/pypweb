@@ -50,7 +50,7 @@ const useScript = ({
     } else {
       ref.current.append(newScript);
     }
-  }, [src, innerHTML]);
+  }, [src, innerHTML, async, prepend, ref, id]);
 };
 
 export default useScript;
