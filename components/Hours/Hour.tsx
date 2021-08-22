@@ -71,7 +71,7 @@ const Hour = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [hours]);
 
   return (
     <>
