@@ -1,10 +1,6 @@
-type ThemeType = typeof defaultTheme;
+import { DefaultTheme } from "styled-components";
 
-declare module "styled-components" {
-  export interface DefaultTheme extends ThemeType {}
-}
-
-const defaultTheme = {
+export const defaultTheme: DefaultTheme = {
   colors: {
     danger: "#DC3545",
     main: "#1E90FF",
@@ -23,5 +19,3 @@ const defaultTheme = {
   maxWidthNarrow: "320px",
   maxWidthWider: "720px",
 };
-
-export default defaultTheme;
