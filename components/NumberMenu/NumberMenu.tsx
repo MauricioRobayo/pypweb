@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Numbers } from "./Numbers";
+import Number from "./Number";
 
 const Wrapper = styled.div`
   margin: 2rem 0;
@@ -29,14 +29,29 @@ export default function NumberMenu({
   categorySlug,
   selectedNumber = "",
 }: NumberMenuProps) {
+  const rows = [
+    ["0", "1", "2", "3", "4"],
+    ["5", "6", "7", "8", "9"],
+  ];
+
   return (
     <Wrapper>
       <Title>¿Cuándo tengo pico y placa?</Title>
       <Container>
-        <Numbers
-          selectedNumber={selectedNumber}
-          basePath={`${citySlug}/${categorySlug}`}
-        />
+        {rows.map((row) => {
+          return (
+            <div key={row.toString()}>
+              {row.map((number) => (
+                <Number
+                  key={number}
+                  number={number}
+                  selectedNumber={selectedNumber}
+                  basePath={`${citySlug}/${categorySlug}`}
+                />
+              ))}
+            </div>
+          );
+        })}
       </Container>
     </Wrapper>
   );
