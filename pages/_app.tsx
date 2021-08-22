@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import NextNprogress from "nextjs-progressbar";
 import React, { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
@@ -44,6 +45,13 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
       <ThemeProvider theme={defaultTheme}>
         <Normalize />
         <GlobalStyle />
+        <NextNprogress
+          color={defaultTheme.colors.main}
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={3}
+          showOnShallow={true}
+        />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
     </>
