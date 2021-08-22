@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const useScript = ({
+function useScript({
   ref,
   src,
   id,
@@ -16,7 +16,7 @@ const useScript = ({
   innerHTML?: string;
   async?: boolean;
   prepend?: boolean;
-}) => {
+}) {
   useEffect(() => {
     if (!isProduction) {
       return;
@@ -51,6 +51,6 @@ const useScript = ({
       ref.current.append(newScript);
     }
   }, [src, innerHTML, async, prepend, ref, id]);
-};
+}
 
 export default useScript;
