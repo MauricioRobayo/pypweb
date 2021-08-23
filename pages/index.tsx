@@ -8,7 +8,7 @@ import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledVidverto = styled(Vidverto)`
-  margin-top: 1rem;
+  margin: 1rem auto 1.5rem;
 `;
 
 const MegaBanner = styled(TheMoneytizer).attrs({

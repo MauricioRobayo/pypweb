@@ -12,6 +12,16 @@ module.exports = {
         source: "/popayan/transporte-de-carga",
       },
       {
+        destination: "/santa-cruz-de-lorica",
+        permanent: true,
+        source: "/lorica",
+      },
+      {
+        destination: "/santa-cruz-de-lorica/:category",
+        permanent: true,
+        source: "/lorica/:category",
+      },
+      {
         destination: "/santa-cruz-de-lorica/:category/:number",
         permanent: true,
         source: "/lorica/:category/:number",
