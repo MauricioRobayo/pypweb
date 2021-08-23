@@ -60,6 +60,12 @@ export default function NumbersPage({
       </div>
     );
 
+  const forthcomingRestrictions = categoryData.data
+    .slice(1)
+    .filter(({ numbers }) => numbers.includes(Number(number)));
+
+  console.log({ forthcomingRestrictions });
+
   return (
     <Wrapper>
       <StyledBreadcrumbs
@@ -93,12 +99,14 @@ export default function NumbersPage({
       )}
       <StyledVidverto />
       <Title>Prográmese</Title>
-      <div>
-        <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-        <ListWrapper>
-          {categoryData.data.slice(1).map((data) => {
-            const dataDate = new Date(data.year, data.month - 1, data.day);
-            if (data.numbers.includes(Number(number))) {
+      {forthcomingRestrictions.length === 0 ? (
+        <div>No tiene restricciones en los próximos 30 días.</div>
+      ) : (
+        <div>
+          <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
+          <ListWrapper>
+            {forthcomingRestrictions.map((data) => {
+              const dataDate = new Date(data.year, data.month - 1, data.day);
               return (
                 <ListItem key={dataDate.toISOString()}>
                   <Link
@@ -114,11 +122,10 @@ export default function NumbersPage({
                   </Link>
                 </ListItem>
               );
-            }
-            return null;
-          })}
-        </ListWrapper>
-      </div>
+            })}
+          </ListWrapper>
+        </div>
+      )}
       <NumberLinks
         categorySlug={categorySlug}
         citySlug={citySlug}
