@@ -64,8 +64,6 @@ export default function NumbersPage({
     .slice(1)
     .filter(({ numbers }) => numbers.includes(Number(number)));
 
-  console.log({ forthcomingRestrictions });
-
   return (
     <Wrapper>
       <StyledBreadcrumbs
