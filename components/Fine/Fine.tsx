@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export function Fine() {
   const Quote = styled.blockquote`
-    background-color: ${({ theme }) => theme.colors.warningLighter};
+    background-color: ${({ theme }) => theme.colors.secondaryLighter};
     border-radius: 0.5rem;
-    font-style: italic;
     margin: 1rem 1.5rem;
     padding: 1rem 1.5rem;
     p {
       margin: 0;
+    }
+    small {
+      font-style: italic;
+      opacity: 0.75;
     }
   `;
 
