@@ -1,5 +1,5 @@
 import { Layout } from "components/Layout";
-import { pageview } from "lib/gtag";
+import { pageView } from "lib/gtag";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       if (isProduction) {
-        pageview(url);
+        pageView(url);
       }
     };
     router.events.on("routeChangeComplete", handleRouteChange);
