@@ -1,5 +1,6 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
+import { Fine } from "components/Fine";
 import { Page } from "components/Page";
 import { getLocalLongDateString } from "components/PypDate/utils";
 import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
@@ -50,6 +51,7 @@ export default function City({
           </li>
         ))}
       </ul>
+      <Fine />
     </section>
   );
 
