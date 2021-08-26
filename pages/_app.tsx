@@ -1,18 +1,15 @@
 import { Layout } from "components/Layout";
-import { pageview } from "lib/gtag";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
-import { useRouter } from "next/router";
+import { usePageView } from "nextjs-google-analytics";
 import NextNprogress from "nextjs-progressbar";
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
 import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
-
-const isProduction = process.env.NODE_ENV === "production";
 
 type Page<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactNode) => ReactNode;
@@ -23,21 +20,10 @@ type CustomAppProps = AppProps & {
 };
 
 const App = ({ Component, pageProps }: CustomAppProps) => {
-  const router = useRouter();
   const getLayout =
     Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
 
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      if (isProduction) {
-        pageview(url);
-      }
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+  usePageView();
 
   return (
     <>
