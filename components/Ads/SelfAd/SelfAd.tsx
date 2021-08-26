@@ -13,7 +13,7 @@ const StyledEmail = styled(Email)`
   text-transform: uppercase;
 `;
 
-export function SelfAd() {
+export default function Self() {
   return (
     <StyledEmail
       body="Quisiera recibir información acerca de las opciones para anunciar con ustedes."

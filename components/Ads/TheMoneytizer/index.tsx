@@ -32,7 +32,7 @@ type Props = {
   formatType: FormatType;
 };
 
-export function TheMoneytizer({ className = "", formatType }: Props) {
+const TheMoneytizer = ({ className = "", formatType }: Props) => {
   const div = useRef<HTMLDivElement>(null);
 
   const formatId = formatTypeId[formatType];
@@ -60,4 +60,6 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
   }
 
   return <Placeholder className={className} height="90px" name={formatType} />;
-}
+};
+
+export default TheMoneytizer;

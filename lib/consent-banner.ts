@@ -159,19 +159,5 @@ const consentBanner = `
 })();
 <!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
 `;
-const isProduction = process.env.NODE_ENV === "production";
 
-export function ConsentBanner() {
-  if (!isProduction) {
-    return null;
-  }
-
-  return (
-    <script
-      async
-      dangerouslySetInnerHTML={{
-        __html: consentBanner,
-      }}
-    />
-  );
-}
+export default consentBanner;

@@ -1,6 +1,5 @@
 /* eslint-disable react/no-danger */
 
-import { ConsentBanner } from "components/Ads";
 import Document, {
   DocumentContext,
   Head,
@@ -8,10 +7,10 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { GoogleAnalytics } from "nextjs-google-analytics";
 import { ServerStyleSheet } from "styled-components";
+import consentBanner from "../lib/consent-banner";
+import { GA_TRACKING_ID } from "../lib/gtag";
 
-const GA_MEASUREMENT_ID = "G-B3CL561Q2J";
 const isProduction = process.env.NODE_ENV === "production";
 
 export default class MyDocument extends Document {
@@ -45,8 +44,33 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          <GoogleAnalytics gaMeasurementId={GA_MEASUREMENT_ID} />
-          <ConsentBanner />
+          {isProduction ? (
+            <>
+              {/* Global Site Tag (gtag.js) - Google Analytics */}
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_TRACKING_ID}', {
+                    page_path: window.location.pathname,
+                  });
+              `,
+                }}
+              />
+              <script
+                async
+                dangerouslySetInnerHTML={{
+                  __html: consentBanner,
+                }}
+              />
+            </>
+          ) : null}
         </Head>
         <body>
           <Main />
