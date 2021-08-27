@@ -45,7 +45,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          <GoogleAnalytics gaMeasurementId={GA_MEASUREMENT_ID} />
+          <GoogleAnalytics />
           <ConsentBanner />
         </Head>
         <body>

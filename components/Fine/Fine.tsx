@@ -1,20 +1,20 @@
 import styled from "styled-components";
 
-export function Fine() {
-  const Quote = styled.blockquote`
-    background-color: ${({ theme }) => theme.colors.secondaryLighter};
-    border-radius: 0.5rem;
-    margin: 1rem 1.5rem;
-    padding: 1rem 1.5rem;
-    p {
-      margin: 0;
-    }
-    small {
-      font-style: italic;
-      opacity: 0.75;
-    }
-  `;
+const Quote = styled.blockquote`
+  background-color: ${({ theme }) => theme.colors.secondaryLighter};
+  border-radius: 0.5rem;
+  margin: 1rem 1.5rem;
+  padding: 1rem 1.5rem;
+  p {
+    margin: 0;
+  }
+  small {
+    font-style: italic;
+    opacity: 0.75;
+  }
+`;
 
+export function Fine() {
   return (
     <>
       <h4>Sanciones</h4>
