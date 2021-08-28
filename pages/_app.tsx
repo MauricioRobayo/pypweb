@@ -2,7 +2,7 @@ import { Layout } from "components/Layout";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
-import { usePageView } from "nextjs-google-analytics";
+import { GoogleAnalytics, usePagesViews } from "nextjs-google-analytics";
 import NextNprogress from "nextjs-progressbar";
 import React, { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
@@ -23,10 +23,11 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
   const getLayout =
     Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
 
-  usePageView();
+  usePagesViews();
 
   return (
     <>
+      <GoogleAnalytics />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />

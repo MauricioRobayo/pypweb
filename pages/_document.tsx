@@ -8,11 +8,7 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { GoogleAnalytics } from "nextjs-google-analytics";
 import { ServerStyleSheet } from "styled-components";
-
-const GA_MEASUREMENT_ID = "G-B3CL561Q2J";
-const isProduction = process.env.NODE_ENV === "production";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -45,7 +41,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          <GoogleAnalytics />
           <ConsentBanner />
         </Head>
         <body>
