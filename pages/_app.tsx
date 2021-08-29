@@ -1,3 +1,4 @@
+import { ConsentBanner } from "components/Ads";
 import { Layout } from "components/Layout";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
@@ -42,6 +43,7 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
   return (
     <>
       <GoogleAnalytics />
+      <ConsentBanner />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />

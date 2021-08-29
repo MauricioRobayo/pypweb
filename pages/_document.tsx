@@ -1,6 +1,5 @@
 /* eslint-disable react/no-danger */
 
-import { ConsentBanner } from "components/Ads";
 import Document, {
   DocumentContext,
   Head,
@@ -40,9 +39,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="es">
-        <Head>
-          <ConsentBanner />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
