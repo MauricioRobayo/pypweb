@@ -1,7 +1,6 @@
 import { Fine } from "components/Fine";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
-import Link from "next/link";
 import TweetEmbed from "react-tweet-embed";
 
 type PostProps = {
@@ -15,7 +14,7 @@ export function Post({ mdxSource }: PostProps) {
 
   return (
     <>
-      <MDXRemote {...mdxSource} components={{ Image, Link, TweetEmbed }} />
+      <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
       <Fine />
     </>
   );
