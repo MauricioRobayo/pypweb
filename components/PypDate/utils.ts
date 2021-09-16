@@ -1,16 +1,22 @@
-const dateTimeFormatOptions = {
+const longDateFormatter = new Intl.DateTimeFormat("es-CO", {
   day: "numeric",
   month: "long",
   weekday: "long",
   year: "numeric",
-} as const;
+});
+const shortDateFormatter = new Intl.DateTimeFormat("es-CO", {
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+});
 
-const formatter = new Intl.DateTimeFormat("es-CO", dateTimeFormatOptions);
+export const getLocalLongDateString = longDateFormatter.format;
+export const getLocalShortDateString = shortDateFormatter.format;
 
 export function getDateFormattedParts(
   date: Date = new Date()
 ): Intl.DateTimeFormatPart[] {
-  return formatter.formatToParts(date);
+  return longDateFormatter.formatToParts(date);
 }
 
 export function getWeekdayName(date: Date = new Date()): string {
@@ -19,20 +25,6 @@ export function getWeekdayName(date: Date = new Date()): string {
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
   ) as Intl.DateTimeFormatPart;
   return weekdayName.value;
-}
-
-export function getLocalLongDateString(date: Date = new Date()): string {
-  return formatter.format(date);
-}
-
-export function getLocalShortDateString(date: Date = new Date()): string {
-  const shortDateTimeFormatOptions = {
-    day: "numeric",
-    month: "numeric",
-    year: "numeric",
-  } as const;
-  const f = new Intl.DateTimeFormat("es-CO", shortDateTimeFormatOptions);
-  return f.format(date);
 }
 
 export function isValidDateString(date: any): date is string {
