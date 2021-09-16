@@ -3,7 +3,7 @@ import {
   getLocalLongDateString,
   getLocalShortDateString,
   getWeekdayName,
-} from "./utils";
+} from "lib/dateUtils";
 
 type DateProps = {
   className?: string;

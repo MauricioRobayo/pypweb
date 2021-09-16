@@ -48,18 +48,3 @@ export function isPublicLicense(categoryName: string) {
     lowerCaseName.includes(category)
   );
 }
-
-export const dateParts = (date: Date, timeZone?: string) => {
-  const formatter = new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "numeric",
-    timeZone,
-    year: "numeric",
-  });
-  const parts = formatter.formatToParts(date);
-  return Object.fromEntries(
-    parts
-      .filter(({ type }) => ["year", "month", "day"].includes(type))
-      .map(({ type, value }) => [type, Number(value)])
-  ) as Record<"year" | "month" | "day", number>;
-};
