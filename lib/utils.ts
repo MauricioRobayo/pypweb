@@ -50,13 +50,12 @@ export function isPublicLicense(categoryName: string) {
 }
 
 export const dateParts = (date: Date, timeZone?: string) => {
-  const options = {
+  const formatter = new Intl.DateTimeFormat("en", {
     day: "numeric",
     month: "numeric",
     timeZone,
     year: "numeric",
-  } as const;
-  const formatter = new Intl.DateTimeFormat("en", options);
+  });
   const parts = formatter.formatToParts(date);
   return Object.fromEntries(
     parts
