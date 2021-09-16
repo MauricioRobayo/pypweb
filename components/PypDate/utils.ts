@@ -13,14 +13,8 @@ const shortDateFormatter = new Intl.DateTimeFormat("es-CO", {
 export const getLocalLongDateString = longDateFormatter.format;
 export const getLocalShortDateString = shortDateFormatter.format;
 
-export function getDateFormattedParts(
-  date: Date = new Date()
-): Intl.DateTimeFormatPart[] {
-  return longDateFormatter.formatToParts(date);
-}
-
 export function getWeekdayName(date: Date = new Date()): string {
-  const parts = getDateFormattedParts(date);
+  const parts = longDateFormatter.formatToParts(date);
   const weekdayName = parts.find(
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
   ) as Intl.DateTimeFormatPart;
