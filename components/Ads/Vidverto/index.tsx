@@ -54,9 +54,14 @@ const desktopScript = `
 
 const Wrapper = styled.div`
   ${responsiveWidth}
+
+  border-radius: 0.5rem;
+  overflow: hidden;
 `;
 const StyledPlaceholder = styled(Placeholder)`
   aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+  overflow: hidden;
   ${responsiveWidth}
 `;
 
