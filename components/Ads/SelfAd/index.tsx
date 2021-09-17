@@ -13,10 +13,14 @@ const StyledEmail = styled(Email)`
   text-transform: uppercase;
 `;
 
-export function SelfAd() {
+interface SelfAdProps {
+  className?: string;
+}
+export function SelfAd({ className }: SelfAdProps) {
   return (
     <StyledEmail
       body="Quisiera recibir información acerca de las opciones para anunciar con ustedes."
+      className={className}
       email="publicidad@pyphoy.com"
       rel="noreferrer noopener"
       subject="Solicitud info publicidad"
