@@ -69,24 +69,20 @@ type VidvertoProps = {
 };
 export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
-  // const script =
-  //   // eslint-disable-next-line no-nested-ternary
-  //   isMobile === null ? "" : isMobile ? mobileScript : desktopScript;
-  const id = isMobile ? mobileId : desktopId;
   const divRef = useRef<HTMLDivElement>(null);
 
   if (isProduction) {
     return (
       <>
         <Script
-          id="invocation"
+          id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
         />
-        <Script id="mount" strategy="lazyOnload">
+        <Script id="vidverto-mount" strategy="lazyOnload">
           {isMobile ? mobileScript : desktopScript}
         </Script>
         <Wrapper ref={divRef} className={className}>
-          <div id={`_vidverto-${id}`} />
+          <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
         </Wrapper>
       </>
     );
