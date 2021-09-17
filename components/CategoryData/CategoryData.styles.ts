@@ -16,6 +16,7 @@ export const ListWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 5px;
   margin: 1rem 0;
+  overflow: hidden;
   & > div:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   }
