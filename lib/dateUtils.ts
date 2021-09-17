@@ -13,11 +13,8 @@ const shortDateFormatter = new Intl.DateTimeFormat("es-CO", {
   timeZone: AMERICA_BOGOTA,
 });
 const timeFormatter = new Intl.DateTimeFormat("es-CO", {
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-  timeZoneName: "short",
   timeZone: AMERICA_BOGOTA,
+  timeStyle: "long",
 });
 
 export const formatLongDate = longDateFormatter.format;
