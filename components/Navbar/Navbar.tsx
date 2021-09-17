@@ -22,6 +22,7 @@ const Main = styled.div`
 `;
 
 export const Logo = styled.h2`
+  margin: 0;
   ${camouflageLink}
 `;
 
