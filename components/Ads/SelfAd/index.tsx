@@ -1,3 +1,4 @@
+import { Button } from "components/Button";
 import { Emoji } from "components/Emoji";
 import React, { useEffect, useRef, useState } from "react";
 import { Email } from "react-obfuscate-email";
@@ -10,19 +11,15 @@ const StyledEmail = styled(Email)`
   color: ${({ theme }) => theme.colors.main};
   text-decoration: none;
 `;
-const StyleButton = styled.button`
-  background-color: transparent;
-  border: none;
-  color: ${({ theme }) => theme.colors.main};
-  cursor: pointer;
-  font-size: 0.85rem;
-  margin: 0;
-  padding: 0;
-  text-transform: uppercase;
-`;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+const StyledButton = styled(Button).attrs({
+  variant: "link",
+})`
+  font-size: 0.85rem;
+  text-transform: uppercase;
 `;
 
 interface SelfAdProps {
@@ -68,11 +65,11 @@ export function SelfAd({ className }: SelfAdProps) {
           </p>
         </div>
       ) : (
-        <StyleButton type="button" onClick={showAdsInfo}>
+        <StyledButton onClick={showAdsInfo}>
           <EmojiLeft emoji="📣" />
           Anuncie con nosotros
           <EmojiRight emoji="🤩" />
-        </StyleButton>
+        </StyledButton>
       )}
       <div ref={bottomOfPageRef} />
     </Wrapper>
