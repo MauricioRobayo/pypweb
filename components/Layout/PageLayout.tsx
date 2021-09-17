@@ -12,7 +12,9 @@ export const StyledLayout = styled.div`
 `;
 const FixedHeader = styled.div`
   background-color: ${({ theme }) => theme.colors.warningLighter};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.warning};
   font-size: 0.85rem;
+  font-weight: bold;
   margin: 0;
   padding: 0.25em;
   position: sticky;
