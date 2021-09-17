@@ -2,8 +2,9 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { dateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
-import { AMERICA_BOGOTA, dateParts, isCity } from "lib/utils";
+import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -101,7 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
   const date = new Date();
-  const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
+  const { year, month, day } = dateParts(date);
 
   return {
     props: {
