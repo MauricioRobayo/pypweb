@@ -2,13 +2,11 @@
 
 import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
-import useScript from "hooks/useScript";
-import { useRef } from "react";
+import Script from "next/script";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
 const isProduction = process.env.NODE_ENV === "production";
-const scriptUrl = "https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js";
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
 const desktopId = "981cceae08e42e6301d86ae909b97156";
 
@@ -70,29 +68,22 @@ type VidvertoProps = {
 };
 export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
-  const script =
-    // eslint-disable-next-line no-nested-ternary
-    isMobile === null ? "" : isMobile ? mobileScript : desktopScript;
-  const id = isMobile ? mobileId : desktopId;
-  const divRef = useRef<HTMLDivElement>(null);
 
-  useScript({
-    async: true,
-    id: "vidverto-async-script-1",
-    ref: divRef,
-    src: scriptUrl,
-  });
-
-  useScript({
-    id: "vidverto-async-script-2",
-    innerHTML: script,
-    ref: divRef,
-  });
+  if (isMobile === null) {
+    return null;
+  }
 
   if (isProduction) {
     return (
-      <Wrapper ref={divRef} className={className}>
-        <div id={`_vidverto-${id}`} />
+      <Wrapper className={className}>
+        <Script
+          id="vidverto-invocation"
+          src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
+        />
+        <Script id="vidverto-mount" strategy="lazyOnload">
+          {isMobile ? mobileScript : desktopScript}
+        </Script>
+        <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
       </Wrapper>
     );
   }
