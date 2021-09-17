@@ -32,6 +32,14 @@ export const RegularCard = styled.div<StyleProps>`
     transition: background-color 0.5s;
     ${responsivePaddingAround}
     ${({ isInactive }) => isInactive && inactiveStyle}
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
   a:hover {
     ${boxShadow()}
