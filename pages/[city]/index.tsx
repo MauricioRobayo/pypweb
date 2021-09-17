@@ -2,7 +2,7 @@ import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import { Page } from "components/Page";
-import { dateParts, getLocalLongDateString } from "lib/dateUtils";
+import { dateParts, formatLongDate } from "lib/dateUtils";
 import { CityType, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
@@ -39,8 +39,8 @@ export default function City({
       <p>
         Las siguientes son las medidas de restricción vehicular vigentes para{" "}
         {cityName} durante el mes de{" "}
-        {getLocalLongDateString().split(" ").slice(3).join(" ")}, de acuerdo con
-        lo establecido por la Alcaldía de {cityName}:
+        {formatLongDate().split(" ").slice(3).join(" ")}, de acuerdo con lo
+        establecido por la Alcaldía de {cityName}:
       </p>
       <ul>
         {categories.map(({ name: categoryName, slug: categorySlug }) => (
