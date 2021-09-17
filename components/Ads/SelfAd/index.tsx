@@ -15,9 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const StyledButton = styled(Button).attrs({
-  variant: "link",
-})`
+const CTA = styled.div`
   font-size: 0.85rem;
   text-transform: uppercase;
 `;
@@ -44,15 +42,11 @@ export function SelfAd({ className }: SelfAdProps) {
       {shouldShowAdsInfo ? (
         <div>
           <p>
-            Mes a mes más de un millón de conductores en las principales
-            ciudades del país nos consultan.
-          </p>
-          <p>
-            <EmojiLeft emoji="🚐" />
-            <EmojiLeft emoji="🚗" />
-            <Emoji emoji="🚛" />
-            <EmojiRight emoji="🛵" />
-            <EmojiRight emoji="🚕" />
+            <CTA>
+              <EmojiLeft emoji="📣" />
+              Anuncie con nosotros
+              <EmojiRight emoji="🤩" />
+            </CTA>
           </p>
           <p>
             <StyledEmail
@@ -63,13 +57,28 @@ export function SelfAd({ className }: SelfAdProps) {
               target="_blank"
             />
           </p>
+          <p>
+            Mes a mes más de un millón de conductores en las principales
+            ciudades del país nos visitan.
+          </p>
+          <p>
+            <EmojiLeft emoji="🚙" />
+            <EmojiLeft emoji="🚐" />
+            <EmojiLeft emoji="🚗" />
+            <Emoji emoji="🚛" />
+            <EmojiRight emoji="🛵" />
+            <EmojiRight emoji="🚕" />
+            <EmojiRight emoji="🚚" />
+          </p>
         </div>
       ) : (
-        <StyledButton onClick={showAdsInfo}>
-          <EmojiLeft emoji="📣" />
-          Anuncie con nosotros
-          <EmojiRight emoji="🤩" />
-        </StyledButton>
+        <Button onClick={showAdsInfo} variant="link">
+          <CTA>
+            <EmojiLeft emoji="📣" />
+            Anuncie con nosotros
+            <EmojiRight emoji="🤩" />
+          </CTA>
+        </Button>
       )}
       <div ref={bottomOfPageRef} />
     </Wrapper>
