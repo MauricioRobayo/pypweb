@@ -80,7 +80,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
           id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
         />
-        <Script id="vidverto-mount" strategy="lazyOnload">
+        <Script id="vidverto-mount">
           {isMobile ? mobileScript : desktopScript}
         </Script>
         <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
