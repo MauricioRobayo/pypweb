@@ -2,6 +2,7 @@ import cn from "classnames";
 import { Placeholder } from "components/Ads";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
+import styled from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
@@ -26,6 +27,11 @@ const formatTypeClassName: Record<FormatType, string> = {
   RECOMMENDED_CONTENT: "outbrain-tm",
   SKIN: "",
 };
+
+const StyledPlaceholder = styled(Placeholder)`
+  height: 90px;
+  width: 728px;
+`;
 
 type Props = {
   className?: string;
@@ -59,5 +65,5 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
     );
   }
 
-  return <Placeholder className={className} height="90px" name={formatType} />;
+  return <StyledPlaceholder className={className} name={formatType} />;
 }
