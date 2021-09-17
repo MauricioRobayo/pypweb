@@ -46,7 +46,10 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
 
   if (isProduction) {
     return (
-      <>
+      <div
+        className={cn(className, formatClassName)}
+        id={`${siteId}-${formatId}`}
+      >
         <Script
           id={`moneytizer-gen-${formatId}`}
           src={`${baseUrl}/gen.js?type=${formatId}`}
@@ -57,11 +60,7 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
           src={`${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`}
           strategy="lazyOnload"
         />
-        <div
-          className={cn(className, formatClassName)}
-          id={`${siteId}-${formatId}`}
-        />
-      </>
+      </div>
     );
   }
 

@@ -71,7 +71,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
 
   if (isProduction) {
     return (
-      <>
+      <Wrapper className={className}>
         <Script
           id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
@@ -79,10 +79,8 @@ export function Vidverto({ className = "" }: VidvertoProps) {
         <Script id="vidverto-mount" strategy="lazyOnload">
           {isMobile ? mobileScript : desktopScript}
         </Script>
-        <Wrapper className={className}>
-          <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
-        </Wrapper>
-      </>
+        <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
+      </Wrapper>
     );
   }
 
