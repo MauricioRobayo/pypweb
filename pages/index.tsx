@@ -6,7 +6,6 @@ import { cityOptions } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { responsiveWidth } from "styles/mixins";
 
 const StyledVidverto = styled(Vidverto)`
   margin: 1rem auto 1.5rem;
@@ -23,7 +22,8 @@ const Page = styled.div`
   flex: 1 1 100%;
   flex-direction: column;
   justify-content: center;
-  ${responsiveWidth}
+  min-width: 100%;
+  padding: 0 1rem;
 `;
 
 const Main = styled.main`
