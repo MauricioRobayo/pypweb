@@ -69,6 +69,10 @@ type VidvertoProps = {
 export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
 
+  if (isMobile === null) {
+    return null;
+  }
+
   if (isProduction) {
     return (
       <Wrapper className={className}>
