@@ -30,7 +30,10 @@ const formatTypeClassName: Record<FormatType, string> = {
 
 const StyledPlaceholder = styled(Placeholder)`
   height: 90px;
-  width: 728px;
+  width: 320px;
+  @media (min-width: 728px) {
+    width: 728px;
+  } ;
 `;
 
 type Props = {
