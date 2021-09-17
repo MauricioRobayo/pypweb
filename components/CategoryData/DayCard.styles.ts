@@ -44,7 +44,7 @@ export const RegularCard = styled.div<StyleProps>`
   a:hover {
     ${boxShadow()}
 
-    z-index: 1000;
+    z-index: 1;
   }
 `;
 
