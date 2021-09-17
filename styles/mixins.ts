@@ -45,6 +45,6 @@ export const flexCenter = css`
   justify-content: center;
 `;
 
-export const width = css`
+export const responsiveWidth = css`
   width: min(${({ theme }) => theme.maxWidth}, 100%);
 `;

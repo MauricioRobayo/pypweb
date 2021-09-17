@@ -2,7 +2,7 @@ import { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
 import { CityType } from "lib/utils";
 import styled from "styled-components";
-import { width } from "styles/mixins";
+import { responsiveWidth } from "styles/mixins";
 import CategoryCard from "./CategoryCard";
 
 const StyledVidverto = styled(Vidverto)`
@@ -14,7 +14,7 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  ${width}
+  ${responsiveWidth}
   & > *:not(:last-child) {
     margin-bottom: 1rem;
   }

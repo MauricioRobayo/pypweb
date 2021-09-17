@@ -2,7 +2,10 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { Button } from "components/Button";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
-import { flexHorizontalCenterVerticalEnd, width } from "styles/mixins";
+import {
+  flexHorizontalCenterVerticalEnd,
+  responsiveWidth,
+} from "styles/mixins";
 
 export const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1.5rem 0 2rem;
@@ -20,7 +23,7 @@ export const ListWrapper = styled.div`
 
 export const Article = styled.article`
   margin: 1rem auto;
-  ${width}
+  ${responsiveWidth}
 `;
 
 export const Title = styled.h3`

@@ -5,7 +5,7 @@ import useDeviceDetect from "hooks/useDeviceDetect";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
 import styled from "styled-components";
-import { width } from "styles/mixins";
+import { responsiveWidth } from "styles/mixins";
 
 const isProduction = process.env.NODE_ENV === "production";
 const scriptUrl = "https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js";
@@ -53,11 +53,11 @@ const desktopScript = `
 `;
 
 const Wrapper = styled.div`
-  ${width}
+  ${responsiveWidth}
 `;
 const StyledPlaceholder = styled(Placeholder)`
   height: 320px;
-  ${width}
+  ${responsiveWidth}
 `;
 
 type VidvertoProps = {
