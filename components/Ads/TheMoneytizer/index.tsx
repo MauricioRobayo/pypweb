@@ -1,7 +1,6 @@
 import cn from "classnames";
 import { Placeholder } from "components/Ads";
 import Script from "next/script";
-import { useRef } from "react";
 import styled from "styled-components";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -42,8 +41,6 @@ type Props = {
 };
 
 export function TheMoneytizer({ className = "", formatType }: Props) {
-  const div = useRef<HTMLDivElement>(null);
-
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
@@ -61,7 +58,6 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
           strategy="lazyOnload"
         />
         <div
-          ref={div}
           className={cn(className, formatClassName)}
           id={`${siteId}-${formatId}`}
         />

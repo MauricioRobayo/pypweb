@@ -3,7 +3,6 @@
 import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import Script from "next/script";
-import { useRef } from "react";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
@@ -69,7 +68,6 @@ type VidvertoProps = {
 };
 export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
-  const divRef = useRef<HTMLDivElement>(null);
 
   if (isProduction) {
     return (
@@ -81,7 +79,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
         <Script id="vidverto-mount" strategy="lazyOnload">
           {isMobile ? mobileScript : desktopScript}
         </Script>
-        <Wrapper ref={divRef} className={className}>
+        <Wrapper className={className}>
           <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
         </Wrapper>
       </>
