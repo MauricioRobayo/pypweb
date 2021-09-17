@@ -17,9 +17,7 @@ const StyledFooter = styled.footer`
 export default function Footer() {
   return (
     <StyledFooter>
-      <p>
-        <SelfAd />
-      </p>
+      <SelfAd />
     </StyledFooter>
   );
 }
