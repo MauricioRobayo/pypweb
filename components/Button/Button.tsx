@@ -12,8 +12,9 @@ const variants = {
     }
   `,
   secondary: css`
-    background-color: ${({ theme }) => theme.colors.mainComplement};
-    border: 2px solid ${({ theme }) => theme.colors.secondaryDark};
+    background-color: ${({ theme }) => theme.colors.mainDark};
+    border: 2px solid ${({ theme }) => theme.colors.mainLight};
+    color: ${({ theme }) => theme.colors.mainComplement};
     &:hover {
       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
     }
