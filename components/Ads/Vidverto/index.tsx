@@ -56,7 +56,7 @@ const Wrapper = styled.div`
   ${responsiveWidth}
 `;
 const StyledPlaceholder = styled(Placeholder)`
-  height: 320px;
+  aspect-ratio: 16/9;
   ${responsiveWidth}
 `;
 
