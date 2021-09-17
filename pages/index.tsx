@@ -22,7 +22,8 @@ const Page = styled.div`
   flex: 1 1 100%;
   flex-direction: column;
   justify-content: center;
-  width: auto;
+  min-width: 100%;
+  padding: 0 1rem;
 `;
 
 const Main = styled.main`
