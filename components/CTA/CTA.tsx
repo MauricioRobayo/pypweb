@@ -47,16 +47,16 @@ export default function CTA() {
       {shouldShowContactOptions ? (
         <ContactOptions>
           <ContactOption>
-            <a href="http://m.me/picoyplacahoy" title="Facebook messenger">
-              <RiMessengerLine />
-            </a>
-          </ContactOption>
-          <ContactOption>
             <a
               href={`whatsapp://send?phone=573108844566&text=Hay un error en ${path}`}
               title="WhatsApp"
             >
               <RiWhatsappLine />
+            </a>
+          </ContactOption>
+          <ContactOption>
+            <a href="http://m.me/picoyplacahoy" title="Facebook messenger">
+              <RiMessengerLine />
             </a>
           </ContactOption>
           <ContactOption>
