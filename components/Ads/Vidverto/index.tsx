@@ -53,7 +53,7 @@ const desktopScript = `
 type VidvertoProps = {
   className?: string;
 };
-const Vidverto = ({ className = "" }: VidvertoProps) => {
+export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
   const script =
     // eslint-disable-next-line no-nested-ternary
@@ -83,6 +83,4 @@ const Vidverto = ({ className = "" }: VidvertoProps) => {
   }
 
   return <Placeholder className={className} height="320px" name="Vidverto" />;
-};
-
-export default Vidverto;
+}

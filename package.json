@@ -17,7 +17,7 @@
     "test:ci": "jest -ci"
   },
   "dependencies": {
-    "@mauriciorobayo/pyptron": "^2.23.3",
+    "@mauriciorobayo/pyptron": "^2.25.2",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "date-fns": "^2.23.0",
@@ -26,6 +26,7 @@
     "next": "^11.1.0",
     "next-mdx-remote": "^3.0.4",
     "next-seo": "^4.26.0",
+    "nextjs-google-analytics": "^0.1.13",
     "nextjs-progressbar": "^0.0.11",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -42,7 +43,6 @@
     "@hint/hint-axe": "^4.4.4",
     "@hint/hint-meta-theme-color": "^4.0.6",
     "@types/classnames": "^2.3.0",
-    "@types/gtag.js": "0.0.7",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.1",
     "@types/react": "^17.0.19",

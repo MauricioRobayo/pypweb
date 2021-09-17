@@ -1,3 +1,4 @@
+import { Fine } from "components/Fine";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
@@ -11,5 +12,10 @@ export function Post({ mdxSource }: PostProps) {
     return null;
   }
 
-  return <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />;
+  return (
+    <>
+      <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
+      <Fine />
+    </>
+  );
 }

@@ -1,8 +1,9 @@
 import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
+import { Fine } from "components/Fine";
 import { Page } from "components/Page";
-import { getLocalLongDateString } from "components/PypDate/utils";
-import { AMERICA_BOGOTA, CityType, dateParts, isCity } from "lib/utils";
+import { dateParts, getLocalLongDateString } from "lib/dateUtils";
+import { CityType, isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
@@ -50,6 +51,7 @@ export default function City({
           </li>
         ))}
       </ul>
+      <Fine />
     </section>
   );
 
@@ -77,7 +79,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { name: cityName, categories } = cities[citySlug];
   const date = new Date();
-  const { year, month, day } = dateParts(date, AMERICA_BOGOTA);
+  const { year, month, day } = dateParts(date);
 
   const categoriesData = Object.values(categories).map((category) =>
     category.getCategoryData({

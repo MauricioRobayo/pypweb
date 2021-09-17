@@ -1,18 +1,16 @@
+import { ConsentBanner } from "components/Ads";
 import { Layout } from "components/Layout";
-import { pageview } from "lib/gtag";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
-import { AppProps } from "next/app";
-import { useRouter } from "next/router";
+import { AppProps, NextWebVitalsMetric } from "next/app";
+import { event, GoogleAnalytics, usePagesViews } from "nextjs-google-analytics";
 import NextNprogress from "nextjs-progressbar";
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
 import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
-
-const isProduction = process.env.NODE_ENV === "production";
 
 type Page<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactNode) => ReactNode;
@@ -22,25 +20,30 @@ type CustomAppProps = AppProps & {
   Component: Page;
 };
 
+export function reportWebVitals({
+  id,
+  name,
+  label,
+  value,
+}: NextWebVitalsMetric) {
+  event(name, {
+    category: label === "web-vital" ? "Web Vitals" : "Next.js custom metric",
+    value: Math.round(name === "CLS" ? value * 1000 : value), // values must be integers
+    label: id, // id unique to current page load
+    nonInteraction: true, // avoids affecting bounce rate.
+  });
+}
+
 const App = ({ Component, pageProps }: CustomAppProps) => {
-  const router = useRouter();
   const getLayout =
     Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
 
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      if (isProduction) {
-        pageview(url);
-      }
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
+  usePagesViews();
 
   return (
     <>
+      <GoogleAnalytics />
+      <ConsentBanner />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />

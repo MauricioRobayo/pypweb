@@ -1,14 +1,12 @@
 import { SelfAd } from "components/Ads";
 import React from "react";
-import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
   border-top: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  font-size: 0.85rem;
   margin-top: auto;
-  padding: 0.5rem 0 1rem;
+  padding: 1rem 0;
   text-align: center;
   width: 100%;
   p {
@@ -16,19 +14,10 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const StyledEmail = styled(Email)`
-  color: inherit;
-  text-decoration: none;
-`;
-
 export default function Footer() {
   return (
     <StyledFooter>
-      <p>
-        <SelfAd />
-      </p>
-      <p>PICO Y PLACA HOY</p>
-      <StyledEmail email="info@pyphoy.com" />
+      <SelfAd />
     </StyledFooter>
   );
 }

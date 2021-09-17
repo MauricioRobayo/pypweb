@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledAdPlaceholder = styled.div<
+const StyledPlaceholder = styled.div<
   Pick<AdPlaceholderProps, "height" | "width" | "maxWidth">
 >`
   align-items: center;
@@ -24,21 +24,21 @@ type AdPlaceholderProps = {
   maxWidth?: string;
   className?: string;
 };
-const AdPlaceholder = ({
+export function Placeholder({
   name,
   width = "100%",
   height,
   maxWidth = "",
   className = "",
-}: AdPlaceholderProps) => (
-  <StyledAdPlaceholder
-    className={className}
-    height={height}
-    maxWidth={maxWidth}
-    width={width}
-  >
-    {name}
-  </StyledAdPlaceholder>
-);
-
-export default AdPlaceholder;
+}: AdPlaceholderProps) {
+  return (
+    <StyledPlaceholder
+      className={className}
+      height={height}
+      maxWidth={maxWidth}
+      width={width}
+    >
+      {name}
+    </StyledPlaceholder>
+  );
+}
