@@ -40,7 +40,6 @@ export function SelfAd({ className }: SelfAdProps) {
 
   function showAdsInfo() {
     setShouldShowAdsInfo(true);
-    console.log("about to scroll", { current: bottomOfPageRef.current });
   }
 
   return (
