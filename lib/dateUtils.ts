@@ -12,9 +12,17 @@ const shortDateFormatter = new Intl.DateTimeFormat("es-CO", {
   year: "numeric",
   timeZone: AMERICA_BOGOTA,
 });
+const timeFormatter = new Intl.DateTimeFormat("es-CO", {
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  timeZoneName: "short",
+  timeZone: AMERICA_BOGOTA,
+});
 
 export const getLocalLongDateString = longDateFormatter.format;
 export const getLocalShortDateString = shortDateFormatter.format;
+export const formatTime = timeFormatter.format;
 
 export function getWeekdayName(date: Date = new Date()): string {
   const parts = longDateFormatter.formatToParts(date);
