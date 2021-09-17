@@ -33,7 +33,7 @@ export function SelfAd({ className }: SelfAdProps) {
   const [shouldShowAdsInfo, setShouldShowAdsInfo] = useState(false);
 
   useEffect(() => {
-    if (bottomOfPageRef.current) {
+    if (shouldShowAdsInfo && bottomOfPageRef.current) {
       bottomOfPageRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [shouldShowAdsInfo]);
