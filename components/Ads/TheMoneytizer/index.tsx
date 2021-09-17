@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { Placeholder } from "components/Ads";
-import useScript from "hooks/useScript";
+import Script from "next/script";
 import { useRef } from "react";
 import styled from "styled-components";
 
@@ -47,24 +47,25 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
-  useScript({
-    id: `the-moneytizer-script-1-${formatId}`,
-    ref: div,
-    src: `${baseUrl}/gen.js?type=${formatId}`,
-  });
-  useScript({
-    id: `the-moneytizer-script-2-${formatId}`,
-    ref: div,
-    src: `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`,
-  });
-
   if (isProduction) {
     return (
-      <div
-        ref={div}
-        className={cn(className, formatClassName)}
-        id={`${siteId}-${formatId}`}
-      />
+      <>
+        <Script
+          id={`gen-${formatId}`}
+          src={`${baseUrl}/gen.js?type=${formatId}`}
+          strategy="lazyOnload"
+        />
+        <Script
+          id={`request-${formatId}`}
+          src={`${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`}
+          strategy="lazyOnload"
+        />
+        <div
+          ref={div}
+          className={cn(className, formatClassName)}
+          id={`${siteId}-${formatId}`}
+        />
+      </>
     );
   }
 
