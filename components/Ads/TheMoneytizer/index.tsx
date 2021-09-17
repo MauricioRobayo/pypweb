@@ -51,12 +51,12 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
     return (
       <>
         <Script
-          id={`gen-${formatId}`}
+          id={`moneytizer-gen-${formatId}`}
           src={`${baseUrl}/gen.js?type=${formatId}`}
           strategy="lazyOnload"
         />
         <Script
-          id={`request-${formatId}`}
+          id={`moneytizer-request-${formatId}`}
           src={`${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`}
           strategy="lazyOnload"
         />
