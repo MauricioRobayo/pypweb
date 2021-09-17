@@ -17,13 +17,14 @@ const Main = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
   padding: 0 1rem;
 `;
 
 const MegaBanner = styled(TheMoneytizer).attrs({
   formatType: "MEGABANNER",
 })`
-  margin: 2rem auto 0;
+  margin: 2rem auto 1rem;
 `;
 
 const MegaBannerBottom = styled(TheMoneytizer).attrs({

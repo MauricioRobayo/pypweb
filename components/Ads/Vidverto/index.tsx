@@ -4,6 +4,8 @@ import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import useScript from "hooks/useScript";
 import { useRef } from "react";
+import styled from "styled-components";
+import { responsiveWidth } from "styles/mixins";
 
 const isProduction = process.env.NODE_ENV === "production";
 const scriptUrl = "https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js";
@@ -50,6 +52,19 @@ const desktopScript = `
 })();
 `;
 
+const Wrapper = styled.div`
+  ${responsiveWidth}
+
+  border-radius: 0.5rem;
+  overflow: hidden;
+`;
+const StyledPlaceholder = styled(Placeholder)`
+  aspect-ratio: 16/9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  ${responsiveWidth}
+`;
+
 type VidvertoProps = {
   className?: string;
 };
@@ -76,11 +91,11 @@ export function Vidverto({ className = "" }: VidvertoProps) {
 
   if (isProduction) {
     return (
-      <div ref={divRef} className={className}>
+      <Wrapper ref={divRef} className={className}>
         <div id={`_vidverto-${id}`} />
-      </div>
+      </Wrapper>
     );
   }
 
-  return <Placeholder className={className} height="320px" name="Vidverto" />;
+  return <StyledPlaceholder className={className} name="Vidverto" />;
 }

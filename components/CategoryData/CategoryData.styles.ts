@@ -2,7 +2,10 @@ import { Breadcrumbs } from "components/Breadcrumbs";
 import { Button } from "components/Button";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
-import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
+import {
+  flexHorizontalCenterVerticalEnd,
+  responsiveWidth,
+} from "styles/mixins";
 
 export const StyledBreadcrumbs = styled(Breadcrumbs)`
   margin: 1.5rem 0 2rem;
@@ -13,6 +16,7 @@ export const ListWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 5px;
   margin: 1rem 0;
+  overflow: hidden;
   & > div:not(:last-child) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   }
@@ -20,7 +24,7 @@ export const ListWrapper = styled.div`
 
 export const Article = styled.article`
   margin: 1rem auto;
-  max-width: ${({ theme }) => theme.maxWidth};
+  ${responsiveWidth}
 `;
 
 export const Title = styled.h3`
