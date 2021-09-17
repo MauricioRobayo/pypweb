@@ -20,8 +20,8 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeZone: AMERICA_BOGOTA,
 });
 
-export const getLocalLongDateString = longDateFormatter.format;
-export const getLocalShortDateString = shortDateFormatter.format;
+export const formatLongDate = longDateFormatter.format;
+export const formatShortDate = shortDateFormatter.format;
 export const formatTime = timeFormatter.format;
 
 export function getWeekdayName(date: Date = new Date()): string {

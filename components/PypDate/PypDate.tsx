@@ -1,9 +1,5 @@
 import { isToday as isDateToday } from "date-fns";
-import {
-  getLocalLongDateString,
-  getLocalShortDateString,
-  getWeekdayName,
-} from "lib/dateUtils";
+import { formatLongDate, formatShortDate, getWeekdayName } from "lib/dateUtils";
 
 type DateProps = {
   className?: string;
@@ -19,7 +15,7 @@ export default function PypDate({
   const isToday = isDateToday(date);
 
   if (type === "long") {
-    const localLongDateString = getLocalLongDateString(date);
+    const localLongDateString = formatLongDate(date);
     return (
       <time className={className} dateTime={date.toISOString()}>
         {isToday ? `Hoy ${localLongDateString}` : localLongDateString}
@@ -27,7 +23,7 @@ export default function PypDate({
     );
   }
 
-  const localShortDateString = getLocalShortDateString(date);
+  const localShortDateString = formatShortDate(date);
   const weekdayName = getWeekdayName(date);
   return (
     <time className={className} dateTime={date.toISOString()}>
