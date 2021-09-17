@@ -85,6 +85,7 @@ const Select = ({
     <Wrapper narrow={narrow}>
       <StyledSelect
         isShowingPlaceholder={selected === ""}
+        title={name}
         name={name}
         onChange={onChangeHandler}
         value={selected}
