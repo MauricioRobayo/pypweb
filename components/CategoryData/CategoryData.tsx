@@ -31,7 +31,7 @@ function CategoryData({
   getCategoryData,
 }: DaysListProps) {
   const [data, setData] = useState(categoryData.data);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<unknown>(null);
   const {
     name: categoryName,
     slug: categorySlug,

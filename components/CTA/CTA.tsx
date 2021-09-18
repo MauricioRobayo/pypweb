@@ -35,7 +35,7 @@ export default function CTA() {
   const { asPath } = useRouter();
   const [shouldShowContactOptions, setShouldShowContactOptions] =
     useState(false);
-  const path = asPath.slice(1);
+  const path = `${process.env.NEXT_PUBLIC_VERCEL_URL}${asPath}`;
 
   function showContactOptions() {
     setShouldShowContactOptions(true);
