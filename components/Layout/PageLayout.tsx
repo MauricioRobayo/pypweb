@@ -16,7 +16,7 @@ const FixedHeader = styled.div`
   font-size: 0.85rem;
   font-weight: bold;
   margin: 0;
-  padding: 0.25em;
+  padding: 0.3em 1rem 0.25em;
   position: sticky;
   text-align: center;
   top: -1px;
