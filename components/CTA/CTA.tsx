@@ -1,6 +1,6 @@
 import { Button } from "components/Button";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiMailLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
@@ -35,7 +35,13 @@ export default function CTA() {
   const { asPath } = useRouter();
   const [shouldShowContactOptions, setShouldShowContactOptions] =
     useState(false);
-  const path = `${process.env.NEXT_PUBLIC_VERCEL_URL}${asPath}`;
+  const [path, setPath] = useState("");
+
+  useEffect(() => {
+    if (window !== undefined) {
+      setPath(window.location.href);
+    }
+  }, [asPath]);
 
   function showContactOptions() {
     setShouldShowContactOptions(true);
