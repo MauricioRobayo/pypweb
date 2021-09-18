@@ -9,6 +9,7 @@ export function ConsentBanner() {
 
   return (
     <Script
+      id="consent-banner"
       dangerouslySetInnerHTML={{
         __html: `
         <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
