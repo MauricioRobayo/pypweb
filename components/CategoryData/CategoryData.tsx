@@ -1,7 +1,7 @@
-import { ICategoryData } from "@mauriciorobayo/pyptron";
-import Category from "@mauriciorobayo/pyptron/dist/models/category";
+import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
-import { memo, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { memo } from "react";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
@@ -15,43 +15,42 @@ import {
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
 
-type DaysListProps = {
+type CategoryDataProps = {
   categories: { name: string; slug: string }[];
+  categoryName: CategoryName;
+  categorySlug: string;
   cityName: string;
   citySlug: string;
-  categoryData: ICategoryData;
-  getCategoryData: Category["getCategoryData"];
+  data: IPypDataResult[];
+  error: boolean;
 };
-
 function CategoryData({
   categories,
+  categoryName,
+  categorySlug,
   cityName,
   citySlug,
-  categoryData,
-  getCategoryData,
-}: DaysListProps) {
-  const [data, setData] = useState(categoryData.data);
-  const [error, setError] = useState<unknown>(null);
-  const {
-    name: categoryName,
-    slug: categorySlug,
-    data: [{ scheme }],
-  } = categoryData;
+  data,
+  error,
+}: CategoryDataProps) {
+  const router = useRouter();
   const [currentPypData, ...nextPypData] = data;
-  const schemeMessage = scheme === "first" ? "primer" : "último";
-
-  useEffect(() => {
-    setData(categoryData.data);
-  }, [categoryData]);
+  const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
   const onClickHandler = () => {
-    const { day, month, year } = data[data.length - 1];
-    try {
-      const newData = getCategoryData({ day: day + 1, days: 30, month, year });
-      setData((d) => d.concat(newData.data));
-    } catch (e) {
-      setError(e);
-    }
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          f: data.length + 30,
+        },
+      },
+      undefined,
+      {
+        shallow: true,
+      }
+    );
   };
 
   return (

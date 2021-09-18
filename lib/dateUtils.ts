@@ -30,7 +30,7 @@ export function getWeekdayName(date: Date = new Date()): string {
 }
 
 export function isValidDateString(date: any): date is string {
-  return typeof date === "string" && !Number.isNaN(new Date(date));
+  return typeof date === "string" && !Number.isNaN(Date.parse(date));
 }
 
 export const dateParts = (date: Date) => {
