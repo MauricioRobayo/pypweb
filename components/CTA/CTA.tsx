@@ -37,8 +37,6 @@ export default function CTA() {
     useState(false);
   const path = `${process.env.NEXT_PUBLIC_VERCEL_URL}${asPath}`;
 
-  console.log({ path });
-
   function showContactOptions() {
     setShouldShowContactOptions(true);
   }
