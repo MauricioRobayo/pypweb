@@ -73,7 +73,7 @@ function CategoryData({
           />
         ))}
       </ListWrapper>
-      {data.length + 30 > 365 ? (
+      {data.length >= 365 ? (
         <ErrorMessage>
           <p>😢 No tenemos más información</p>
         </ErrorMessage>
@@ -83,7 +83,7 @@ function CategoryData({
             pathname: router.pathname,
             query: {
               ...router.query,
-              dias: data.length + 30,
+              dias: Math.min(365, data.length + 30),
             },
           }}
           prefetch={false}
