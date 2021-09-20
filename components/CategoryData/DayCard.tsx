@@ -86,26 +86,24 @@ function DayCard({
         )}
         {isToday ? null : (
           <Warning>
-            <p>
-              <Link
-                href={{
-                  pathname: router.pathname,
-                  query: {
-                    ...router.query,
-                    fecha: format(new Date(), "yyyy-MM-dd"),
-                    dias: 8,
-                  },
-                }}
-                prefetch={false}
-                scroll={false}
-                shallow
-              >
-                <a>
-                  <EmojiLeft emoji="⚠" />
-                  Para ver la información de hoy haga click acá
-                </a>
-              </Link>
-            </p>
+            <Link
+              href={{
+                pathname: router.pathname,
+                query: {
+                  ...router.query,
+                  fecha: format(new Date(), "yyyy-MM-dd"),
+                  dias: 8,
+                },
+              }}
+              prefetch={false}
+              scroll={false}
+              shallow
+            >
+              <a>
+                <EmojiLeft emoji="⚠" />
+                Para ver la información de hoy haga click acá
+              </a>
+            </Link>
           </Warning>
         )}
       </SelectedCard>

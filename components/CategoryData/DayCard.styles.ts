@@ -107,7 +107,7 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
 
 export const Warning = styled.div`
   background-color: ${({ theme }) => theme.colors.warningLighter};
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   text-align: center;
   a {
     ${flexCenter}
