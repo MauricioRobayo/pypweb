@@ -60,8 +60,6 @@ function CategoryData({
       </header>
       <DayCard
         categoryName={categoryName}
-        categorySlug={categorySlug}
-        citySlug={citySlug}
         isSelected
         pypData={currentPypData}
       />
@@ -71,8 +69,6 @@ function CategoryData({
           <DayCard
             key={JSON.stringify(pypData)}
             categoryName={categoryName}
-            categorySlug={categorySlug}
-            citySlug={citySlug}
             pypData={pypData}
           />
         ))}

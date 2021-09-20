@@ -20,17 +20,13 @@ import {
 
 type DayCardProps = {
   categoryName: CategoryName;
-  categorySlug: string;
-  citySlug: string;
   className?: string;
   pypData: IPypDataResult;
   isSelected?: boolean;
 };
 
 function DayCard({
-  categorySlug,
   categoryName,
-  citySlug,
   className = "",
   isSelected = false,
   pypData,
@@ -92,7 +88,14 @@ function DayCard({
           <Warning>
             <p>
               <Link
-                href={`/${citySlug}/${categorySlug}`}
+                href={{
+                  pathname: router.pathname,
+                  query: {
+                    ...router.query,
+                    fecha: format(new Date(), "yyyy-MM-dd"),
+                    dias: 8,
+                  },
+                }}
                 prefetch={false}
                 scroll={false}
                 shallow
