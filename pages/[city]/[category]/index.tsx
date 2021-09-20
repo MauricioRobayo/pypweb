@@ -1,4 +1,4 @@
-import cities from "@mauriciorobayo/pyptron";
+import cities, { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
@@ -10,58 +10,88 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 type CategoryProps = {
   categories: { name: string; slug: string }[];
   categorySlug: string;
+  categoryName: CategoryName;
   cityName: string;
   citySlug: CityType;
   currentDate: number;
+  initialData: IPypDataResult[];
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function Category({
   categories,
   categorySlug,
+  categoryName,
   cityName,
   citySlug,
   currentDate,
+  initialData,
   mdxSource,
 }: CategoryProps) {
-  const router = useRouter();
-  const { d: requestedDate } = router.query;
-
-  let date: Date;
-
-  if (isValidDateString(requestedDate)) {
-    const localRequestedDate = requestedDate.replace(/-/, "/").substr(0, 10);
-    date = new Date(localRequestedDate);
-  } else {
-    date = new Date(currentDate);
-  }
-
-  const categoryName =
-    cities[citySlug].categories[categorySlug].name.toLowerCase();
+  const [data, setData] = useState(initialData);
+  const [date, setDate] = useState(currentDate);
+  const { query } = useRouter();
+  const { fecha: requestedDate, dias: forwardDays } = query;
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
-  const { year, month, day } = dateParts(date);
 
-  const categoryData = getCategoryData({
-    day,
-    days: 8,
-    month,
-    year,
-  });
+  useEffect(() => {
+    if (!isValidDateString(requestedDate)) {
+      return;
+    }
 
-  const title = `${categoryName} en ${cityName}`;
+    const [year, month, day] = requestedDate.split("-").map(Number);
+
+    try {
+      const categoryData = getCategoryData({
+        day,
+        days: 8,
+        month,
+        year,
+      });
+
+      setDate(new Date(year, month - 1, day).getTime());
+      setData(categoryData.data);
+    } catch (err) {}
+  }, [requestedDate, getCategoryData, currentDate, initialData]);
+
+  useEffect(() => {
+    const days = Math.min(365, Number(forwardDays));
+    if (Number.isNaN(days)) {
+      setData(initialData);
+    }
+
+    setData((previousData) => {
+      const { year, month, day } = previousData[previousData.length - 1];
+      try {
+        const categoryData = getCategoryData({
+          day: day + 1,
+          days: days - previousData.length,
+          month,
+          year,
+        });
+        return [...previousData, ...categoryData.data];
+      } catch (err) {
+        return previousData;
+      }
+    });
+  }, [forwardDays, getCategoryData, initialData]);
+
+  const title = `${categoryName.toLowerCase()} en ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
   const pageDescription = `${description} ${title}`;
   const main = (
     <CategoryData
       categories={categories}
-      categoryData={categoryData}
+      categoryName={categoryName}
+      categorySlug={categorySlug}
       cityName={cityName}
       citySlug={citySlug}
-      getCategoryData={getCategoryData}
+      data={data}
     />
   );
   const aside = <Post mdxSource={mdxSource} />;
@@ -69,7 +99,7 @@ export default function Category({
   return (
     <Page
       aside={aside}
-      date={date}
+      date={new Date(date)}
       description={pageDescription}
       main={main}
       title={pageTitle}
@@ -103,6 +133,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
 
+  const categoryName = cities[citySlug].categories[categorySlug].name;
+
   const { getCategoryData } = categories[categorySlug];
 
   const date = new Date();
@@ -114,13 +146,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name,
         slug,
       })),
-      categoryData: getCategoryData({
+      initialData: getCategoryData({
         day,
         days: 8,
         month,
         year,
-      }),
+      }).data,
       categorySlug,
+      categoryName,
       cityName,
       citySlug,
       currentDate: date.getTime(),

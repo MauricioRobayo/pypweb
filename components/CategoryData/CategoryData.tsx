@@ -1,58 +1,40 @@
-import { ICategoryData } from "@mauriciorobayo/pyptron";
-import Category from "@mauriciorobayo/pyptron/dist/models/category";
+import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
-import { memo, useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { memo } from "react";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
   ErrorMessage,
   ListWrapper,
-  MoreButton,
-  MoreButtonWrapper,
   MoreIcon,
+  MoreLink,
   StyledBreadcrumbs,
   Title,
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
 
-type DaysListProps = {
+type CategoryDataProps = {
   categories: { name: string; slug: string }[];
+  categoryName: CategoryName;
+  categorySlug: string;
   cityName: string;
   citySlug: string;
-  categoryData: ICategoryData;
-  getCategoryData: Category["getCategoryData"];
+  data: IPypDataResult[];
 };
-
 function CategoryData({
   categories,
+  categoryName,
+  categorySlug,
   cityName,
   citySlug,
-  categoryData,
-  getCategoryData,
-}: DaysListProps) {
-  const [data, setData] = useState(categoryData.data);
-  const [error, setError] = useState<unknown>(null);
-  const {
-    name: categoryName,
-    slug: categorySlug,
-    data: [{ scheme }],
-  } = categoryData;
+  data,
+}: CategoryDataProps) {
+  const router = useRouter();
   const [currentPypData, ...nextPypData] = data;
-  const schemeMessage = scheme === "first" ? "primer" : "último";
 
-  useEffect(() => {
-    setData(categoryData.data);
-  }, [categoryData]);
-
-  const onClickHandler = () => {
-    const { day, month, year } = data[data.length - 1];
-    try {
-      const newData = getCategoryData({ day: day + 1, days: 30, month, year });
-      setData((d) => d.concat(newData.data));
-    } catch (e) {
-      setError(e);
-    }
-  };
+  const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
   return (
     <Article>
@@ -78,8 +60,6 @@ function CategoryData({
       </header>
       <DayCard
         categoryName={categoryName}
-        categorySlug={categorySlug}
-        citySlug={citySlug}
         isSelected
         pypData={currentPypData}
       />
@@ -89,23 +69,33 @@ function CategoryData({
           <DayCard
             key={JSON.stringify(pypData)}
             categoryName={categoryName}
-            categorySlug={categorySlug}
-            citySlug={citySlug}
             pypData={pypData}
           />
         ))}
       </ListWrapper>
-      {error ? (
+      {data.length >= 365 ? (
         <ErrorMessage>
           <p>😢 No tenemos más información</p>
         </ErrorMessage>
       ) : (
-        <MoreButtonWrapper>
-          <MoreButton onClick={onClickHandler}>
+        <Link
+          href={{
+            pathname: router.pathname,
+            query: {
+              ...router.query,
+              dias: Math.min(365, data.length + 30),
+            },
+          }}
+          prefetch={false}
+          scroll={false}
+          shallow
+          passHref
+        >
+          <MoreLink>
             <MoreIcon />
             Ver más días
-          </MoreButton>
-        </MoreButtonWrapper>
+          </MoreLink>
+        </Link>
       )}
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
