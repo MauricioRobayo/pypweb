@@ -40,6 +40,7 @@ const RecommendedContent = styled(TheMoneytizer).attrs({
 `;
 
 type PageProps = {
+  errMessage: string;
   title: string;
   description: string;
   main: ReactNode;
@@ -47,6 +48,7 @@ type PageProps = {
   date: Date;
 };
 export default function Page({
+  errMessage,
   title,
   description,
   main,
@@ -57,6 +59,7 @@ export default function Page({
     <>
       <NextSeo description={description} title={title} />
       <Wrapper>
+        {errMessage ? <p>{errMessage}</p> : null}
         <MegaBanner />
         <Header date={date} title={title} />
         <Main>{main}</Main>

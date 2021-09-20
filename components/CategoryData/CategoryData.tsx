@@ -1,5 +1,6 @@
 import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
 import { NumberLinks } from "../NumberMenu";
@@ -7,9 +8,8 @@ import {
   Article,
   ErrorMessage,
   ListWrapper,
-  MoreButton,
-  MoreButtonWrapper,
   MoreIcon,
+  MoreLink,
   StyledBreadcrumbs,
   Title,
 } from "./CategoryData.styles";
@@ -22,7 +22,6 @@ type CategoryDataProps = {
   cityName: string;
   citySlug: string;
   data: IPypDataResult[];
-  error: boolean;
 };
 function CategoryData({
   categories,
@@ -31,27 +30,11 @@ function CategoryData({
   cityName,
   citySlug,
   data,
-  error,
 }: CategoryDataProps) {
   const router = useRouter();
   const [currentPypData, ...nextPypData] = data;
-  const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
-  const onClickHandler = () => {
-    router.push(
-      {
-        pathname: router.pathname,
-        query: {
-          ...router.query,
-          f: data.length + 30,
-        },
-      },
-      undefined,
-      {
-        shallow: true,
-      }
-    );
-  };
+  const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
   return (
     <Article>
@@ -94,17 +77,29 @@ function CategoryData({
           />
         ))}
       </ListWrapper>
-      {error ? (
+      {data.length + 30 > 365 ? (
         <ErrorMessage>
           <p>😢 No tenemos más información</p>
         </ErrorMessage>
       ) : (
-        <MoreButtonWrapper>
-          <MoreButton onClick={onClickHandler}>
+        <Link
+          href={{
+            pathname: router.pathname,
+            query: {
+              ...router.query,
+              dias: data.length + 30,
+            },
+          }}
+          prefetch={false}
+          scroll={false}
+          shallow
+          passHref
+        >
+          <MoreLink>
             <MoreIcon />
             Ver más días
-          </MoreButton>
-        </MoreButtonWrapper>
+          </MoreLink>
+        </Link>
       )}
       <footer>
         <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />

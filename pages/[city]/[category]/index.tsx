@@ -34,8 +34,9 @@ export default function Category({
 }: CategoryProps) {
   const [data, setData] = useState(initialData);
   const [date, setDate] = useState(currentDate);
+  const [errMessage, setErrMessage] = useState("");
   const { query } = useRouter();
-  const { d: requestedDate, f: forwardDays } = query;
+  const { fecha: requestedDate, dias: forwardDays } = query;
 
   const { getCategoryData } = cities[citySlug].categories[categorySlug];
 
@@ -59,19 +60,26 @@ export default function Category({
 
   useEffect(() => {
     const days = Number(forwardDays);
-    if (Number.isNaN(days) || days <= 0) {
-      return;
+    if (Number.isNaN(days)) {
+      setData(initialData);
     }
 
     setData((previousData) => {
-      const [{ year, month, day }] = previousData;
-      const categoryData = getCategoryData({
-        day,
-        days,
-        month,
-        year,
-      });
-      return categoryData.data;
+      const { year, month, day } = previousData[previousData.length - 1];
+      try {
+        const categoryData = getCategoryData({
+          day: day + 1,
+          days: days - previousData.length,
+          month,
+          year,
+        });
+        return [...previousData, ...categoryData.data];
+      } catch (err) {
+        if (err instanceof Error) {
+          setErrMessage(err.message);
+        }
+        return previousData;
+      }
     });
   }, [forwardDays, getCategoryData, initialData]);
 
@@ -86,13 +94,13 @@ export default function Category({
       cityName={cityName}
       citySlug={citySlug}
       data={data}
-      error={false}
     />
   );
   const aside = <Post mdxSource={mdxSource} />;
 
   return (
     <Page
+      errMessage={errMessage}
       aside={aside}
       date={new Date(date)}
       description={pageDescription}
