@@ -46,7 +46,6 @@ export default function Category({
 
     const [year, month, day] = requestedDate.split("-").map(Number);
 
-    console.log({ year, month, day });
     const categoryData = getCategoryData({
       day,
       days: 8,
