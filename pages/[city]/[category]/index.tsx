@@ -34,7 +34,6 @@ export default function Category({
 }: CategoryProps) {
   const [data, setData] = useState(initialData);
   const [date, setDate] = useState(currentDate);
-  const [errMessage, setErrMessage] = useState("");
   const { query } = useRouter();
   const { fecha: requestedDate, dias: forwardDays } = query;
 
@@ -47,19 +46,21 @@ export default function Category({
 
     const [year, month, day] = requestedDate.split("-").map(Number);
 
-    const categoryData = getCategoryData({
-      day,
-      days: 8,
-      month,
-      year,
-    });
+    try {
+      const categoryData = getCategoryData({
+        day,
+        days: 8,
+        month,
+        year,
+      });
 
-    setDate(new Date(year, month - 1, day).getTime());
-    setData(categoryData.data);
+      setDate(new Date(year, month - 1, day).getTime());
+      setData(categoryData.data);
+    } catch (err) {}
   }, [requestedDate, getCategoryData, currentDate, initialData]);
 
   useEffect(() => {
-    const days = Number(forwardDays);
+    const days = Math.min(365, Number(forwardDays));
     if (Number.isNaN(days)) {
       setData(initialData);
     }
@@ -75,9 +76,6 @@ export default function Category({
         });
         return [...previousData, ...categoryData.data];
       } catch (err) {
-        if (err instanceof Error) {
-          setErrMessage(err.message);
-        }
         return previousData;
       }
     });
@@ -100,7 +98,6 @@ export default function Category({
 
   return (
     <Page
-      errMessage={errMessage}
       aside={aside}
       date={new Date(date)}
       description={pageDescription}
