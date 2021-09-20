@@ -44,10 +44,9 @@ export default function Category({
       return;
     }
 
-    const [year, month, day] = requestedDate
-      .slice(0, 10)
-      .split("-")
-      .map(Number);
+    const [year, month, day] = requestedDate.split("-").map(Number);
+
+    console.log({ year, month, day });
     const categoryData = getCategoryData({
       day,
       days: 8,
@@ -55,9 +54,9 @@ export default function Category({
       year,
     });
 
-    setDate(Date.parse(requestedDate));
+    setDate(new Date(year, month - 1, day).getTime());
     setData(categoryData.data);
-  }, [requestedDate, getCategoryData]);
+  }, [requestedDate, getCategoryData, currentDate, initialData]);
 
   useEffect(() => {
     const days = Number(forwardDays);
@@ -75,7 +74,7 @@ export default function Category({
       });
       return categoryData.data;
     });
-  }, [forwardDays, getCategoryData]);
+  }, [forwardDays, getCategoryData, initialData]);
 
   const title = `${categoryName.toLowerCase()} en ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
