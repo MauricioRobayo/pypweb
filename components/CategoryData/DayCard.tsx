@@ -3,6 +3,7 @@ import { LicensePlate } from "components/LicensePlate";
 import { format, isToday as isDateToday } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { memo } from "react";
 import {
   Body,
@@ -19,17 +20,13 @@ import {
 
 type DayCardProps = {
   categoryName: CategoryName;
-  categorySlug: string;
-  citySlug: string;
   className?: string;
   pypData: IPypDataResult;
   isSelected?: boolean;
 };
 
 function DayCard({
-  categorySlug,
   categoryName,
-  citySlug,
   className = "",
   isSelected = false,
   pypData,
@@ -42,6 +39,7 @@ function DayCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
   const isToday = isDateToday(date);
+  const router = useRouter();
 
   const formattedDate = (
     <StyledPypDate
@@ -88,14 +86,24 @@ function DayCard({
         )}
         {isToday ? null : (
           <Warning>
-            <p>
-              <Link href={`/${citySlug}/${categorySlug}`}>
-                <a>
-                  <EmojiLeft emoji="⚠" />
-                  Para ver la información de hoy haga click acá
-                </a>
-              </Link>
-            </p>
+            <Link
+              href={{
+                pathname: router.pathname,
+                query: {
+                  ...router.query,
+                  fecha: format(new Date(), "yyyy-MM-dd"),
+                  dias: 8,
+                },
+              }}
+              prefetch={false}
+              scroll={false}
+              shallow
+            >
+              <a>
+                <EmojiLeft emoji="⚠" />
+                Para ver la información de hoy haga click acá
+              </a>
+            </Link>
           </Warning>
         )}
       </SelectedCard>
@@ -109,8 +117,18 @@ function DayCard({
       isInactive={isInactive}
     >
       <Link
-        href={`/${citySlug}/${categorySlug}?d=${format(date, "yyyy-MM-dd")}`}
+        href={{
+          pathname: router.pathname,
+          query: {
+            ...router.query,
+            fecha: format(date, "yyyy-MM-dd"),
+            dias: 8,
+          },
+        }}
+        prefetch={false}
         passHref
+        shallow
+        scroll
       >
         <a>
           {formattedDate}

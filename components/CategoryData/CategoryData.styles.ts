@@ -1,5 +1,4 @@
 import { Breadcrumbs } from "components/Breadcrumbs";
-import { Button } from "components/Button";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import {
@@ -33,23 +32,16 @@ export const Title = styled.h3`
   text-align: center;
 `;
 
-export const MoreButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const MoreButton = styled(Button)`
-  && {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
-`;
-
 export const MoreIcon = styled(HiOutlinePlusCircle)`
   margin-right: 0.25rem;
 `;
 
 export const ErrorMessage = styled.div`
   ${flexHorizontalCenterVerticalEnd}
+`;
+
+export const MoreLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `;
