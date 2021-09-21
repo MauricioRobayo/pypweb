@@ -14,13 +14,12 @@ export type CityOptions = {
   value: string;
 }[];
 
-export const cityOptions = (): CityOptions => {
-  const pypOptions: { value: string; label: string }[] = [];
-  Object.values(cities).forEach(({ name: cityName, slug: citySlug }) => {
-    pypOptions.push({ label: cityName, value: citySlug });
-  });
-  return pypOptions;
-};
+export function cityOptions(): CityOptions {
+  return Object.values(cities).map(({ name: cityName, slug: citySlug }) => ({
+    label: cityName,
+    value: citySlug,
+  }));
+}
 
 export function isCity(city: any): city is CityType {
   return typeof city === "string" && city in cities;
