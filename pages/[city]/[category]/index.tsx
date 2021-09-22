@@ -1,4 +1,4 @@
-import cities, { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
@@ -12,38 +12,40 @@ import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
+const MAX_DAYS_PER_PAGE = 31;
+
 type CategoryProps = {
   categories: { name: string; slug: string }[];
-  categorySlug: string;
-  categoryName: CategoryName;
   cityName: string;
-  citySlug: CityType;
   currentDate: number;
-  initialData: IPypDataResult[];
+  initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function Category({
   categories,
-  categorySlug,
-  categoryName,
   cityName,
-  citySlug,
   currentDate,
-  initialData,
+  initialCategoryData,
   mdxSource,
 }: CategoryProps) {
-  const [data, setData] = useState(initialData);
+  const [categoryData, setCategoryData] = useState(initialCategoryData);
   const [date, setDate] = useState(currentDate);
   const { query } = useRouter();
-  const { fecha: requestedDate, dias: forwardDays } = query;
-
-  const { getCategoryData } = cities[citySlug].categories[categorySlug];
+  const {
+    fecha: requestedDate,
+    dias: forwardDays,
+    city: citySlug,
+    category: categorySlug,
+  } = query;
 
   useEffect(() => {
     if (!isValidDateString(requestedDate)) {
       return;
     }
 
+    // TODO: #306 cities should be a dynamic import
+    const { getCategoryData } =
+      cities[citySlug as CityType].categories[categorySlug as string];
     const [year, month, day] = requestedDate.split("-").map(Number);
 
     try {
@@ -55,43 +57,56 @@ export default function Category({
       });
 
       setDate(new Date(year, month - 1, day).getTime());
-      setData(categoryData.data);
-    } catch (err) {}
-  }, [requestedDate, getCategoryData, currentDate, initialData]);
+      setCategoryData(categoryData);
+    } catch (err) {
+      setDate(currentDate);
+      setCategoryData(initialCategoryData);
+    }
+  }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
 
   useEffect(() => {
-    const days = Math.min(365, Number(forwardDays));
+    const days = Number(forwardDays);
     if (Number.isNaN(days)) {
-      setData(initialData);
+      setCategoryData(initialCategoryData);
+      return;
     }
 
-    setData((previousData) => {
-      const { year, month, day } = previousData[previousData.length - 1];
+    // TODO: #306 cities should be a dynamic import
+    const { getCategoryData } =
+      cities[citySlug as CityType].categories[categorySlug as string];
+
+    setCategoryData((previousCategoryData) => {
+      const { year, month, day } =
+        previousCategoryData.data[previousCategoryData.data.length - 1];
       try {
         const categoryData = getCategoryData({
           day: day + 1,
-          days: days - previousData.length,
+          days:
+            Math.min(MAX_DAYS_PER_PAGE, days) -
+            previousCategoryData.data.length,
           month,
           year,
         });
-        return [...previousData, ...categoryData.data];
+
+        return {
+          ...categoryData,
+          data: [...previousCategoryData.data, ...categoryData.data],
+        };
       } catch (err) {
-        return previousData;
+        return previousCategoryData;
       }
     });
-  }, [forwardDays, getCategoryData, initialData]);
+  }, [forwardDays, citySlug, categorySlug, initialCategoryData]);
 
-  const title = `${categoryName.toLowerCase()} en ${cityName}`;
+  const title = `${categoryData.name.toLowerCase()} en ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
   const pageDescription = `${description} ${title}`;
   const main = (
     <CategoryData
       categories={categories}
-      categoryName={categoryName}
-      categorySlug={categorySlug}
       cityName={cityName}
-      citySlug={citySlug}
-      data={data}
+      categoryData={categoryData}
+      maxDays={MAX_DAYS_PER_PAGE}
     />
   );
   const aside = <Post mdxSource={mdxSource} />;
@@ -133,12 +148,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
 
-  const categoryName = cities[citySlug].categories[categorySlug].name;
-
   const { getCategoryData } = categories[categorySlug];
-
   const date = new Date();
   const { year, month, day } = dateParts(date);
+  const categoryData = getCategoryData({
+    day,
+    days: 8,
+    month,
+    year,
+  });
 
   return {
     props: {
@@ -146,16 +164,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name,
         slug,
       })),
-      initialData: getCategoryData({
-        day,
-        days: 8,
-        month,
-        year,
-      }).data,
-      categorySlug,
-      categoryName,
+      initialCategoryData: categoryData,
       cityName,
-      citySlug,
       currentDate: date.getTime(),
       mdxSource,
     },

@@ -1,4 +1,4 @@
-import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,7 +6,6 @@ import { memo } from "react";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
-  ErrorMessage,
   ListWrapper,
   MoreIcon,
   MoreLink,
@@ -17,24 +16,56 @@ import DayCard from "./DayCard";
 
 type CategoryDataProps = {
   categories: { name: string; slug: string }[];
-  categoryName: CategoryName;
-  categorySlug: string;
+  categoryData: ICategoryData;
   cityName: string;
-  citySlug: string;
-  data: IPypDataResult[];
+  maxDays: number;
 };
 function CategoryData({
   categories,
-  categoryName,
-  categorySlug,
+  categoryData,
   cityName,
-  citySlug,
-  data,
+  maxDays,
 }: CategoryDataProps) {
-  const router = useRouter();
+  const { pathname, query } = useRouter();
+  const { daysRemaining, data, name: categoryName } = categoryData;
   const [currentPypData, ...nextPypData] = data;
-
+  const { category: categorySlug, city: citySlug } = query;
   const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
+
+  const nextDataList =
+    nextPypData.length === 0 ? null : (
+      <ListWrapper>
+        {nextPypData.map((pypData) => (
+          <DayCard
+            key={JSON.stringify(pypData)}
+            categoryName={categoryName}
+            pypData={pypData}
+          />
+        ))}
+      </ListWrapper>
+    );
+
+  const nextDataButton =
+    data.length === maxDays || daysRemaining === 0 ? null : (
+      <Link
+        href={{
+          pathname,
+          query: {
+            ...query,
+            dias: Math.min(maxDays, daysRemaining),
+          },
+        }}
+        prefetch={false}
+        scroll={false}
+        shallow
+        passHref
+      >
+        <MoreLink>
+          <MoreIcon />
+          Ver más días
+        </MoreLink>
+      </Link>
+    );
 
   return (
     <Article>
@@ -46,13 +77,13 @@ function CategoryData({
         </Title>
         <StyledBreadcrumbs
           paths={[
-            { name: cityName, path: citySlug },
+            { name: cityName, path: citySlug as string },
             {
               options: categories.map(({ name, slug }) => ({
                 name,
                 path: slug,
               })),
-              selected: categorySlug,
+              selected: categorySlug as string,
               title: "Categoría",
             },
           ]}
@@ -64,39 +95,8 @@ function CategoryData({
         pypData={currentPypData}
       />
       <Vidverto />
-      <ListWrapper>
-        {nextPypData.map((pypData) => (
-          <DayCard
-            key={JSON.stringify(pypData)}
-            categoryName={categoryName}
-            pypData={pypData}
-          />
-        ))}
-      </ListWrapper>
-      {data.length >= 365 ? (
-        <ErrorMessage>
-          <p>😢 No tenemos más información</p>
-        </ErrorMessage>
-      ) : (
-        <Link
-          href={{
-            pathname: router.pathname,
-            query: {
-              ...router.query,
-              dias: Math.min(365, data.length + 30),
-            },
-          }}
-          prefetch={false}
-          scroll={false}
-          shallow
-          passHref
-        >
-          <MoreLink>
-            <MoreIcon />
-            Ver más días
-          </MoreLink>
-        </Link>
-      )}
+      {nextDataList}
+      {nextDataButton}
       <footer>
         <NumberLinks />
       </footer>
