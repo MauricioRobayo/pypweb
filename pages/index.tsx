@@ -1,4 +1,3 @@
-import { TheMoneytizer, Vidverto } from "components/Ads";
 import { Footer } from "components/CityData/CategoryCard.styles";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
@@ -12,16 +11,6 @@ const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-`;
-
-const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 1.5rem;
-`;
-
-const MegaBanner = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER",
-})`
-  margin: 2rem auto 0;
 `;
 
 const Page = styled.div`
@@ -56,12 +45,10 @@ export default function Home({
   return (
     <StyledLayout>
       <Page>
-        <MegaBanner />
         <Header date={date} title={title} />
         <Main>
           <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
         </Main>
-        <StyledVidverto />
       </Page>
       <Footer />
     </StyledLayout>
