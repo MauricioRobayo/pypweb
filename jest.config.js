@@ -5,7 +5,7 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/",
   }),
-  preset: "ts-jest",
+  preset: "ts-jest/presets/js-with-ts",
   testEnvironment: "node",
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
 };
