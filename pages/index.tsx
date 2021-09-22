@@ -1,8 +1,8 @@
-import cities from "@mauriciorobayo/pyptron";
 import { TheMoneytizer, Vidverto } from "components/Ads";
 import { Header } from "components/Header";
 import { HomeLayout } from "components/Layout";
 import { Select } from "components/Select";
+import { citiesList } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
@@ -36,10 +36,7 @@ const Main = styled.main`
 export const getStaticProps = async () => ({
   props: {
     currentDate: Date.now(),
-    cities: Object.values(cities).map(({ name: cityName, slug: citySlug }) => ({
-      label: cityName,
-      value: citySlug,
-    })),
+    cities: citiesList(),
   },
 });
 

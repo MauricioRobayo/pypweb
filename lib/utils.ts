@@ -15,7 +15,7 @@ export type CityOptions = {
   value: string;
 }[];
 
-export function cityOptions(): CityOptions {
+export function citiesList(): CityOptions {
   return Object.values(cities).map(({ name: cityName, slug: citySlug }) => ({
     label: cityName,
     value: citySlug,
