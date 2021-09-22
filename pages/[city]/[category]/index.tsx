@@ -1,4 +1,4 @@
-import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Page } from "components/Page";
@@ -45,10 +45,11 @@ export default function Category({
         return;
       }
 
-      const cities = await import("@mauriciorobayo/pyptron");
-      const { getCategoryData } =
-        // @ts-ignore
-        cities[citySlug as CityType].categories[categorySlug as string];
+      const category = await import(
+        `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
+      );
+      const { getCategoryData } = category.default;
+
       const [year, month, day] = requestedDate.split("-").map(Number);
 
       try {
@@ -78,8 +79,10 @@ export default function Category({
         return;
       }
 
-      const { getCategoryData } =
-        cities[citySlug as CityType].categories[categorySlug as string];
+      const category = await import(
+        `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
+      );
+      const { getCategoryData } = category.default;
 
       setCategoryData((previousCategoryData) => {
         const { year, month, day } =
