@@ -98,7 +98,7 @@ function CategoryData({
         </Link>
       )}
       <footer>
-        <NumberLinks categorySlug={categorySlug} citySlug={citySlug} />
+        <NumberLinks />
       </footer>
     </Article>
   );

@@ -124,11 +124,7 @@ export default function NumbersPage({
           </ListWrapper>
         </div>
       )}
-      <NumberLinks
-        categorySlug={categorySlug}
-        citySlug={citySlug}
-        selectedNumber={number}
-      />
+      <NumberLinks selectedNumber={number} />
     </Wrapper>
   );
 }
