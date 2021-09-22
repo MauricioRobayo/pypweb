@@ -61,7 +61,6 @@ export default function Home({
   );
 }
 
-function Layout(page: ReactNode) {
+Home.getLayout = function Layout(page: ReactNode) {
   return <HomeLayout>{page}</HomeLayout>;
-}
-Home.getLayout = Layout;
+};
