@@ -1,6 +1,5 @@
+import { isProduction } from "lib/utils";
 import Script from "next/script";
-
-const isProduction = process.env.NODE_ENV === "production";
 
 export function ConsentBanner() {
   if (!isProduction) {
