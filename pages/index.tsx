@@ -1,8 +1,8 @@
+import cities from "@mauriciorobayo/pyptron";
 import { TheMoneytizer, Vidverto } from "components/Ads";
 import { Header } from "components/Header";
 import { HomeLayout } from "components/Layout";
 import { Select } from "components/Select";
-import { cityOptions } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
@@ -36,11 +36,16 @@ const Main = styled.main`
 export const getStaticProps = async () => ({
   props: {
     currentDate: Date.now(),
+    cities: Object.values(cities).map(({ name: cityName, slug: citySlug }) => ({
+      label: cityName,
+      value: citySlug,
+    })),
   },
 });
 
 export default function Home({
   currentDate,
+  cities,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const date = new Date(currentDate);
   const title = "Pico y placa hoy";
@@ -49,12 +54,7 @@ export default function Home({
       <MegaBanner />
       <Header date={date} title={title} />
       <Main>
-        <Select
-          name="ciudad"
-          narrow
-          options={cityOptions()}
-          placeholder="Ciudad"
-        />
+        <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
       </Main>
       <StyledVidverto />
     </Page>
