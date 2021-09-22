@@ -1,11 +1,18 @@
 import { TheMoneytizer, Vidverto } from "components/Ads";
+import { Footer } from "components/CityData/CategoryCard.styles";
 import { Header } from "components/Header";
-import { HomeLayout } from "components/Layout";
 import { Select } from "components/Select";
 import { citiesList } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
+
+const StyledLayout = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
 const StyledVidverto = styled(Vidverto)`
   margin: 1rem auto 1.5rem;
@@ -47,17 +54,16 @@ export default function Home({
   const date = new Date(currentDate);
   const title = "Pico y placa hoy";
   return (
-    <Page>
-      <MegaBanner />
-      <Header date={date} title={title} />
-      <Main>
-        <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
-      </Main>
-      <StyledVidverto />
-    </Page>
+    <StyledLayout>
+      <Page>
+        <MegaBanner />
+        <Header date={date} title={title} />
+        <Main>
+          <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
+        </Main>
+        <StyledVidverto />
+      </Page>
+      <Footer />
+    </StyledLayout>
   );
 }
-
-Home.getLayout = function Layout(page: ReactNode) {
-  return <HomeLayout>{page}</HomeLayout>;
-};

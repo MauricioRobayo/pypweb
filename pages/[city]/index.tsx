@@ -2,32 +2,33 @@ import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
+import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { dateParts, formatLongDate } from "lib/dateUtils";
 import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 
 const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
 
-type CityProps = {
+type CityPageProps = {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
   currentDate: number;
 };
 
-export default function City({
+export default function CityPage({
   categories,
   cityName,
   citySlug,
   currentDate,
-}: CityProps) {
+}: CityPageProps) {
   const date = new Date(currentDate);
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
@@ -98,4 +99,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       currentDate: date.getTime(),
     },
   };
+};
+
+CityPage.getLayout = function Layout(page: ReactNode) {
+  return <PageLayout>{page}</PageLayout>;
 };

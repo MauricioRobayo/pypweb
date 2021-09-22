@@ -1,6 +1,7 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
+import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { dateParts, isValidDateString } from "lib/dateUtils";
@@ -11,24 +12,24 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
 
-type CategoryProps = {
+type CategoryPageProps = {
   categories: { name: string; slug: string }[];
   cityName: string;
   currentDate: number;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
 };
-export default function Category({
+export default function CategoryPage({
   categories,
   cityName,
   currentDate,
   initialCategoryData,
   mdxSource,
-}: CategoryProps) {
+}: CategoryPageProps) {
   const [categoryData, setCategoryData] = useState(initialCategoryData);
   const [date, setDate] = useState(currentDate);
   const { query } = useRouter();
@@ -182,4 +183,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       mdxSource,
     },
   };
+};
+
+CategoryPage.getLayout = function Layout(page: ReactNode) {
+  return <PageLayout>{page}</PageLayout>;
 };
