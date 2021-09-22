@@ -52,8 +52,9 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
           color={defaultTheme.colors.main}
           startPosition={0.3}
           stopDelayMs={200}
-          height={3}
+          height={2}
           showOnShallow={true}
+          options={{ showSpinner: false }}
         />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>
