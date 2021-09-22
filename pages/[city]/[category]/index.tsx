@@ -40,63 +40,71 @@ export default function Category({
   } = query;
 
   useEffect(() => {
-    if (!isValidDateString(requestedDate)) {
-      return;
-    }
+    async function updateData() {
+      if (!isValidDateString(requestedDate)) {
+        return;
+      }
 
-    // TODO: #306 cities should be a dynamic import
-    const { getCategoryData } =
-      cities[citySlug as CityType].categories[categorySlug as string];
-    const [year, month, day] = requestedDate.split("-").map(Number);
+      const cities = await import("@mauriciorobayo/pyptron");
+      const { getCategoryData } =
+        // @ts-ignore
+        cities[citySlug as CityType].categories[categorySlug as string];
+      const [year, month, day] = requestedDate.split("-").map(Number);
 
-    try {
-      const categoryData = getCategoryData({
-        day,
-        days: 8,
-        month,
-        year,
-      });
-
-      setDate(new Date(year, month - 1, day).getTime());
-      setCategoryData(categoryData);
-    } catch (err) {
-      setDate(currentDate);
-      setCategoryData(initialCategoryData);
-    }
-  }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
-
-  useEffect(() => {
-    const days = Number(forwardDays);
-    if (Number.isNaN(days)) {
-      setCategoryData(initialCategoryData);
-      return;
-    }
-
-    // TODO: #306 cities should be a dynamic import
-    const { getCategoryData } =
-      cities[citySlug as CityType].categories[categorySlug as string];
-
-    setCategoryData((previousCategoryData) => {
-      const { year, month, day } =
-        previousCategoryData.data[previousCategoryData.data.length - 1];
       try {
         const categoryData = getCategoryData({
-          day: day + 1,
-          days:
-            Math.min(MAX_DAYS_PER_PAGE, days) -
-            previousCategoryData.data.length,
+          day,
+          days: 8,
           month,
           year,
         });
 
-        return {
-          ...categoryData,
-          data: [...previousCategoryData.data, ...categoryData.data],
-        };
+        setDate(new Date(year, month - 1, day).getTime());
+        setCategoryData(categoryData);
       } catch (err) {
-        return previousCategoryData;
+        setDate(currentDate);
+        setCategoryData(initialCategoryData);
       }
-    });
+    }
+
+    updateData();
+  }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
+
+  useEffect(() => {
+    async function update() {
+      const days = Number(forwardDays);
+      if (Number.isNaN(days)) {
+        setCategoryData(initialCategoryData);
+        return;
+      }
+
+      const { getCategoryData } =
+        cities[citySlug as CityType].categories[categorySlug as string];
+
+      setCategoryData((previousCategoryData) => {
+        const { year, month, day } =
+          previousCategoryData.data[previousCategoryData.data.length - 1];
+        try {
+          const categoryData = getCategoryData({
+            day: day + 1,
+            days:
+              Math.min(MAX_DAYS_PER_PAGE, days) -
+              previousCategoryData.data.length,
+            month,
+            year,
+          });
+
+          return {
+            ...categoryData,
+            data: [...previousCategoryData.data, ...categoryData.data],
+          };
+        } catch (err) {
+          return previousCategoryData;
+        }
+      });
+    }
+
+    update();
   }, [forwardDays, citySlug, categorySlug, initialCategoryData]);
 
   const title = `${categoryData.name.toLowerCase()} en ${cityName}`;
