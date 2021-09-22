@@ -35,7 +35,6 @@ export default function CategoryPage({
   const { query } = useRouter();
   const {
     fecha: requestedDate,
-    dias: forwardDays,
     city: citySlug,
     category: categorySlug,
   } = query;
@@ -56,7 +55,7 @@ export default function CategoryPage({
       try {
         const categoryData = getCategoryData({
           day,
-          days: 8,
+          days: MAX_DAYS_PER_PAGE,
           month,
           year,
         });
@@ -71,45 +70,6 @@ export default function CategoryPage({
 
     updateData();
   }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
-
-  useEffect(() => {
-    async function update() {
-      const days = Number(forwardDays);
-      if (Number.isNaN(days)) {
-        setCategoryData(initialCategoryData);
-        return;
-      }
-
-      const category = await import(
-        `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
-      );
-      const { getCategoryData } = category.default;
-
-      setCategoryData((previousCategoryData) => {
-        const { year, month, day } =
-          previousCategoryData.data[previousCategoryData.data.length - 1];
-        try {
-          const categoryData = getCategoryData({
-            day: day + 1,
-            days:
-              Math.min(MAX_DAYS_PER_PAGE, days) -
-              previousCategoryData.data.length,
-            month,
-            year,
-          });
-
-          return {
-            ...categoryData,
-            data: [...previousCategoryData.data, ...categoryData.data],
-          };
-        } catch (err) {
-          return previousCategoryData;
-        }
-      });
-    }
-
-    update();
-  }, [forwardDays, citySlug, categorySlug, initialCategoryData]);
 
   const title = `${categoryData.name.toLowerCase()} en ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
@@ -166,7 +126,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { year, month, day } = dateParts(date);
   const categoryData = getCategoryData({
     day,
-    days: 8,
+    days: MAX_DAYS_PER_PAGE,
     month,
     year,
   });

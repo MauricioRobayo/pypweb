@@ -2,7 +2,7 @@ import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
@@ -13,6 +13,8 @@ import {
   Title,
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
+
+const INITIAL_DAYS_TO_SHOW = 8;
 
 type CategoryDataProps = {
   categories: { name: string; slug: string }[];
@@ -27,15 +29,23 @@ function CategoryData({
   maxDays,
 }: CategoryDataProps) {
   const { pathname, query } = useRouter();
+  const { dias: forwardDays } = query;
+  const [daysToShow, setDaysToShow] = useState(INITIAL_DAYS_TO_SHOW);
   const { daysRemaining, data, name: categoryName } = categoryData;
   const [currentPypData, ...nextPypData] = data;
   const { category: categorySlug, city: citySlug } = query;
   const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
+  useEffect(() => {
+    if (forwardDays && typeof forwardDays === "string") {
+      setDaysToShow(Number(forwardDays) || INITIAL_DAYS_TO_SHOW);
+    }
+  }, [forwardDays]);
+
   const nextDataList =
     nextPypData.length === 0 ? null : (
       <ListWrapper>
-        {nextPypData.map((pypData) => (
+        {nextPypData.slice(0, daysToShow - 1).map((pypData) => (
           <DayCard
             key={JSON.stringify(pypData)}
             categoryName={categoryName}
@@ -46,7 +56,7 @@ function CategoryData({
     );
 
   const nextDataButton =
-    data.length === maxDays || daysRemaining === 0 ? null : (
+    daysToShow === maxDays || daysRemaining === 0 ? null : (
       <Link
         href={{
           pathname,
