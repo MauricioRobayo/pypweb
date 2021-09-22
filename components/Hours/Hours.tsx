@@ -1,4 +1,4 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import type { IHourData } from "@mauriciorobayo/pyptron";
 import { Emoji } from "components/Emoji";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";

@@ -1,9 +1,10 @@
-import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import cities from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import { Page } from "components/Page";
 import { dateParts, formatLongDate } from "lib/dateUtils";
-import { CityType, isCity } from "lib/utils";
+import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";

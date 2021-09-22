@@ -1,4 +1,5 @@
-import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import cities from "@mauriciorobayo/pyptron";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";

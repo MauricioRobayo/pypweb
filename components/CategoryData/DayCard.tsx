@@ -1,4 +1,4 @@
-import { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { LicensePlate } from "components/LicensePlate";
 import { format, isToday as isDateToday } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";

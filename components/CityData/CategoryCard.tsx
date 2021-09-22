@@ -1,4 +1,4 @@
-import { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
+import type { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
 import { EmojiLeft } from "components/CategoryData/DayCard.styles";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";

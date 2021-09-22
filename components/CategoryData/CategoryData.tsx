@@ -1,4 +1,4 @@
-import { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
 import Link from "next/link";
 import { useRouter } from "next/router";

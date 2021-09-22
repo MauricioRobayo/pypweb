@@ -1,3 +1,4 @@
+import type { CityType } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 
 export const ALL_DAY = "Todo el día";
@@ -6,8 +7,6 @@ export const NA = "No aplica";
 export const AMERICA_BOGOTA = "America/Bogota";
 
 export const isProduction = process.env.NODE_ENV === "production";
-
-export type CityType = keyof typeof cities;
 
 export type CityOptions = {
   label: string;

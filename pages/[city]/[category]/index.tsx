@@ -1,10 +1,11 @@
-import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { dateParts, isValidDateString } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
-import { CityType, isCity } from "lib/utils";
+import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
