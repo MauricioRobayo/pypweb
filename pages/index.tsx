@@ -1,20 +1,16 @@
-import { TheMoneytizer, Vidverto } from "components/Ads";
+import { Footer } from "components/CityData/CategoryCard.styles";
 import { Header } from "components/Header";
-import { HomeLayout } from "components/Layout";
 import { Select } from "components/Select";
-import { cityOptions } from "lib/utils";
+import { citiesList } from "lib/utils";
 import { InferGetStaticPropsType } from "next";
-import React, { ReactNode } from "react";
+import React from "react";
 import styled from "styled-components";
 
-const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 1.5rem;
-`;
-
-const MegaBanner = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER",
-})`
-  margin: 2rem auto 0;
+const StyledLayout = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
 const Page = styled.div`
@@ -36,32 +32,25 @@ const Main = styled.main`
 export const getStaticProps = async () => ({
   props: {
     currentDate: Date.now(),
+    cities: citiesList(),
   },
 });
 
 export default function Home({
   currentDate,
+  cities,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const date = new Date(currentDate);
   const title = "Pico y placa hoy";
   return (
-    <Page>
-      <MegaBanner />
-      <Header date={date} title={title} />
-      <Main>
-        <Select
-          name="ciudad"
-          narrow
-          options={cityOptions()}
-          placeholder="Ciudad"
-        />
-      </Main>
-      <StyledVidverto />
-    </Page>
+    <StyledLayout>
+      <Page>
+        <Header date={date} title={title} />
+        <Main>
+          <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
+        </Main>
+      </Page>
+      <Footer />
+    </StyledLayout>
   );
 }
-
-function Layout(page: ReactNode) {
-  return <HomeLayout>{page}</HomeLayout>;
-}
-Home.getLayout = Layout;

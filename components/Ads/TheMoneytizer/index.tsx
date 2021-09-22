@@ -1,9 +1,9 @@
 import cn from "classnames";
 import { Placeholder } from "components/Ads";
+import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
 
-const isProduction = process.env.NODE_ENV === "production";
 const siteId = "71116";
 const baseUrl = "https://ads.themoneytizer.com/s";
 
@@ -44,7 +44,7 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
-  if (isProduction) {
+  if (shouldShowAds) {
     return (
       <div
         className={cn(className, formatClassName)}

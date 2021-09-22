@@ -1,4 +1,4 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import type { IHourData } from "@mauriciorobayo/pyptron";
 import { Countdown } from "components/Countdown";
 import { ALL_DAY, AMERICA_BOGOTA } from "lib/utils";
 import { useEffect, useState } from "react";

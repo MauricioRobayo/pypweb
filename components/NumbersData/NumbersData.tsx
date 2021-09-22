@@ -1,4 +1,4 @@
-import { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
@@ -124,11 +124,7 @@ export default function NumbersPage({
           </ListWrapper>
         </div>
       )}
-      <NumberLinks
-        categorySlug={categorySlug}
-        citySlug={citySlug}
-        selectedNumber={number}
-      />
+      <NumberLinks selectedNumber={number} />
     </Wrapper>
   );
 }

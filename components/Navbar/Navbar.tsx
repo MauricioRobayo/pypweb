@@ -1,6 +1,6 @@
 import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
-import { cityOptions } from "lib/utils";
+import { citiesList } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
@@ -37,7 +37,7 @@ export default function Navbar() {
             </a>
           </Link>
         </Logo>
-        <Select name="ciudad" options={cityOptions()} placeholder="Ciudad" />
+        <Select name="ciudad" options={citiesList()} placeholder="Ciudad" />
       </Main>
     </StyledNavbar>
   );

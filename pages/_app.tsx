@@ -1,5 +1,4 @@
 import { ConsentBanner } from "components/Ads";
-import { Layout } from "components/Layout";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -35,8 +34,7 @@ export function reportWebVitals({
 }
 
 const App = ({ Component, pageProps }: CustomAppProps) => {
-  const getLayout =
-    Component.getLayout ?? ((page: ReactNode) => <Layout>{page}</Layout>);
+  const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
 
   usePagesViews();
 
@@ -52,8 +50,9 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
           color={defaultTheme.colors.main}
           startPosition={0.3}
           stopDelayMs={200}
-          height={3}
+          height={2}
           showOnShallow={true}
+          options={{ showSpinner: false }}
         />
         {getLayout(<Component {...pageProps} />)}
       </ThemeProvider>

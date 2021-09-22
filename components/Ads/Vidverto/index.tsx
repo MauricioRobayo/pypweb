@@ -1,12 +1,10 @@
-/* eslint-disable react/no-danger */
-
 import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
+import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
-const isProduction = process.env.NODE_ENV === "production";
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
 const desktopId = "981cceae08e42e6301d86ae909b97156";
 
@@ -73,7 +71,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
     return null;
   }
 
-  if (isProduction) {
+  if (shouldShowAds) {
     return (
       <Wrapper className={className}>
         <Script

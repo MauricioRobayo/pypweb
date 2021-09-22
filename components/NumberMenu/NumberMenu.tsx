@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import Number from "./Number";
 
@@ -19,16 +20,14 @@ const Container = styled.div`
 `;
 
 type NumberMenuProps = {
-  citySlug: string;
-  categorySlug: string;
   selectedNumber?: string;
 };
 
-export default function NumberMenu({
-  citySlug,
-  categorySlug,
-  selectedNumber = "",
-}: NumberMenuProps) {
+export default function NumberMenu({ selectedNumber = "" }: NumberMenuProps) {
+  const {
+    query: { category: categorySlug, city: citySlug },
+  } = useRouter();
+
   const rows = [
     ["0", "1", "2", "3", "4"],
     ["5", "6", "7", "8", "9"],

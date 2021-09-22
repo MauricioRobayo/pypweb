@@ -1,4 +1,6 @@
-import cities, { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import cities from "@mauriciorobayo/pyptron";
+import PageLayout from "components/Layout/PageLayout";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
@@ -9,8 +11,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
+import React, { ReactNode } from "react";
 
-type CategoryProps = {
+type NumberPageProps = {
   categoryData: ICategoryData;
   categoryName: string;
   cityName: string;
@@ -20,7 +23,7 @@ type CategoryProps = {
   mdxSource: MDXRemoteSerializeResult;
 };
 
-export default function Category({
+export default function NumberPage({
   categoryData,
   categoryName,
   cityName,
@@ -28,7 +31,7 @@ export default function Category({
   currentDate,
   number,
   mdxSource,
-}: CategoryProps) {
+}: NumberPageProps) {
   const {
     data: [{ scheme }],
   } = categoryData;
@@ -120,4 +123,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       number: params?.number,
     },
   };
+};
+
+NumberPage.getLayout = function Layout(page: ReactNode) {
+  return <PageLayout>{page}</PageLayout>;
 };

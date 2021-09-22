@@ -1,4 +1,4 @@
-import { IHourData } from "@mauriciorobayo/pyptron";
+import type { IHourData } from "@mauriciorobayo/pyptron";
 import { ALL_DAY } from "lib/utils";
 
 export enum NextType {
