@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { Placeholder } from "components/Ads";
-import { isProduction } from "lib/utils";
+import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
 
@@ -44,7 +44,7 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
-  if (isProduction) {
+  if (shouldShowAds) {
     return (
       <div
         className={cn(className, formatClassName)}

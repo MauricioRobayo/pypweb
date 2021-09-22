@@ -1,8 +1,6 @@
-/* eslint-disable react/no-danger */
-
 import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
-import { isProduction } from "lib/utils";
+import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
@@ -73,7 +71,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
     return null;
   }
 
-  if (isProduction) {
+  if (shouldShowAds) {
     return (
       <Wrapper className={className}>
         <Script

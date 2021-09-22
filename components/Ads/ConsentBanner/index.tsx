@@ -1,8 +1,8 @@
-import { isProduction } from "lib/utils";
+import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 
 export function ConsentBanner() {
-  if (!isProduction) {
+  if (!shouldShowAds) {
     return null;
   }
 

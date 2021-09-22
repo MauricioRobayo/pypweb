@@ -6,7 +6,9 @@ export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
 export const AMERICA_BOGOTA = "America/Bogota";
 
-export const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
+export const isProduction = process.env.NEXT_PUBLIC_DEPLOY_ENV === "production";
+export const isStaging = process.env.NEXT_PUBLIC_DEPLOY_ENV === "staging";
+export const shouldShowAds = isProduction || isStaging;
 
 export type CityOptions = {
   label: string;
