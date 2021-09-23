@@ -145,6 +145,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-CategoryPage.getLayout = function Layout(page: ReactElement) {
+CategoryPage.getLayout = function getLayout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };

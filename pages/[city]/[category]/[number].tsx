@@ -125,6 +125,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-NumberPage.getLayout = function Layout(page: ReactElement) {
+NumberPage.getLayout = function getLayout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };

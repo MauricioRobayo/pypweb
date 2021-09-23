@@ -101,6 +101,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-CityPage.getLayout = function Layout(page: ReactElement) {
+CityPage.getLayout = function getLayout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };
