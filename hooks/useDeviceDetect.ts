@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 
-const useDeviceDetect = () => {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+const userAgent = window.navigator?.userAgent || "";
+const mobileRegExp = new RegExp(
+  "Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop",
+  "i"
+);
 
-  const mobileRegExp = new RegExp(
-    "Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop",
-    "i"
+const useDeviceDetect = () => {
+  const [isMobile, setIsMobile] = useState<boolean | null>(() =>
+    window === undefined ? null : mobileRegExp.test(userAgent)
   );
 
   useEffect(() => {
-    const userAgent = window.navigator?.userAgent || "";
     setIsMobile(mobileRegExp.test(userAgent));
   }, []);
 

@@ -71,9 +71,12 @@ type VidvertoProps = {
 };
 export function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
+  console.log({ isMobile });
 
   if (isMobile === null) {
-    return null;
+    return (
+      <StyledPlaceholder className={className} name="" isMobile={isMobile} />
+    );
   }
 
   if (shouldShowAds) {
