@@ -51,6 +51,7 @@ const desktopScript = `
 const Wrapper = styled.div`
   ${responsiveWidth}
 
+  aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
 `;
@@ -78,7 +79,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
           id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
         />
-        <Script id="vidverto-mount">
+        <Script id="vidverto-mount" strategy="lazyOnload">
           {isMobile ? mobileScript : desktopScript}
         </Script>
         <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
