@@ -1,7 +1,7 @@
 import { Footer } from "components/CityData/CategoryCard.styles";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
-import { citiesList } from "lib/utils";
+import { citiesList } from "lib/cities";
 import { InferGetStaticPropsType } from "next";
 import React from "react";
 import styled from "styled-components";

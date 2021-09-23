@@ -1,6 +1,6 @@
 import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
-import { citiesList } from "lib/utils";
+import { citiesList } from "lib/cities";
 import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
