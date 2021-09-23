@@ -4,15 +4,15 @@ import { CategoryData } from "components/CategoryData";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { citiesList, CitiesList, isCity } from "lib/cities";
 import { dateParts, isValidDateString } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
-import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
 
@@ -137,14 +137,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name,
         slug,
       })),
-      initialCategoryData: categoryData,
+      cities: citiesList(),
       cityName,
       currentDate: date.getTime(),
+      initialCategoryData: categoryData,
       mdxSource,
     },
   };
 };
 
-CategoryPage.getLayout = function Layout(page: ReactNode) {
-  return <PageLayout>{page}</PageLayout>;
+CategoryPage.getLayout = function getLayout(
+  page: ReactElement,
+  props: { cities: CitiesList }
+) {
+  return <PageLayout cities={props.cities}>{page}</PageLayout>;
 };

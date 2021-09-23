@@ -4,14 +4,14 @@ import PageLayout from "components/Layout/PageLayout";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { citiesList, CitiesList, isCity } from "lib/cities";
 import { dateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
-import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
-import React, { ReactNode } from "react";
+import React, { ReactElement } from "react";
 
 type NumberPageProps = {
   categoryData: ICategoryData;
@@ -116,6 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         year,
       }),
       categoryName,
+      cities: citiesList(),
       cityName,
       citySlug,
       currentDate: date.getTime(),
@@ -125,6 +126,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-NumberPage.getLayout = function Layout(page: ReactNode) {
-  return <PageLayout>{page}</PageLayout>;
+NumberPage.getLayout = function getLayout(
+  page: ReactElement,
+  props: { cities: CitiesList }
+) {
+  return <PageLayout cities={props.cities}>{page}</PageLayout>;
 };

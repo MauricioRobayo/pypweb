@@ -1,22 +1,23 @@
 import { ConsentBanner } from "components/Ads";
+import { CitiesList } from "lib/cities";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
 import { event, GoogleAnalytics, usePagesViews } from "nextjs-google-analytics";
 import NextNprogress from "nextjs-progressbar";
-import React, { ReactNode } from "react";
+import React, { ReactElement, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 import GlobalStyle from "styles/global";
 import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
 
-type Page<P = {}> = NextPage<P> & {
-  getLayout?: (page: ReactNode) => ReactNode;
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement, cities: CitiesList) => ReactNode;
 };
 
-type CustomAppProps = AppProps & {
-  Component: Page;
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
 };
 
 export function reportWebVitals({
@@ -33,7 +34,7 @@ export function reportWebVitals({
   });
 }
 
-const App = ({ Component, pageProps }: CustomAppProps) => {
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
 
   usePagesViews();
@@ -54,7 +55,7 @@ const App = ({ Component, pageProps }: CustomAppProps) => {
           showOnShallow={true}
           options={{ showSpinner: false }}
         />
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(<Component {...pageProps} />, pageProps)}
       </ThemeProvider>
     </>
   );

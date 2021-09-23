@@ -1,6 +1,6 @@
 import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
-import { citiesList } from "lib/utils";
+import { CitiesList } from "lib/cities";
 import Link from "next/link";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
@@ -26,7 +26,10 @@ export const Logo = styled.h2`
   ${camouflageLink}
 `;
 
-export default function Navbar() {
+type NavbarProps = {
+  cities: CitiesList;
+};
+export default function Navbar({ cities }: NavbarProps) {
   return (
     <StyledNavbar>
       <Main>
@@ -37,7 +40,7 @@ export default function Navbar() {
             </a>
           </Link>
         </Logo>
-        <Select name="ciudad" options={citiesList()} placeholder="Ciudad" />
+        <Select name="ciudad" options={cities} placeholder="Ciudad" />
       </Main>
     </StyledNavbar>
   );

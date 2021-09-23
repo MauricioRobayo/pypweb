@@ -48,7 +48,7 @@ const desktopScript = `
 })();
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isMobile: boolean }>`
   ${responsiveWidth}
 
   aspect-ratio: 16/9;
@@ -56,10 +56,11 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 const StyledPlaceholder = styled(Placeholder)`
+  ${responsiveWidth}
+
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
-  ${responsiveWidth}
 `;
 
 type VidvertoProps = {
@@ -74,7 +75,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
 
   if (shouldShowAds) {
     return (
-      <Wrapper className={className}>
+      <Wrapper className={className} isMobile={isMobile}>
         <Script
           id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"

@@ -1,6 +1,7 @@
 import { Clock } from "components/Clock";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
+import type { CitiesList } from "lib/cities";
 import { ReactNode } from "react";
 import styled from "styled-components";
 
@@ -26,11 +27,12 @@ const FixedHeader = styled.div`
 
 type LayoutProps = {
   children: ReactNode;
+  cities: CitiesList;
 };
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, cities }: LayoutProps) {
   return (
     <StyledLayout>
-      <Navbar />
+      <Navbar cities={cities} />
       <FixedHeader>
         <Clock />
       </FixedHeader>
