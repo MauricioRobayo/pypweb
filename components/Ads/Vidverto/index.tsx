@@ -3,7 +3,6 @@ import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
-import { responsiveWidth } from "styles/mixins";
 
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
 const desktopId = "981cceae08e42e6301d86ae909b97156";
@@ -48,18 +47,23 @@ const desktopScript = `
 })();
 `;
 
-const Wrapper = styled.div`
-  ${responsiveWidth}
-
+const Wrapper = styled.div<{ isMobile: boolean }>`
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
+  width: min(
+    100%,
+    ${({ theme, isMobile }) => (isMobile ? theme.maxWidth : 332)}
+  );
 `;
-const StyledPlaceholder = styled(Placeholder)`
+const StyledPlaceholder = styled(Placeholder)<{ isMobile: boolean }>`
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
-  ${responsiveWidth}
+  width: min(
+    100%,
+    ${({ theme, isMobile }) => (isMobile ? theme.maxWidth : "400px")}
+  );
 `;
 
 type VidvertoProps = {
@@ -74,7 +78,7 @@ export function Vidverto({ className = "" }: VidvertoProps) {
 
   if (shouldShowAds) {
     return (
-      <Wrapper className={className}>
+      <Wrapper className={className} isMobile={isMobile}>
         <Script
           id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
@@ -87,5 +91,11 @@ export function Vidverto({ className = "" }: VidvertoProps) {
     );
   }
 
-  return <StyledPlaceholder className={className} name="Vidverto" />;
+  return (
+    <StyledPlaceholder
+      className={className}
+      name="Vidverto"
+      isMobile={isMobile}
+    />
+  );
 }
