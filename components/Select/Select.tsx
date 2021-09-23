@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import styled from "styled-components";
 
 type WrapperProps = {
@@ -61,8 +61,8 @@ const Select = ({
   placeholder,
   narrow = false,
 }: SelectProps) => {
-  const [selected, setSelected] = useState("");
-  const { push, events } = useRouter();
+  const { push, query } = useRouter();
+  const [selected, setSelected] = useState(query.city);
 
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { value } = event.target;
@@ -70,16 +70,6 @@ const Select = ({
     setSelected(value);
     push(`/${value}`);
   };
-
-  const routeChangeCompleteHandler = () => setSelected("");
-
-  useEffect(() => {
-    events.on("routeChangeComplete", routeChangeCompleteHandler);
-
-    return () => {
-      events.off("routeChangeComplete", routeChangeCompleteHandler);
-    };
-  }, [events]);
 
   return (
     <Wrapper narrow={narrow}>
