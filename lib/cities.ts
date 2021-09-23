@@ -1,12 +1,12 @@
 import type { CityType } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 
-export type CityOptions = {
+export type CitiesList = {
   label: string;
   value: string;
 }[];
 
-export function citiesList(): CityOptions {
+export function citiesList(): CitiesList {
   return Object.values(cities).map(({ name: cityName, slug: citySlug }) => ({
     label: cityName,
     value: citySlug,

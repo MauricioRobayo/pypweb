@@ -1,4 +1,5 @@
 import { ConsentBanner } from "components/Ads";
+import { CitiesList } from "lib/cities";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -12,7 +13,7 @@ import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
 
 type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: (page: ReactElement, cities: CitiesList) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -54,7 +55,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           showOnShallow={true}
           options={{ showSpinner: false }}
         />
-        {getLayout(<Component {...pageProps} />)}
+        {getLayout(<Component {...pageProps} />, pageProps)}
       </ThemeProvider>
     </>
   );

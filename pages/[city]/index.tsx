@@ -4,7 +4,7 @@ import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
-import { isCity } from "lib/cities";
+import { CitiesList, citiesList, isCity } from "lib/cities";
 import { dateParts, formatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
@@ -94,6 +94,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       categories: categoriesData,
+      cities: citiesList(),
       cityName,
       citySlug,
       currentDate: date.getTime(),
@@ -101,6 +102,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-CityPage.getLayout = function getLayout(page: ReactElement) {
-  return <PageLayout>{page}</PageLayout>;
+CityPage.getLayout = function getLayout(
+  page: ReactElement,
+  props: { cities: CitiesList }
+) {
+  return <PageLayout cities={props.cities}>{page}</PageLayout>;
 };

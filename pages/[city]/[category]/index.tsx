@@ -4,7 +4,7 @@ import { CategoryData } from "components/CategoryData";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
-import { isCity } from "lib/cities";
+import { citiesList, CitiesList, isCity } from "lib/cities";
 import { dateParts, isValidDateString } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -137,14 +137,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name,
         slug,
       })),
-      initialCategoryData: categoryData,
+      cities: citiesList(),
       cityName,
       currentDate: date.getTime(),
+      initialCategoryData: categoryData,
       mdxSource,
     },
   };
 };
 
-CategoryPage.getLayout = function getLayout(page: ReactElement) {
-  return <PageLayout>{page}</PageLayout>;
+CategoryPage.getLayout = function getLayout(
+  page: ReactElement,
+  props: { cities: CitiesList }
+) {
+  return <PageLayout cities={props.cities}>{page}</PageLayout>;
 };
