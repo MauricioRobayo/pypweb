@@ -9,7 +9,7 @@ import { isCity } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
-import React, { ReactNode } from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 const StyledCityData = styled(CityData)`
@@ -101,6 +101,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-CityPage.getLayout = function Layout(page: ReactNode) {
+CityPage.getLayout = function Layout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };

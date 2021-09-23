@@ -12,7 +12,7 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
 
@@ -145,6 +145,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-CategoryPage.getLayout = function Layout(page: ReactNode) {
+CategoryPage.getLayout = function Layout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };

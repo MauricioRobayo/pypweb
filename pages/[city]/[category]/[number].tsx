@@ -11,7 +11,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
-import React, { ReactNode } from "react";
+import React, { ReactElement } from "react";
 
 type NumberPageProps = {
   categoryData: ICategoryData;
@@ -125,6 +125,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-NumberPage.getLayout = function Layout(page: ReactNode) {
+NumberPage.getLayout = function Layout(page: ReactElement) {
   return <PageLayout>{page}</PageLayout>;
 };
