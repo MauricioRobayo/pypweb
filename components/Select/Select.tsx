@@ -62,7 +62,7 @@ const Select = ({
   narrow = false,
 }: SelectProps) => {
   const { push, query } = useRouter();
-  const [selected, setSelected] = useState(query.city || "");
+  const [selected, setSelected] = useState((query.city as string) || "");
 
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { value } = event.target;

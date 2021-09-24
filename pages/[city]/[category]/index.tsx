@@ -1,10 +1,10 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
-import { citiesList, CitiesList, isCity } from "lib/cities";
+import { citiesList, CitiesList } from "lib/cities";
 import { dateParts, isValidDateString } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -107,28 +107,16 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const citySlug = params?.city;
-  if (!isCity(citySlug)) {
-    throw new Error("That's not a city");
-  }
+  const date = new Date();
+  const citySlug = params?.city as CityType;
+  const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
-
-  const categorySlug = params?.category;
-  if (typeof categorySlug !== "string" || !(categorySlug in categories)) {
-    throw new Error("That's not a category");
-  }
-
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
-
   const { getCategoryData } = categories[categorySlug];
-  const date = new Date();
-  const { year, month, day } = dateParts(date);
   const categoryData = getCategoryData({
-    day,
+    ...dateParts(date),
     days: MAX_DAYS_PER_PAGE,
-    month,
-    year,
   });
 
   return {

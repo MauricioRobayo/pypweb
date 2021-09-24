@@ -49,11 +49,10 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         <GlobalStyle />
         <NextNprogress
           color={defaultTheme.colors.main}
-          startPosition={0.3}
+          startPosition={0.4}
           stopDelayMs={200}
           height={2}
           showOnShallow={true}
-          options={{ showSpinner: false }}
         />
         {getLayout(<Component {...pageProps} />, pageProps)}
       </ThemeProvider>

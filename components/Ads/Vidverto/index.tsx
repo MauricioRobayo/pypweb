@@ -2,6 +2,7 @@ import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
+import { memo } from "react";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
@@ -66,7 +67,7 @@ const StyledPlaceholder = styled(Placeholder)`
 type VidvertoProps = {
   className?: string;
 };
-export function Vidverto({ className = "" }: VidvertoProps) {
+function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
 
   if (isMobile === null) {
@@ -90,3 +91,5 @@ export function Vidverto({ className = "" }: VidvertoProps) {
 
   return <StyledPlaceholder className={className} name="Vidverto" />;
 }
+
+export default memo(Vidverto);

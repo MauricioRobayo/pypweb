@@ -4,7 +4,7 @@ import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
-import { CitiesList, citiesList, isCity } from "lib/cities";
+import { CitiesList, citiesList } from "lib/cities";
 import { dateParts, formatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
@@ -74,21 +74,11 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const citySlug = params?.city;
-  if (!isCity(citySlug)) {
-    throw new Error("That city don't exists");
-  }
-
-  const { name: cityName, categories } = cities[citySlug];
   const date = new Date();
-  const { year, month, day } = dateParts(date);
-
+  const citySlug = params?.city as CityType;
+  const { name: cityName, categories } = cities[citySlug];
   const categoriesData = Object.values(categories).map((category) =>
-    category.getCategoryData({
-      day,
-      month,
-      year,
-    })
+    category.getCategoryData(dateParts(date))
   );
 
   return {
