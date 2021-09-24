@@ -14,15 +14,15 @@ export type PathSelectProps = {
 
 const PathSelect = ({ options, selected, title }: PathSelectProps) => {
   const [selectedPath, setSelectedPath] = useState(selected);
-  const router = useRouter();
+  const { push, pathname, query } = useRouter();
 
   const onHandleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPath(e.target.value);
 
-    router.push({
-      pathname: router.pathname,
+    push({
+      pathname,
       query: {
-        city: router.query.city,
+        city: query.city,
         category: e.target.value,
       },
     });
