@@ -1,4 +1,3 @@
-import type { CityType } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 
 export type CitiesList = {
@@ -11,8 +10,4 @@ export function citiesList(): CitiesList {
     label: cityName,
     value: citySlug,
   }));
-}
-
-export function isCity(city: any): city is CityType {
-  return typeof city === "string" && city in cities;
 }

@@ -1,10 +1,10 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
-import { citiesList, CitiesList, isCity } from "lib/cities";
+import { citiesList, CitiesList } from "lib/cities";
 import { dateParts, isValidDateString } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -108,12 +108,8 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const date = new Date();
-  const citySlug = params?.city;
-  if (!isCity(citySlug)) {
-    throw new Error("That's not a city");
-  }
+  const citySlug = params?.city as CityType;
   const { categories, name: cityName } = cities[citySlug];
-
   const categorySlug = params?.category;
   if (typeof categorySlug !== "string" || !(categorySlug in categories)) {
     throw new Error("That's not a category");
