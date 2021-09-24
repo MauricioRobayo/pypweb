@@ -5,7 +5,7 @@ import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { dateParts, isValidDateString } from "lib/dateUtils";
+import { dateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -41,26 +41,24 @@ export default function CategoryPage({
 
   useEffect(() => {
     async function updateData() {
-      if (!isValidDateString(requestedDate)) {
-        return;
-      }
-
+      const date = new Date(
+        requestedDate ? (requestedDate as string) : currentDate
+      );
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
       const { getCategoryData } = category.default;
-
-      const [year, month, day] = requestedDate.split("-").map(Number);
+      const { year, month, day } = dateParts(date);
 
       try {
         const categoryData = getCategoryData({
+          year,
+          month,
           day,
           days: MAX_DAYS_PER_PAGE,
-          month,
-          year,
         });
 
-        setDate(new Date(year, month - 1, day).getTime());
+        setDate(date.getTime());
         setCategoryData(categoryData);
       } catch (err) {
         setDate(currentDate);
