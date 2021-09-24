@@ -53,7 +53,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
           stopDelayMs={200}
           height={4}
           showOnShallow={true}
-          options={{ spinner: false }}
         />
         {getLayout(<Component {...pageProps} />, pageProps)}
       </ThemeProvider>
