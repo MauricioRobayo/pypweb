@@ -19,13 +19,17 @@ const PathSelect = ({ options, selected, title }: PathSelectProps) => {
   const onHandleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPath(e.target.value);
 
-    push({
-      pathname,
-      query: {
-        city: query.city,
-        category: e.target.value,
+    push(
+      {
+        pathname,
+        query: {
+          city: query.city,
+          category: e.target.value,
+        },
       },
-    });
+      undefined,
+      { shallow: true }
+    );
   };
 
   return (
