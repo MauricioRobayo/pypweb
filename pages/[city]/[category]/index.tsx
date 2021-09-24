@@ -107,6 +107,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const date = new Date();
   const citySlug = params?.city;
   if (!isCity(citySlug)) {
     throw new Error("That's not a city");
@@ -117,18 +118,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (typeof categorySlug !== "string" || !(categorySlug in categories)) {
     throw new Error("That's not a category");
   }
-
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
-
   const { getCategoryData } = categories[categorySlug];
-  const date = new Date();
-  const { year, month, day } = dateParts(date);
   const categoryData = getCategoryData({
-    day,
+    ...dateParts(date),
     days: MAX_DAYS_PER_PAGE,
-    month,
-    year,
   });
 
   return {

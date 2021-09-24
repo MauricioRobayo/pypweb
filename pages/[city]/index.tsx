@@ -74,21 +74,14 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const date = new Date();
   const citySlug = params?.city;
   if (!isCity(citySlug)) {
     throw new Error("That city don't exists");
   }
-
   const { name: cityName, categories } = cities[citySlug];
-  const date = new Date();
-  const { year, month, day } = dateParts(date);
-
   const categoriesData = Object.values(categories).map((category) =>
-    category.getCategoryData({
-      day,
-      month,
-      year,
-    })
+    category.getCategoryData(dateParts(date))
   );
 
   return {

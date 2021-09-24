@@ -101,19 +101,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
-
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
   const date = new Date();
-  const { year, month, day } = dateParts(date);
 
   return {
     props: {
       categoryData: getCategoryData({
-        day,
+        ...dateParts(date),
         days: 30,
-        month,
-        year,
       }),
       categoryName,
       cities: citiesList(),
