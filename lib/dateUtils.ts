@@ -37,11 +37,11 @@ export function isValidDateString(date: any): date is string {
   );
 }
 
-export const dateParts = (date: Date) => {
+export function dateParts(date: Date) {
   const parts = shortDateFormatter.formatToParts(date);
   return Object.fromEntries(
     parts
       .filter(({ type }) => ["year", "month", "day"].includes(type))
       .map(({ type, value }) => [type, Number(value)])
   ) as Record<"year" | "month" | "day", number>;
-};
+}
