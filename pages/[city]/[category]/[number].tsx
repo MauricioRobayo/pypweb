@@ -88,10 +88,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
-  const categorySlug = params?.category;
-  if (typeof categorySlug !== "string") {
-    throw new Error("That's not a category");
-  }
+  const categorySlug = params?.category as string;
   const {
     categories: {
       [categorySlug]: { getCategoryData, name: categoryName },
