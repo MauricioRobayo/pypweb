@@ -19,10 +19,13 @@ const PathSelect = ({ options, selected, title }: PathSelectProps) => {
   const onHandleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPath(e.target.value);
 
-    const currentPath = router.asPath.split("/");
-    currentPath.pop();
-
-    router.push(`${currentPath.join("/")}/${e.target.value}`);
+    router.push({
+      pathname: router.pathname,
+      query: {
+        city: router.query.city,
+        category: e.target.value,
+      },
+    });
   };
 
   return (
