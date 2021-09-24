@@ -2,6 +2,7 @@ import cn from "classnames";
 import { Placeholder } from "components/Ads";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
+import { memo } from "react";
 import styled from "styled-components";
 
 const siteId = "71116";
@@ -40,7 +41,7 @@ type Props = {
   formatType: FormatType;
 };
 
-export function TheMoneytizer({ className = "", formatType }: Props) {
+function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
@@ -66,3 +67,5 @@ export function TheMoneytizer({ className = "", formatType }: Props) {
 
   return <StyledPlaceholder className={className} name={formatType} />;
 }
+
+export default memo(TheMoneytizer);

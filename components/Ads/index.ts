@@ -1,5 +1,5 @@
 export { ConsentBanner } from "./ConsentBanner";
 export { Placeholder } from "./Placeholder";
 export { SelfAd } from "./SelfAd";
-export { TheMoneytizer } from "./TheMoneytizer";
-export { Vidverto } from "./Vidverto";
+export { default as TheMoneytizer } from "./TheMoneytizer";
+export { default as Vidverto } from "./Vidverto";
