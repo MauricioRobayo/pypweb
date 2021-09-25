@@ -46,29 +46,40 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatClassName = formatTypeClassName[formatType];
 
   useEffect(() => {
-    if (!shouldShowAds) {
+    if (!shouldShowAds && Math.random() > 1) {
       return;
     }
 
-    const oldScript = document.querySelector<HTMLScriptElement>(
-      "#moneytizer-request"
-    );
-    if (oldScript) {
-      oldScript.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
-      return;
+    const id1 = `moneytizer-gen-${formatId}`;
+    const id2 = `moneytizer-request-${siteId}-${formatId}`;
+    const src1 = `${baseUrl}/gen.js?type=${formatId}`;
+    const src2 = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
+
+    const oldScript1 = document.querySelector<HTMLScriptElement>(id1);
+    const oldScript2 = document.querySelector<HTMLScriptElement>(id2);
+    if (oldScript1 && oldScript2) {
+      oldScript1.remove();
+      oldScript2.remove();
     }
 
-    const script = document.createElement("script");
-    script.id = "moneytizer-request";
-    script.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
-    script.defer = true;
-    document.body.append(script);
+    const script1 = document.createElement("script");
+    script1.id = id1;
+    script1.src = src1;
+    script1.defer = true;
+
+    const script2 = document.createElement("script");
+    script2.id = id2;
+    script2.src = src2;
+    script2.defer = true;
+
+    document.body.append(script1, script2);
     return () => {
-      script.remove();
+      script1.remove();
+      script2.remove();
     };
   }, [formatId]);
 
-  if (shouldShowAds) {
+  if (shouldShowAds || Math.random() > 0) {
     return (
       <div
         className={cn(className, formatClassName)}
