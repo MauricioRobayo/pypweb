@@ -57,9 +57,10 @@ function TheMoneytizer({ className = "", formatType }: Props) {
 
     const oldScript1 = document.querySelector<HTMLScriptElement>(id1);
     const oldScript2 = document.querySelector<HTMLScriptElement>(id2);
+
     if (oldScript1 && oldScript2) {
-      oldScript1.remove();
-      oldScript2.remove();
+      oldScript2.src = src2;
+      return;
     }
 
     const script1 = document.createElement("script");
