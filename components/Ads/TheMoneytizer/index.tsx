@@ -2,7 +2,7 @@ import cn from "classnames";
 import { Placeholder } from "components/Ads";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import styled from "styled-components";
 
 const siteId = "71116";
@@ -45,6 +45,28 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
+  useEffect(() => {
+    if (shouldShowAds) {
+      return;
+    }
+
+    const oldScript = document.querySelector<HTMLScriptElement>(
+      "#moneytizer-request"
+    );
+    if (oldScript) {
+      oldScript.remove();
+    }
+
+    const script = document.createElement("script");
+    script.id = "moneytizer-request";
+    script.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [formatId]);
+
   if (shouldShowAds) {
     return (
       <div
@@ -54,11 +76,6 @@ function TheMoneytizer({ className = "", formatType }: Props) {
         <Script
           id={`moneytizer-gen-${formatId}`}
           src={`${baseUrl}/gen.js?type=${formatId}`}
-          strategy="lazyOnload"
-        />
-        <Script
-          id={`moneytizer-request-${formatId}`}
-          src={`${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`}
           strategy="lazyOnload"
         />
       </div>
