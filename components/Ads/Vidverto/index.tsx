@@ -70,11 +70,9 @@ function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
 
   useEffect(() => {
-    if (isMobile === null) {
-      return;
+    if (shouldShowAds || isMobile !== null) {
+      eval(isMobile ? mobileScript : desktopScript);
     }
-
-    eval(isMobile ? mobileScript : desktopScript);
   }, [isMobile]);
 
   if (isMobile === null) {
