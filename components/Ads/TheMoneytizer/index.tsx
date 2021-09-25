@@ -46,7 +46,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatClassName = formatTypeClassName[formatType];
 
   useEffect(() => {
-    if (shouldShowAds) {
+    if (!shouldShowAds) {
       return;
     }
 
@@ -54,16 +54,17 @@ function TheMoneytizer({ className = "", formatType }: Props) {
       "#moneytizer-request"
     );
     if (oldScript) {
-      oldScript.remove();
+      oldScript.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
+      return;
     }
 
     const script = document.createElement("script");
     script.id = "moneytizer-request";
     script.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
     script.defer = true;
-    document.body.appendChild(script);
+    document.body.append(script);
     return () => {
-      document.body.removeChild(script);
+      script.remove();
     };
   }, [formatId]);
 
