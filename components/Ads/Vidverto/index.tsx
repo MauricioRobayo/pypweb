@@ -2,7 +2,7 @@ import { Placeholder } from "components/Ads";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
-import { memo } from "react";
+import React, { memo, useEffect } from "react";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
@@ -49,10 +49,9 @@ const desktopScript = `
 })();
 `;
 
-const Wrapper = styled.div<{ isMobile: boolean }>`
+const Wrapper = styled.div`
   ${responsiveWidth}
 
-  aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
 `;
@@ -70,20 +69,26 @@ type VidvertoProps = {
 function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
 
+  useEffect(() => {
+    if (isMobile === null) {
+      return;
+    }
+
+    eval(isMobile ? mobileScript : desktopScript);
+  }, [isMobile]);
+
   if (isMobile === null) {
     return null;
   }
 
   if (shouldShowAds) {
     return (
-      <Wrapper className={className} isMobile={isMobile}>
+      <Wrapper className={className}>
         <Script
-          id="vidverto-invocation"
           src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
+          id="vidverto-invocation"
+          strategy="lazyOnload"
         />
-        <Script id="vidverto-mount" strategy="lazyOnload">
-          {isMobile ? mobileScript : desktopScript}
-        </Script>
         <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
       </Wrapper>
     );
