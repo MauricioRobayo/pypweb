@@ -46,7 +46,19 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatClassName = formatTypeClassName[formatType];
 
   useEffect(() => {
+    if (shouldShowAds) {
+      return;
+    }
+
+    const oldScript = document.querySelector<HTMLScriptElement>(
+      "#moneytizer-request"
+    );
+    if (oldScript) {
+      oldScript.remove();
+    }
+
     const script = document.createElement("script");
+    script.id = "moneytizer-request";
     script.src = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
     script.defer = true;
     document.body.appendChild(script);
