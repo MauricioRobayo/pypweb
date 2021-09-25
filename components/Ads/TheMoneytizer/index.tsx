@@ -2,7 +2,7 @@ import cn from "classnames";
 import { Placeholder } from "components/Ads";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import styled from "styled-components";
 
 const siteId = "71116";
@@ -45,7 +45,42 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatId = formatTypeId[formatType];
   const formatClassName = formatTypeClassName[formatType];
 
-  if (shouldShowAds) {
+  useEffect(() => {
+    if (!shouldShowAds && Math.random() > 1) {
+      return;
+    }
+
+    const id1 = `moneytizer-gen-${formatId}`;
+    const id2 = `moneytizer-request-${siteId}-${formatId}`;
+    const src1 = `${baseUrl}/gen.js?type=${formatId}`;
+    const src2 = `${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`;
+
+    const oldScript1 = document.querySelector<HTMLScriptElement>(id1);
+    const oldScript2 = document.querySelector<HTMLScriptElement>(id2);
+
+    if (oldScript1 && oldScript2) {
+      oldScript2.src = src2;
+      return;
+    }
+
+    const script1 = document.createElement("script");
+    script1.id = id1;
+    script1.src = src1;
+    script1.defer = true;
+
+    const script2 = document.createElement("script");
+    script2.id = id2;
+    script2.src = src2;
+    script2.defer = true;
+
+    document.body.append(script1, script2);
+    return () => {
+      script1.remove();
+      script2.remove();
+    };
+  }, [formatId]);
+
+  if (shouldShowAds || Math.random() > 0) {
     return (
       <div
         className={cn(className, formatClassName)}
@@ -54,11 +89,6 @@ function TheMoneytizer({ className = "", formatType }: Props) {
         <Script
           id={`moneytizer-gen-${formatId}`}
           src={`${baseUrl}/gen.js?type=${formatId}`}
-          strategy="lazyOnload"
-        />
-        <Script
-          id={`moneytizer-request-${formatId}`}
-          src={`${baseUrl}/requestform.js?siteId=${siteId}&formatId=${formatId}`}
           strategy="lazyOnload"
         />
       </div>
