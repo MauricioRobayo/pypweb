@@ -81,7 +81,7 @@ function Vidverto({ className = "" }: VidvertoProps) {
     return null;
   }
 
-  if (shouldShowAds || Math.random() > 0) {
+  if (shouldShowAds) {
     return (
       <Wrapper className={className}>
         <Script
