@@ -28,6 +28,10 @@ const formatTypeClassName: Record<FormatType, string> = {
   SKIN: "",
 };
 
+const Wrapper = styled.div`
+  min-height: 90px;
+`;
+
 const StyledPlaceholder = styled(Placeholder)`
   height: 90px;
   width: 320px;
@@ -82,7 +86,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
 
   if (shouldShowAds) {
     return (
-      <div
+      <Wrapper
         className={cn(className, formatClassName)}
         id={`${siteId}-${formatId}`}
       >
@@ -91,7 +95,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
           src={`${baseUrl}/gen.js?type=${formatId}`}
           strategy="lazyOnload"
         />
-      </div>
+      </Wrapper>
     );
   }
 
