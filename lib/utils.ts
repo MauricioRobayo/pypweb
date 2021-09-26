@@ -3,9 +3,9 @@ export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
 export const AMERICA_BOGOTA = "America/Bogota";
 
-export const isProduction = process.env.NEXT_PUBLIC_DEPLOY_ENV === "production";
-export const isStaging = process.env.NEXT_PUBLIC_DEPLOY_ENV === "staging";
-export const shouldShowAds = isProduction || isStaging;
+export const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
+export const isPreview = process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";
+export const shouldShowAds = isProduction || isPreview;
 
 export function hasAllDigits(numbers: number[]) {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].every((num) => numbers.includes(num));
