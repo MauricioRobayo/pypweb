@@ -46,7 +46,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatClassName = formatTypeClassName[formatType];
 
   useEffect(() => {
-    if (!shouldShowAds && Math.random() > 1) {
+    if (!shouldShowAds) {
       return;
     }
 
@@ -80,7 +80,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
     };
   }, [formatId]);
 
-  if (shouldShowAds || Math.random() > 0) {
+  if (shouldShowAds) {
     return (
       <div
         className={cn(className, formatClassName)}
