@@ -3,7 +3,7 @@ import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import React, { memo, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
 const desktopId = "981cceae08e42e6301d86ae909b97156";
@@ -46,18 +46,24 @@ const desktopScript = `
 })();
 `;
 
-const Wrapper = styled.div<{ isMobile: boolean }>`
+const containerStyle = css`
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
+`;
+
+const Wrapper = styled.div<{ isMobile: boolean | null }>`
+  ${containerStyle}
+
   width: min(
     100%,
     ${({ theme, isMobile }) => (isMobile ? "400px" : theme.maxWidth)}
   );
 `;
 const StyledPlaceholder = styled(Placeholder)`
-  aspect-ratio: inherit;
-  border-radius: inherit;
+  ${containerStyle}
+
+  width: 100%;
 `;
 
 type VidvertoProps = {
@@ -71,10 +77,6 @@ function Vidverto({ className = "" }: VidvertoProps) {
       eval(isMobile ? mobileScript : desktopScript);
     }
   }, [isMobile]);
-
-  if (isMobile === null) {
-    return null;
-  }
 
   return (
     <Wrapper className={className} isMobile={isMobile}>
