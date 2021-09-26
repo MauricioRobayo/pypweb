@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 const siteId = "71116";
 const baseUrl = "https://ads.themoneytizer.com/s";
+const minHeight = "90px";
 
 export type FormatType =
   | "MEGABANNER"
@@ -28,8 +29,12 @@ const formatTypeClassName: Record<FormatType, string> = {
   SKIN: "",
 };
 
+const Wrapper = styled.div`
+  min-height: ${minHeight};
+`;
+
 const StyledPlaceholder = styled(Placeholder)`
-  height: 90px;
+  min-height: ${minHeight};
   width: 320px;
   @media (min-width: 728px) {
     width: 728px;
@@ -46,7 +51,7 @@ function TheMoneytizer({ className = "", formatType }: Props) {
   const formatClassName = formatTypeClassName[formatType];
 
   useEffect(() => {
-    if (!shouldShowAds && Math.random() > 1) {
+    if (!shouldShowAds) {
       return;
     }
 
@@ -80,22 +85,22 @@ function TheMoneytizer({ className = "", formatType }: Props) {
     };
   }, [formatId]);
 
-  if (shouldShowAds || Math.random() > 0) {
-    return (
-      <div
-        className={cn(className, formatClassName)}
-        id={`${siteId}-${formatId}`}
-      >
+  return (
+    <Wrapper
+      className={cn(className, formatClassName)}
+      id={`${siteId}-${formatId}`}
+    >
+      {shouldShowAds ? (
         <Script
           id={`moneytizer-gen-${formatId}`}
           src={`${baseUrl}/gen.js?type=${formatId}`}
           strategy="lazyOnload"
         />
-      </div>
-    );
-  }
-
-  return <StyledPlaceholder className={className} name={formatType} />;
+      ) : (
+        <StyledPlaceholder className={className} name={formatType} />
+      )}
+    </Wrapper>
+  );
 }
 
 export default memo(TheMoneytizer);
