@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
 const Title = styled.h1`
   font-size: 2rem;
   font-weight: bold;
-  margin: 1rem 0 1rem;
+  margin: 0 0 1rem;
 `;
 
 const Subtitle = styled.h2`
