@@ -50,7 +50,10 @@ const Wrapper = styled.div<{ isMobile: boolean }>`
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
-  width: min(100%, ${({ isMobile }) => (isMobile ? "400px" : "720px")});
+  width: min(
+    100%,
+    ${({ theme, isMobile }) => (isMobile ? "400px" : theme.maxWidth)}
+  );
 `;
 const StyledPlaceholder = styled(Placeholder)`
   aspect-ratio: inherit;
