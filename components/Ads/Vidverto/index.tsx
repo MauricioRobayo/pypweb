@@ -4,11 +4,9 @@ import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import React, { memo, useEffect } from "react";
 import styled from "styled-components";
-import { responsiveWidth } from "styles/mixins";
 
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
 const desktopId = "981cceae08e42e6301d86ae909b97156";
-
 const mobileScript = `(() => {
   window.aries = window.aries || {};
   window.aries.v1 = window.aries.v1 || {commands: []};
@@ -27,7 +25,6 @@ const mobileScript = `(() => {
     });
   });
 })();`;
-
 const desktopScript = `
 (() => {
   window.aries = window.aries || {};
@@ -49,18 +46,15 @@ const desktopScript = `
 })();
 `;
 
-const Wrapper = styled.div`
-  ${responsiveWidth}
-
-  border-radius: 0.5rem;
-  overflow: hidden;
-`;
-const StyledPlaceholder = styled(Placeholder)`
-  ${responsiveWidth}
-
+const Wrapper = styled.div<{ isMobile: boolean }>`
   aspect-ratio: 16/9;
   border-radius: 0.5rem;
   overflow: hidden;
+  width: min(100%, ${({ isMobile }) => (isMobile ? "400px" : "720px")});
+`;
+const StyledPlaceholder = styled(Placeholder)`
+  aspect-ratio: inherit;
+  border-radius: inherit;
 `;
 
 type VidvertoProps = {
@@ -79,20 +73,22 @@ function Vidverto({ className = "" }: VidvertoProps) {
     return null;
   }
 
-  if (shouldShowAds) {
-    return (
-      <Wrapper className={className}>
-        <Script
-          src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
-          id="vidverto-invocation"
-          strategy="lazyOnload"
-        />
-        <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
-      </Wrapper>
-    );
-  }
-
-  return <StyledPlaceholder className={className} name="Vidverto" />;
+  return (
+    <Wrapper className={className} isMobile={isMobile}>
+      {shouldShowAds ? (
+        <>
+          <Script
+            src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
+            id="vidverto-invocation"
+            strategy="lazyOnload"
+          />
+          <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
+        </>
+      ) : (
+        <StyledPlaceholder name="Vidverto" />
+      )}
+    </Wrapper>
+  );
 }
 
 export default memo(Vidverto);
