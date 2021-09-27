@@ -3,6 +3,7 @@ import { size } from "./constants";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
+    font-display: swap;
     font-family: "LicensePlate";
     font-style: normal;
     font-weight: normal;
