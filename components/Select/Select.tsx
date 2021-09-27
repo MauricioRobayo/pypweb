@@ -13,25 +13,19 @@ const Wrapper = styled.div<WrapperProps>`
   width: 100%;
 `;
 
-type StyledSelectProps = {
-  isShowingPlaceholder: boolean;
-};
-const StyledSelect = styled.select<StyledSelectProps>`
+const StyledSelect = styled.select`
   appearance: none;
   background: ${({ theme }) => theme.colors.mainComplement};
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 0.4rem;
-  color: ${({ isShowingPlaceholder, theme }) =>
-    isShowingPlaceholder ? theme.colors.secondary : theme.colors.secondaryDark};
+  color: ${({ theme }) => theme.colors.secondaryDark};
   grid-column: 1 / 1;
   grid-row: 1 / 1;
   margin: 0.5rem 0;
   padding: 0.5rem;
 `;
 
-const Option = styled.option`
-  color: ${({ theme }) => theme.colors.secondaryDark};
-`;
+const Option = styled.option``;
 
 const Caret = styled.div`
   border-left: 5px solid transparent;
@@ -74,7 +68,6 @@ const Select = ({
   return (
     <Wrapper narrow={narrow}>
       <StyledSelect
-        isShowingPlaceholder={selected === ""}
         title={name}
         name={name}
         onChange={onChangeHandler}
