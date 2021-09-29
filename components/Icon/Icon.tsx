@@ -1,4 +1,3 @@
-import { CategoryName } from "@mauriciorobayo/pyptron";
 import styled from "styled-components";
 import Scooter from "svg-emojis/twemoji/1f3cd.svg";
 import Megaphone from "svg-emojis/twemoji/1f4e3.svg";
@@ -14,11 +13,12 @@ import Information from "svg-emojis/twemoji/2139.svg";
 import AlarmClock from "svg-emojis/twemoji/23f0.svg";
 import WarningSign from "svg-emojis/twemoji/26a0.svg";
 
-type IconName = keyof typeof iconsMap;
-const iconsMap = {
+const iconName = {
   "⏰": AlarmClock,
+  "⚠": WarningSign,
   "📣": Megaphone,
   "🤩": StarEyes,
+  "🚌": Bus,
   "🚐": Minibus,
   "🚕": Taxi,
   "🚗": Car,
@@ -27,28 +27,16 @@ const iconsMap = {
   "🚛": ArticulatedLorry,
   "🛵": Scooter,
   ℹ: Information,
-  "⚠": WarningSign,
-  [CategoryName.CARGA_MAS_DE_20_ANOS_DE_EDAD]: ArticulatedLorry,
-  [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_3500KG]: ArticulatedLorry,
-  [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_8500KG]: ArticulatedLorry,
-  [CategoryName.MOTOCARROS]: Scooter,
-  [CategoryName.MOTOS]: Scooter,
-  [CategoryName.PARTICULARES]: Car,
-  [CategoryName.SERVICIO_DE_TRANSPORTE_ESPECIAL]: Minibus,
-  [CategoryName.TAXIS]: Taxi,
-  [CategoryName.TRANSPORTE_DE_CARGA_MENOR_A_1500KG]: ArticulatedLorry,
-  [CategoryName.TRANSPORTE_DE_CARGA]: ArticulatedLorry,
-  [CategoryName.TRANSPORTE_PUBLICO_COLECTIVO]: Bus,
 };
 
 type IconProps = {
   className?: string;
-  name: IconName;
+  name: keyof typeof iconName;
 };
 
 function Icon({ name, className }: IconProps) {
-  const SVGIcon = iconsMap[name];
-  return <SVGIcon className={className} />;
+  const SvgIcon = iconName[name];
+  return <SvgIcon className={className} />;
 }
 
 export default styled(Icon)`
