@@ -72,8 +72,8 @@ export default function CategoryCard({
       <Footer>
         <Link href={`${categoryPath}`} passHref>
           <SeeMore>
-            <IconLeft name="ℹ" />
-            Más información
+            <IconLeft name="📅" />
+            Ver próximos días
           </SeeMore>
         </Link>
       </Footer>
