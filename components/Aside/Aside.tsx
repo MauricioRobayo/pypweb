@@ -9,10 +9,6 @@ const StyledAside = styled.aside`
     font-weight: bold;
     margin: 1rem 0 0.5rem;
   }
-  ol {
-    list-style-type: number;
-  }
-  li,
   p {
     padding: 0.25rem 0;
   }
