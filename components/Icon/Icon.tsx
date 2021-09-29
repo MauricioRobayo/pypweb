@@ -1,30 +1,45 @@
-import { CategoryName } from "@mauriciorobayo/pyptron";
-import { Emoji } from "components/Emoji";
-import React from "react";
+import styled from "styled-components";
+import Megaphone from "svg-emojis/twemoji/1f4e3.svg";
+import Bus from "svg-emojis/twemoji/1f68c.svg";
+import Minibus from "svg-emojis/twemoji/1f690.svg";
+import Taxi from "svg-emojis/twemoji/1f695.svg";
+import Car from "svg-emojis/twemoji/1f697.svg";
+import RecreationalVehicle from "svg-emojis/twemoji/1f699.svg";
+import DeliveryTruck from "svg-emojis/twemoji/1f69a.svg";
+import ArticulatedLorry from "svg-emojis/twemoji/1f69b.svg";
+import Scooter from "svg-emojis/twemoji/1f6f5.svg";
+import StarEyes from "svg-emojis/twemoji/1f929.svg";
+import Information from "svg-emojis/twemoji/2139.svg";
+import AlarmClock from "svg-emojis/twemoji/23f0.svg";
+import WarningSign from "svg-emojis/twemoji/26a0.svg";
 
-const iconsMap: Record<CategoryName, string> = {
-  [CategoryName.MOTOS]: "🛵",
-  [CategoryName.MOTOCARROS]: "🛵",
-  [CategoryName.PARTICULARES]: "🚗",
-  [CategoryName.SERVICIO_DE_TRANSPORTE_ESPECIAL]: "🚐",
-  [CategoryName.TAXIS]: "🚕",
-  [CategoryName.TRANSPORTE_DE_CARGA]: "🚛",
-  [CategoryName.TRANSPORTE_PUBLICO_COLECTIVO]: "🚌",
-  [CategoryName.CARGA_MAS_DE_20_ANOS_DE_EDAD]: "🚛",
-  [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_3500KG]: "🚛",
-  [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_8500KG]: "🚛",
-  [CategoryName.TRANSPORTE_DE_CARGA_MENOR_A_1500KG]: "🚛",
+const iconName = {
+  "⏰": AlarmClock,
+  "⚠": WarningSign,
+  "📣": Megaphone,
+  "🤩": StarEyes,
+  "🚌": Bus,
+  "🚐": Minibus,
+  "🚕": Taxi,
+  "🚗": Car,
+  "🚙": RecreationalVehicle,
+  "🚚": DeliveryTruck,
+  "🚛": ArticulatedLorry,
+  "🛵": Scooter,
+  ℹ: Information,
 };
 
 type IconProps = {
   className?: string;
-  iconName: CategoryName;
+  name: keyof typeof iconName;
 };
 
-const Icon = ({ iconName, className = "" }: IconProps) => (
-  <span aria-label="iconName" className={className} role="img">
-    <Emoji emoji={iconsMap[iconName]} />
-  </span>
-);
+function Icon({ name, className }: IconProps) {
+  const SvgIcon = iconName[name];
+  return <SvgIcon className={className} />;
+}
 
-export default Icon;
+export default styled(Icon)`
+  height: 1em;
+  width: 1em;
+`;

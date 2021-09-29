@@ -1,5 +1,6 @@
-import type { CategoryName, IHourData, Scheme } from "@mauriciorobayo/pyptron";
-import { EmojiLeft } from "components/CategoryData/DayCard.styles";
+import type { IHourData, Scheme } from "@mauriciorobayo/pyptron";
+import { CategoryName } from "@mauriciorobayo/pyptron";
+import { IconLeft } from "components/CategoryData/DayCard.styles";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
@@ -11,10 +12,10 @@ import {
   HoursWrapper,
   LicenseNumbers,
   SeeMore,
-  StyledIcon,
   Title,
   Wrapper,
 } from "./CategoryCard.styles";
+import { categoryIcon } from "./utils";
 
 const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 
@@ -48,7 +49,7 @@ export default function CategoryCard({
       <Title>
         <Link href={`${categoryPath}`}>
           <a>
-            <StyledIcon iconName={categoryName} />
+            <IconLeft name={categoryIcon[categoryName]} />
             {categoryName}
           </a>
         </Link>
@@ -71,7 +72,7 @@ export default function CategoryCard({
       <Footer>
         <Link href={`${categoryPath}`} passHref>
           <SeeMore>
-            <EmojiLeft emoji="ℹ" />
+            <IconLeft name="ℹ" />
             Más información
           </SeeMore>
         </Link>

@@ -36,6 +36,7 @@
     "react-tweet-embed": "^1.2.2",
     "styled-components": "^5.3.1",
     "styled-normalize": "^8.0.7",
+    "svg-emojis": "^0.0.8",
     "switch-emoji": "^1.0.16"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "@types/react": "^17.0.24",
     "@types/styled-components": "^5.1.14",
     "axe-core": "^4.3.3",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

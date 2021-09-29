@@ -1,4 +1,3 @@
-import { Emoji } from "components/Emoji";
 import { Icon } from "components/Icon";
 import styled from "styled-components";
 import {
@@ -16,7 +15,7 @@ export const Wrapper = styled.article`
   text-align: center;
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h3`
   background: ${({ theme }) => theme.colors.main};
   border-radius: 5px 5px 0 0;
   color: white;
@@ -52,5 +51,4 @@ export const Description = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const StyledIcon = inlineIconLeft(Icon);
-export const EmojiLeft = inlineIconLeft(Emoji);
+export const IconLeft = inlineIconLeft(Icon);

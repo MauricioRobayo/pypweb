@@ -1,4 +1,5 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import { categoryIcon } from "components/CityData/utils";
 import { LicensePlate } from "components/LicensePlate";
 import { format, isToday as isDateToday } from "date-fns";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
@@ -8,8 +9,8 @@ import { memo } from "react";
 import {
   Body,
   Description,
-  EmojiLeft,
   Header,
+  IconLeft,
   RegularCard,
   SelectedCard,
   StyledHours,
@@ -67,7 +68,9 @@ function DayCard({
       >
         <Header isInactive={isInactive}>
           <div>
-            {isSelected ? <VehicleIcon iconName={categoryName} /> : null}
+            {isSelected ? (
+              <VehicleIcon name={categoryIcon[categoryName]} />
+            ) : null}
             {formattedDate}
             {isInactive ? null : (
               <Description>
@@ -100,7 +103,7 @@ function DayCard({
               shallow
             >
               <a>
-                <EmojiLeft emoji="⚠" />
+                <IconLeft name="⚠" />
                 Para ver la información de hoy haga click acá
               </a>
             </Link>

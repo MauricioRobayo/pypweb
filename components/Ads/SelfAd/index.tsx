@@ -1,12 +1,12 @@
 import { Button } from "components/Button";
-import { Emoji } from "components/Emoji";
+import { Icon } from "components/Icon";
 import React, { useEffect, useRef, useState } from "react";
 import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 import { inlineIconLeft, inlineIconRight } from "styles/mixins";
 
-const EmojiLeft = inlineIconLeft(Emoji);
-const EmojiRight = inlineIconRight(Emoji);
+const IconLeft = inlineIconLeft(Icon);
+const IconRight = inlineIconRight(Icon);
 const StyledEmail = styled(Email)`
   color: ${({ theme }) => theme.colors.main};
   text-decoration: none;
@@ -43,9 +43,9 @@ export function SelfAd({ className }: SelfAdProps) {
         <div>
           <p>
             <CTA>
-              <EmojiLeft emoji="📣" />
+              <IconLeft name="📣" />
               Anuncie con nosotros
-              <EmojiRight emoji="🤩" />
+              <IconRight name="🤩" />
             </CTA>
           </p>
           <p>
@@ -62,21 +62,21 @@ export function SelfAd({ className }: SelfAdProps) {
             ciudades del país nos visitan.
           </p>
           <p>
-            <EmojiLeft emoji="🚙" />
-            <EmojiLeft emoji="🚐" />
-            <EmojiLeft emoji="🚗" />
-            <Emoji emoji="🚛" />
-            <EmojiRight emoji="🛵" />
-            <EmojiRight emoji="🚕" />
-            <EmojiRight emoji="🚚" />
+            <IconLeft name="🚙" />
+            <IconLeft name="🚐" />
+            <IconLeft name="🚗" />
+            <Icon name="🚛" />
+            <IconRight name="🛵" />
+            <IconRight name="🚕" />
+            <IconRight name="🚚" />
           </p>
         </div>
       ) : (
         <Button onClick={showAdsInfo} variant="link">
           <CTA>
-            <EmojiLeft emoji="📣" />
+            <IconLeft name="📣" />
             Anuncie con nosotros
-            <EmojiRight emoji="🤩" />
+            <IconRight name="🤩" />
           </CTA>
         </Button>
       )}
