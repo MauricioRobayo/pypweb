@@ -1,5 +1,5 @@
 import type { IHourData } from "@mauriciorobayo/pyptron";
-import { Emoji } from "components/Emoji";
+import { Icon } from "components/Icon";
 import styled from "styled-components";
 import { flexCenter, inlineIconLeft } from "styles/mixins";
 import Hour from "./Hour";
@@ -11,7 +11,7 @@ const HoursTitle = styled.h4`
   margin: 0;
 `;
 
-const EmojiLeft = inlineIconLeft(Emoji);
+const EmojiLeft = inlineIconLeft(Icon);
 
 type HoursProps = {
   className?: string;
@@ -33,7 +33,7 @@ export default function Hours({
     <>
       {showTitle ? (
         <HoursTitle>
-          <EmojiLeft emoji="⏰" />
+          <EmojiLeft name="⏰" />
           Horario
         </HoursTitle>
       ) : null}

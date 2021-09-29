@@ -1,4 +1,3 @@
-import { Emoji } from "components/Emoji";
 import { Icon } from "components/Icon";
 import styled from "styled-components";
 import {
@@ -52,5 +51,4 @@ export const Description = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const StyledIcon = inlineIconLeft(Icon);
-export const EmojiLeft = inlineIconLeft(Emoji);
+export const IconLeft = inlineIconLeft(Icon);

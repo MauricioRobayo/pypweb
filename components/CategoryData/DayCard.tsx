@@ -8,8 +8,8 @@ import { memo } from "react";
 import {
   Body,
   Description,
-  EmojiLeft,
   Header,
+  IconLeft,
   RegularCard,
   SelectedCard,
   StyledHours,
@@ -100,7 +100,7 @@ function DayCard({
               shallow
             >
               <a>
-                <EmojiLeft emoji="⚠" />
+                <IconLeft name="⚠" />
                 Para ver la información de hoy haga click acá
               </a>
             </Link>

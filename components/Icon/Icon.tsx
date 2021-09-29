@@ -10,9 +10,24 @@ import RecreationalVehicle from "svg-emojis/twemoji/1f699.svg";
 import DeliveryTruck from "svg-emojis/twemoji/1f69a.svg";
 import ArticulatedLorry from "svg-emojis/twemoji/1f69b.svg";
 import StarEyes from "svg-emojis/twemoji/1f929.svg";
+import Information from "svg-emojis/twemoji/2139.svg";
+import AlarmClock from "svg-emojis/twemoji/23f0.svg";
+import WarningSign from "svg-emojis/twemoji/26a0.svg";
 
 type IconName = keyof typeof iconsMap;
 const iconsMap = {
+  "⏰": AlarmClock,
+  "📣": Megaphone,
+  "🤩": StarEyes,
+  "🚐": Minibus,
+  "🚕": Taxi,
+  "🚗": Car,
+  "🚙": RecreationalVehicle,
+  "🚚": DeliveryTruck,
+  "🚛": ArticulatedLorry,
+  "🛵": Scooter,
+  ℹ: Information,
+  "⚠": WarningSign,
   [CategoryName.CARGA_MAS_DE_20_ANOS_DE_EDAD]: ArticulatedLorry,
   [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_3500KG]: ArticulatedLorry,
   [CategoryName.CARGA_PESO_MAX_SUPERIOR_A_8500KG]: ArticulatedLorry,
@@ -24,15 +39,6 @@ const iconsMap = {
   [CategoryName.TRANSPORTE_DE_CARGA_MENOR_A_1500KG]: ArticulatedLorry,
   [CategoryName.TRANSPORTE_DE_CARGA]: ArticulatedLorry,
   [CategoryName.TRANSPORTE_PUBLICO_COLECTIVO]: Bus,
-  "🚚": DeliveryTruck,
-  "📣": Megaphone,
-  "🚙": RecreationalVehicle,
-  "🤩": StarEyes,
-  "🚐": Minibus,
-  "🚗": Car,
-  "🚛": ArticulatedLorry,
-  "🛵": Scooter,
-  "🚕": Taxi,
 };
 
 type IconProps = {

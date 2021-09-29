@@ -1,4 +1,3 @@
-import { Emoji } from "components/Emoji";
 import { Hours } from "components/Hours";
 import { Icon } from "components/Icon";
 import { PypDate } from "components/PypDate";
@@ -115,7 +114,7 @@ export const Warning = styled.div`
   }
 `;
 
-export const EmojiLeft = inlineIconLeft(Emoji);
+export const IconLeft = inlineIconLeft(Icon);
 
 export const StyledHours = styled(Hours)`
   font-size: 1rem;
