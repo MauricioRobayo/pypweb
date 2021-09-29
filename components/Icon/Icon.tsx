@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Scooter from "svg-emojis/twemoji/1f3cd.svg";
 import Megaphone from "svg-emojis/twemoji/1f4e3.svg";
 import Bus from "svg-emojis/twemoji/1f68c.svg";
 import Minibus from "svg-emojis/twemoji/1f690.svg";
@@ -8,6 +7,7 @@ import Car from "svg-emojis/twemoji/1f697.svg";
 import RecreationalVehicle from "svg-emojis/twemoji/1f699.svg";
 import DeliveryTruck from "svg-emojis/twemoji/1f69a.svg";
 import ArticulatedLorry from "svg-emojis/twemoji/1f69b.svg";
+import Scooter from "svg-emojis/twemoji/1f6f5.svg";
 import StarEyes from "svg-emojis/twemoji/1f929.svg";
 import Information from "svg-emojis/twemoji/2139.svg";
 import AlarmClock from "svg-emojis/twemoji/23f0.svg";
