@@ -48,7 +48,7 @@ export default function CategoryCard({
       <Title>
         <Link href={`${categoryPath}`}>
           <a>
-            <StyledIcon iconName={categoryName} />
+            <StyledIcon name={categoryName} />
             {categoryName}
           </a>
         </Link>

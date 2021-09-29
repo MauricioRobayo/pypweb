@@ -67,7 +67,7 @@ function DayCard({
       >
         <Header isInactive={isInactive}>
           <div>
-            {isSelected ? <VehicleIcon iconName={categoryName} /> : null}
+            {isSelected ? <VehicleIcon name={categoryName} /> : null}
             {formattedDate}
             {isInactive ? null : (
               <Description>
