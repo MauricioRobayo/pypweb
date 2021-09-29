@@ -9,8 +9,9 @@ const Quote = styled.blockquote`
     margin: 0;
   }
   small {
+    font-size: 0.8rem;
     font-style: italic;
-    opacity: 0.75;
+    opacity: 0.95;
   }
 `;
 

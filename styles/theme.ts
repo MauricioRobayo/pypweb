@@ -2,16 +2,16 @@ import { DefaultTheme } from "styled-components";
 
 export const defaultTheme: DefaultTheme = {
   colors: {
-    danger: "#DC3545",
-    main: "#1E90FF",
+    danger: "hsl(360 97% 38%)",
+    main: "#125596",
     mainComplement: "#FFFFFF",
     mainDark: "#0052a3",
     mainLight: "#F0F8FF",
-    secondary: "#ADB5BD",
+    secondary: "#55595c",
     secondaryDark: "#495057",
     secondaryLight: "#DEE2E6",
     secondaryLighter: "#F8F9FA",
-    success: "#22BB33",
+    success: "hsl(127, 97%, 24%)",
     warning: "#FFC107",
     warningLighter: "#FFF3CD",
   },

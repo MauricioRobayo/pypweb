@@ -15,7 +15,7 @@ export const Wrapper = styled.article`
   text-align: center;
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h3`
   background: ${({ theme }) => theme.colors.main};
   border-radius: 5px 5px 0 0;
   color: white;
