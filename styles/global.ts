@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     line-height: normal
   }
+  li {
+    padding: 0.5em 0;
+  }
 `;
 
 export default GlobalStyle;
