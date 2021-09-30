@@ -64,5 +64,5 @@ export const defaultConfig = {
     type: "website",
     updated_time: `${new Date().toISOString().slice(0, 10)}T00:00:00.000-05:00`,
   },
-  titleTemplate: `%s | ${baseTitle}`,
+  titleTemplate: `%s | PYPHOY`,
 };
