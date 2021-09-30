@@ -9,6 +9,7 @@ import { dateParts, formatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 
@@ -26,15 +27,13 @@ type CityPageProps = {
 export default function CityPage({
   categories,
   cityName,
-  citySlug,
   currentDate,
 }: CityPageProps) {
+  const { query } = useRouter();
   const date = new Date(currentDate);
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
-  const main = (
-    <StyledCityData categories={categories} citySlug={citySlug} date={date} />
-  );
+  const main = <StyledCityData categories={categories} date={date} />;
   const aside = (
     <section>
       <h4>Pico y placa vigente en {cityName}</h4>
@@ -47,7 +46,15 @@ export default function CityPage({
       <ul>
         {categories.map(({ name: categoryName, slug: categorySlug }) => (
           <li key={categoryName}>
-            <Link href={`/${citySlug}/${categorySlug}`}>
+            <Link
+              href={{
+                pathname: "/[city]/[category]",
+                query: {
+                  city: query.city,
+                  category: categorySlug,
+                },
+              }}
+            >
               <a>{categoryName}</a>
             </Link>
           </li>
@@ -86,7 +93,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categories: categoriesData,
       cities: citiesList(),
       cityName,
-      citySlug,
       currentDate: date.getTime(),
     },
   };

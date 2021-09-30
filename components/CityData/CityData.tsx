@@ -1,4 +1,4 @@
-import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
@@ -20,7 +20,6 @@ const List = styled.div`
 `;
 
 type CategoryListProps = {
-  citySlug: CityType;
   categories: ICategoryData[];
   date: Date;
   className?: string;
@@ -28,7 +27,6 @@ type CategoryListProps = {
 
 export default function CityData({
   categories,
-  citySlug,
   date,
   className = "",
 }: CategoryListProps) {
@@ -46,7 +44,6 @@ export default function CityData({
               key={categorySlug}
               categoryName={categoryName}
               categorySlug={categorySlug}
-              citySlug={citySlug}
               date={date}
               hours={hours}
               numbers={numbers}
