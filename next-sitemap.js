@@ -13,16 +13,16 @@ module.exports = {
     if ([2, 3].includes(path.split("/").length)) {
       return {
         loc: path,
-        changefreq: config.changefreq,
-        priority: 0.85,
-        lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+        changefreq: "daily",
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
       };
     }
     return {
       loc: path,
-      changefreq: config.changefreq,
-      priority: config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      changefreq: "daily",
+      priority: 0.6,
+      lastmod: new Date().toISOString(),
     };
   },
 };
