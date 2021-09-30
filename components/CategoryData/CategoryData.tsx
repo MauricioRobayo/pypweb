@@ -1,5 +1,6 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
+import { DEFAULT_DAYS_TO_SHOW } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo, useEffect, useState } from "react";
@@ -13,8 +14,6 @@ import {
   Title,
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
-
-const INITIAL_DAYS_TO_SHOW = 8;
 
 type CategoryDataProps = {
   categories: { name: string; slug: string }[];
@@ -30,7 +29,7 @@ function CategoryData({
 }: CategoryDataProps) {
   const { pathname, query } = useRouter();
   const { dias: forwardDays } = query;
-  const [daysToShow, setDaysToShow] = useState(INITIAL_DAYS_TO_SHOW);
+  const [daysToShow, setDaysToShow] = useState(DEFAULT_DAYS_TO_SHOW);
   const { daysRemaining, data, name: categoryName } = categoryData;
   const [currentPypData, ...nextPypData] = data;
   const { category: categorySlug, city: citySlug } = query;
@@ -38,7 +37,7 @@ function CategoryData({
 
   useEffect(() => {
     if (forwardDays && typeof forwardDays === "string") {
-      setDaysToShow(Number(forwardDays) || INITIAL_DAYS_TO_SHOW);
+      setDaysToShow(Number(forwardDays) || DEFAULT_DAYS_TO_SHOW);
     }
   }, [forwardDays]);
 

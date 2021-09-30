@@ -3,7 +3,13 @@ import { CategoryName } from "@mauriciorobayo/pyptron";
 import { IconLeft } from "components/CategoryData/DayCard.styles";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
-import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
+import { format } from "date-fns";
+import {
+  ALL_DIGITS,
+  DEFAULT_DAYS_TO_SHOW,
+  NA,
+  pypNumbersToString,
+} from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -47,6 +53,8 @@ export default function CategoryCard({
     query: {
       city: query.city,
       category: categorySlug,
+      fecha: format(date, "yyyy-MM-dd"),
+      dias: DEFAULT_DAYS_TO_SHOW,
     },
   };
 

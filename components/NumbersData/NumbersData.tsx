@@ -4,7 +4,7 @@ import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
 import { format } from "date-fns";
-import { NA, pypNumbersToString } from "lib/utils";
+import { DEFAULT_DAYS_TO_SHOW, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -113,7 +113,7 @@ export default function NumbersData({
                         city: citySlug,
                         category: categorySlug,
                         fecha: format(dataDate, "yyyy-MM-dd"),
-                        dias: 8,
+                        dias: DEFAULT_DAYS_TO_SHOW,
                       },
                     }}
                     passHref
