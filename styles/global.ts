@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
   li {
     padding: 0.5em 0;
   }
+  @media only screen and (min-width: ${size.sm}) {
+    li {
+      padding: 0;
+    }
+  }
 `;
 
 export default GlobalStyle;

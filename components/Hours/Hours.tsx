@@ -11,7 +11,7 @@ const HoursTitle = styled.h4`
   margin: 0;
 `;
 
-const EmojiLeft = inlineIconLeft(Icon);
+const IconLeft = inlineIconLeft(Icon);
 
 type HoursProps = {
   className?: string;
@@ -33,7 +33,7 @@ export default function Hours({
     <>
       {showTitle ? (
         <HoursTitle>
-          <EmojiLeft name="⏰" />
+          <IconLeft name="⏰" />
           Horario
         </HoursTitle>
       ) : null}
