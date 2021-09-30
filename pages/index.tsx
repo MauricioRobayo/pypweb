@@ -45,7 +45,7 @@ export default function Home({
   return (
     <StyledLayout>
       <Page>
-        <Header date={date} title={pageTitle} shouldHighlightToday={false} />
+        <Header date={date} title={pageTitle} showTodayPrefix={false} />
         <Main>
           <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
         </Main>

@@ -5,22 +5,22 @@ type DateProps = {
   className?: string;
   date: Date;
   type?: "long" | "short";
-  shouldHighlightToday?: boolean;
+  showTodayPrefix?: boolean;
 };
 
 export default function PypDate({
   className = "",
   date,
   type = "long",
-  shouldHighlightToday = true,
+  showTodayPrefix = true,
 }: DateProps) {
-  const prefix = isToday(date) && shouldHighlightToday ? "Hoy " : "";
+  const todayPrefix = isToday(date) && showTodayPrefix ? "Hoy " : "";
 
   if (type === "long") {
     const localLongDateString = formatLongDate(date);
     return (
       <time className={className} dateTime={date.toISOString()}>
-        {`${prefix}${localLongDateString}`}
+        {`${todayPrefix}${localLongDateString}`}
       </time>
     );
   }
@@ -29,7 +29,7 @@ export default function PypDate({
   const weekdayName = getWeekdayName(date);
   return (
     <time className={className} dateTime={date.toISOString()}>
-      <span className="day">{`${prefix}${weekdayName}`}</span>{" "}
+      <span className="day">{`${todayPrefix}${weekdayName}`}</span>{" "}
       <span className="date">{localShortDateString}</span>
     </time>
   );
