@@ -42,7 +42,9 @@ export default function CategoryPage({
   useEffect(() => {
     async function updateData() {
       const date = new Date(
-        requestedDate ? (requestedDate as string) : currentDate
+        requestedDate
+          ? (requestedDate as string).replace(/-/g, "/")
+          : currentDate
       );
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
