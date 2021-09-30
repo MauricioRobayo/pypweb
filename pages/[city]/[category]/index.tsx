@@ -71,7 +71,7 @@ export default function CategoryPage({
     updateData();
   }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
 
-  const title = `${categoryData.name.toLowerCase()} en ${cityName}`;
+  const title = `${categoryData.name.toLowerCase()} ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
   const pageDescription = `${description} ${title}`;
   const main = (

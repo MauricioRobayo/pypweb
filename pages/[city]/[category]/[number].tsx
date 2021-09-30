@@ -37,7 +37,7 @@ export default function NumberPage({
   } = categoryData;
   const date = new Date(currentDate);
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const title = `${categoryName.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
+  const title = `${categoryName.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
   const pageDescription = `${description} ${title}`;
   const main = (

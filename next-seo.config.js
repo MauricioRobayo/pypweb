@@ -1,5 +1,4 @@
 export const baseTitle = "Pico y placa";
-export const title = `${baseTitle} hoy`;
 export const description =
   "Horario, días, fechas, placas, números, decretos, sanciones y toda la información vigente del pico y placa";
 export const defaultConfig = {
@@ -49,21 +48,21 @@ export const defaultConfig = {
       name: "theme-color",
     },
   ],
-  defaultTitle: title,
+  defaultTitle: baseTitle,
   description,
   openGraph: {
     images: [
       {
-        alt: title,
+        alt: baseTitle,
         height: 512,
         url: "https://www.pyphoy.com/android-chrome-512x512.png",
         width: 512,
       },
     ],
     locale: "es_CO",
-    site_name: title,
+    site_name: baseTitle,
     type: "website",
     updated_time: `${new Date().toISOString().slice(0, 10)}T00:00:00.000-05:00`,
   },
-  titleTemplate: `%s | ${title}`,
+  titleTemplate: `%s | PYPHOY`,
 };

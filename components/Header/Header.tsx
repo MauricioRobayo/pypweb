@@ -22,13 +22,18 @@ const Subtitle = styled.h2`
 type HeaderProps = {
   title: ReactNode;
   date: Date;
+  showTodaysPrefix?: boolean;
 };
-export default function Header({ title, date }: HeaderProps) {
+export default function Header({
+  title,
+  date,
+  showTodaysPrefix = true,
+}: HeaderProps) {
   return (
     <StyledHeader>
       <Title>{title}</Title>
       <Subtitle>
-        <PypDate date={date} />
+        <PypDate date={date} showTodaysPrefix={showTodaysPrefix} />
       </Subtitle>
     </StyledHeader>
   );
