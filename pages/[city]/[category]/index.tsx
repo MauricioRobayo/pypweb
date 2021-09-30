@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
+const INITIAL_DATE = new Date();
 
 type CategoryPageProps = {
   categories: { name: string; slug: string }[];
@@ -29,24 +30,28 @@ export default function CategoryPage({
   mdxSource,
 }: CategoryPageProps) {
   const [categoryData, setCategoryData] = useState(initialCategoryData);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(INITIAL_DATE);
   const { query } = useRouter();
   const {
-    fecha: requestedDate,
+    fecha: requestedDateString,
     city: citySlug,
     category: categorySlug,
   } = query;
 
   useEffect(() => {
     async function updateData() {
-      const newDate = requestedDate
-        ? new Date((requestedDate as string).replace(/-/g, "/"))
-        : new Date();
+      if (typeof requestedDateString !== "string") {
+        setCategoryData(initialCategoryData);
+        setDate(INITIAL_DATE);
+        return;
+      }
+
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
-      const { getCategoryData } = category.default;
-      const { year, month, day } = dateParts(newDate);
+      const { default: getCategoryData } = category;
+      const date = new Date(requestedDateString.replace(/-/g, "/"));
+      const { year, month, day } = dateParts(date);
 
       try {
         const categoryData = getCategoryData({
@@ -56,16 +61,16 @@ export default function CategoryPage({
           days: MAX_DAYS_PER_PAGE,
         });
 
-        setDate(newDate);
+        setDate(date);
         setCategoryData(categoryData);
       } catch (err) {
-        setDate(new Date());
         setCategoryData(initialCategoryData);
+        setDate(INITIAL_DATE);
       }
     }
 
     updateData();
-  }, [requestedDate, citySlug, categorySlug, initialCategoryData]);
+  }, [requestedDateString, citySlug, categorySlug, initialCategoryData]);
 
   const title = `${categoryData.name.toLowerCase()} ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;

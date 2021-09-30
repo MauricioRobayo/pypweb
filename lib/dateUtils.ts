@@ -18,9 +18,14 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
 });
 
 export const formatLongDate = longDateFormatter.format;
-export const formatShortDate = shortDateFormatter.format;
 export const formatTime = timeFormatter.format;
 
+export function formatShortDate(date: Date) {
+  const { year, month, day } = dateParts(date);
+  const paddedMonth = String(month).padStart(2, "0");
+  const paddedDay = String(day).padStart(2, "0");
+  return `${year}-${paddedMonth}-${paddedDay}`;
+}
 export function getWeekdayName(date: Date = new Date()): string {
   const parts = longDateFormatter.formatToParts(date);
   const weekdayName = parts.find(

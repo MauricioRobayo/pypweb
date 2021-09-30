@@ -3,7 +3,7 @@ import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
-import { format } from "date-fns";
+import { formatShortDate } from "lib/dateUtils";
 import { DEFAULT_DAYS_TO_SHOW, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -112,7 +112,7 @@ export default function NumbersData({
                       query: {
                         city: citySlug,
                         category: categorySlug,
-                        fecha: format(dataDate, "yyyy-MM-dd"),
+                        fecha: formatShortDate(dataDate),
                         dias: DEFAULT_DAYS_TO_SHOW,
                       },
                     }}
