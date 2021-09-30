@@ -34,7 +34,7 @@ export default function NumbersData({
   categoryData,
   date,
 }: NumbersPageProps) {
-  const { pathname, query } = useRouter();
+  const { query } = useRouter();
   const citySlug = query.city as string;
   const categorySlug = query.category as string;
   const {
