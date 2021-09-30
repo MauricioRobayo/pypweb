@@ -40,7 +40,7 @@ export default function NumberPage({
   const pageDescription = `${description} ${title}`;
   const main = (
     <NumbersData
-      categoryData={categoryData}
+      data={categoryData.data}
       categoryName={categoryName}
       cityName={cityName}
       date={date}

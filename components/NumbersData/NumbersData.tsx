@@ -1,4 +1,4 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { IPypDataResult } from "@mauriciorobayo/pyptron";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
@@ -23,7 +23,7 @@ type NumbersPageProps = {
   schemeString: string;
   categoryName: string;
   cityName: string;
-  categoryData: ICategoryData;
+  data: IPypDataResult[];
   date: Date;
 };
 export default function NumbersData({
@@ -31,15 +31,13 @@ export default function NumbersData({
   schemeString,
   categoryName,
   cityName,
-  categoryData,
+  data,
   date,
 }: NumbersPageProps) {
   const { query } = useRouter();
   const citySlug = query.city as string;
   const categorySlug = query.category as string;
-  const {
-    data: [{ numbers, hours }],
-  } = categoryData;
+  const [{ numbers, hours }, ...remainingData] = data;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
 
@@ -61,9 +59,9 @@ export default function NumbersData({
       </div>
     );
 
-  const forthcomingRestrictions = categoryData.data
-    .slice(1)
-    .filter(({ numbers }) => numbers.includes(Number(number)));
+  const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
+    numbers.includes(Number(number))
+  );
 
   return (
     <Wrapper>
