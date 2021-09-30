@@ -16,7 +16,7 @@ import {
   StyledVidverto,
   Title,
   Wrapper,
-} from "./Numbers.styles";
+} from "./NumbersData.styles";
 
 type NumbersPageProps = {
   number: string;
