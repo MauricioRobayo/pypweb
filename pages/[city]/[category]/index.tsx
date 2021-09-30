@@ -5,7 +5,7 @@ import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { dateParts } from "lib/dateUtils";
+import { cotDateFromParts, dateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -50,8 +50,7 @@ export default function CategoryPage({
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
       const { default: getCategoryData } = category;
-      const date = new Date(requestedDateString.replace(/-/g, "/"));
-      const { year, month, day } = dateParts(date);
+      const [year, month, day] = requestedDateString.split("/").map(Number);
 
       try {
         const categoryData = getCategoryData({
@@ -61,7 +60,7 @@ export default function CategoryPage({
           days: MAX_DAYS_PER_PAGE,
         });
 
-        setDate(date);
+        setDate(cotDateFromParts({ year, month, day }));
         setCategoryData(categoryData);
       } catch (err) {
         setCategoryData(initialCategoryData);
@@ -108,7 +107,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const date = new Date();
+  console.log("getStaticProps", { INITIAL_DATE });
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
@@ -116,7 +115,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(postMarkdown);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
-    ...dateParts(date),
+    ...dateParts(INITIAL_DATE),
     days: MAX_DAYS_PER_PAGE,
   });
 

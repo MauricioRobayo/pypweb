@@ -1,3 +1,5 @@
+type DateParts = Record<"year" | "month" | "day", number>;
+
 const AMERICA_BOGOTA = "America/Bogota";
 const longDateFormatter = new Intl.DateTimeFormat("es-CO", {
   day: "numeric",
@@ -44,9 +46,15 @@ export function isValidDateString(date: any): date is string {
 
 export function dateParts(date: Date) {
   const parts = shortDateFormatter.formatToParts(date);
+
   return Object.fromEntries(
     parts
       .filter(({ type }) => ["year", "month", "day"].includes(type))
       .map(({ type, value }) => [type, Number(value)])
-  ) as Record<"year" | "month" | "day", number>;
+  ) as DateParts;
+}
+
+export function cotDateFromParts(parts: DateParts) {
+  const { year, month, day } = parts;
+  return new Date(Date.UTC(year, month - 1, day, 5));
 }

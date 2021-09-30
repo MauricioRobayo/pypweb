@@ -3,7 +3,7 @@ import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
-import { formatShortDate } from "lib/dateUtils";
+import { cotDateFromParts, formatShortDate } from "lib/dateUtils";
 import { DEFAULT_DAYS_TO_SHOW, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -103,7 +103,11 @@ export default function NumbersData({
           <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
           <ListWrapper>
             {forthcomingRestrictions.map((data) => {
-              const dataDate = new Date(data.year, data.month - 1, data.day);
+              const dataDate = cotDateFromParts({
+                year: data.year,
+                month: data.month,
+                day: data.day,
+              });
               return (
                 <ListItem key={dataDate.toISOString()}>
                   <Link

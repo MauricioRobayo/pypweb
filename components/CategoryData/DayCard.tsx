@@ -2,7 +2,7 @@ import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { LicensePlate } from "components/LicensePlate";
 import { isToday } from "date-fns";
-import { formatShortDate } from "lib/dateUtils";
+import { cotDateFromParts, formatShortDate } from "lib/dateUtils";
 import {
   ALL_DIGITS,
   DEFAULT_DAYS_TO_SHOW,
@@ -40,7 +40,7 @@ function DayCard({
   pypData,
 }: DayCardProps) {
   const { day, hours, month, numbers, scheme, year } = pypData;
-  const date = new Date(year, month - 1, day);
+  const date = cotDateFromParts({ year, month, day });
   const numbersString = pypNumbersToString(numbers);
   const isPublic = isPublicLicense(categoryName);
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
