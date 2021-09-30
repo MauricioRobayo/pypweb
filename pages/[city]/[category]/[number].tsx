@@ -17,31 +17,28 @@ type NumberPageProps = {
   categoryData: ICategoryData;
   categoryName: string;
   cityName: string;
-  currentDate: number;
   number: string;
   mdxSource: MDXRemoteSerializeResult;
 };
 
 export default function NumberPage({
   categoryData,
-  categoryName,
   cityName,
-  currentDate,
   number,
   mdxSource,
 }: NumberPageProps) {
   const {
     data: [{ scheme }],
   } = categoryData;
-  const date = new Date(currentDate);
+  const date = new Date();
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const title = `${categoryName.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
+  const title = `${categoryData.name.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
   const pageDescription = `${description} ${title}`;
   const main = (
     <NumbersData
       data={categoryData.data}
-      categoryName={categoryName}
+      categoryName={categoryData.name}
       cityName={cityName}
       date={date}
       number={number}
@@ -88,7 +85,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const categorySlug = params?.category as string;
   const {
     categories: {
-      [categorySlug]: { getCategoryData, name: categoryName },
+      [categorySlug]: { getCategoryData },
     },
     name: cityName,
   } = cities[citySlug];
@@ -102,10 +99,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ...dateParts(date),
         days: 30,
       }),
-      categoryName,
       cities: citiesList(),
       cityName,
-      currentDate: date.getTime(),
       mdxSource,
       number: params?.number,
     },
