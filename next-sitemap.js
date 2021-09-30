@@ -2,7 +2,6 @@ module.exports = {
   siteUrl: "https://www.pyphoy.com",
   generateRobotsTxt: true,
   transform: async (config, path) => {
-    console.log(config);
     if (path === "/") {
       return {
         loc: path,
