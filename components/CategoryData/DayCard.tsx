@@ -40,7 +40,7 @@ function DayCard({
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
   const isToday = isDateToday(date);
-  const router = useRouter();
+  const { pathname, query } = useRouter();
 
   const formattedDate = (
     <StyledPypDate
@@ -91,9 +91,9 @@ function DayCard({
           <Warning>
             <Link
               href={{
-                pathname: router.pathname,
+                pathname,
                 query: {
-                  ...router.query,
+                  ...query,
                   fecha: format(new Date(), "yyyy-MM-dd"),
                   dias: 8,
                 },
@@ -121,9 +121,9 @@ function DayCard({
     >
       <Link
         href={{
-          pathname: router.pathname,
+          pathname: pathname,
           query: {
-            ...router.query,
+            ...query,
             fecha: format(date, "yyyy-MM-dd"),
             dias: 8,
           },
