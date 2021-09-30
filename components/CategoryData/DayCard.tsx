@@ -2,7 +2,13 @@ import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { LicensePlate } from "components/LicensePlate";
 import { format, isToday as isDateToday } from "date-fns";
-import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
+import {
+  ALL_DIGITS,
+  DEFAULT_DAYS_TO_SHOW,
+  isPublicLicense,
+  NA,
+  pypNumbersToString,
+} from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
@@ -95,7 +101,7 @@ function DayCard({
                 query: {
                   ...query,
                   fecha: format(new Date(), "yyyy-MM-dd"),
-                  dias: 8,
+                  dias: DEFAULT_DAYS_TO_SHOW,
                 },
               }}
               prefetch={false}
@@ -125,7 +131,7 @@ function DayCard({
           query: {
             ...query,
             fecha: format(date, "yyyy-MM-dd"),
-            dias: 8,
+            dias: DEFAULT_DAYS_TO_SHOW,
           },
         }}
         prefetch={false}

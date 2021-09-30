@@ -2,6 +2,7 @@ export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
 export const AMERICA_BOGOTA = "America/Bogota";
+export const DEFAULT_DAYS_TO_SHOW = 8;
 
 export const isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
 export const isPreview = process.env.NEXT_PUBLIC_VERCEL_ENV === "preview";

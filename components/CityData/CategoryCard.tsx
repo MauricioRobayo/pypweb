@@ -3,8 +3,15 @@ import { CategoryName } from "@mauriciorobayo/pyptron";
 import { IconLeft } from "components/CategoryData/DayCard.styles";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
-import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
+import { format } from "date-fns";
+import {
+  ALL_DIGITS,
+  DEFAULT_DAYS_TO_SHOW,
+  NA,
+  pypNumbersToString,
+} from "lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   Body,
   Description,
@@ -22,7 +29,6 @@ const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
 type CategoryCardProps = {
   categoryName: CategoryName;
   categorySlug: string;
-  citySlug: string;
   date: Date;
   numbers: number[];
   hours: IHourData[];
@@ -32,22 +38,30 @@ type CategoryCardProps = {
 export default function CategoryCard({
   categoryName,
   categorySlug,
-  citySlug,
   date,
   numbers,
   hours,
   scheme,
 }: CategoryCardProps) {
+  const { query } = useRouter();
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
-  const categoryPath = `${citySlug}/${categorySlug}`;
+  const linkUrl = {
+    pathname: "/[city]/[category]",
+    query: {
+      city: query.city,
+      category: categorySlug,
+      fecha: format(date, "yyyy-MM-dd"),
+      dias: DEFAULT_DAYS_TO_SHOW,
+    },
+  };
 
   return (
     <Wrapper>
       <Title>
-        <Link href={`${categoryPath}`}>
+        <Link href={linkUrl}>
           <a>
             <IconLeft name={categoryIcon[categoryName]} />
             {categoryName}
@@ -70,7 +84,7 @@ export default function CategoryCard({
         ) : null}
       </Body>
       <Footer>
-        <Link href={`${categoryPath}`} passHref>
+        <Link href={linkUrl} passHref>
           <SeeMore>
             <IconLeft name="📅" />
             Ver próximos días
