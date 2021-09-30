@@ -41,11 +41,11 @@ export default function Home({
   cities,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const date = new Date(currentDate);
-  const title = "Pico y placa hoy";
+  const pageTitle = "Pico y placa hoy";
   return (
     <StyledLayout>
       <Page>
-        <Header date={date} title={title} />
+        <Header date={date} title={pageTitle} shouldHighlightToday={false} />
         <Main>
           <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
         </Main>
