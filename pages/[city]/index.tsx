@@ -30,7 +30,7 @@ export default function CityPage({
   currentDate,
 }: CityPageProps) {
   const date = new Date(currentDate);
-  const pageTitle = `${baseTitle} ${cityName} hoy`;
+  const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
   const main = (
     <StyledCityData categories={categories} citySlug={citySlug} date={date} />
