@@ -6,6 +6,7 @@ import { PypDate } from "components/PypDate";
 import { format } from "date-fns";
 import { NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
@@ -35,6 +36,7 @@ export default function NumbersPage({
   categoryData,
   date,
 }: NumbersPageProps) {
+  const { pathname, query } = useRouter();
   const {
     data: [{ numbers, hours }],
     slug: categorySlug,
@@ -64,6 +66,7 @@ export default function NumbersPage({
     .slice(1)
     .filter(({ numbers }) => numbers.includes(Number(number)));
 
+  console.log(query, pathname);
   return (
     <Wrapper>
       <StyledBreadcrumbs
@@ -108,10 +111,15 @@ export default function NumbersPage({
               return (
                 <ListItem key={dataDate.toISOString()}>
                   <Link
-                    href={`/${citySlug}/${categoryData.slug}?d=${format(
-                      dataDate,
-                      "yyyy-MM-dd"
-                    )}`}
+                    href={{
+                      pathname: "/[city]/[category]",
+                      query: {
+                        city: query.city,
+                        category: query.category,
+                        fecha: format(dataDate, "yyyy-MM-dd"),
+                        dias: 8,
+                      },
+                    }}
                     passHref
                   >
                     <Anchor>
