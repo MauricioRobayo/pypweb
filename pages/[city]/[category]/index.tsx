@@ -19,19 +19,17 @@ const MAX_DAYS_PER_PAGE = 31;
 type CategoryPageProps = {
   categories: { name: string; slug: string }[];
   cityName: string;
-  currentDate: number;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function CategoryPage({
   categories,
   cityName,
-  currentDate,
   initialCategoryData,
   mdxSource,
 }: CategoryPageProps) {
   const [categoryData, setCategoryData] = useState(initialCategoryData);
-  const [date, setDate] = useState(currentDate);
+  const [date, setDate] = useState(new Date());
   const { query } = useRouter();
   const {
     fecha: requestedDate,
@@ -41,16 +39,14 @@ export default function CategoryPage({
 
   useEffect(() => {
     async function updateData() {
-      const date = new Date(
-        requestedDate
-          ? (requestedDate as string).replace(/-/g, "/")
-          : currentDate
-      );
+      const newDate = requestedDate
+        ? new Date((requestedDate as string).replace(/-/g, "/"))
+        : new Date();
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
       const { getCategoryData } = category.default;
-      const { year, month, day } = dateParts(date);
+      const { year, month, day } = dateParts(newDate);
 
       try {
         const categoryData = getCategoryData({
@@ -60,16 +56,16 @@ export default function CategoryPage({
           days: MAX_DAYS_PER_PAGE,
         });
 
-        setDate(date.getTime());
+        setDate(newDate);
         setCategoryData(categoryData);
       } catch (err) {
-        setDate(currentDate);
+        setDate(new Date());
         setCategoryData(initialCategoryData);
       }
     }
 
     updateData();
-  }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
+  }, [requestedDate, citySlug, categorySlug, initialCategoryData]);
 
   const title = `${categoryData.name.toLowerCase()} ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
@@ -127,7 +123,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })),
       cities: citiesList(),
       cityName,
-      currentDate: date.getTime(),
       initialCategoryData: categoryData,
       mdxSource,
     },
