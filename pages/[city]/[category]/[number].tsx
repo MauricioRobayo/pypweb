@@ -17,7 +17,6 @@ type NumberPageProps = {
   categoryData: ICategoryData;
   categoryName: string;
   cityName: string;
-  citySlug: string;
   currentDate: number;
   number: string;
   mdxSource: MDXRemoteSerializeResult;
@@ -27,7 +26,6 @@ export default function NumberPage({
   categoryData,
   categoryName,
   cityName,
-  citySlug,
   currentDate,
   number,
   mdxSource,
@@ -45,7 +43,6 @@ export default function NumberPage({
       categoryData={categoryData}
       categoryName={categoryName}
       cityName={cityName}
-      citySlug={citySlug}
       date={date}
       number={number}
       schemeString={schemeString}
@@ -108,7 +105,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categoryName,
       cities: citiesList(),
       cityName,
-      citySlug,
       currentDate: date.getTime(),
       mdxSource,
       number: params?.number,

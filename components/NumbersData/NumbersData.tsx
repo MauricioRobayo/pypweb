@@ -21,25 +21,24 @@ import {
 type NumbersPageProps = {
   number: string;
   schemeString: string;
-  citySlug: string;
   categoryName: string;
   cityName: string;
   categoryData: ICategoryData;
   date: Date;
 };
-export default function NumbersPage({
+export default function NumbersData({
   number,
   schemeString,
-  citySlug,
   categoryName,
   cityName,
   categoryData,
   date,
 }: NumbersPageProps) {
   const { pathname, query } = useRouter();
+  const citySlug = query.city as string;
+  const categorySlug = query.category as string;
   const {
     data: [{ numbers, hours }],
-    slug: categorySlug,
   } = categoryData;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
@@ -66,7 +65,6 @@ export default function NumbersPage({
     .slice(1)
     .filter(({ numbers }) => numbers.includes(Number(number)));
 
-  console.log(query, pathname);
   return (
     <Wrapper>
       <StyledBreadcrumbs
@@ -114,8 +112,8 @@ export default function NumbersPage({
                     href={{
                       pathname: "/[city]/[category]",
                       query: {
-                        city: query.city,
-                        category: query.category,
+                        city: citySlug,
+                        category: categorySlug,
                         fecha: format(dataDate, "yyyy-MM-dd"),
                         dias: 8,
                       },
