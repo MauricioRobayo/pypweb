@@ -13,7 +13,7 @@ module.exports = {
       return {
         loc: path,
         changefreq: "daily",
-        priority: 0.7,
+        priority: 0.8,
         lastmod: new Date().toISOString(),
       };
     }
@@ -21,14 +21,14 @@ module.exports = {
       return {
         loc: path,
         changefreq: "daily",
-        priority: 0.8,
+        priority: 0.9,
         lastmod: new Date().toISOString(),
       };
     }
     return {
       loc: path,
       changefreq: "daily",
-      priority: 0.6,
+      priority: 0.7,
       lastmod: new Date().toISOString(),
     };
   },
