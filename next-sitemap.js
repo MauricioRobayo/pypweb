@@ -9,7 +9,15 @@ module.exports = {
         priority: 1,
       };
     }
-    if ([2, 3].includes(path.split("/").length)) {
+    if (path.split("/").length === 2) {
+      return {
+        loc: path,
+        changefreq: "daily",
+        priority: 0.7,
+        lastmod: new Date().toISOString(),
+      };
+    }
+    if (path.split("/").length === 3) {
       return {
         loc: path,
         changefreq: "daily",
