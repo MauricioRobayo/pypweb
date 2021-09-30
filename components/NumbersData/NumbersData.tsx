@@ -1,4 +1,4 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { IPypDataResult } from "@mauriciorobayo/pyptron";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
@@ -6,6 +6,7 @@ import { PypDate } from "components/PypDate";
 import { format } from "date-fns";
 import { NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
@@ -15,30 +16,28 @@ import {
   StyledVidverto,
   Title,
   Wrapper,
-} from "./Numbers.styles";
+} from "./NumbersData.styles";
 
 type NumbersPageProps = {
   number: string;
   schemeString: string;
-  citySlug: string;
   categoryName: string;
   cityName: string;
-  categoryData: ICategoryData;
+  data: IPypDataResult[];
   date: Date;
 };
-export default function NumbersPage({
+export default function NumbersData({
   number,
   schemeString,
-  citySlug,
   categoryName,
   cityName,
-  categoryData,
+  data,
   date,
 }: NumbersPageProps) {
-  const {
-    data: [{ numbers, hours }],
-    slug: categorySlug,
-  } = categoryData;
+  const { query } = useRouter();
+  const citySlug = query.city as string;
+  const categorySlug = query.category as string;
+  const [{ numbers, hours }, ...remainingData] = data;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
 
@@ -60,9 +59,9 @@ export default function NumbersPage({
       </div>
     );
 
-  const forthcomingRestrictions = categoryData.data
-    .slice(1)
-    .filter(({ numbers }) => numbers.includes(Number(number)));
+  const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
+    numbers.includes(Number(number))
+  );
 
   return (
     <Wrapper>
@@ -108,10 +107,15 @@ export default function NumbersPage({
               return (
                 <ListItem key={dataDate.toISOString()}>
                   <Link
-                    href={`/${citySlug}/${categoryData.slug}?d=${format(
-                      dataDate,
-                      "yyyy-MM-dd"
-                    )}`}
+                    href={{
+                      pathname: "/[city]/[category]",
+                      query: {
+                        city: citySlug,
+                        category: categorySlug,
+                        fecha: format(dataDate, "yyyy-MM-dd"),
+                        dias: 8,
+                      },
+                    }}
                     passHref
                   >
                     <Anchor>
