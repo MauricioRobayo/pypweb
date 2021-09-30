@@ -21,16 +21,11 @@ type CityPageProps = {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
-  currentDate: number;
 };
 
-export default function CityPage({
-  categories,
-  cityName,
-  currentDate,
-}: CityPageProps) {
+export default function CityPage({ categories, cityName }: CityPageProps) {
   const { query } = useRouter();
-  const date = new Date(currentDate);
+  const date = new Date();
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
   const main = <StyledCityData categories={categories} date={date} />;
@@ -93,7 +88,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categories: categoriesData,
       cities: citiesList(),
       cityName,
-      currentDate: date.getTime(),
     },
   };
 };
