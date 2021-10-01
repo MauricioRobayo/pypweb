@@ -42,7 +42,9 @@ const HourWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const HourItem = styled.li``;
+const HourItem = styled.li`
+  padding: 0;
+`;
 
 type HourProps = {
   hourData: IHourData;
