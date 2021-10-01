@@ -14,7 +14,6 @@ import {
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
@@ -115,8 +114,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
-  const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
-  const mdxSource = await serialize(postMarkdown);
+  const mdxSource = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
     ...cotDateParts(INITIAL_DATE),
