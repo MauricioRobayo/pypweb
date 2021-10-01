@@ -87,7 +87,7 @@ export default function CategoryPage({
       maxDays={MAX_DAYS_PER_PAGE}
     />
   );
-  const aside = cotIsToday(date) ? <Post mdxSource={mdxSource} /> : null;
+  const aside = cotIsToday(date) ? <Post mdxSource={mdxSource} /> : <Post />;
 
   return (
     <Page

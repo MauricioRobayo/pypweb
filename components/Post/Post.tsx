@@ -22,17 +22,15 @@ const Wrapper = styled.div`
 `;
 
 type PostProps = {
-  mdxSource: MDXRemoteSerializeResult;
+  mdxSource?: MDXRemoteSerializeResult;
 };
 
 export function Post({ mdxSource }: PostProps) {
-  if (!mdxSource) {
-    return null;
-  }
-
   return (
     <Wrapper>
-      <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
+      {mdxSource ? (
+        <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
+      ) : null}
       <Fine />
     </Wrapper>
   );
