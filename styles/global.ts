@@ -16,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     color: ${({ theme }) => theme.colors.secondaryDark};
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
