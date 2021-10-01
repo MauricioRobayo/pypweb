@@ -49,8 +49,10 @@ export default function CategoryPage({
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
-      const { default: getCategoryData } = category;
-      const [year, month, day] = requestedDateString.split("/").map(Number);
+      const {
+        default: { getCategoryData },
+      } = category;
+      const [year, month, day] = requestedDateString.split("-").map(Number);
 
       try {
         const categoryData = getCategoryData({
