@@ -51,10 +51,10 @@ const containerStyle = css`
   border-radius: 0.5rem;
   overflow: hidden;
 `;
-
 const Wrapper = styled.div<{ isMobile: boolean | null }>`
   ${containerStyle}
 
+  margin: auto;
   width: min(
     100%,
     ${({ theme, isMobile }) => (isMobile ? "400px" : theme.maxWidth)}
