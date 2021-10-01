@@ -109,7 +109,6 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log("getStaticProps", { INITIAL_DATE });
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
