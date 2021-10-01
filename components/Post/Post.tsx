@@ -2,6 +2,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
 import styled from "styled-components";
+import { size } from "styles/constants";
 import PostSection from "./PostSection";
 
 const Wrapper = styled.div`
@@ -17,6 +18,12 @@ const Wrapper = styled.div`
     &:hover svg {
       opacity: 1;
       width: 1em;
+    }
+  }
+  li {
+    padding: 0.5em 0;
+    @media only screen and (min-width: ${size.sm}) {
+      padding: 0;
     }
   }
 `;
