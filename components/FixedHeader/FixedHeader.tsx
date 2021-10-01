@@ -1,5 +1,4 @@
 import { Clock } from "components/Clock";
-import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { IoShareSocial } from "react-icons/io5";
 import styled, { useTheme } from "styled-components";
@@ -40,7 +39,6 @@ const ShareButton = styled.button`
 
 function FixedHeader() {
   const theme = useTheme();
-  const { asPath } = useRouter();
   const [hasShare, setHasShare] = React.useState(false);
 
   useEffect(() => {
@@ -51,7 +49,7 @@ function FixedHeader() {
 
   const share = () => {
     navigator.share({
-      url: asPath,
+      url: window.location.href,
     });
   };
   return (
