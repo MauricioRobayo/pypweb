@@ -91,3 +91,17 @@ export function cotIsToday(date: Date) {
     todayDateParts.day === dtParts.day
   );
 }
+
+export function datePartsFromString(date: string): DateParts {
+  const [year, month, day] = date.split("-");
+
+  if (Number.isNaN(Date.parse(`${year}-${month}-${day}T00:00:00.000Z`))) {
+    throw new Error(`Invalid date string: ${date}`);
+  }
+
+  return {
+    year: Number(year),
+    month: Number(month),
+    day: Number(day),
+  };
+}
