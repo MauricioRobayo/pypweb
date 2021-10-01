@@ -13,6 +13,8 @@ import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
 import styled from "styled-components";
 
+const INITIAL_DATE = new Date();
+
 const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
@@ -25,10 +27,9 @@ type CityPageProps = {
 
 export default function CityPage({ categories, cityName }: CityPageProps) {
   const { query } = useRouter();
-  const date = new Date();
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
-  const main = <StyledCityData categories={categories} date={date} />;
+  const main = <StyledCityData categories={categories} date={INITIAL_DATE} />;
   const aside = (
     <section>
       <h4>Pico y placa vigente en {cityName}</h4>
@@ -62,7 +63,7 @@ export default function CityPage({ categories, cityName }: CityPageProps) {
   return (
     <Page
       aside={aside}
-      date={date}
+      date={INITIAL_DATE}
       description={pageDescription}
       main={main}
       title={pageTitle}
@@ -76,11 +77,10 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const date = new Date();
   const citySlug = params?.city as CityType;
   const { name: cityName, categories } = cities[citySlug];
   const categoriesData = Object.values(categories).map((category) =>
-    category.getCategoryData(cotDateParts(date))
+    category.getCategoryData(cotDateParts(INITIAL_DATE))
   );
 
   return {
