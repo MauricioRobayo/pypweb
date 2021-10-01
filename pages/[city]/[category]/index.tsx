@@ -8,6 +8,7 @@ import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
+  datePartsFromString,
   isValidDateString,
 } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
@@ -44,21 +45,18 @@ export default function CategoryPage({
 
   useEffect(() => {
     async function updateData() {
-      if (!isValidDateString(requestedDateString)) {
-        setCategoryData(initialCategoryData);
-        setDate(INITIAL_DATE);
-        return;
-      }
-
-      const category = await import(
-        `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
-      );
-      const {
-        default: { getCategoryData },
-      } = category;
-      const [year, month, day] = requestedDateString.split("-").map(Number);
-
       try {
+        const { year, month, day } = isValidDateString(requestedDateString)
+          ? datePartsFromString(requestedDateString)
+          : cotDateParts(INITIAL_DATE);
+
+        const category = await import(
+          `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
+        );
+        const {
+          default: { getCategoryData },
+        } = category;
+
         const categoryData = getCategoryData({
           year,
           month,
@@ -69,6 +67,7 @@ export default function CategoryPage({
         setDate(cotDateFromParts({ year, month, day }));
         setCategoryData(categoryData);
       } catch (err) {
+        console.log(err);
         setCategoryData(initialCategoryData);
         setDate(INITIAL_DATE);
       }

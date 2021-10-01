@@ -1,7 +1,10 @@
 import { cotFormatTime } from "lib/dateUtils";
 import { useEffect, useState } from "react";
 
-export function Clock() {
+type ClockProps = {
+  className?: string;
+};
+export function Clock({ className = "" }: ClockProps) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -11,5 +14,5 @@ export function Clock() {
     return () => clearInterval(interval);
   }, []);
 
-  return <div>{cotFormatTime(time)}</div>;
+  return <div className={className}>{cotFormatTime(time)}</div>;
 }

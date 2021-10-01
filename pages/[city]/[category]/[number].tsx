@@ -13,6 +13,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import React, { ReactElement } from "react";
 
+const INITIAL_DATE = new Date();
+
 type NumberPageProps = {
   categoryData: ICategoryData;
   categoryName: string;
@@ -30,7 +32,6 @@ export default function NumberPage({
   const {
     data: [{ scheme }],
   } = categoryData;
-  const date = new Date();
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const title = `${categoryData.name.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
@@ -40,7 +41,7 @@ export default function NumberPage({
       data={categoryData.data}
       categoryName={categoryData.name}
       cityName={cityName}
-      date={date}
+      date={INITIAL_DATE}
       number={number}
       schemeString={schemeString}
     />
@@ -50,7 +51,7 @@ export default function NumberPage({
   return (
     <Page
       aside={aside}
-      date={date}
+      date={INITIAL_DATE}
       description={pageDescription}
       main={main}
       title={pageTitle}
@@ -91,12 +92,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   } = cities[citySlug];
   const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const mdxSource = await serialize(postMarkdown);
-  const date = new Date();
 
   return {
     props: {
       categoryData: getCategoryData({
-        ...cotDateParts(date),
+        ...cotDateParts(INITIAL_DATE),
         days: 30,
       }),
       cities: citiesList(),
