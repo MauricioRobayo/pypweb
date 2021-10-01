@@ -58,3 +58,13 @@ export function cotDateFromParts(parts: DateParts) {
   const { year, month, day } = parts;
   return new Date(Date.UTC(year, month - 1, day, 5));
 }
+
+export function cotIsToday(date: Date) {
+  const todayDateParts = dateParts(new Date());
+  const dtParts = dateParts(date);
+  return (
+    todayDateParts.year === dtParts.year &&
+    todayDateParts.month === dtParts.month &&
+    todayDateParts.day === dtParts.day
+  );
+}

@@ -1,5 +1,9 @@
-import { isToday } from "date-fns";
-import { formatLongDate, formatShortDate, getWeekdayName } from "lib/dateUtils";
+import {
+  cotIsToday,
+  formatLongDate,
+  formatShortDate,
+  getWeekdayName,
+} from "lib/dateUtils";
 
 type DateProps = {
   className?: string;
@@ -14,7 +18,7 @@ export default function PypDate({
   type = "long",
   showTodaysPrefix = true,
 }: DateProps) {
-  const todaysPrefix = isToday(date) && showTodaysPrefix ? "Hoy " : "";
+  const todaysPrefix = cotIsToday(date) && showTodaysPrefix ? "Hoy " : "";
 
   if (type === "long") {
     const localLongDateString = formatLongDate(date);
