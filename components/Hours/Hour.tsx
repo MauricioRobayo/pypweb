@@ -12,7 +12,7 @@ type StyledCountdownProps = {
 const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
   align-items: center;
   display: flex;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   margin-top: 0.25rem;
   .countdown {
     background-color: ${({ type, theme }) =>
