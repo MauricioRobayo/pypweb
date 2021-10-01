@@ -5,7 +5,7 @@ import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { CitiesList, citiesList } from "lib/cities";
-import { dateParts, formatLongDate } from "lib/dateUtils";
+import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle, description } from "next-seo.config";
 import Link from "next/link";
@@ -21,16 +21,11 @@ type CityPageProps = {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
-  currentDate: number;
 };
 
-export default function CityPage({
-  categories,
-  cityName,
-  currentDate,
-}: CityPageProps) {
+export default function CityPage({ categories, cityName }: CityPageProps) {
   const { query } = useRouter();
-  const date = new Date(currentDate);
+  const date = new Date();
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${description} ${cityName}`;
   const main = <StyledCityData categories={categories} date={date} />;
@@ -40,7 +35,7 @@ export default function CityPage({
       <p>
         Las siguientes son las medidas de restricción vehicular vigentes para{" "}
         {cityName} durante el mes de{" "}
-        {formatLongDate().split(" ").slice(3).join(" ")}, de acuerdo con lo
+        {cotFormatLongDate().split(" ").slice(3).join(" ")}, de acuerdo con lo
         establecido por la Alcaldía de {cityName}:
       </p>
       <ul>
@@ -85,7 +80,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const { name: cityName, categories } = cities[citySlug];
   const categoriesData = Object.values(categories).map((category) =>
-    category.getCategoryData(dateParts(date))
+    category.getCategoryData(cotDateParts(date))
   );
 
   return {
@@ -93,7 +88,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categories: categoriesData,
       cities: citiesList(),
       cityName,
-      currentDate: date.getTime(),
     },
   };
 };

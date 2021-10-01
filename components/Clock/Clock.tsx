@@ -1,4 +1,4 @@
-import { formatTime } from "lib/dateUtils";
+import { cotFormatTime } from "lib/dateUtils";
 import { useEffect, useState } from "react";
 
 export function Clock() {
@@ -11,5 +11,5 @@ export function Clock() {
     return () => clearInterval(interval);
   }, []);
 
-  return <div>{formatTime(time)}</div>;
+  return <div>{cotFormatTime(time)}</div>;
 }

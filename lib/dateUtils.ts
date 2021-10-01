@@ -1,3 +1,5 @@
+type DateParts = Record<"year" | "month" | "day", number>;
+
 const AMERICA_BOGOTA = "America/Bogota";
 const longDateFormatter = new Intl.DateTimeFormat("es-CO", {
   day: "numeric",
@@ -17,11 +19,30 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeStyle: "long",
 });
 
-export const formatLongDate = longDateFormatter.format;
-export const formatShortDate = shortDateFormatter.format;
-export const formatTime = timeFormatter.format;
+/**
+ * Colombian time long date format
+ */
+export const cotFormatLongDate = longDateFormatter.format;
 
-export function getWeekdayName(date: Date = new Date()): string {
+/**
+ * Colombian time hour format
+ */
+export const cotFormatTime = timeFormatter.format;
+
+/**
+ * Colombian time short date format
+ */
+export function cotFormatShortDate(date: Date) {
+  const { year, month, day } = cotDateParts(date);
+  const paddedMonth = String(month).padStart(2, "0");
+  const paddedDay = String(day).padStart(2, "0");
+  return `${year}-${paddedMonth}-${paddedDay}`;
+}
+
+/**
+ * Colombian time weekday name
+ */
+export function cotGetWeekdayName(date: Date = new Date()): string {
   const parts = longDateFormatter.formatToParts(date);
   const weekdayName = parts.find(
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
@@ -37,11 +58,36 @@ export function isValidDateString(date: any): date is string {
   );
 }
 
-export function dateParts(date: Date) {
+/**
+ * Colombian time year, month, day
+ */
+export function cotDateParts(date: Date) {
   const parts = shortDateFormatter.formatToParts(date);
+
   return Object.fromEntries(
     parts
       .filter(({ type }) => ["year", "month", "day"].includes(type))
       .map(({ type, value }) => [type, Number(value)])
-  ) as Record<"year" | "month" | "day", number>;
+  ) as DateParts;
+}
+
+/**
+ * Colombian time new date from year, month, day
+ */
+export function cotDateFromParts(parts: DateParts) {
+  const { year, month, day } = parts;
+  return new Date(Date.UTC(year, month - 1, day, 5));
+}
+
+/**
+ * Colombian time check if date is today's date
+ */
+export function cotIsToday(date: Date) {
+  const todayDateParts = cotDateParts(new Date());
+  const dtParts = cotDateParts(date);
+  return (
+    todayDateParts.year === dtParts.year &&
+    todayDateParts.month === dtParts.month &&
+    todayDateParts.day === dtParts.day
+  );
 }

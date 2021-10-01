@@ -5,7 +5,11 @@ import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { dateParts } from "lib/dateUtils";
+import {
+  cotDateFromParts,
+  cotDateParts,
+  isValidDateString,
+} from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -15,42 +19,44 @@ import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
+const INITIAL_DATE = new Date();
 
 type CategoryPageProps = {
   categories: { name: string; slug: string }[];
   cityName: string;
-  currentDate: number;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function CategoryPage({
   categories,
   cityName,
-  currentDate,
   initialCategoryData,
   mdxSource,
 }: CategoryPageProps) {
   const [categoryData, setCategoryData] = useState(initialCategoryData);
-  const [date, setDate] = useState(currentDate);
+  const [date, setDate] = useState(INITIAL_DATE);
   const { query } = useRouter();
   const {
-    fecha: requestedDate,
+    fecha: requestedDateString,
     city: citySlug,
     category: categorySlug,
   } = query;
 
   useEffect(() => {
     async function updateData() {
-      const date = new Date(
-        requestedDate
-          ? (requestedDate as string).replace(/-/g, "/")
-          : currentDate
-      );
+      if (!isValidDateString(requestedDateString)) {
+        setCategoryData(initialCategoryData);
+        setDate(INITIAL_DATE);
+        return;
+      }
+
       const category = await import(
         `@mauriciorobayo/pyptron/dist/cities/${citySlug}/${categorySlug}/index.js`
       );
-      const { getCategoryData } = category.default;
-      const { year, month, day } = dateParts(date);
+      const {
+        default: { getCategoryData },
+      } = category;
+      const [year, month, day] = requestedDateString.split("-").map(Number);
 
       try {
         const categoryData = getCategoryData({
@@ -60,16 +66,16 @@ export default function CategoryPage({
           days: MAX_DAYS_PER_PAGE,
         });
 
-        setDate(date.getTime());
+        setDate(cotDateFromParts({ year, month, day }));
         setCategoryData(categoryData);
       } catch (err) {
-        setDate(currentDate);
         setCategoryData(initialCategoryData);
+        setDate(INITIAL_DATE);
       }
     }
 
     updateData();
-  }, [requestedDate, citySlug, categorySlug, currentDate, initialCategoryData]);
+  }, [requestedDateString, citySlug, categorySlug, initialCategoryData]);
 
   const title = `${categoryData.name.toLowerCase()} ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
@@ -107,7 +113,6 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const date = new Date();
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
@@ -115,7 +120,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(postMarkdown);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
-    ...dateParts(date),
+    ...cotDateParts(INITIAL_DATE),
     days: MAX_DAYS_PER_PAGE,
   });
 
@@ -127,7 +132,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })),
       cities: citiesList(),
       cityName,
-      currentDate: date.getTime(),
       initialCategoryData: categoryData,
       mdxSource,
     },

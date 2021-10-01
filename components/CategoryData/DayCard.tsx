@@ -1,7 +1,11 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { LicensePlate } from "components/LicensePlate";
-import { format, isToday as isDateToday } from "date-fns";
+import {
+  cotDateFromParts,
+  cotFormatShortDate,
+  cotIsToday,
+} from "lib/dateUtils";
 import {
   ALL_DIGITS,
   DEFAULT_DAYS_TO_SHOW,
@@ -39,13 +43,12 @@ function DayCard({
   pypData,
 }: DayCardProps) {
   const { day, hours, month, numbers, scheme, year } = pypData;
-  const date = new Date(year, month - 1, day);
+  const date = cotDateFromParts({ year, month, day });
   const numbersString = pypNumbersToString(numbers);
   const isPublic = isPublicLicense(categoryName);
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isAllDigits = numbersString === ALL_DIGITS;
   const isInactive = numbersString === NA;
-  const isToday = isDateToday(date);
   const { pathname, query } = useRouter();
 
   const formattedDate = (
@@ -90,18 +93,21 @@ function DayCard({
         </Header>
         {isInactive ? null : (
           <Body>
-            <StyledHours date={date} hours={hours} interactive={isToday} />
+            <StyledHours
+              date={date}
+              hours={hours}
+              interactive={cotIsToday(date)}
+            />
           </Body>
         )}
-        {isToday ? null : (
+        {cotIsToday(date) ? null : (
           <Warning>
             <Link
               href={{
                 pathname,
                 query: {
-                  ...query,
-                  fecha: format(new Date(), "yyyy-MM-dd"),
-                  dias: DEFAULT_DAYS_TO_SHOW,
+                  city: query.city,
+                  category: query.category,
                 },
               }}
               prefetch={false}
@@ -130,7 +136,7 @@ function DayCard({
           pathname: pathname,
           query: {
             ...query,
-            fecha: format(date, "yyyy-MM-dd"),
+            fecha: cotFormatShortDate(date),
             dias: DEFAULT_DAYS_TO_SHOW,
           },
         }}

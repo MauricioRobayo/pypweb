@@ -1,8 +1,9 @@
 import { Footer } from "components/CityData/CategoryCard.styles";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
+import type { CitiesList } from "lib/cities";
 import { citiesList } from "lib/cities";
-import { InferGetStaticPropsType } from "next";
+import { GetStaticPropsResult, InferGetStaticPropsType } from "next";
 import React from "react";
 import styled from "styled-components";
 
@@ -29,18 +30,10 @@ const Main = styled.main`
   padding: 0 1rem;
 `;
 
-export const getStaticProps = async () => ({
-  props: {
-    currentDate: Date.now(),
-    cities: citiesList(),
-  },
-});
-
 export default function Home({
-  currentDate,
   cities,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const date = new Date(currentDate);
+  const date = new Date();
   const pageTitle = "Pico y placa hoy";
   return (
     <StyledLayout>
@@ -53,4 +46,14 @@ export default function Home({
       <Footer />
     </StyledLayout>
   );
+}
+
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<{ cities: CitiesList }>
+> {
+  return {
+    props: {
+      cities: citiesList(),
+    },
+  };
 }
