@@ -103,7 +103,8 @@ function DayCard({
               href={{
                 pathname,
                 query: {
-                  ...query,
+                  city: query.city,
+                  category: query.category,
                 },
               }}
               prefetch={false}
