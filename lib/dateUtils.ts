@@ -19,16 +19,16 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeStyle: "long",
 });
 
-export const formatLongDate = longDateFormatter.format;
-export const formatTime = timeFormatter.format;
+export const cotFormatLongDate = longDateFormatter.format;
+export const cotFormatTime = timeFormatter.format;
 
-export function formatShortDate(date: Date) {
-  const { year, month, day } = dateParts(date);
+export function cotFormatShortDate(date: Date) {
+  const { year, month, day } = cotDateParts(date);
   const paddedMonth = String(month).padStart(2, "0");
   const paddedDay = String(day).padStart(2, "0");
   return `${year}-${paddedMonth}-${paddedDay}`;
 }
-export function getWeekdayName(date: Date = new Date()): string {
+export function cotGetWeekdayName(date: Date = new Date()): string {
   const parts = longDateFormatter.formatToParts(date);
   const weekdayName = parts.find(
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
@@ -44,7 +44,7 @@ export function isValidDateString(date: any): date is string {
   );
 }
 
-export function dateParts(date: Date) {
+export function cotDateParts(date: Date) {
   const parts = shortDateFormatter.formatToParts(date);
 
   return Object.fromEntries(
@@ -60,8 +60,8 @@ export function cotDateFromParts(parts: DateParts) {
 }
 
 export function cotIsToday(date: Date) {
-  const todayDateParts = dateParts(new Date());
-  const dtParts = dateParts(date);
+  const todayDateParts = cotDateParts(new Date());
+  const dtParts = cotDateParts(date);
   return (
     todayDateParts.year === dtParts.year &&
     todayDateParts.month === dtParts.month &&

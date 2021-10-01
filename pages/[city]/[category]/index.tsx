@@ -5,7 +5,7 @@ import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { cotDateFromParts, dateParts } from "lib/dateUtils";
+import { cotDateFromParts, cotDateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(postMarkdown);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
-    ...dateParts(INITIAL_DATE),
+    ...cotDateParts(INITIAL_DATE),
     days: MAX_DAYS_PER_PAGE,
   });
 

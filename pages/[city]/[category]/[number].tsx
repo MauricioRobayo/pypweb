@@ -5,7 +5,7 @@ import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { dateParts } from "lib/dateUtils";
+import { cotDateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       categoryData: getCategoryData({
-        ...dateParts(date),
+        ...cotDateParts(date),
         days: 30,
       }),
       cities: citiesList(),

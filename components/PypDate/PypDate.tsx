@@ -1,8 +1,8 @@
 import {
+  cotFormatLongDate,
+  cotFormatShortDate,
+  cotGetWeekdayName,
   cotIsToday,
-  formatLongDate,
-  formatShortDate,
-  getWeekdayName,
 } from "lib/dateUtils";
 
 type DateProps = {
@@ -21,7 +21,7 @@ export default function PypDate({
   const todaysPrefix = cotIsToday(date) && showTodaysPrefix ? "Hoy " : "";
 
   if (type === "long") {
-    const localLongDateString = formatLongDate(date);
+    const localLongDateString = cotFormatLongDate(date);
     return (
       <time className={className} dateTime={date.toISOString()}>
         {`${todaysPrefix}${localLongDateString}`}
@@ -29,8 +29,8 @@ export default function PypDate({
     );
   }
 
-  const localShortDateString = formatShortDate(date);
-  const weekdayName = getWeekdayName(date);
+  const localShortDateString = cotFormatShortDate(date);
+  const weekdayName = cotGetWeekdayName(date);
   return (
     <time className={className} dateTime={date.toISOString()}>
       <span className="day">{`${todaysPrefix}${weekdayName}`}</span>{" "}

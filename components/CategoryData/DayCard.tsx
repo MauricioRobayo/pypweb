@@ -1,7 +1,11 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { LicensePlate } from "components/LicensePlate";
-import { cotDateFromParts, cotIsToday, formatShortDate } from "lib/dateUtils";
+import {
+  cotDateFromParts,
+  cotFormatShortDate,
+  cotIsToday,
+} from "lib/dateUtils";
 import {
   ALL_DIGITS,
   DEFAULT_DAYS_TO_SHOW,
@@ -132,7 +136,7 @@ function DayCard({
           pathname: pathname,
           query: {
             ...query,
-            fecha: formatShortDate(date),
+            fecha: cotFormatShortDate(date),
             dias: DEFAULT_DAYS_TO_SHOW,
           },
         }}
