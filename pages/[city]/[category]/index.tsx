@@ -8,6 +8,7 @@ import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
+  cotIsToday,
   datePartsFromString,
   isValidDateString,
 } from "lib/dateUtils";
@@ -86,7 +87,7 @@ export default function CategoryPage({
       maxDays={MAX_DAYS_PER_PAGE}
     />
   );
-  const aside = <Post mdxSource={mdxSource} />;
+  const aside = cotIsToday(date) ? <Post mdxSource={mdxSource} /> : null;
 
   return (
     <Page
