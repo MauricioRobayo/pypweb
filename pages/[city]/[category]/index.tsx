@@ -1,6 +1,7 @@
 import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
+import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
@@ -87,7 +88,12 @@ export default function CategoryPage({
       maxDays={MAX_DAYS_PER_PAGE}
     />
   );
-  const aside = cotIsToday(date) ? <Post mdxSource={mdxSource} /> : <Post />;
+  const aside = (
+    <Post
+      mdxSource={cotIsToday(date) ? mdxSource : null}
+      sections={[{ title: "Sanciones", content: <Fine /> }]}
+    />
+  );
 
   return (
     <Page

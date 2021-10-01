@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import LinkIcon from "svg-emojis/twemoji/1f517.svg";
 
 const Quote = styled.blockquote`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
@@ -19,12 +18,6 @@ const Quote = styled.blockquote`
 export function Fine() {
   return (
     <>
-      <h4 id="sanciones">
-        Sanciones
-        <a aria-hidden="true" tabIndex={-1} href="#sanciones">
-          <LinkIcon />
-        </a>
-      </h4>
       <p>
         Los infractores a lo dispuesto serán sancionados según lo consagrado por
         el{" "}

@@ -1,8 +1,8 @@
-import { Fine } from "components/Fine";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
 import styled from "styled-components";
+import PostSection from "./PostSection";
 
 const Wrapper = styled.div`
   h4 {
@@ -22,16 +22,33 @@ const Wrapper = styled.div`
 `;
 
 type PostProps = {
-  mdxSource?: MDXRemoteSerializeResult;
+  mdxSource?: MDXRemoteSerializeResult | null;
+  sections?: {
+    title?: string;
+    content: React.ReactNode;
+    position?: "top" | "bottom";
+  }[];
 };
 
-export function Post({ mdxSource }: PostProps) {
+export function Post({ mdxSource, sections }: PostProps) {
+  const topSections = sections
+    ?.filter(({ position }) => position === "top")
+    .map(({ title, content }, index) => (
+      <PostSection key={index} title={title} content={content} />
+    ));
+  const bottomSections = sections
+    ?.filter(({ position }) => position !== "top")
+    .map(({ title, content }, index) => (
+      <PostSection key={index} title={title} content={content} />
+    ));
+
   return (
     <Wrapper>
+      {topSections}
       {mdxSource ? (
         <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
       ) : null}
-      <Fine />
+      {bottomSections}
     </Wrapper>
   );
 }

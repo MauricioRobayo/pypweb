@@ -1,5 +1,6 @@
 import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
+import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
@@ -45,7 +46,12 @@ export default function NumberPage({
       schemeString={schemeString}
     />
   );
-  const aside = <Post mdxSource={mdxSource} />;
+  const aside = (
+    <Post
+      mdxSource={mdxSource}
+      sections={[{ title: "Sanciones", content: <Fine /> }]}
+    />
+  );
 
   return (
     <Page
