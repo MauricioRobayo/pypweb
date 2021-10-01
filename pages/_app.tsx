@@ -1,4 +1,4 @@
-import { ConsentBanner } from "components/Ads";
+import { AdSense, ConsentBanner } from "components/Ads";
 import { CitiesList } from "lib/cities";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
@@ -41,6 +41,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <>
+      <AdSense />
       <GoogleAnalytics />
       <ConsentBanner />
       <DefaultSeo {...defaultConfig} />
