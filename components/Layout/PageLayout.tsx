@@ -1,4 +1,3 @@
-import { Clock } from "components/Clock";
 import { FixedHeader } from "components/FixedHeader";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
@@ -21,9 +20,7 @@ export default function Layout({ children, cities }: LayoutProps) {
   return (
     <StyledLayout>
       <Navbar cities={cities} />
-      <FixedHeader>
-        <Clock />
-      </FixedHeader>
+      <FixedHeader />
       {children}
       <Footer />
     </StyledLayout>
