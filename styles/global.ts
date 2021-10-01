@@ -14,13 +14,7 @@ const GlobalStyle = createGlobalStyle`
       url("/fonts/LicensePlate.eot") format("embedded-opentype") ;
   }
   *, *::before, *::after {
-  box-sizing: border-box;
-}
-  html {
-    font-size: 14px;
-    @media only screen and (min-width: ${size.sm}) {
-      font-size: 16px;
-    }
+    box-sizing: border-box;
   }
   body {
     color: ${({ theme }) => theme.colors.secondaryDark};
