@@ -5,7 +5,11 @@ import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
-import { cotDateFromParts, cotDateParts } from "lib/dateUtils";
+import {
+  cotDateFromParts,
+  cotDateParts,
+  isValidDateString,
+} from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -40,7 +44,7 @@ export default function CategoryPage({
 
   useEffect(() => {
     async function updateData() {
-      if (typeof requestedDateString !== "string") {
+      if (!isValidDateString(requestedDateString)) {
         setCategoryData(initialCategoryData);
         setDate(INITIAL_DATE);
         return;
