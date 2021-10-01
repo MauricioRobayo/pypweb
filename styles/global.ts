@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { size } from "./constants";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -16,19 +15,14 @@ const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     color: ${({ theme }) => theme.colors.secondaryDark};
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     line-height: normal
-  }
-  li {
-    padding: 0.5em 0;
-  }
-  @media only screen and (min-width: ${size.sm}) {
-    li {
-      padding: 0;
-    }
   }
 `;
 

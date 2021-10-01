@@ -4,6 +4,7 @@ import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
+import { Post } from "components/Post";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -31,33 +32,46 @@ export default function CityPage({ categories, cityName }: CityPageProps) {
   const pageDescription = `${description} ${cityName}`;
   const main = <StyledCityData categories={categories} date={INITIAL_DATE} />;
   const aside = (
-    <section>
-      <h4>Pico y placa vigente en {cityName}</h4>
-      <p>
-        Las siguientes son las medidas de restricción vehicular vigentes para{" "}
-        {cityName} durante el mes de{" "}
-        {cotFormatLongDate().split(" ").slice(3).join(" ")}, de acuerdo con lo
-        establecido por la Alcaldía de {cityName}:
-      </p>
-      <ul>
-        {categories.map(({ name: categoryName, slug: categorySlug }) => (
-          <li key={categoryName}>
-            <Link
-              href={{
-                pathname: "/[city]/[category]",
-                query: {
-                  city: query.city,
-                  category: categorySlug,
-                },
-              }}
-            >
-              <a>{categoryName}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Fine />
-    </section>
+    <Post
+      sections={[
+        {
+          title: `Pico y placa vigente en ${cityName}`,
+          content: (
+            <>
+              <p>
+                Las siguientes son las medidas de restricción vehicular vigentes
+                para {cityName} durante el mes de{" "}
+                {cotFormatLongDate().split(" ").slice(3).join(" ")}, de acuerdo
+                con lo establecido por la Alcaldía de {cityName}:
+              </p>
+              <ul>
+                {categories.map(
+                  ({ name: categoryName, slug: categorySlug }) => (
+                    <li key={categoryName}>
+                      <Link
+                        href={{
+                          pathname: "/[city]/[category]",
+                          query: {
+                            city: query.city,
+                            category: categorySlug,
+                          },
+                        }}
+                      >
+                        <a>{categoryName}</a>
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            </>
+          ),
+        },
+        {
+          title: "Sanciones",
+          content: <Fine />,
+        },
+      ]}
+    ></Post>
   );
 
   return (

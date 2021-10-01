@@ -1,5 +1,6 @@
 import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
+import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
@@ -9,7 +10,6 @@ import { cotDateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import React, { ReactElement } from "react";
 
@@ -46,7 +46,12 @@ export default function NumberPage({
       schemeString={schemeString}
     />
   );
-  const aside = <Post mdxSource={mdxSource} />;
+  const aside = (
+    <Post
+      mdxSource={mdxSource}
+      sections={[{ title: "Sanciones", content: <Fine /> }]}
+    />
+  );
 
   return (
     <Page
@@ -90,8 +95,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
-  const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
-  const mdxSource = await serialize(postMarkdown);
+  const mdxSource = await getPostBySlugs(`${citySlug}/${categorySlug}`);
 
   return {
     props: {

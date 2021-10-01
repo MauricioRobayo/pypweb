@@ -1,6 +1,7 @@
 import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
+import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
@@ -8,13 +9,13 @@ import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
+  cotIsToday,
   datePartsFromString,
   isValidDateString,
 } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import { baseTitle, description } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
@@ -87,7 +88,12 @@ export default function CategoryPage({
       maxDays={MAX_DAYS_PER_PAGE}
     />
   );
-  const aside = <Post mdxSource={mdxSource} />;
+  const aside = (
+    <Post
+      mdxSource={cotIsToday(date) ? mdxSource : null}
+      sections={[{ title: "Sanciones", content: <Fine /> }]}
+    />
+  );
 
   return (
     <Page
@@ -115,8 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
-  const postMarkdown = await getPostBySlugs(`${citySlug}/${categorySlug}`);
-  const mdxSource = await serialize(postMarkdown);
+  const mdxSource = await getPostBySlugs(`${citySlug}/${categorySlug}`);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
     ...cotDateParts(INITIAL_DATE),

@@ -18,7 +18,6 @@ const Quote = styled.blockquote`
 export function Fine() {
   return (
     <>
-      <h4>Sanciones</h4>
       <p>
         Los infractores a lo dispuesto serán sancionados según lo consagrado por
         el{" "}
