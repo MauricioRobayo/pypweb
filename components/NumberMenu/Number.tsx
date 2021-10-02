@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 type StyledNumberProps = {
@@ -33,13 +34,9 @@ const Anchor = styled.a`
 type NumberProps = {
   number: string;
   selectedNumber: string;
-  basePath: string;
 };
-export default function Number({
-  number,
-  selectedNumber,
-  basePath,
-}: NumberProps) {
+export default function Number({ number, selectedNumber }: NumberProps) {
+  const { query } = useRouter();
   if (number === selectedNumber) {
     return (
       <StyledNumber key={number} selected>
@@ -48,7 +45,17 @@ export default function Number({
     );
   }
   return (
-    <Link key={number} href={`/${basePath}/${number}`} passHref>
+    <Link
+      href={{
+        pathname: "/[city]/[category]/[number]",
+        query: {
+          city: query.city,
+          category: query.category,
+          number,
+        },
+      }}
+      passHref
+    >
       <Anchor>
         <StyledNumber>{number}</StyledNumber>
       </Anchor>

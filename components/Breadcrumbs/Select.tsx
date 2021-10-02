@@ -26,9 +26,9 @@ const PathSelect = ({ options, selected, title }: PathSelectProps) => {
           city: query.city,
           category: e.target.value,
         },
-      },
-      undefined,
-      { shallow: true }
+      }
+      // Do not shallow render this
+      // We need to fetch mdxSource for each category
     );
   };
 
