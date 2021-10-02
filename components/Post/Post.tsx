@@ -1,3 +1,4 @@
+import useDeviceDetect from "hooks/useDeviceDetect";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
@@ -5,19 +6,20 @@ import styled from "styled-components";
 import { size } from "styles/constants";
 import PostSection from "./PostSection";
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isMobile: boolean }>`
   h4 {
-    align-items: center;
+    align-items: flex-end;
     display: flex;
     scroll-margin-top: 2.5rem;
     svg {
-      margin-left: 0.3em;
-      opacity: 0;
+      height: 0.75em;
+      margin-left: 0.5em;
+      opacity: ${({ isMobile }) => (isMobile ? 1 : 0)};
       transition: opacity 0.2s ease-in-out;
+      width: 0.75em;
     }
     &:hover svg {
       opacity: 1;
-      width: 1em;
     }
   }
   li {
@@ -38,6 +40,8 @@ type PostProps = {
 };
 
 export function Post({ mdxSource, sections }: PostProps) {
+  const { isMobile } = useDeviceDetect();
+
   const topSections = sections
     ?.filter(({ position }) => position === "top")
     .map(({ title, content }, index) => (
@@ -50,7 +54,7 @@ export function Post({ mdxSource, sections }: PostProps) {
     ));
 
   return (
-    <Wrapper>
+    <Wrapper isMobile={isMobile}>
       {topSections}
       {mdxSource ? (
         <MDXRemote {...mdxSource} components={{ Image, TweetEmbed }} />
