@@ -36,7 +36,7 @@ type NumberProps = {
   selectedNumber: string;
 };
 export default function Number({ number, selectedNumber }: NumberProps) {
-  const { pathname, query } = useRouter();
+  const { query } = useRouter();
   if (number === selectedNumber) {
     return (
       <StyledNumber key={number} selected>
@@ -47,9 +47,10 @@ export default function Number({ number, selectedNumber }: NumberProps) {
   return (
     <Link
       href={{
-        pathname,
+        pathname: "/[city]/[category]/[number]",
         query: {
-          ...query,
+          city: query.city,
+          category: query.category,
           number,
         },
       }}
