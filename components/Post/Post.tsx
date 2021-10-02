@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { size } from "styles/constants";
 import PostSection from "./PostSection";
 
-const Wrapper = styled.div<{ isMobile: boolean }>`
+const Wrapper = styled.div<{ isMobile: boolean | null }>`
   h4 {
     align-items: flex-end;
     display: flex;
