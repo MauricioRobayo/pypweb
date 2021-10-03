@@ -1,6 +1,6 @@
 const withPWA = require("next-pwa");
 
-module.exports = withPWA({
+const nextConfig = {
   async redirects() {
     return [
       {
@@ -30,6 +30,10 @@ module.exports = withPWA({
       },
     ];
   },
+};
+module.exports = withPWA({
+  ...nextConfig,
+  pwa: {
+    dest: "public",
+  },
 });
-
-module.exports = {};
