@@ -4,7 +4,6 @@ import { Select } from "components/Select";
 import type { CitiesList } from "lib/cities";
 import { citiesList } from "lib/cities";
 import { GetStaticPropsResult, InferGetStaticPropsType } from "next";
-import { NextSeo } from "next-seo";
 import React from "react";
 import styled from "styled-components";
 
@@ -37,23 +36,15 @@ export default function Home({
   const date = new Date();
   const pageTitle = "Pico y placa hoy";
   return (
-    <>
-      <NextSeo title={`${pageTitle} en Colombia`} />
-      <StyledLayout>
-        <Page>
-          <Header date={date} title={pageTitle} showTodaysPrefix={false} />
-          <Main>
-            <Select
-              name="ciudad"
-              narrow
-              options={cities}
-              placeholder="Ciudad"
-            />
-          </Main>
-        </Page>
-        <Footer />
-      </StyledLayout>
-    </>
+    <StyledLayout>
+      <Page>
+        <Header date={date} title={pageTitle} showTodaysPrefix={false} />
+        <Main>
+          <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
+        </Main>
+      </Page>
+      <Footer />
+    </StyledLayout>
   );
 }
 

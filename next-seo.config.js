@@ -1,6 +1,7 @@
+export const siteName = "PYPHOY";
 export const baseTitle = "Pico y placa";
-export const description =
-  "Horario, días, fechas, placas, números, decretos, sanciones y toda la información vigente del pico y placa";
+export const baseDescription =
+  "Horario, días, fechas, números, decretos, sanciones y toda la información del pico y placa";
 export const defaultConfig = {
   additionalLinkTags: [
     {
@@ -48,8 +49,8 @@ export const defaultConfig = {
       name: "theme-color",
     },
   ],
-  defaultTitle: baseTitle,
-  description,
+  defaultTitle: `${baseTitle} en Colombia | ${siteName}`,
+  description: `${baseDescription} en Colombia`,
   openGraph: {
     images: [
       {
@@ -60,9 +61,9 @@ export const defaultConfig = {
       },
     ],
     locale: "es_CO",
-    site_name: baseTitle,
+    site_name: siteName,
     type: "website",
     updated_time: `${new Date().toISOString().slice(0, 10)}T00:00:00.000-05:00`,
   },
-  titleTemplate: `%s | PYPHOY`,
+  titleTemplate: `%s | ${siteName}`,
 };
