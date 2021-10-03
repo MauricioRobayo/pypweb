@@ -2,7 +2,6 @@ import { readFile } from "fs/promises";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
 
 const postsDirectory = join(process.cwd(), "posts");
@@ -16,8 +15,6 @@ export default async function getPostBySlug(slug: string) {
     return serialize(content, {
       mdxOptions: {
         rehypePlugins: [
-          // @ts-ignore
-          rehypeSanitize,
           // @ts-ignore
           rehypeSlug,
           [
