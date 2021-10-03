@@ -5,43 +5,49 @@ export const baseDescription =
 export const defaultConfig = {
   additionalLinkTags: [
     {
-      href: "/favicon-32x32.png",
-      rel: "icon",
-      sizes: "32x32",
-      type: "image/png",
-    },
-    {
-      href: "/favicon-16x16.png",
+      href: "icons/favicon-16x16.png",
       rel: "icon",
       sizes: "16x16",
       type: "image/png",
     },
     {
-      href: "/favicon.ico",
+      href: "icons/favicon-32x32.png",
+      rel: "icon",
+      sizes: "32x32",
+      type: "image/png",
+    },
+    {
+      href: "icons/favicon-96x96.png",
+      rel: "icon",
+      sizes: "96x96",
+      type: "image/png",
+    },
+    {
+      href: "icons/favicon.ico",
       rel: "icon",
     },
     {
-      href: "/apple-touch-icon.png",
+      href: "icons/apple-touch-icon.png",
       rel: "apple-touch-icon",
       sizes: "180x180",
     },
     {
-      href: "/site.webmanifest",
+      href: "manifest.json",
       rel: "manifest",
     },
     {
-      href: "/safari-pinned-tab.svg",
+      href: "icons/safari-pinned-tab.svg",
       rel: "mask-icon",
     },
     {
       color: "#f7c100",
-      href: "/safari-pinned-tab.svg",
+      href: "icons/safari-pinned-tab.svg",
       rel: "mask-icon",
     },
   ],
   additionalMetaTags: [
     {
-      content: "#ffc40d",
+      content: "#f7c100",
       name: "msapplication-TileColor",
     },
     {
