@@ -54,7 +54,7 @@ export default function CTA() {
         <ContactOptions>
           <ContactOption>
             <a
-              href={`whatsapp://send?phone=573108844566&text=Hay un error en ${path}`}
+              href={`whatsapp://send?phone=${process.env.NEXT_PUBLIC_PYPHOY_CONTACT_PHONE}&text=Hay un error en ${path}`}
               title="WhatsApp"
             >
               <RiWhatsappLine />
@@ -67,7 +67,7 @@ export default function CTA() {
           </ContactOption>
           <ContactOption>
             <Email
-              email="info@pyphoy.com"
+              email={process.env.NEXT_PUBLIC_PYPHOY_CONTACT_EMAIL || ""}
               title="Correo electrónico"
               subject={`Hay un error en ${path}`}
             >
