@@ -2,7 +2,6 @@ import { readFile } from "fs/promises";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeSanitize from "rehype-sanitize";
 import rehypeSlug from "rehype-slug";
 
 const postsDirectory = join(process.cwd(), "posts");
@@ -17,8 +16,6 @@ export default async function getPostBySlug(slug: string) {
       mdxOptions: {
         rehypePlugins: [
           // @ts-ignore
-          rehypeSanitize,
-          // @ts-ignore
           rehypeSlug,
           [
             // @ts-ignore
@@ -31,8 +28,6 @@ export default async function getPostBySlug(slug: string) {
                 properties: {
                   xmlns: "http://www.w3.org/2000/svg",
                   viewBox: "0 0 36 36",
-                  width: "1em",
-                  height: "1em",
                 },
                 children: [
                   {

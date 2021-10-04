@@ -10,7 +10,7 @@ import { cotDateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { baseTitle, description } from "next-seo.config";
+import { baseDescription, baseTitle } from "next-seo.config";
 import React, { ReactElement } from "react";
 
 const INITIAL_DATE = new Date();
@@ -35,11 +35,10 @@ export default function NumberPage({
   const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const title = `${categoryData.name.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
-  const pageDescription = `${description} ${title}`;
+  const pageDescription = `${baseDescription} ${title}`;
   const main = (
     <NumbersData
-      data={categoryData.data}
-      categoryName={categoryData.name}
+      categoryData={categoryData}
       cityName={cityName}
       date={INITIAL_DATE}
       number={number}

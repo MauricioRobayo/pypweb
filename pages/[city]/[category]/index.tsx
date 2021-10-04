@@ -16,7 +16,7 @@ import {
 import getPostBySlugs from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { baseTitle, description } from "next-seo.config";
+import { baseDescription, baseTitle } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 
@@ -79,7 +79,7 @@ export default function CategoryPage({
 
   const title = `${categoryData.name.toLowerCase()} ${cityName}`;
   const pageTitle = `${baseTitle} ${title} `;
-  const pageDescription = `${description} ${title}`;
+  const pageDescription = `${baseDescription} ${title}`;
   const main = (
     <CategoryData
       categories={categories}

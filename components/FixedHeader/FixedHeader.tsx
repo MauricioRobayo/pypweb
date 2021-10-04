@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import { IoShareSocial } from "react-icons/io5";
 import styled, { useTheme } from "styled-components";
 
-const StyledClock = styled(Clock)`
+const StyledClock = styled(Clock)<{ hasShare: boolean }>`
   font-size: 0.85rem;
   font-weight: bold;
+  margin-left: ${({ hasShare }) => (hasShare ? "1rem" : 0)};
 `;
 
 const StyledFixedHeader = styled.div`
@@ -20,10 +21,9 @@ const StyledFixedHeader = styled.div`
   z-index: 1000;
 `;
 
-const Wrapper = styled.div<{ hasShare: boolean }>`
-  align-items: center;
-  display: flex;
-  justify-content: ${({ hasShare }) => (hasShare ? "space-between" : "center")};
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
 `;
@@ -42,7 +42,7 @@ function FixedHeader() {
   const [hasShare, setHasShare] = React.useState(false);
 
   useEffect(() => {
-    if (navigator.share !== undefined) {
+    if ("share" in navigator) {
       setHasShare(true);
     }
   }, []);
@@ -54,8 +54,8 @@ function FixedHeader() {
   };
   return (
     <StyledFixedHeader>
-      <Wrapper hasShare={hasShare}>
-        <StyledClock />
+      <Wrapper>
+        <StyledClock hasShare={hasShare} />
         {hasShare && (
           <ShareButton type="button" title="Compartir" onClick={share}>
             <IoShareSocial color={theme.colors.secondaryDark} />

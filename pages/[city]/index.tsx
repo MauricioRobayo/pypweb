@@ -8,7 +8,7 @@ import { Post } from "components/Post";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { baseTitle, description } from "next-seo.config";
+import { baseDescription, baseTitle } from "next-seo.config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
@@ -29,7 +29,7 @@ type CityPageProps = {
 export default function CityPage({ categories, cityName }: CityPageProps) {
   const { query } = useRouter();
   const pageTitle = `${baseTitle} ${cityName}`;
-  const pageDescription = `${description} ${cityName}`;
+  const pageDescription = `${baseDescription} ${cityName}`;
   const main = <StyledCityData categories={categories} date={INITIAL_DATE} />;
   const aside = (
     <Post
