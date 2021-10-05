@@ -27,7 +27,7 @@ const StyledFixedHeader = styled.div`
 `;
 
 const Wrapper = styled.div`
-  align-items: flex-start;
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr auto;
   justify-content: space-between;
