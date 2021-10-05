@@ -5,19 +5,18 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   align-items: center;
   display: grid;
-  grid-template: 1 /1;
+  grid-template: 1fr / 1fr;
 `;
 
 const StyledSelect = styled.select`
   appearance: none;
   background: ${({ theme }) => theme.colors.mainComplement};
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  border-radius: 0.4rem;
+  border-radius: 0.4em;
   color: ${({ theme }) => theme.colors.secondaryDark};
   grid-column: 1 / 1;
   grid-row: 1 / 1;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
+  padding: 0.5em 2em 0.5em 0.5em;
 `;
 
 const Option = styled.option``;
@@ -30,7 +29,7 @@ const Caret = styled.div`
   grid-column: 1 /1;
   grid-row: 1/1;
   justify-self: end;
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
   pointer-events: none;
 `;
 

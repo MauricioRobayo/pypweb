@@ -9,7 +9,7 @@ import { camouflageLink } from "styles/mixins";
 const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  padding: 0.5rem 1rem;
+  padding: 0.85rem;
   width: 100%;
 `;
 
