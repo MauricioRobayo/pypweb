@@ -41,8 +41,8 @@ const Caret = styled.div`
 
 type SelectProps = {
   options: {
-    label: string;
-    value: string;
+    name: string;
+    slug: string;
   }[];
   name: string;
   placeholder: string;
@@ -73,18 +73,16 @@ const Select = ({
         onChange={onChangeHandler}
         value={selected}
       >
-        {[{ label: placeholder, value: "" }, ...options].map(
-          ({ label, value }) => (
-            <Option
-              key={value}
-              disabled={label === placeholder}
-              hidden={label === placeholder}
-              value={value}
-            >
-              {label}
-            </Option>
-          )
-        )}
+        {[{ name: placeholder, slug: "" }, ...options].map(({ name, slug }) => (
+          <Option
+            key={slug}
+            disabled={name === placeholder}
+            hidden={name === placeholder}
+            value={slug}
+          >
+            {name}
+          </Option>
+        ))}
       </StyledSelect>
       <Caret />
     </Wrapper>
