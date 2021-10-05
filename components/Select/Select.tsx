@@ -2,15 +2,10 @@ import { useRouter } from "next/router";
 import { ChangeEventHandler, useState } from "react";
 import styled from "styled-components";
 
-type WrapperProps = {
-  narrow?: boolean;
-};
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div`
   align-items: center;
   display: grid;
   grid-template: 1 /1;
-  max-width: ${({ narrow, theme }) => (narrow ? theme.maxWidthNarrow : "100%")};
-  width: 100%;
 `;
 
 const StyledSelect = styled.select`
@@ -47,7 +42,6 @@ type SelectProps = {
   selected?: string;
   name: string;
   placeholder?: string;
-  narrow?: boolean;
   className?: string;
 };
 
@@ -56,7 +50,6 @@ const Select = ({
   options,
   placeholder = "",
   selected = "",
-  narrow = false,
   className = "",
 }: SelectProps) => {
   const { push } = useRouter();
@@ -70,9 +63,8 @@ const Select = ({
   };
 
   return (
-    <Wrapper narrow={narrow}>
+    <Wrapper className={className}>
       <StyledSelect
-        className={className}
         title={name}
         name={name}
         onChange={onChangeHandler}

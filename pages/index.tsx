@@ -7,6 +7,10 @@ import { GetStaticPropsResult, InferGetStaticPropsType } from "next";
 import React from "react";
 import styled from "styled-components";
 
+const StyledSelect = styled(Select)`
+  width: min(100%, ${({ theme }) => theme.maxWidthNarrow});
+`;
+
 const StyledLayout = styled.div`
   align-items: center;
   display: flex;
@@ -40,9 +44,8 @@ export default function Home({
       <Page>
         <Header date={date} title={pageTitle} showTodaysPrefix={false} />
         <Main>
-          <Select
+          <StyledSelect
             name="ciudad"
-            narrow
             options={cities.map(({ name, slug }) => ({
               name,
               path: `/${slug}`,
