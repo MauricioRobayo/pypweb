@@ -9,7 +9,7 @@ const Quote = styled.blockquote`
     margin: 0;
   }
   small {
-    font-size: 0.8rem;
+    font-size: ${({ theme }) => theme.font.size.small};
     font-style: italic;
     opacity: 0.95;
   }

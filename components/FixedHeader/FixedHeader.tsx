@@ -4,7 +4,7 @@ import { IoShareSocial } from "react-icons/io5";
 import styled, { useTheme } from "styled-components";
 
 const StyledClock = styled(Clock)<{ hasShare: boolean }>`
-  font-size: 0.85rem;
+  font-size: ${({ theme }) => theme.font.size.small};
   font-weight: bold;
   margin-left: ${({ hasShare }) => (hasShare ? "1rem" : 0)};
 `;

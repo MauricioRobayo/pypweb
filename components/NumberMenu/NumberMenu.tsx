@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h4`
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: bold;
   margin-bottom: 1rem;
 `;

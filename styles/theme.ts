@@ -18,4 +18,10 @@ export const defaultTheme: DefaultTheme = {
   maxWidth: "570px",
   maxWidthNarrow: "320px",
   maxWidthWider: "720px",
+  font: {
+    size: {
+      small: "0.85rem",
+      large: "1.25rem",
+    },
+  },
 };
