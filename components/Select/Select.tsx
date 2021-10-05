@@ -44,24 +44,26 @@ type SelectProps = {
     name: string;
     slug: string;
   }[];
+  selected?: string;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   narrow?: boolean;
 };
 
 const Select = ({
   name,
   options,
-  placeholder,
+  placeholder = "",
+  selected = "",
   narrow = false,
 }: SelectProps) => {
-  const { push, query } = useRouter();
-  const [selected, setSelected] = useState((query.city as string) || "");
+  const { push } = useRouter();
+  const [value, setValue] = useState(selected);
 
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { value } = event.target;
 
-    setSelected(value);
+    setValue(value);
     push(`/${value}`);
   };
 
@@ -71,7 +73,7 @@ const Select = ({
         title={name}
         name={name}
         onChange={onChangeHandler}
-        value={selected}
+        value={value}
       >
         {[{ name: placeholder, slug: "" }, ...options].map(({ name, slug }) => (
           <Option
