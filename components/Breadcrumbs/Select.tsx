@@ -14,22 +14,12 @@ export type PathSelectProps = {
 
 const PathSelect = ({ options, selected, title }: PathSelectProps) => {
   const [selectedPath, setSelectedPath] = useState(selected);
-  const { push, pathname, query } = useRouter();
+  const { push, asPath } = useRouter();
 
   const onHandleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPath(e.target.value);
 
-    push(
-      {
-        pathname,
-        query: {
-          city: query.city,
-          category: e.target.value,
-        },
-      }
-      // Do not shallow render this
-      // We need to fetch mdxSource for each category
-    );
+    push(asPath.replace(/(?<=\/)[^\/]+$/, e.target.value));
   };
 
   return (
