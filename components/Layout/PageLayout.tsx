@@ -1,8 +1,8 @@
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { FixedHeader } from "components/FixedHeader";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
 import type { CitiesList } from "lib/cities";
-import { useRouter } from "next/router";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
@@ -18,15 +18,11 @@ type LayoutProps = {
   cities: CitiesList;
 };
 export default function Layout({ children, cities }: LayoutProps) {
-  const { asPath } = useRouter();
-
-  const pathSegments = asPath.split("/");
-
   return (
     <StyledLayout>
       <Navbar cities={cities} />
       <FixedHeader />
-      {pathSegments.length > 1 ? asPath : null}
+      <Breadcrumbs cities={cities} />
       {children}
       <Footer />
     </StyledLayout>

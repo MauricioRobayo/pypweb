@@ -12,7 +12,6 @@ import {
   Anchor,
   ListItem,
   ListWrapper,
-  StyledBreadcrumbs,
   StyledVidverto,
   Title,
   Wrapper,
@@ -64,7 +63,7 @@ export default function NumbersData({
 
   return (
     <Wrapper>
-      <StyledBreadcrumbs
+      {/* <StyledBreadcrumbs
         paths={[
           { name: cityName, path: citySlug },
           { name: categoryName, path: `${citySlug}/${categorySlug}` },
@@ -77,7 +76,7 @@ export default function NumbersData({
             title: "Número",
           },
         ]}
-      />
+      /> */}
       <Title>
         Placas {schemeString} en {currentNumberLicense}{" "}
         <strong>

@@ -48,6 +48,7 @@ type SelectProps = {
   name: string;
   placeholder?: string;
   narrow?: boolean;
+  className?: string;
 };
 
 const Select = ({
@@ -56,6 +57,7 @@ const Select = ({
   placeholder = "",
   selected = "",
   narrow = false,
+  className = "",
 }: SelectProps) => {
   const { push } = useRouter();
   const [value, setValue] = useState(selected);
@@ -70,6 +72,7 @@ const Select = ({
   return (
     <Wrapper narrow={narrow}>
       <StyledSelect
+        className={className}
         title={name}
         name={name}
         onChange={onChangeHandler}

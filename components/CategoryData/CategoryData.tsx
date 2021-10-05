@@ -10,7 +10,6 @@ import {
   ListWrapper,
   MoreIcon,
   MoreLink,
-  StyledBreadcrumbs,
   Title,
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
@@ -84,7 +83,7 @@ function CategoryData({
           <strong>{categoryName.toLowerCase()}</strong> según el{" "}
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
-        <StyledBreadcrumbs
+        {/* <StyledBreadcrumbs
           paths={[
             { name: cityName, path: citySlug as string },
             {
@@ -96,7 +95,7 @@ function CategoryData({
               title: "Categoría",
             },
           ]}
-        />
+        /> */}
       </header>
       <DayCard
         categoryName={categoryName}
