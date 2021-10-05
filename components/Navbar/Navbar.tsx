@@ -46,7 +46,7 @@ export default function Navbar({ cities }: NavbarProps) {
         </Logo>
         <Select
           name="ciudad"
-          options={cities}
+          options={cities.map(({ name, slug }) => ({ name, path: `/${slug}` }))}
           placeholder="Ciudad"
           selected={city as string}
         />

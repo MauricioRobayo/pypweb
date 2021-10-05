@@ -40,7 +40,15 @@ export default function Home({
       <Page>
         <Header date={date} title={pageTitle} showTodaysPrefix={false} />
         <Main>
-          <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
+          <Select
+            name="ciudad"
+            narrow
+            options={cities.map(({ name, slug }) => ({
+              name,
+              path: `/${slug}`,
+            }))}
+            placeholder="Ciudad"
+          />
         </Main>
       </Page>
       <Footer />
