@@ -24,7 +24,7 @@ const Main = styled.main`
 const MegaBanner = styled(TheMoneytizer).attrs({
   formatType: "MEGABANNER",
 })`
-  margin: 2rem auto 1rem;
+  margin: 1rem auto 1rem;
 `;
 
 const MegaBannerBottom = styled(TheMoneytizer).attrs({

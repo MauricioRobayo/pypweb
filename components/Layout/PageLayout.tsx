@@ -1,4 +1,3 @@
-import { Breadcrumbs } from "components/Breadcrumbs";
 import { FixedHeader } from "components/FixedHeader";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
@@ -21,8 +20,7 @@ export default function Layout({ children, cities }: LayoutProps) {
   return (
     <StyledLayout>
       <Navbar cities={cities} />
-      <FixedHeader />
-      <Breadcrumbs cities={cities} />
+      <FixedHeader cities={cities} />
       {children}
       <Footer />
     </StyledLayout>

@@ -27,6 +27,10 @@ export const Logo = styled.h2`
   ${camouflageLink}
 `;
 
+const StyledSelect = styled(Select)`
+  background-color: ${({ theme }) => theme.colors.mainComplement};
+`;
+
 type NavbarProps = {
   cities: CitiesList;
 };
@@ -44,7 +48,7 @@ export default function Navbar({ cities }: NavbarProps) {
             </a>
           </Link>
         </Logo>
-        <Select
+        <StyledSelect
           name="ciudad"
           options={cities.map(({ name, slug }) => ({ name, path: `/${slug}` }))}
           placeholder="Ciudad"

@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 const StyledSelect = styled.select`
   appearance: none;
-  background: ${({ theme }) => theme.colors.mainComplement};
+  background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
   border-radius: 0.4em;
   color: ${({ theme }) => theme.colors.secondaryDark};

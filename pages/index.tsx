@@ -8,6 +8,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledSelect = styled(Select)`
+  margin: 0.5rem 0;
   width: min(100%, ${({ theme }) => theme.maxWidthNarrow});
 `;
 

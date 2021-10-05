@@ -1,12 +1,17 @@
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { Clock } from "components/Clock";
+import { CitiesList } from "lib/cities";
 import React, { useEffect } from "react";
 import { IoShareSocial } from "react-icons/io5";
 import styled, { useTheme } from "styled-components";
 
+const StyledBreadcrumbs = styled(Breadcrumbs)<{ hasShare: boolean }>`
+  justify-content: ${({ hasShare }) => (hasShare ? "flex-start" : "center")};
+`;
+
 const StyledClock = styled(Clock)<{ hasShare: boolean }>`
-  font-size: ${({ theme }) => theme.font.size.small};
-  font-weight: bold;
-  margin-left: ${({ hasShare }) => (hasShare ? "1rem" : 0)};
+  font-size: 0.75rem;
+  justify-self: ${({ hasShare }) => (hasShare ? "start" : "center")};
 `;
 
 const StyledFixedHeader = styled.div`
@@ -22,10 +27,18 @@ const StyledFixedHeader = styled.div`
 `;
 
 const Wrapper = styled.div`
+  align-items: flex-start;
   display: grid;
   grid-template-columns: 1fr auto;
+  justify-content: space-between;
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
+`;
+
+const InfoColumn = styled.div`
+  display: grid;
+  grid-row-gap: 0.25em;
+  grid-template-columns: 1fr;
 `;
 
 const ShareButton = styled.button`
@@ -37,7 +50,10 @@ const ShareButton = styled.button`
   padding: 0;
 `;
 
-function FixedHeader() {
+interface Props {
+  cities: CitiesList;
+}
+function FixedHeader({ cities }: Props) {
   const theme = useTheme();
   const [hasShare, setHasShare] = React.useState(false);
 
@@ -55,7 +71,10 @@ function FixedHeader() {
   return (
     <StyledFixedHeader>
       <Wrapper>
-        <StyledClock hasShare={hasShare} />
+        <InfoColumn>
+          <StyledBreadcrumbs cities={cities} hasShare={hasShare} />
+          <StyledClock hasShare={hasShare} />
+        </InfoColumn>
         {hasShare && (
           <ShareButton type="button" title="Compartir" onClick={share}>
             <IoShareSocial color={theme.colors.secondaryDark} />

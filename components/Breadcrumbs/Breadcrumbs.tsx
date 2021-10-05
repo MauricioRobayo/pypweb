@@ -4,11 +4,31 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
+import { responsiveWidth } from "styles/mixins";
 
 const StyledSelect = styled(Select)`
-  padding: 0;
+  select {
+    padding-bottom: 0.15em;
+    padding-right: 1.5em;
+    padding-top: 0.1em;
+  }
 `;
-const Wrapper = styled.nav``;
+const Wrapper = styled.nav`
+  ${responsiveWidth}
+
+  align-items: flex-start;
+  display: flex;
+  font-size: ${({ theme }) => theme.font.size.small};
+  a {
+    text-decoration: none;
+  }
+`;
+const BreadcrumbItem = styled.div`
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
 type Props = {
   className?: string;
@@ -33,12 +53,12 @@ function Breadcrumbs({ cities, className = "" }: Props) {
 
   if (typeof number !== "string") {
     return (
-      <Wrapper>
-        <span>
+      <Wrapper className={className}>
+        <BreadcrumbItem>
           <Link href={`/${cityPath.slug}`}>
             <a>{cityPath.name}</a>
           </Link>
-        </span>
+        </BreadcrumbItem>
         <span> &gt; </span>
         <StyledSelect
           name="categoría"
@@ -61,18 +81,18 @@ function Breadcrumbs({ cities, className = "" }: Props) {
   }
 
   return (
-    <Wrapper>
-      <span>
+    <Wrapper className={className}>
+      <BreadcrumbItem>
         <Link href={`/${cityPath.slug}`}>
           <a>{cityPath.name}</a>
         </Link>
-      </span>
+      </BreadcrumbItem>
       <span> &gt; </span>
-      <span>
+      <BreadcrumbItem>
         <Link href={`/${cityPath.slug}/${categoryPath.slug}`}>
           <a>{categoryPath.name}</a>
         </Link>
-      </span>
+      </BreadcrumbItem>
       <span> &gt; </span>
       <StyledSelect
         name="placa número"
