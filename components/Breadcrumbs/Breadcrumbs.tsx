@@ -38,6 +38,10 @@ const BreadcrumbItem = styled.div`
   white-space: nowrap;
 `;
 
+const ItemSeparator = styled.span`
+  margin: 0 0.25em;
+`;
+
 type Props = {
   className?: string;
   path: Path;
@@ -54,12 +58,17 @@ function Breadcrumbs({ path, className = "" }: Props) {
         if (isPathSegment(item)) {
           return (
             <Fragment key={item.path}>
-              <BreadcrumbItem>
+              <BreadcrumbItem
+                itemScope
+                itemType="http://data-vocabulary.org/Breadcrumb"
+              >
                 <Link href={item.path}>
-                  <a title={item.path}>{item.name}</a>
+                  <a title={item.path} itemProp="url">
+                    {item.name}
+                  </a>
                 </Link>
               </BreadcrumbItem>
-              <span> &gt; </span>
+              <ItemSeparator>&gt;</ItemSeparator>
             </Fragment>
           );
         }
