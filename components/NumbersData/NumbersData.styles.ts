@@ -28,7 +28,7 @@ export const ListItem = styled.li`
   }
   &:hover {
     background-color: ${({ theme }) => theme.colors.main};
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
   ${camouflageLink}
 `;

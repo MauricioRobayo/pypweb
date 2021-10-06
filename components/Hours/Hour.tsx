@@ -18,7 +18,7 @@ const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
     background-color: ${({ type, theme }) =>
       type === NextType.START ? theme.colors.success : theme.colors.danger};
     border-radius: 8px;
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     margin-left: 0.25rem;
     padding: 0.1rem 0.5rem;
   }

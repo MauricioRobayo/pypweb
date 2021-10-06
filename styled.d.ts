@@ -16,6 +16,7 @@ declare module "styled-components" {
       success: string;
       warning: string;
       warningLighter: string;
+      white: string;
     };
     maxWidth: string;
     maxWidthNarrow: string;
