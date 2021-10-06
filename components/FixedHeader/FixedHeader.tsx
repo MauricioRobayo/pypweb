@@ -18,8 +18,7 @@ const StyledClock = styled(Clock)<{ hasShare: boolean }>`
 `;
 
 const StyledFixedHeader = styled.div`
-  background-color: ${({ theme }) => theme.colors.warningLighter};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.warning};
+  background-color: white;
   margin: 0;
   padding: 0.25em 1rem;
   position: sticky;
