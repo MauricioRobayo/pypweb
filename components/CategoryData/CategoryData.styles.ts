@@ -21,7 +21,7 @@ export const ListWrapper = styled.div`
 `;
 
 export const Article = styled.article`
-  margin: 1rem auto;
+  margin: 0 auto 1rem;
   ${responsiveWidth}
 `;
 

@@ -24,13 +24,11 @@ const MAX_DAYS_PER_PAGE = 31;
 const INITIAL_DATE = new Date();
 
 type CategoryPageProps = {
-  categories: { name: string; slug: string }[];
   cityName: string;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
 };
 export default function CategoryPage({
-  categories,
   cityName,
   initialCategoryData,
   mdxSource,
@@ -81,12 +79,7 @@ export default function CategoryPage({
   const pageTitle = `${baseTitle} ${title} `;
   const pageDescription = `${baseDescription} ${title}`;
   const main = (
-    <CategoryData
-      categories={categories}
-      cityName={cityName}
-      categoryData={categoryData}
-      maxDays={MAX_DAYS_PER_PAGE}
-    />
+    <CategoryData categoryData={categoryData} maxDays={MAX_DAYS_PER_PAGE} />
   );
   const aside = (
     <Post
@@ -130,10 +123,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: {
-      categories: Object.values(categories).map(({ name, slug }) => ({
-        name,
-        slug,
-      })),
       cities: citiesList(),
       cityName,
       initialCategoryData: categoryData,

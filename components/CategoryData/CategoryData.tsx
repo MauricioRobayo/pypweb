@@ -15,17 +15,10 @@ import {
 import DayCard from "./DayCard";
 
 type CategoryDataProps = {
-  categories: { name: string; slug: string }[];
   categoryData: ICategoryData;
-  cityName: string;
   maxDays: number;
 };
-function CategoryData({
-  categories,
-  categoryData,
-  cityName,
-  maxDays,
-}: CategoryDataProps) {
+function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
   const { pathname, query } = useRouter();
   const { dias: forwardDays } = query;
   const [daysToShow, setDaysToShow] = useState(DEFAULT_DAYS_TO_SHOW);
@@ -83,19 +76,6 @@ function CategoryData({
           <strong>{categoryName.toLowerCase()}</strong> según el{" "}
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
-        {/* <StyledBreadcrumbs
-          paths={[
-            { name: cityName, path: citySlug as string },
-            {
-              options: categories.map(({ name, slug }) => ({
-                name,
-                path: slug,
-              })),
-              selected: categorySlug as string,
-              title: "Categoría",
-            },
-          ]}
-        /> */}
       </header>
       <DayCard
         categoryName={categoryName}

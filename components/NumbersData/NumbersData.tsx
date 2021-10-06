@@ -21,14 +21,12 @@ type NumbersPageProps = {
   number: string;
   schemeString: string;
   categoryData: ICategoryData;
-  cityName: string;
   date: Date;
 };
 export default function NumbersData({
   number,
   schemeString,
   categoryData,
-  cityName,
   date,
 }: NumbersPageProps) {
   const { query } = useRouter();
@@ -63,20 +61,6 @@ export default function NumbersData({
 
   return (
     <Wrapper>
-      {/* <StyledBreadcrumbs
-        paths={[
-          { name: cityName, path: citySlug },
-          { name: categoryName, path: `${citySlug}/${categorySlug}` },
-          {
-            options: Array.from({ length: 10 }, (_, i) => ({
-              name: String(i),
-              path: String(i),
-            })),
-            selected: number,
-            title: "Número",
-          },
-        ]}
-      /> */}
       <Title>
         Placas {schemeString} en {currentNumberLicense}{" "}
         <strong>
