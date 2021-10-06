@@ -11,7 +11,7 @@ const StyledBreadcrumbs = styled(Breadcrumbs)<{ hasShare: boolean }>`
 `;
 
 const StyledClock = styled(Clock)<{ hasShare: boolean }>`
-  font-size: 0.75rem;
+  font-size: ${({ theme }) => theme.font.size.small};
   justify-self: ${({ hasShare }) => (hasShare ? "start" : "center")};
 `;
 

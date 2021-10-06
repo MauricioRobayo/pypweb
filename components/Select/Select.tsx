@@ -16,6 +16,7 @@ const StyledSelect = styled.select`
   color: ${({ theme }) => theme.colors.secondaryDark};
   grid-column: 1 / 1;
   grid-row: 1 / 1;
+  line-height: normal;
   padding: 0.5em 2em 0.5em 0.5em;
 `;
 
