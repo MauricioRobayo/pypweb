@@ -8,7 +8,7 @@ import {
 } from "styles/mixins";
 
 export const Wrapper = styled.article`
-  ${boxShadow()}
+  ${boxShadow}
 
   border-radius: 0.5rem;
   margin: 1rem 0 0;

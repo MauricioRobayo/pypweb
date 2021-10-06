@@ -14,8 +14,8 @@ export const inlineIconRight = <T>(component: ComponentType<T>) => styled(
   margin-left: 0.5rem;
 `;
 
-export const boxShadow = (blurRadius = 10) => css`
-  box-shadow: rgb(122 122 122) 0 0 ${blurRadius}px 0;
+export const boxShadow = css`
+  box-shadow: rgb(122 122 122) 0 0 10px 0;
 `;
 
 export const responsivePaddingAround = css`

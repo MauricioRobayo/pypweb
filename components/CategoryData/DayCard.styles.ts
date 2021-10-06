@@ -41,14 +41,14 @@ export const RegularCard = styled.div<StyleProps>`
     }
   }
   a:hover {
-    ${boxShadow()}
+    ${boxShadow}
 
     z-index: 1;
   }
 `;
 
 export const SelectedCard = styled.div<StyleProps>`
-  ${boxShadow()}
+  ${boxShadow}
 
   border-radius: 5px;
   margin-bottom: 1rem;
