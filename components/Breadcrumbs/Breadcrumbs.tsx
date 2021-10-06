@@ -33,11 +33,16 @@ const Wrapper = styled.ol`
     text-decoration: none;
   }
 `;
-const BreadcrumbItem = styled.li.attrs({
+
+const BreadcrumbItemContainer = styled.li.attrs({
   itemProp: "itemListElement",
   itemScope: true,
   itemType: "https://schema.org/ListItem",
 })`
+  display: flex;
+`;
+
+const BreadcrumbItem = styled.div`
   max-width: 22ch;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -67,15 +72,17 @@ function Breadcrumbs({ path, className = "" }: Props) {
       {path.map((item, i) => {
         if (isPathSegment(item)) {
           return (
-            <BreadcrumbItem key={item.path}>
-              <Link href={item.path}>
-                <a title={item.path} itemProp="item">
-                  <span itemProp="name">{item.name}</span>
-                  <meta itemProp="position" content={`${i + 1}`} />
-                </a>
-              </Link>
+            <BreadcrumbItemContainer key={item.path}>
+              <BreadcrumbItem>
+                <Link href={item.path}>
+                  <a title={item.path} itemProp="item">
+                    <span itemProp="name">{item.name}</span>
+                    <meta itemProp="position" content={`${i + 1}`} />
+                  </a>
+                </Link>
+              </BreadcrumbItem>
               <ItemSeparator>&gt;</ItemSeparator>
-            </BreadcrumbItem>
+            </BreadcrumbItemContainer>
           );
         }
 
@@ -86,11 +93,6 @@ function Breadcrumbs({ path, className = "" }: Props) {
               options={item.options}
               selected={item.selected}
             />
-            <meta
-              itemProp="name"
-              content={item.selected.replace(/.*\//g, "")}
-            />
-            <meta itemProp="position" content={`${i + 1}`} />
           </BreadcrumbItem>
         );
       })}
