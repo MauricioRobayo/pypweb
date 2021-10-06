@@ -52,7 +52,7 @@ export default function Navbar({ cities }: NavbarProps) {
           name="ciudad"
           options={cities.map(({ name, slug }) => ({ name, path: `/${slug}` }))}
           placeholder="Ciudad"
-          selected={city as string}
+          selected={`/${city as string}`}
         />
       </Main>
     </StyledNavbar>
