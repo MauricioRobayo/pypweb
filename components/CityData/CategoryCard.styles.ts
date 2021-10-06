@@ -19,7 +19,7 @@ export const Title = styled.h3`
   background: ${({ theme }) => theme.colors.main};
   border-radius: 5px 5px 0 0;
   color: white;
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: bold;
   margin: 0;
   padding: 1rem;

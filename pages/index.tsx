@@ -7,6 +7,11 @@ import { GetStaticPropsResult, InferGetStaticPropsType } from "next";
 import React from "react";
 import styled from "styled-components";
 
+const StyledSelect = styled(Select)`
+  margin: 0.5rem 0;
+  width: min(100%, ${({ theme }) => theme.maxWidthNarrow});
+`;
+
 const StyledLayout = styled.div`
   align-items: center;
   display: flex;
@@ -40,7 +45,14 @@ export default function Home({
       <Page>
         <Header date={date} title={pageTitle} showTodaysPrefix={false} />
         <Main>
-          <Select name="ciudad" narrow options={cities} placeholder="Ciudad" />
+          <StyledSelect
+            name="ciudad"
+            options={cities.map(({ name, slug }) => ({
+              name,
+              path: `/${slug}`,
+            }))}
+            placeholder="Ciudad"
+          />
         </Main>
       </Page>
       <Footer />

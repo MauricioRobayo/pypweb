@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
   margin: 1rem 0;
 `;

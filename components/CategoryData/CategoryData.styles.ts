@@ -21,12 +21,12 @@ export const ListWrapper = styled.div`
 `;
 
 export const Article = styled.article`
-  margin: 1rem auto;
+  margin: 0 auto 1rem;
   ${responsiveWidth}
 `;
 
 export const Title = styled.h3`
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
   margin: 0 0 1rem;
   text-align: center;

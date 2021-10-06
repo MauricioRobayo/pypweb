@@ -39,7 +39,6 @@ export default function NumberPage({
   const main = (
     <NumbersData
       categoryData={categoryData}
-      cityName={cityName}
       date={INITIAL_DATE}
       number={number}
       schemeString={schemeString}

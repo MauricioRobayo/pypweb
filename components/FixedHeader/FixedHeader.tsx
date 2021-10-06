@@ -1,12 +1,18 @@
+import { Breadcrumbs } from "components/Breadcrumbs";
 import { Clock } from "components/Clock";
-import React, { useEffect } from "react";
-import { IoShareSocial } from "react-icons/io5";
-import styled, { useTheme } from "styled-components";
+import { ShareButton } from "components/ShareButton";
+import useShare from "hooks/useShare";
+import { CitiesList } from "lib/cities";
+import React from "react";
+import styled from "styled-components";
+
+const StyledBreadcrumbs = styled(Breadcrumbs)<{ hasShare: boolean }>`
+  justify-content: ${({ hasShare }) => (hasShare ? "flex-start" : "center")};
+`;
 
 const StyledClock = styled(Clock)<{ hasShare: boolean }>`
-  font-size: 0.85rem;
-  font-weight: bold;
-  margin-left: ${({ hasShare }) => (hasShare ? "1rem" : 0)};
+  font-size: ${({ theme }) => theme.font.size.small};
+  justify-self: ${({ hasShare }) => (hasShare ? "start" : "center")};
 `;
 
 const StyledFixedHeader = styled.div`
@@ -22,45 +28,33 @@ const StyledFixedHeader = styled.div`
 `;
 
 const Wrapper = styled.div`
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr auto;
+  justify-content: space-between;
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
 `;
 
-const ShareButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  line-height: 0;
-  margin: 0;
-  padding: 0;
+const InfoColumn = styled.div`
+  display: grid;
+  grid-row-gap: 0.25em;
+  grid-template-columns: 1fr;
 `;
 
-function FixedHeader() {
-  const theme = useTheme();
-  const [hasShare, setHasShare] = React.useState(false);
-
-  useEffect(() => {
-    if ("share" in navigator) {
-      setHasShare(true);
-    }
-  }, []);
-
-  const share = () => {
-    navigator.share({
-      url: window.location.href,
-    });
-  };
+interface Props {
+  cities: CitiesList;
+}
+function FixedHeader({ cities }: Props) {
+  const hasShare = useShare();
   return (
     <StyledFixedHeader>
       <Wrapper>
-        <StyledClock hasShare={hasShare} />
-        {hasShare && (
-          <ShareButton type="button" title="Compartir" onClick={share}>
-            <IoShareSocial color={theme.colors.secondaryDark} />
-          </ShareButton>
-        )}
+        <InfoColumn>
+          <StyledBreadcrumbs cities={cities} hasShare={hasShare} />
+          <StyledClock hasShare={hasShare} />
+        </InfoColumn>
+        <ShareButton />
       </Wrapper>
     </StyledFixedHeader>
   );

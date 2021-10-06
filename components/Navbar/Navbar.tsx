@@ -2,13 +2,14 @@ import { LicensePlate } from "components/LicensePlate";
 import { Select } from "components/Select";
 import { CitiesList } from "lib/cities";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
 
 const StyledNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  padding: 0.5rem 1rem;
+  padding: 0.85rem;
   width: 100%;
 `;
 
@@ -26,10 +27,17 @@ export const Logo = styled.h2`
   ${camouflageLink}
 `;
 
+const StyledSelect = styled(Select)`
+  background-color: ${({ theme }) => theme.colors.mainComplement};
+`;
+
 type NavbarProps = {
   cities: CitiesList;
 };
 export default function Navbar({ cities }: NavbarProps) {
+  const {
+    query: { city },
+  } = useRouter();
   return (
     <StyledNavbar>
       <Main>
@@ -40,7 +48,12 @@ export default function Navbar({ cities }: NavbarProps) {
             </a>
           </Link>
         </Logo>
-        <Select name="ciudad" options={cities} placeholder="Ciudad" />
+        <StyledSelect
+          name="ciudad"
+          options={cities.map(({ name, slug }) => ({ name, path: `/${slug}` }))}
+          placeholder="Ciudad"
+          selected={`/${city as string}`}
+        />
       </Main>
     </StyledNavbar>
   );

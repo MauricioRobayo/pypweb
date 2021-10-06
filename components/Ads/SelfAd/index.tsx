@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 const CTA = styled.div`
-  font-size: 0.85rem;
+  font-size: ${({ theme }) => theme.font.size.small};
   text-transform: uppercase;
 `;
 

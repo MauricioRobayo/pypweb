@@ -99,14 +99,14 @@ export const StyledPypDate = styled(PypDate)<StyleProps>`
       `};
   }
   .date {
-    font-size: 0.85rem;
+    font-size: ${({ theme }) => theme.font.size.small};
     text-transform: uppercase;
   }
 `;
 
 export const Warning = styled.div`
   background-color: ${({ theme }) => theme.colors.warningLighter};
-  font-size: 0.85rem;
+  font-size: ${({ theme }) => theme.font.size.small};
   padding: 1rem;
   text-align: center;
   a {

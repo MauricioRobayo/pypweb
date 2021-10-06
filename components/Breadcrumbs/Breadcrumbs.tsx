@@ -1,45 +1,108 @@
+import { Select } from "components/Select";
+import { CitiesList } from "lib/cities";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
-import PathSelect, { Path, PathSelectProps } from "./Select";
+import { responsiveWidth } from "styles/mixins";
 
-const isPathOptions = (path: any): path is PathSelectProps => "title" in path;
+const StyledSelect = styled(Select)`
+  select {
+    border: none;
+    padding: 0 1.25em 0 0;
+  }
+`;
+const Wrapper = styled.nav`
+  ${responsiveWidth}
 
-const Wrapper = styled.nav``;
+  align-items: center;
+  display: flex;
+  font-size: ${({ theme }) => theme.font.size.small};
+  a {
+    text-decoration: none;
+  }
+`;
+const BreadcrumbItem = styled.div`
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
 type Props = {
   className?: string;
-  paths: (Path | PathSelectProps)[];
+  cities: CitiesList;
 };
 
-const Breadcrumbs = ({ paths, className = "" }: Props) => (
-  <Wrapper className={className}>
-    {paths.map((path) => {
-      if (isPathOptions(path)) {
-        const { options, selected, title } = path;
-        return (
-          <PathSelect
-            key={title}
-            options={options}
-            selected={selected}
-            title={title}
-          />
-        );
-      }
-      const { name, path: slug } = path;
-      const key = `${name}/${slug}`;
-      return (
-        <React.Fragment key={key}>
-          <span>
-            <Link href={`/${slug}`}>
-              <a>{name}</a>
-            </Link>
-          </span>
-          <span> / </span>
-        </React.Fragment>
-      );
-    })}
-  </Wrapper>
-);
+function Breadcrumbs({ cities, className = "" }: Props) {
+  const {
+    query: { city, category, number },
+  } = useRouter();
+
+  // We need to be at least at a category page to show the breadcrumbs
+  if (!(typeof city === "string" && typeof category === "string")) {
+    return null;
+  }
+
+  const cityPath = cities.find(({ slug }) => slug === city);
+
+  if (!cityPath) {
+    return null;
+  }
+
+  if (typeof number !== "string") {
+    return (
+      <Wrapper className={className}>
+        <BreadcrumbItem>
+          <Link href={`/${cityPath.slug}`}>
+            <a>{cityPath.name}</a>
+          </Link>
+        </BreadcrumbItem>
+        <span> &gt; </span>
+        <StyledSelect
+          name="categoría"
+          options={cityPath.categories.map(({ name, slug }) => ({
+            name,
+            path: `/${cityPath.slug}/${slug}`,
+          }))}
+          selected={category}
+        />
+      </Wrapper>
+    );
+  }
+
+  const categoryPath = cityPath.categories.find(
+    ({ slug }) => slug === category
+  );
+
+  if (!categoryPath) {
+    return null;
+  }
+
+  return (
+    <Wrapper className={className}>
+      <BreadcrumbItem>
+        <Link href={`/${cityPath.slug}`}>
+          <a>{cityPath.name}</a>
+        </Link>
+      </BreadcrumbItem>
+      <span> &gt; </span>
+      <BreadcrumbItem>
+        <Link href={`/${cityPath.slug}/${categoryPath.slug}`}>
+          <a>{categoryPath.name}</a>
+        </Link>
+      </BreadcrumbItem>
+      <span> &gt; </span>
+      <StyledSelect
+        name="placa número"
+        options={Array.from({ length: 10 }, (_, i) => ({
+          name: String(i),
+          path: `/${cityPath.slug}/${categoryPath.slug}/${i}`,
+        }))}
+        selected={category}
+      />
+    </Wrapper>
+  );
+}
 
 export default Breadcrumbs;

@@ -2,27 +2,22 @@ import { useRouter } from "next/router";
 import { ChangeEventHandler, useState } from "react";
 import styled from "styled-components";
 
-type WrapperProps = {
-  narrow?: boolean;
-};
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div`
   align-items: center;
   display: grid;
-  grid-template: 1 /1;
-  max-width: ${({ narrow, theme }) => (narrow ? theme.maxWidthNarrow : "100%")};
-  width: 100%;
+  grid-template: 1fr / 1fr;
 `;
 
 const StyledSelect = styled.select`
   appearance: none;
-  background: ${({ theme }) => theme.colors.mainComplement};
+  background-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  border-radius: 0.4rem;
+  border-radius: 0.4em;
   color: ${({ theme }) => theme.colors.secondaryDark};
   grid-column: 1 / 1;
   grid-row: 1 / 1;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
+  line-height: normal;
+  padding: 0.5em 2em 0.5em 0.5em;
 `;
 
 const Option = styled.option``;
@@ -35,56 +30,56 @@ const Caret = styled.div`
   grid-column: 1 /1;
   grid-row: 1/1;
   justify-self: end;
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
   pointer-events: none;
 `;
 
 type SelectProps = {
   options: {
-    label: string;
-    value: string;
+    name: string;
+    path: string;
   }[];
+  selected?: string;
   name: string;
-  placeholder: string;
-  narrow?: boolean;
+  placeholder?: string;
+  className?: string;
 };
 
 const Select = ({
   name,
   options,
-  placeholder,
-  narrow = false,
+  placeholder = "",
+  selected = "",
+  className = "",
 }: SelectProps) => {
-  const { push, query } = useRouter();
-  const [selected, setSelected] = useState((query.city as string) || "");
+  const { push } = useRouter();
+  const [value, setValue] = useState(selected);
 
   const onChangeHandler: ChangeEventHandler<HTMLSelectElement> = (event) => {
     const { value } = event.target;
 
-    setSelected(value);
-    push(`/${value}`);
+    setValue(value);
+    push(value);
   };
 
   return (
-    <Wrapper narrow={narrow}>
+    <Wrapper className={className}>
       <StyledSelect
         title={name}
         name={name}
         onChange={onChangeHandler}
-        value={selected}
+        value={value}
       >
-        {[{ label: placeholder, value: "" }, ...options].map(
-          ({ label, value }) => (
-            <Option
-              key={value}
-              disabled={label === placeholder}
-              hidden={label === placeholder}
-              value={value}
-            >
-              {label}
-            </Option>
-          )
-        )}
+        {[{ name: placeholder, path: "" }, ...options].map(({ name, path }) => (
+          <Option
+            key={path}
+            disabled={name === placeholder}
+            hidden={name === placeholder}
+            value={path}
+          >
+            {name}
+          </Option>
+        ))}
       </StyledSelect>
       <Caret />
     </Wrapper>

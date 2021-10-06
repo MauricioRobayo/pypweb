@@ -20,7 +20,7 @@ export default function Layout({ children, cities }: LayoutProps) {
   return (
     <StyledLayout>
       <Navbar cities={cities} />
-      <FixedHeader />
+      <FixedHeader cities={cities} />
       {children}
       <Footer />
     </StyledLayout>

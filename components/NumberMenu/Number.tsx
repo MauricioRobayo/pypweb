@@ -15,7 +15,7 @@ const StyledNumber = styled.div<StyledNumberProps>`
   box-sizing: border-box;
   cursor: ${({ selected }) => (selected ? "auto" : "pointer")};
   display: inline-flex;
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   height: 0.5rem;
   justify-content: center;
   margin: 0.5rem;

@@ -20,5 +20,11 @@ declare module "styled-components" {
     maxWidth: string;
     maxWidthNarrow: string;
     maxWidthWider: string;
+    font: {
+      size: {
+        small: string;
+        large: string;
+      };
+    };
   }
 }

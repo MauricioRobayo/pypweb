@@ -15,7 +15,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   margin: 1rem 0 0;
 `;
 

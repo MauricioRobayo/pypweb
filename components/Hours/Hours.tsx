@@ -7,7 +7,7 @@ import Hour from "./Hour";
 const HoursTitle = styled.h4`
   ${flexCenter}
 
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme.font.size.large};
   margin: 0;
 `;
 
