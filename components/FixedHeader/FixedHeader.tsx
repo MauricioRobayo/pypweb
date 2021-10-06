@@ -12,12 +12,16 @@ const StyledBreadcrumbs = styled(Breadcrumbs)<{ hasShare: boolean }>`
   justify-content: ${({ hasShare }) => (hasShare ? "flex-start" : "center")};
   select {
     background-color: ${({ theme }) => theme.colors.white};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 `;
 
 const StyledClock = styled(Clock)<{ hasShare: boolean }>`
   font-size: ${({ theme }) => theme.font.size.small};
-  justify-self: ${({ hasShare }) => (hasShare ? "start" : "center")};
+  text-align: ${({ hasShare }) => (hasShare ? "left" : "center")};
 `;
 
 const StyledFixedHeader = styled.div<{ isVisible: boolean }>`
@@ -28,26 +32,23 @@ const StyledFixedHeader = styled.div<{ isVisible: boolean }>`
   margin: 0;
   padding: 0.25em 1rem;
   position: sticky;
-  text-align: center;
-  top: -1px;
+  top: 0;
   transition: background-color 0.5s;
   width: 100%;
   z-index: 1000;
 `;
 
 const Wrapper = styled.div`
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  justify-content: space-between;
   margin: auto;
   max-width: ${({ theme }) => theme.maxWidth};
 `;
 
-const InfoColumn = styled.div`
+const Row = styled.div`
+  align-items: center;
   display: grid;
-  grid-row-gap: 0.25em;
-  grid-template-columns: 1fr;
+  grid-column-gap: 0.5em;
+  grid-template-columns: 1fr auto;
+  margin-block: 0.15em;
 `;
 
 interface Props {
@@ -89,11 +90,20 @@ function FixedHeader({ cities }: Props) {
       <div ref={ref} />
       <StyledFixedHeader isVisible={isVisible}>
         <Wrapper>
-          <InfoColumn>
-            <StyledBreadcrumbs path={path} hasShare={hasShare} />
-            <StyledClock hasShare={hasShare} />
-          </InfoColumn>
-          <ShareButton />
+          {path.length > 1 ? (
+            <>
+              <Row>
+                <StyledBreadcrumbs path={path} hasShare={hasShare} />
+                <ShareButton />
+              </Row>
+              <StyledClock hasShare={hasShare} />
+            </>
+          ) : (
+            <Row>
+              <StyledClock hasShare={hasShare} />
+              <ShareButton />
+            </Row>
+          )}
         </Wrapper>
       </StyledFixedHeader>
     </>
