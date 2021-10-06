@@ -8,15 +8,14 @@ import { responsiveWidth } from "styles/mixins";
 
 const StyledSelect = styled(Select)`
   select {
-    padding-bottom: 0.15em;
-    padding-right: 1.5em;
-    padding-top: 0.1em;
+    border: none;
+    padding: 0 1.25em 0 0;
   }
 `;
 const Wrapper = styled.nav`
   ${responsiveWidth}
 
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   font-size: ${({ theme }) => theme.font.size.small};
   a {
