@@ -1,6 +1,6 @@
 import { Select } from "components/Select";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
@@ -21,17 +21,23 @@ const StyledSelect = styled(Select)`
     padding: 0 1.25em 0 0;
   }
 `;
-const Wrapper = styled.nav`
+const Wrapper = styled.ol`
   ${responsiveWidth}
 
   align-items: center;
   display: flex;
   font-size: ${({ theme }) => theme.font.size.small};
+  margin: 0;
+  padding: 0;
   a {
     text-decoration: none;
   }
 `;
-const BreadcrumbItem = styled.div`
+const BreadcrumbItem = styled.li.attrs({
+  itemProp: "itemListElement",
+  itemScope: true,
+  itemType: "https://schema.org/ListItem",
+})`
   max-width: 22ch;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -53,33 +59,39 @@ function Breadcrumbs({ path, className = "" }: Props) {
   }
 
   return (
-    <Wrapper className={className}>
-      {path.map((item) => {
+    <Wrapper
+      className={className}
+      itemScope
+      itemType="https://schema.org/BreadcrumbList"
+    >
+      {path.map((item, i) => {
         if (isPathSegment(item)) {
           return (
-            <Fragment key={item.path}>
-              <BreadcrumbItem
-                itemScope
-                itemType="http://data-vocabulary.org/Breadcrumb"
-              >
-                <Link href={item.path}>
-                  <a title={item.path} itemProp="url">
-                    {item.name}
-                  </a>
-                </Link>
-              </BreadcrumbItem>
+            <BreadcrumbItem key={item.path}>
+              <Link href={item.path}>
+                <a title={item.path} itemProp="item">
+                  <span itemProp="name">{item.name}</span>
+                  <meta itemProp="position" content={`${i + 1}`} />
+                </a>
+              </Link>
               <ItemSeparator>&gt;</ItemSeparator>
-            </Fragment>
+            </BreadcrumbItem>
           );
         }
 
         return (
-          <StyledSelect
-            name="select"
-            key={item.selected}
-            options={item.options}
-            selected={item.selected}
-          />
+          <BreadcrumbItem key={item.selected}>
+            <StyledSelect
+              name="select"
+              options={item.options}
+              selected={item.selected}
+            />
+            <meta
+              itemProp="name"
+              content={item.selected.replace(/.*\//g, "")}
+            />
+            <meta itemProp="position" content={`${i + 1}`} />
+          </BreadcrumbItem>
         );
       })}
     </Wrapper>
