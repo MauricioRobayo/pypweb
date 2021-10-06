@@ -56,7 +56,7 @@ function Breadcrumbs({ path, className = "" }: Props) {
             <Fragment key={item.path}>
               <BreadcrumbItem>
                 <Link href={item.path}>
-                  <a>{item.name}</a>
+                  <a title={item.path}>{item.name}</a>
                 </Link>
               </BreadcrumbItem>
               <span> &gt; </span>
