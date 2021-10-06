@@ -17,8 +17,9 @@ export type Path = (PathSegment | SelectSegment)[];
 
 const StyledSelect = styled(Select)`
   select {
-    border: none;
-    padding: 0 1.25em 0 0;
+    line-height: 1.5;
+    padding-bottom: 0;
+    padding-top: 0;
   }
 `;
 const Wrapper = styled.ol`
@@ -87,13 +88,13 @@ function Breadcrumbs({ path, className = "" }: Props) {
         }
 
         return (
-          <BreadcrumbItem key={item.selected}>
+          <BreadcrumbItemContainer key={item.selected}>
             <StyledSelect
               name="select"
               options={item.options}
               selected={item.selected}
             />
-          </BreadcrumbItem>
+          </BreadcrumbItemContainer>
         );
       })}
     </Wrapper>
