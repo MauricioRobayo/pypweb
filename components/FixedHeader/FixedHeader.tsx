@@ -1,8 +1,10 @@
+import type { Path } from "components/Breadcrumbs";
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { Clock } from "components/Clock";
 import { ShareButton } from "components/ShareButton";
 import useShare from "hooks/useShare";
 import { CitiesList } from "lib/cities";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
@@ -46,12 +48,20 @@ interface Props {
   cities: CitiesList;
 }
 function FixedHeader({ cities }: Props) {
+  const {
+    query: { city, category, number },
+  } = useRouter();
+  const path = buildPath(cities, {
+    citySlug: city as string | undefined,
+    categorySlug: category as string | undefined,
+    number: number as string | undefined,
+  });
   const hasShare = useShare();
   return (
     <StyledFixedHeader>
       <Wrapper>
         <InfoColumn>
-          <StyledBreadcrumbs cities={cities} hasShare={hasShare} />
+          <StyledBreadcrumbs path={path} hasShare={hasShare} />
           <StyledClock hasShare={hasShare} />
         </InfoColumn>
         <ShareButton />
@@ -61,3 +71,71 @@ function FixedHeader({ cities }: Props) {
 }
 
 export default FixedHeader;
+
+function buildPath(
+  cities: CitiesList,
+  {
+    citySlug,
+    categorySlug,
+    number,
+  }: {
+    citySlug?: string;
+    categorySlug?: string;
+    number?: string;
+  }
+): Path {
+  const path: Path = [];
+
+  // We need at least to be on a category page to show breadcrumbs
+  if (typeof citySlug !== "string" || typeof categorySlug !== "string") {
+    return path;
+  }
+
+  const cityInfo = cities.find(({ slug }) => slug === citySlug);
+
+  if (!cityInfo) {
+    return path;
+  }
+
+  path.push({
+    name: cityInfo.name,
+    path: `/${citySlug}`,
+  });
+
+  if (typeof number !== "string") {
+    path.push({
+      options: cityInfo.categories.map(({ name, slug }) => ({
+        name,
+        path: `/${citySlug}/${slug}`,
+      })),
+      name: "Categoría",
+      selected: `/${citySlug}/${categorySlug}`,
+    });
+    return path;
+  }
+
+  const categoryInfo = cityInfo.categories.find(
+    ({ slug }) => slug === categorySlug
+  );
+
+  if (!categoryInfo) {
+    return path;
+  }
+
+  path.push(
+    {
+      name: categoryInfo.name,
+      path: `/${citySlug}/${categorySlug}`,
+    },
+    {
+      name: "Placa número",
+      options: Array.from({ length: 10 }, (_, i) => ({
+        name: String(i),
+        path: `/${citySlug}/${categorySlug}/${i}`,
+      })),
+      selected: `/${citySlug}/${categorySlug}/${number}`,
+    }
+  );
+
+  return path;
+}
