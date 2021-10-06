@@ -18,7 +18,7 @@ export const Wrapper = styled.article`
 export const Title = styled.h3`
   background: ${({ theme }) => theme.colors.main};
   border-radius: 5px 5px 0 0;
-  color: white;
+  color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: bold;
   margin: 0;
@@ -27,7 +27,7 @@ export const Title = styled.h3`
 `;
 
 export const Body = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   padding: 1rem;
 `;
 

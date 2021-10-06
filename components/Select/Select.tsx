@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   align-items: center;
+  border-radius: 0.4em;
   display: grid;
   grid-template: 1fr / 1fr;
+  overflow: hidden;
 `;
 
 const StyledSelect = styled.select`

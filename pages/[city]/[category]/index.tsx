@@ -66,7 +66,6 @@ export default function CategoryPage({
         setDate(cotDateFromParts({ year, month, day }));
         setCategoryData(categoryData);
       } catch (err) {
-        console.log(err);
         setCategoryData(initialCategoryData);
         setDate(INITIAL_DATE);
       }
