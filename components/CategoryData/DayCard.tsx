@@ -70,11 +70,7 @@ function DayCard({
 
   if (isSelected) {
     return (
-      <SelectedCard
-        key={date.toISOString()}
-        className={className}
-        isInactive={isInactive}
-      >
+      <SelectedCard className={className} isInactive={isInactive}>
         <Header isInactive={isInactive}>
           <div>
             {isSelected ? (
@@ -126,11 +122,7 @@ function DayCard({
   }
 
   return (
-    <RegularCard
-      key={date.toISOString()}
-      className={className}
-      isInactive={isInactive}
-    >
+    <RegularCard className={className} isInactive={isInactive}>
       <Link
         href={{
           pathname: pathname,
