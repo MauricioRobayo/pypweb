@@ -1,12 +1,11 @@
-import type { IHourData, Scheme } from "@mauriciorobayo/pyptron";
-import { CategoryName } from "@mauriciorobayo/pyptron";
+import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Card } from "components/Card";
 import { Hours } from "components/Hours";
 import { Icon } from "components/Icon";
 import { LicensePlate } from "components/LicensePlate";
-import { ALL_DIGITS, NA, pypNumbersToString } from "lib/utils";
+import { cotDateFromParts } from "lib/dateUtils";
+import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import { flexHorizontalCenterVerticalEnd, inlineIconLeft } from "styles/mixins";
 import { categoryIcon } from "./utils";
@@ -36,26 +35,20 @@ const Description = styled.div`
 
 const IconLeft = inlineIconLeft(Icon);
 
-const isPublicLicense = (group: string) => ["taxis", "tpc"].includes(group);
-
 type CategoryCardProps = {
-  categoryName: CategoryName;
-  categorySlug: string;
-  date: Date;
-  numbers: number[];
-  hours: IHourData[];
-  scheme: Scheme;
+  category: ICategoryData;
+  citySlug: string;
 };
 
 export default function CategoryCard({
-  categoryName,
-  categorySlug,
-  date,
-  numbers,
-  hours,
-  scheme,
+  category,
+  citySlug,
 }: CategoryCardProps) {
-  const { query } = useRouter();
+  const {
+    slug: categorySlug,
+    name: categoryName,
+    data: [{ year, month, day, numbers, scheme, hours }],
+  } = category;
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
@@ -63,7 +56,7 @@ export default function CategoryCard({
   const linkUrl = {
     pathname: "/[city]/[category]",
     query: {
-      city: query.city,
+      city: citySlug,
       category: categorySlug,
     },
   };
@@ -85,13 +78,17 @@ export default function CategoryCard({
         <Description>No circulan placas {schemeString} en</Description>
       )}
       <div>
-        <LicensePlate isPublic={isPublicLicense(categorySlug)} size="large">
+        <LicensePlate isPublic={isPublicLicense(categoryName)} size="large">
           {numbersString}
         </LicensePlate>
       </div>
       {hasRestriction ? (
         <HoursWrapper>
-          <Hours date={date} hours={hours} interactive />
+          <Hours
+            hours={hours}
+            interactive
+            date={cotDateFromParts({ year, month, day })}
+          />
         </HoursWrapper>
       ) : null}
     </Body>
