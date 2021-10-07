@@ -10,11 +10,12 @@ const StyledVidverto = styled(Vidverto)`
 `;
 
 const List = styled.div`
+  ${responsiveWidth}
+
   display: grid;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  ${responsiveWidth}
   & > *:not(:last-child) {
     margin-bottom: 1rem;
   }

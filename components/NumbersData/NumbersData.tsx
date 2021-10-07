@@ -51,7 +51,7 @@ export default function NumbersData({
           </>
         ) : (
           <>
-            <LicensePlate>{number}</LicensePlate> hoy NO tiene restricción
+            <LicensePlate>{number}</LicensePlate> hoy no tiene restricción
           </>
         )}
       </strong>

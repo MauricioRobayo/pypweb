@@ -1,6 +1,7 @@
 import { Vidverto } from "components/Ads";
 import { List } from "components/List";
 import styled from "styled-components";
+import { responsiveWidth } from "styles/mixins";
 
 export const Anchor = styled.a`
   display: block;
@@ -15,6 +16,8 @@ export const StyledList = styled(List)`
 `;
 
 export const Wrapper = styled.div`
+  ${responsiveWidth}
+
   text-align: center;
 `;
 
