@@ -2,6 +2,11 @@ import { ComponentType } from "react";
 import styled, { css } from "styled-components";
 import { size } from "./constants";
 
+export const secondaryText = css`
+  font-size: ${({ theme }) => theme.font.size.small};
+  opacity: 0.85;
+`;
+
 export const inlineIconLeft = <T>(component: ComponentType<T>) => styled(
   component
 )`
@@ -46,5 +51,5 @@ export const flexCenter = css`
 `;
 
 export const responsiveWidth = css`
-  width: min(${({ theme }) => theme.maxWidth}, 100%);
+  width: min(${({ theme }) => theme.width.normal}, 100%);
 `;

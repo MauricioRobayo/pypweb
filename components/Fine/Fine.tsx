@@ -9,9 +9,9 @@ const Quote = styled.blockquote`
     margin: 0;
   }
   small {
-    font-size: ${({ theme }) => theme.font.size.small};
+    ${secondaryText}
+
     font-style: italic;
-    opacity: 0.95;
   }
 `;
 
