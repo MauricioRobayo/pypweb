@@ -16,9 +16,11 @@ export const defaultTheme: DefaultTheme = {
     warningLighter: "#FFF3CD",
     white: "white",
   },
-  maxWidth: "570px",
-  maxWidthNarrow: "320px",
-  maxWidthWider: "720px",
+  width: {
+    narrow: "320px",
+    normal: "570px",
+    wide: "720px",
+  },
   font: {
     size: {
       small: "0.85rem",

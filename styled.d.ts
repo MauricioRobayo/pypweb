@@ -18,9 +18,11 @@ declare module "styled-components" {
       warningLighter: string;
       white: string;
     };
-    maxWidth: string;
-    maxWidthNarrow: string;
-    maxWidthWider: string;
+    width: {
+      narrow: string;
+      normal: string;
+      wide: string;
+    };
     font: {
       size: {
         small: string;
