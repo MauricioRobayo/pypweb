@@ -9,7 +9,7 @@ import {
 const StyledCard = styled.div`
   ${boxShadow}
 
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.border.radius};
   overflow: hidden;
 `;
 

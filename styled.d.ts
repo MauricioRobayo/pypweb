@@ -18,6 +18,9 @@ declare module "styled-components" {
       warningLighter: string;
       white: string;
     };
+    border: {
+      radius: string;
+    };
     width: {
       narrow: string;
       normal: string;

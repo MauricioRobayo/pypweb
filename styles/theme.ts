@@ -16,6 +16,9 @@ export const defaultTheme: DefaultTheme = {
     warningLighter: "#FFF3CD",
     white: "white",
   },
+  border: {
+    radius: "0.25em",
+  },
   width: {
     narrow: "320px",
     normal: "570px",
