@@ -25,7 +25,7 @@ export const StyledLicensePlate = styled(LicensePlate)`
 `;
 
 export const StyledPypDate = styled(PypDate).attrs({
-  type: "short",
+  style: "short",
 })`
   font-size: ${({ theme }) => theme.font.size.small};
   .day {
