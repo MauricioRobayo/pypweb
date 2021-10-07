@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h3`
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
-  margin: 1rem 0;
+  margin: 0;
 `;
 
 export const StyledVidverto = styled(Vidverto)`
