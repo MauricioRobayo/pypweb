@@ -31,13 +31,14 @@ const formatTypeClassName: Record<FormatType, string> = {
 
 const Wrapper = styled.div`
   min-height: ${minHeight};
+  width: 100%;
 `;
 
 const StyledPlaceholder = styled(Placeholder)`
   min-height: ${minHeight};
-  width: 320px;
+  width: min(100%, 320px);
   @media (min-width: 728px) {
-    width: 728px;
+    width: min(100%, 728px);
   } ;
 `;
 

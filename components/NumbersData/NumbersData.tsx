@@ -47,11 +47,11 @@ export default function NumbersData({
       <strong>
         {hasRestriction ? (
           <>
-            <LicensePlate>{number}</LicensePlate> tiene restricción hoy
+            <LicensePlate>{number}</LicensePlate> hoy tiene restricción
           </>
         ) : (
           <>
-            <LicensePlate>{number}</LicensePlate> no tiene restricción hoy
+            <LicensePlate>{number}</LicensePlate> hoy NO tiene restricción
           </>
         )}
       </strong>
