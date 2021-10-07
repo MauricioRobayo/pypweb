@@ -29,7 +29,6 @@ export default function Hours({
   showTitle = true,
 }: HoursProps) {
   return (
-    /* eslint-disable react/no-array-index-key */
     <>
       {showTitle ? (
         <HoursTitle>
@@ -38,16 +37,20 @@ export default function Hours({
         </HoursTitle>
       ) : null}
       <div className={className}>
-        {hours.map((hourData, index) => (
-          <Hour
-            key={index}
-            date={date}
-            hourData={hourData}
-            interactive={interactive}
-          />
-        ))}
+        {hours.map(
+          (
+            hourData,
+            index // eslint-disable-line react/no-array-index-key
+          ) => (
+            <Hour
+              key={index}
+              date={date}
+              hourData={hourData}
+              interactive={interactive}
+            />
+          )
+        )}
       </div>
     </>
-    /* eslint-enable */
   );
 }
