@@ -1,7 +1,12 @@
 import { Vidverto } from "components/Ads";
 import { Breadcrumbs } from "components/Breadcrumbs";
+import { List } from "components/List";
 import styled from "styled-components";
 import { camouflageLink } from "styles/mixins";
+
+export const StyledList = styled(List)`
+  margin: 1rem 0;
+`;
 
 export const Wrapper = styled.div`
   text-align: center;

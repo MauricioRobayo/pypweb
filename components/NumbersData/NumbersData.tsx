@@ -10,8 +10,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
-  ListItem,
-  ListWrapper,
+  StyledList,
   StyledVidverto,
   Title,
   Wrapper,
@@ -32,7 +31,7 @@ export default function NumbersData({
   const { query } = useRouter();
   const citySlug = query.city as string;
   const categorySlug = query.category as string;
-  const { data, name: categoryName } = categoryData;
+  const { data } = categoryData;
   const [{ numbers, hours }, ...remainingData] = data;
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
@@ -83,15 +82,16 @@ export default function NumbersData({
       ) : (
         <div>
           <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-          <ListWrapper>
-            {forthcomingRestrictions.map((data) => {
+          <StyledList
+            rows={forthcomingRestrictions.map((data) => {
               const dataDate = cotDateFromParts({
                 year: data.year,
                 month: data.month,
                 day: data.day,
               });
-              return (
-                <ListItem key={dataDate.toISOString()}>
+              return {
+                key: dataDate.toISOString(),
+                content: (
                   <Link
                     href={{
                       pathname: "/[city]/[category]",
@@ -108,10 +108,10 @@ export default function NumbersData({
                       <PypDate date={dataDate} />
                     </Anchor>
                   </Link>
-                </ListItem>
-              );
+                ),
+              };
             })}
-          </ListWrapper>
+          />
         </div>
       )}
       <NumberLinks selectedNumber={number} />
