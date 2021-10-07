@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { responsivePaddingAround, secondaryText } from "styles/mixins";
 
 const Quote = styled.blockquote`
   background-color: ${({ theme }) => theme.colors.secondaryLighter};
   border-radius: 0.5rem;
   margin: 1rem 1.5rem;
-  padding: 1rem 1.5rem;
+  ${responsivePaddingAround};
   p {
     margin: 0;
   }
