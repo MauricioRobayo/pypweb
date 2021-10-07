@@ -44,4 +44,5 @@ export const MoreLink = styled.a`
   align-items: center;
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 `;

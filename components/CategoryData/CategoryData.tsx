@@ -23,8 +23,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
   const { dias: forwardDays } = query;
   const [daysToShow, setDaysToShow] = useState(DEFAULT_DAYS_TO_SHOW);
   const { daysRemaining, data, name: categoryName } = categoryData;
-  const [currentPypData, ...nextPypData] = data;
-  const { category: categorySlug, city: citySlug } = query;
+  const [currentPypData, ...remainingPypData] = data;
   const schemeMessage = currentPypData.scheme === "first" ? "primer" : "último";
 
   useEffect(() => {
@@ -33,10 +32,12 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
     }
   }, [forwardDays]);
 
+  const nextPypData = remainingPypData.slice(0, daysToShow - 1);
+
   const nextDataList =
     nextPypData.length === 0 ? null : (
       <ListWrapper>
-        {nextPypData.slice(0, daysToShow - 1).map((pypData) => (
+        {nextPypData.map((pypData) => (
           <DayCard
             key={JSON.stringify(pypData)}
             categoryName={categoryName}
