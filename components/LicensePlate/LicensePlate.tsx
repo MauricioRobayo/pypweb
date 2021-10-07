@@ -39,17 +39,19 @@ const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
 
 type LicensePlateProps = {
   children: React.ReactNode;
+  className?: string;
   isPublic?: boolean;
   size?: LicenseSize;
 };
 
 export default function LicensePlate({
   children,
+  className = "",
   isPublic = false,
   size = "medium",
 }: LicensePlateProps) {
   return (
-    <StyledLicensePlate isPublic={isPublic} size={size}>
+    <StyledLicensePlate isPublic={isPublic} size={size} className={className}>
       {children}
     </StyledLicensePlate>
   );
