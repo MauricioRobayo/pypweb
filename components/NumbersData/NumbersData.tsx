@@ -5,7 +5,7 @@ import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
 import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
-import { DEFAULT_DAYS_TO_SHOW, NA, pypNumbersToString } from "lib/utils";
+import { DEFAULT_DAYS_TO_SHOW, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -38,24 +38,6 @@ export default function NumbersData({
   const numbersString = pypNumbersToString(numbers);
   const hasRestriction = numbers.includes(Number(number));
 
-  const currentNumberLicense = hasRestriction ? (
-    <>
-      <LicensePlate>{numbersString}</LicensePlate>
-    </>
-  ) : (
-    <>
-      <LicensePlate>{number}</LicensePlate>
-    </>
-  );
-
-  const todaysRestriction =
-    numbersString === NA ? null : (
-      <div>
-        Hoy tienen pico y placa placas {schemeString} en{" "}
-        <LicensePlate>{numbersString}</LicensePlate>.
-      </div>
-    );
-
   const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
     numbers.includes(Number(number))
   );
@@ -68,7 +50,9 @@ export default function NumbersData({
             <LicensePlate>{number}</LicensePlate> tiene restricción hoy
           </>
         ) : (
-          `${number} no tiene restricción hoy`
+          <>
+            <LicensePlate>{number}</LicensePlate> no tiene restricción hoy
+          </>
         )}
       </strong>
     </Title>
@@ -76,8 +60,8 @@ export default function NumbersData({
 
   const footer = (
     <>
-      <Description>Hoy no circulan placas {schemeString} en</Description>
-      {currentNumberLicense}
+      <Description>Hoy no circulan placas {schemeString} en </Description>
+      <LicensePlate>{numbersString}</LicensePlate>
     </>
   );
 
@@ -85,9 +69,7 @@ export default function NumbersData({
     <>
       <Hours date={date} hours={hours} interactive />
     </>
-  ) : (
-    todaysRestriction
-  );
+  ) : null;
 
   return (
     <Wrapper>
