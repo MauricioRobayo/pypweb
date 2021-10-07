@@ -6,6 +6,7 @@ import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
+import { StyledLicensePlate, StyledPypDate } from "./CategoryData.styles";
 import {
   DateWrapper,
   Description,
@@ -13,8 +14,6 @@ import {
   Header,
   StyledCard,
   StyledHours,
-  StyledLicensePlate,
-  StyledPypDate,
 } from "./DayCard.styles";
 
 type DayCardProps = {
@@ -39,29 +38,23 @@ function DayCard({
   const isInactive = numbersString === NA;
   const { pathname, query } = useRouter();
 
-  const formattedDate = <StyledPypDate date={date} type="short" />;
-
-  const licensePlate = (
-    <StyledLicensePlate
-      isPublic={isPublic}
-      size={isSelected ? "large" : "medium"}
-    >
-      {numbersString}
-    </StyledLicensePlate>
-  );
-
   const hasDescription = !isInactive && !isAllDigits;
 
   const header = (
     <Header hasDescription={hasDescription}>
       <DateWrapper>
         <IconLeft name={categoryIcon[categoryName]} />
-        {formattedDate}
+        <StyledPypDate date={date} />
       </DateWrapper>
       {hasDescription ? (
         <Description>No circulan placas {schemeString} en</Description>
       ) : null}
-      {licensePlate}
+      <StyledLicensePlate
+        isPublic={isPublic}
+        size={isSelected ? "large" : "medium"}
+      >
+        {numbersString}
+      </StyledLicensePlate>
     </Header>
   );
 

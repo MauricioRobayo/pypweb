@@ -12,9 +12,15 @@ import { useRouter } from "next/router";
 import { memo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { NumberLinks } from "../NumberMenu";
-import { Article, MoreIcon, MoreLink, Title } from "./CategoryData.styles";
+import {
+  Article,
+  MoreIcon,
+  MoreLink,
+  StyledLicensePlate,
+  StyledPypDate,
+  Title,
+} from "./CategoryData.styles";
 import DayCard from "./DayCard";
-import { StyledLicensePlate, StyledPypDate } from "./DayCard.styles";
 
 const StyledList = styled(List)`
   margin: 1rem 0;
@@ -48,15 +54,8 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
   const nextDataList = nextPypData.map((pypData) => {
     const { year, month, day, numbers } = pypData;
     const date = cotDateFromParts({ year, month, day });
-    const formattedDate = <StyledPypDate date={date} type="short" />;
     const numbersString = pypNumbersToString(numbers);
     const isPublic = isPublicLicense(categoryName);
-
-    const licensePlate = (
-      <StyledLicensePlate isPublic={isPublic}>
-        {numbersString}
-      </StyledLicensePlate>
-    );
 
     return {
       key: date.toISOString(),
@@ -76,8 +75,10 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
           scroll
         >
           <StyledLink>
-            {formattedDate}
-            {licensePlate}
+            <StyledPypDate date={date} />
+            <StyledLicensePlate isPublic={isPublic}>
+              {numbersString}
+            </StyledLicensePlate>
           </StyledLink>
         </Link>
       ),

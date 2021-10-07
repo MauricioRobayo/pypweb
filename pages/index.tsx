@@ -1,4 +1,4 @@
-import { Footer } from "components/CityData/CategoryCard.styles";
+import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
 import type { CitiesList } from "lib/cities";

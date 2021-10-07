@@ -1,7 +1,5 @@
 import { Card } from "components/Card";
 import { Hours } from "components/Hours";
-import { LicensePlate } from "components/LicensePlate";
-import { PypDate } from "components/PypDate";
 import styled, { css } from "styled-components";
 import { size } from "styles/constants";
 
@@ -35,19 +33,6 @@ export const Header = styled.div<{ hasDescription: boolean }>`
         `}
 `;
 
-export const StyledPypDate = styled(PypDate)`
-  font-size: ${({ theme }) => theme.font.size.small};
-  .day {
-    font-weight: bold;
-    margin-right: 0.5em;
-    text-transform: uppercase;
-  }
-  .date {
-    opacity: 0.95;
-    text-transform: uppercase;
-  }
-`;
-
 export const Footer = styled.div`
   text-align: center;
 `;
@@ -59,10 +44,6 @@ export const StyledHours = styled(Hours)`
 
 export const Description = styled.div`
   grid-area: description;
-`;
-
-export const StyledLicensePlate = styled(LicensePlate)`
-  grid-area: licensePlate;
 `;
 
 export const DateWrapper = styled.div`
