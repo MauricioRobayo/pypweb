@@ -49,10 +49,7 @@ function DayCard({
       {hasDescription ? (
         <Description>No circulan placas {schemeString} en</Description>
       ) : null}
-      <StyledLicensePlate
-        isPublic={isPublic}
-        size={isSelected ? "large" : "medium"}
-      >
+      <StyledLicensePlate isPublic={isPublic}>
         {numbersString}
       </StyledLicensePlate>
     </Header>
