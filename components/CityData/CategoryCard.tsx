@@ -1,13 +1,13 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Card } from "components/Card";
 import { Hours } from "components/Hours";
-import { Icon } from "components/Icon";
+import { IconLeft } from "components/Icon";
 import { LicensePlate } from "components/LicensePlate";
 import { cotDateFromParts } from "lib/dateUtils";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import styled from "styled-components";
-import { flexHorizontalCenterVerticalEnd, inlineIconLeft } from "styles/mixins";
+import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import { categoryIcon } from "./utils";
 
 const Title = styled.h3`
@@ -32,8 +32,6 @@ const SeeMore = styled.a`
 const Description = styled.div`
   margin-bottom: 1rem;
 `;
-
-const IconLeft = inlineIconLeft(Icon);
 
 type CategoryCardProps = {
   category: ICategoryData;

@@ -1,6 +1,5 @@
 import { Card } from "components/Card";
 import { Hours } from "components/Hours";
-import { Icon } from "components/Icon";
 import { LicensePlate } from "components/LicensePlate";
 import { PypDate } from "components/PypDate";
 import styled, { css } from "styled-components";
@@ -95,8 +94,6 @@ export const StyledPypDate = styled(PypDate)`
 export const Footer = styled.div`
   text-align: center;
 `;
-
-export const IconLeft = inlineIconLeft(Icon);
 
 export const StyledHours = styled(Hours)`
   font-size: 1rem;

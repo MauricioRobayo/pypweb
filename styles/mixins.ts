@@ -1,22 +1,9 @@
-import { ComponentType } from "react";
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 import { size } from "./constants";
 
 export const secondaryText = css`
   font-size: ${({ theme }) => theme.font.size.small};
   opacity: 0.85;
-`;
-
-export const inlineIconLeft = <T>(component: ComponentType<T>) => styled(
-  component
-)`
-  margin-right: 0.5rem;
-`;
-
-export const inlineIconRight = <T>(component: ComponentType<T>) => styled(
-  component
-)`
-  margin-left: 0.5rem;
 `;
 
 export const boxShadow = css`

@@ -1,17 +1,6 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
-import {
-  cotDateFromParts,
-  cotFormatShortDate,
-  cotIsToday,
-} from "lib/dateUtils";
-import {
-  ALL_DIGITS,
-  DEFAULT_DAYS_TO_SHOW,
-  isPublicLicense,
-  NA,
-  pypNumbersToString,
-} from "lib/utils";
+import { IconLeft } from "components/Icon";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
@@ -20,7 +9,6 @@ import {
   Description,
   Footer,
   Header,
-  IconLeft,
   RegularCard,
   StyledCard,
   StyledHours,
