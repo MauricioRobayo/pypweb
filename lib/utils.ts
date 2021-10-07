@@ -25,8 +25,5 @@ export function pypNumbersToString(numbers: number[]) {
 }
 
 export function isPublicLicense(categoryName: string) {
-  const lowerCaseName = categoryName.toLowerCase();
-  return ["taxis", "público"].some((category) =>
-    lowerCaseName.includes(category)
-  );
+  return /(taxis|público)/i.test(categoryName);
 }
