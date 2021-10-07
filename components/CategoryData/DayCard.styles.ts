@@ -1,11 +1,13 @@
+import { Card } from "components/Card";
 import { Hours } from "components/Hours";
 import { Icon } from "components/Icon";
+import { LicensePlate } from "components/LicensePlate";
 import { PypDate } from "components/PypDate";
 import styled, { css } from "styled-components";
+import { size } from "styles/constants";
 import {
   boxShadow,
   camouflageLink,
-  flexCenter,
   inlineIconLeft,
   responsivePaddingAround,
 } from "styles/mixins";
@@ -19,6 +21,10 @@ type StyleProps = {
   isSelected?: boolean;
   isInactive?: boolean;
 };
+
+export const StyledCard = styled(Card)`
+  margin-bottom: 1rem;
+`;
 
 export const RegularCard = styled.div<StyleProps>`
   ${camouflageLink}
@@ -47,71 +53,47 @@ export const RegularCard = styled.div<StyleProps>`
   }
 `;
 
-export const SelectedCard = styled.div<StyleProps>`
-  ${boxShadow}
-
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  ${({ isInactive }) => isInactive && inactiveStyle}
+export const Header = styled.div<{ hasDescription: boolean }>`
+  display: grid;
+  ${({ hasDescription }) =>
+    hasDescription
+      ? css`
+          align-items: flex-end;
+          grid-gap: 0.5em;
+          grid-template-areas:
+            "date date"
+            "description licensePlate";
+          grid-template-columns: 1fr auto;
+          @media screen and (min-width: ${size.sm}) {
+            grid-row-gap: 0;
+            grid-template-areas:
+              "date licensePlate"
+              "description licensePlate";
+          }
+        `
+      : css`
+          align-items: center;
+          grid-row-gap: 0.5em;
+          grid-template-areas: "date licensePlate";
+          grid-template-columns: 1fr auto;
+        `}
 `;
 
-export const Header = styled.div<StyleProps>`
-  align-items: flex-end;
-  background-color: ${({ theme }) => theme.colors.main};
-  color: ${({ theme }) => theme.colors.mainComplement};
-  display: flex;
-  justify-content: space-between;
-  ${responsivePaddingAround}
-  ${({ isInactive }) =>
-    isInactive &&
-    css`
-      align-items: center;
-      font-weight: normal;
-      ${inactiveStyle}
-    `}
-`;
-
-export const Body = styled.div<StyleProps>`
-  padding: 1rem;
-`;
-
-export const Description = styled.div`
-  padding-top: 0.5rem;
-`;
-
-export const StyledPypDate = styled(PypDate)<StyleProps>`
-  .day,
-  .date {
-    ${({ isSelected, isInactive }) =>
-      isSelected &&
-      !isInactive &&
-      css`
-        color: ${({ theme }) => theme.colors.mainComplement};
-      `};
-  }
+export const StyledPypDate = styled(PypDate)`
+  font-size: ${({ theme }) => theme.font.size.small};
   .day {
-    ${({ isSelected, isInactive }) =>
-      isSelected &&
-      !isInactive &&
-      css`
-        font-weight: bold;
-      `};
+    font-weight: bold;
+    margin-right: 0.5em;
+    text-transform: uppercase;
   }
   .date {
-    font-size: ${({ theme }) => theme.font.size.small};
+    opacity: 0.95;
     text-transform: uppercase;
   }
 `;
 
-export const Warning = styled.div`
-  background-color: ${({ theme }) => theme.colors.warningLighter};
-  font-size: ${({ theme }) => theme.font.size.small};
-  padding: 1rem;
+export const Footer = styled.div`
   text-align: center;
-  a {
-    ${flexCenter}
-  }
 `;
 
 export const IconLeft = inlineIconLeft(Icon);
@@ -121,4 +103,14 @@ export const StyledHours = styled(Hours)`
   text-align: center;
 `;
 
-export const VehicleIcon = inlineIconLeft(Icon);
+export const Description = styled.div`
+  grid-area: description;
+`;
+
+export const StyledLicensePlate = styled(LicensePlate)`
+  grid-area: licensePlate;
+`;
+
+export const DateWrapper = styled.div`
+  grid-area: date;
+`;

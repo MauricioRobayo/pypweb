@@ -1,6 +1,10 @@
 import { ReactNode } from "react";
 import styled, { css } from "styled-components";
-import { boxShadow, camouflageLink } from "styles/mixins";
+import {
+  boxShadow,
+  camouflageLink,
+  responsivePaddingAround,
+} from "styles/mixins";
 
 const StyledCard = styled.div`
   ${boxShadow}
@@ -11,7 +15,7 @@ const StyledCard = styled.div`
 
 const shared = css`
   & > div {
-    padding: 1rem;
+    ${responsivePaddingAround}
   }
 `;
 const Header = styled.div`
@@ -32,6 +36,7 @@ const Footer = styled.div`
   ${shared}
 
   background-color: ${({ theme }) => theme.colors.mainLight};
+  font-size: ${({ theme }) => theme.font.size.small};
 `;
 
 interface Props {
@@ -43,12 +48,16 @@ interface Props {
 export default function Card({ header, body, footer, className }: Props) {
   return (
     <StyledCard className={className}>
-      <Header>
-        <div>{header}</div>
-      </Header>
-      <Body>
-        <div>{body}</div>
-      </Body>
+      {header ? (
+        <Header>
+          <div>{header}</div>
+        </Header>
+      ) : null}
+      {body ? (
+        <Body>
+          <div>{body}</div>
+        </Body>
+      ) : null}
       {footer ? (
         <Footer>
           <div>{footer}</div>

@@ -1,6 +1,5 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
-import { LicensePlate } from "components/LicensePlate";
 import {
   cotDateFromParts,
   cotFormatShortDate,
@@ -17,16 +16,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";
 import {
-  Body,
+  DateWrapper,
   Description,
+  Footer,
   Header,
   IconLeft,
   RegularCard,
-  SelectedCard,
+  StyledCard,
   StyledHours,
+  StyledLicensePlate,
   StyledPypDate,
-  VehicleIcon,
-  Warning,
 } from "./DayCard.styles";
 
 type DayCardProps = {
@@ -51,74 +50,60 @@ function DayCard({
   const isInactive = numbersString === NA;
   const { pathname, query } = useRouter();
 
-  const formattedDate = (
-    <StyledPypDate
-      date={date}
-      isInactive={isInactive}
-      isSelected={isSelected}
-      type="short"
-    />
-  );
+  const formattedDate = <StyledPypDate date={date} type="short" />;
 
   const licensePlate = (
-    <div>
-      <LicensePlate isPublic={isPublic} size={isSelected ? "large" : "medium"}>
-        {numbersString}
-      </LicensePlate>
-    </div>
+    <StyledLicensePlate
+      isPublic={isPublic}
+      size={isSelected ? "large" : "medium"}
+    >
+      {numbersString}
+    </StyledLicensePlate>
   );
 
   if (isSelected) {
-    return (
-      <SelectedCard className={className} isInactive={isInactive}>
-        <Header isInactive={isInactive}>
-          <div>
-            {isSelected ? (
-              <VehicleIcon name={categoryIcon[categoryName]} />
-            ) : null}
-            {formattedDate}
-            {isInactive ? null : (
-              <Description>
-                {isAllDigits ? null : (
-                  <div>No circulan placas {schemeString} en</div>
-                )}
-              </Description>
-            )}
-          </div>
-          {licensePlate}
-        </Header>
-        {isInactive ? null : (
-          <Body>
-            <StyledHours
-              date={date}
-              hours={hours}
-              interactive={cotIsToday(date)}
-            />
-          </Body>
-        )}
-        {cotIsToday(date) ? null : (
-          <Warning>
-            <Link
-              href={{
-                pathname,
-                query: {
-                  city: query.city,
-                  category: query.category,
-                },
-              }}
-              prefetch={false}
-              scroll={false}
-              shallow
-            >
-              <a>
-                <IconLeft name="⚠" />
-                Para ver la información de hoy haga click acá
-              </a>
-            </Link>
-          </Warning>
-        )}
-      </SelectedCard>
+    const hasDescription = !isInactive && !isAllDigits;
+
+    const header = (
+      <Header hasDescription={hasDescription}>
+        <DateWrapper>
+          <IconLeft name={categoryIcon[categoryName]} />
+          {formattedDate}
+        </DateWrapper>
+        {hasDescription ? (
+          <Description>No circulan placas {schemeString} en</Description>
+        ) : null}
+        {licensePlate}
+      </Header>
     );
+
+    const body = isInactive ? null : (
+      <StyledHours date={date} hours={hours} interactive={cotIsToday(date)} />
+    );
+
+    const footer = cotIsToday(date) ? null : (
+      <Footer>
+        <Link
+          href={{
+            pathname,
+            query: {
+              city: query.city,
+              category: query.category,
+            },
+          }}
+          prefetch={false}
+          scroll={false}
+          shallow
+        >
+          <a>
+            <IconLeft name="⚠" />
+            Para ver la información de hoy haga click acá
+          </a>
+        </Link>
+      </Footer>
+    );
+
+    return <StyledCard header={header} body={body} footer={footer} />;
   }
 
   return (
