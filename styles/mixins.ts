@@ -19,7 +19,7 @@ export const boxShadow = css`
 `;
 
 export const responsivePaddingAround = css`
-  padding: 0.5rem;
+  padding: 0.75rem;
   @media only screen and (min-width: ${size.sm}) {
     padding: 1rem;
   }
