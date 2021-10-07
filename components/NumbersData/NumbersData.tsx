@@ -1,4 +1,5 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import { Card } from "components/Card";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
@@ -10,6 +11,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
+  Description,
   StyledList,
   StyledVidverto,
   Title,
@@ -58,23 +60,38 @@ export default function NumbersData({
     numbers.includes(Number(number))
   );
 
+  const header = (
+    <Title>
+      <strong>
+        {hasRestriction ? (
+          <>
+            <LicensePlate>{number}</LicensePlate> tiene restricción hoy
+          </>
+        ) : (
+          `${number} no tiene restricción hoy`
+        )}
+      </strong>
+    </Title>
+  );
+
+  const footer = (
+    <>
+      <Description>Hoy no circulan placas {schemeString} en</Description>
+      {currentNumberLicense}
+    </>
+  );
+
+  const body = hasRestriction ? (
+    <>
+      <Hours date={date} hours={hours} interactive />
+    </>
+  ) : (
+    todaysRestriction
+  );
+
   return (
     <Wrapper>
-      <Title>
-        Placas {schemeString} en {currentNumberLicense}{" "}
-        <strong>
-          {hasRestriction
-            ? "hoy tienen restricción."
-            : "hoy no tienen restricción."}
-        </strong>
-      </Title>
-      {hasRestriction ? (
-        <>
-          <Hours date={date} hours={hours} interactive />
-        </>
-      ) : (
-        todaysRestriction
-      )}
+      <Card header={header} body={body} footer={footer} />
       <StyledVidverto />
       <Title>Prográmese</Title>
       {forthcomingRestrictions.length === 0 ? (
