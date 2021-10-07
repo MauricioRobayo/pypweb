@@ -1,7 +1,7 @@
 import type { IHourData } from "@mauriciorobayo/pyptron";
-import { Icon } from "components/Icon";
+import { IconLeft } from "components/Icon";
 import styled from "styled-components";
-import { flexCenter, inlineIconLeft } from "styles/mixins";
+import { flexCenter } from "styles/mixins";
 import Hour from "./Hour";
 
 const HoursTitle = styled.h4`
@@ -10,8 +10,6 @@ const HoursTitle = styled.h4`
   font-size: ${({ theme }) => theme.font.size.large};
   margin: 0;
 `;
-
-const IconLeft = inlineIconLeft(Icon);
 
 type HoursProps = {
   className?: string;
@@ -37,19 +35,14 @@ export default function Hours({
         </HoursTitle>
       ) : null}
       <div className={className}>
-        {hours.map(
-          (
-            hourData,
-            index // eslint-disable-line react/no-array-index-key
-          ) => (
-            <Hour
-              key={index}
-              date={date}
-              hourData={hourData}
-              interactive={interactive}
-            />
-          )
-        )}
+        {hours.map((hourData, index) => (
+          <Hour
+            key={index}
+            date={date}
+            hourData={hourData}
+            interactive={interactive}
+          />
+        ))}
       </div>
     </>
   );

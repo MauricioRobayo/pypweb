@@ -1,18 +1,29 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Vidverto } from "components/Ads";
-import { DEFAULT_DAYS_TO_SHOW } from "lib/utils";
+import { List } from "components/List";
+import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
+import {
+  DEFAULT_DAYS_TO_SHOW,
+  isPublicLicense,
+  pypNumbersToString,
+} from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo, useEffect, useState } from "react";
+import styled from "styled-components";
 import { NumberLinks } from "../NumberMenu";
-import {
-  Article,
-  ListWrapper,
-  MoreIcon,
-  MoreLink,
-  Title,
-} from "./CategoryData.styles";
+import { Article, MoreIcon, MoreLink, Title } from "./CategoryData.styles";
 import DayCard from "./DayCard";
+import { StyledLicensePlate, StyledPypDate } from "./DayCard.styles";
+
+const StyledList = styled(List)`
+  margin: 1rem 0;
+`;
+const StyledLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+`;
 
 type CategoryDataProps = {
   categoryData: ICategoryData;
@@ -34,18 +45,44 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
 
   const nextPypData = remainingPypData.slice(0, daysToShow - 1);
 
-  const nextDataList =
-    nextPypData.length === 0 ? null : (
-      <ListWrapper>
-        {nextPypData.map((pypData) => (
-          <DayCard
-            key={JSON.stringify(pypData)}
-            categoryName={categoryName}
-            pypData={pypData}
-          />
-        ))}
-      </ListWrapper>
+  const nextDataList = nextPypData.map((pypData) => {
+    const { year, month, day, numbers } = pypData;
+    const date = cotDateFromParts({ year, month, day });
+    const formattedDate = <StyledPypDate date={date} type="short" />;
+    const numbersString = pypNumbersToString(numbers);
+    const isPublic = isPublicLicense(categoryName);
+
+    const licensePlate = (
+      <StyledLicensePlate isPublic={isPublic}>
+        {numbersString}
+      </StyledLicensePlate>
     );
+
+    return {
+      key: date.toISOString(),
+      content: (
+        <Link
+          href={{
+            pathname: pathname,
+            query: {
+              ...query,
+              fecha: cotFormatShortDate(date),
+              dias: DEFAULT_DAYS_TO_SHOW,
+            },
+          }}
+          prefetch={false}
+          passHref
+          shallow
+          scroll
+        >
+          <StyledLink>
+            {formattedDate}
+            {licensePlate}
+          </StyledLink>
+        </Link>
+      ),
+    };
+  });
 
   const nextDataButton =
     daysToShow === maxDays || daysRemaining === 0 ? null : (
@@ -84,7 +121,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
         pypData={currentPypData}
       />
       <Vidverto />
-      {nextDataList}
+      <StyledList rows={nextDataList} />
       {nextDataButton}
       <footer>
         <NumberLinks />
