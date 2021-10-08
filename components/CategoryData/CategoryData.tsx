@@ -13,6 +13,7 @@ import {
   Article,
   MoreIcon,
   MoreLink,
+  StyledDayCard,
   StyledLicensePlate,
   StyledLink,
   StyledList,
@@ -20,7 +21,6 @@ import {
   StyledVidverto,
   Title,
 } from "./CategoryData.styles";
-import DayCard from "./DayCard";
 
 type CategoryDataProps = {
   categoryData: ICategoryData;
@@ -107,7 +107,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
       </header>
-      <DayCard
+      <StyledDayCard
         categoryName={categoryName}
         isSelected
         pypData={currentPypData}

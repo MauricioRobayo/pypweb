@@ -6,6 +6,7 @@ import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { size } from "styles/constants";
 import { responsiveWidth } from "styles/mixins";
+import DayCard from "./DayCard";
 
 export const Article = styled.article`
   margin: 0 auto 1rem;
@@ -65,4 +66,8 @@ export const StyledLink = styled.a`
   align-items: center;
   display: flex;
   justify-content: space-between;
+`;
+
+export const StyledDayCard = styled(DayCard)`
+  margin-top: 2rem;
 `;
