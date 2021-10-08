@@ -1,4 +1,4 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData, Scheme } from "@mauriciorobayo/pyptron";
 import { Card } from "components/Card";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
@@ -25,7 +25,7 @@ import {
 
 type NumbersPageProps = {
   number: string;
-  scheme: string;
+  scheme: Scheme;
   categoryData: ICategoryData;
   date: Date;
 };
