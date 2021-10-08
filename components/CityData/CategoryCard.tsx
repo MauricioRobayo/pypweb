@@ -78,11 +78,9 @@ export default function CategoryCard({
         scheme={scheme}
         preText="Hoy"
       />
-      <div>
-        <LicensePlate isPublic={isPublicLicense(categoryName)} size="large">
-          {numbersString}
-        </LicensePlate>
-      </div>
+      <LicensePlate isPublic={isPublicLicense(categoryName)} size="large">
+        {numbersString}
+      </LicensePlate>
       {hasRestriction ? (
         <HoursWrapper>
           <Hours

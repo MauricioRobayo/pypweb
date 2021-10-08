@@ -49,7 +49,7 @@ export default function Card({ header, body, footer, className }: Props) {
   return (
     <StyledCard className={className}>
       {header ? (
-        <Header>
+        <Header className="card-header">
           <div>{header}</div>
         </Header>
       ) : null}
@@ -59,7 +59,7 @@ export default function Card({ header, body, footer, className }: Props) {
         </Body>
       ) : null}
       {footer ? (
-        <Footer>
+        <Footer className="card-footer">
           <div>{footer}</div>
         </Footer>
       ) : null}

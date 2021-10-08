@@ -1,8 +1,16 @@
 import { Vidverto } from "components/Ads";
+import { Card } from "components/Card";
 import { Description } from "components/Description";
 import { List } from "components/List";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
+
+export const StyledCard = styled(Card)<{ isNumberActive: boolean }>`
+  .card-header {
+    background-color: ${({ isNumberActive, theme }) =>
+      isNumberActive ? theme.colors.danger : theme.colors.success};
+  }
+`;
 
 export const Anchor = styled.a`
   display: block;
@@ -19,6 +27,7 @@ export const StyledList = styled(List)`
 export const Wrapper = styled.div`
   ${responsiveWidth}
 
+  margin-top: 1rem;
   text-align: center;
 `;
 
@@ -29,9 +38,13 @@ export const Title = styled.h3`
 `;
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 0;
+  margin: 1rem auto 1rem;
 `;
 
 export const StyledDescription = styled(Description)`
-  margin: 0 0 0.5em;
+  margin-bottom: 0.5rem;
+`;
+
+export const HoursWrapper = styled.div`
+  margin-top: 1rem;
 `;

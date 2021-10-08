@@ -1,5 +1,4 @@
 import type { ICategoryData, Scheme } from "@mauriciorobayo/pyptron";
-import { Card } from "components/Card";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
@@ -16,6 +15,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
+  StyledCard,
   StyledDescription,
   StyledList,
   StyledVidverto,
@@ -65,6 +65,10 @@ export default function NumbersData({
     </Title>
   );
 
+  const body = isNumberActive ? (
+    <Hours date={date} hours={hours} interactive />
+  ) : null;
+
   const footer = (
     <>
       <StyledDescription
@@ -77,15 +81,14 @@ export default function NumbersData({
     </>
   );
 
-  const body = isNumberActive ? (
-    <>
-      <Hours date={date} hours={hours} interactive />
-    </>
-  ) : null;
-
   return (
     <Wrapper>
-      <Card header={header} body={body} footer={footer} />
+      <StyledCard
+        header={header}
+        body={body}
+        footer={footer}
+        isNumberActive={isNumberActive}
+      />
       <StyledVidverto />
       <Title>Prográmese</Title>
       {forthcomingRestrictions.length === 0 ? (
