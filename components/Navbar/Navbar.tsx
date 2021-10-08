@@ -19,7 +19,7 @@ const Main = styled.div`
   gap: 0.5rem;
   grid-template-columns: auto 1fr;
   margin: auto;
-  max-width: ${({ theme }) => theme.maxWidth};
+  max-width: ${({ theme }) => theme.width};
 `;
 
 export const Logo = styled.h2`

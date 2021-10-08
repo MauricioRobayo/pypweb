@@ -39,7 +39,15 @@ function Icon({ name, className }: IconProps) {
   return <SvgIcon className={className} />;
 }
 
-export default styled(Icon)`
+export const InlineIcon = styled(Icon)`
   height: 1em;
   width: 1em;
+`;
+
+export const IconLeft = styled(InlineIcon)`
+  margin-right: 0.5em;
+`;
+
+export const IconRight = styled(InlineIcon)`
+  margin-left: 0.5em;
 `;

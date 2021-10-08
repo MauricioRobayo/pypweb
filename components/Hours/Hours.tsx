@@ -1,7 +1,7 @@
 import type { IHourData } from "@mauriciorobayo/pyptron";
-import { Icon } from "components/Icon";
+import { IconLeft } from "components/Icon";
 import styled from "styled-components";
-import { flexCenter, inlineIconLeft } from "styles/mixins";
+import { flexCenter } from "styles/mixins";
 import Hour from "./Hour";
 
 const HoursTitle = styled.h4`
@@ -10,8 +10,6 @@ const HoursTitle = styled.h4`
   font-size: ${({ theme }) => theme.font.size.large};
   margin: 0;
 `;
-
-const IconLeft = inlineIconLeft(Icon);
 
 type HoursProps = {
   className?: string;
@@ -29,7 +27,6 @@ export default function Hours({
   showTitle = true,
 }: HoursProps) {
   return (
-    /* eslint-disable react/no-array-index-key */
     <>
       {showTitle ? (
         <HoursTitle>
@@ -48,6 +45,5 @@ export default function Hours({
         ))}
       </div>
     </>
-    /* eslint-enable */
   );
 }

@@ -1,28 +1,47 @@
-import { Breadcrumbs } from "components/Breadcrumbs";
+import { LicensePlate } from "components/LicensePlate";
+import { PypDate } from "components/PypDate";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
-import {
-  flexHorizontalCenterVerticalEnd,
-  responsiveWidth,
-} from "styles/mixins";
-
-export const StyledBreadcrumbs = styled(Breadcrumbs)`
-  margin: 1.5rem 0 2rem;
-  text-align: center;
-`;
-
-export const ListWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  border-radius: 5px;
-  margin: 1rem 0;
-  & > div:not(:last-child) {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryLight};
-  }
-`;
+import { size } from "styles/constants";
+import { responsiveWidth } from "styles/mixins";
 
 export const Article = styled.article`
   margin: 0 auto 1rem;
   ${responsiveWidth}
+`;
+
+export const MoreIcon = styled(HiOutlinePlusCircle)`
+  margin-right: 0.25rem;
+`;
+
+export const MoreLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+`;
+
+export const StyledLicensePlate = styled(LicensePlate)`
+  font-size: 1em;
+  grid-area: licensePlate;
+  @media screen and (min-width: ${size.sm}) {
+    font-size: 1.25em;
+  }
+`;
+
+export const StyledPypDate = styled(PypDate).attrs({
+  style: "short",
+})`
+  font-size: ${({ theme }) => theme.font.size.small};
+  .day {
+    font-weight: bold;
+    margin-right: 0.5em;
+    text-transform: uppercase;
+  }
+  .date {
+    opacity: ${({ theme }) => theme.opacity};
+    text-transform: uppercase;
+  }
 `;
 
 export const Title = styled.h3`
@@ -30,18 +49,4 @@ export const Title = styled.h3`
   font-weight: normal;
   margin: 0 0 1rem;
   text-align: center;
-`;
-
-export const MoreIcon = styled(HiOutlinePlusCircle)`
-  margin-right: 0.25rem;
-`;
-
-export const ErrorMessage = styled.div`
-  ${flexHorizontalCenterVerticalEnd}
-`;
-
-export const MoreLink = styled.a`
-  align-items: center;
-  display: flex;
-  justify-content: center;
 `;

@@ -1,36 +1,15 @@
 import { Vidverto } from "components/Ads";
-import { Breadcrumbs } from "components/Breadcrumbs";
+import { Card } from "components/Card";
+import { Description } from "components/Description";
+import { List } from "components/List";
 import styled from "styled-components";
-import { camouflageLink } from "styles/mixins";
+import { responsiveWidth } from "styles/mixins";
 
-export const Wrapper = styled.div`
-  text-align: center;
-`;
-
-export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: normal;
-  margin: 1rem 0;
-`;
-
-export const ListWrapper = styled.ol`
-  border: 1px solid #dbdbdb;
-  border-radius: 5px;
-  list-style: none;
-  margin: 1rem 0;
-  padding: 0;
-`;
-
-export const ListItem = styled.li`
-  border-bottom: 1px solid #dbdbdb;
-  &:last-child {
-    border-bottom: none;
+export const StyledCard = styled(Card)<{ isNumberActive: boolean }>`
+  .card-header {
+    background-color: ${({ isNumberActive, theme }) =>
+      isNumberActive ? theme.colors.danger : theme.colors.success};
   }
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.main};
-    color: ${({ theme }) => theme.colors.white};
-  }
-  ${camouflageLink}
 `;
 
 export const Anchor = styled.a`
@@ -41,11 +20,31 @@ export const Anchor = styled.a`
   }
 `;
 
-export const StyledBreadcrumbs = styled(Breadcrumbs)`
-  margin: 1.5rem 0 2rem;
+export const StyledList = styled(List)`
+  margin: 1rem 0;
+`;
+
+export const Wrapper = styled.div`
+  ${responsiveWidth}
+
+  margin-top: 1rem;
   text-align: center;
 `;
 
+export const Title = styled.h3`
+  font-size: ${({ theme }) => theme.font.size.large};
+  font-weight: normal;
+  margin: 0;
+`;
+
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 0;
+  margin: 1rem auto 1rem;
+`;
+
+export const StyledDescription = styled(Description)`
+  margin-bottom: 0.5rem;
+`;
+
+export const HoursWrapper = styled.div`
+  margin-top: 1rem;
 `;

@@ -57,7 +57,7 @@ const Wrapper = styled.div<{ isMobile: boolean | null }>`
   margin: auto;
   width: min(
     100%,
-    ${({ theme, isMobile }) => (isMobile ? "400px" : theme.maxWidth)}
+    ${({ theme, isMobile }) => (isMobile ? "400px" : theme.width.normal)}
   );
 `;
 const StyledPlaceholder = styled(Placeholder)`
