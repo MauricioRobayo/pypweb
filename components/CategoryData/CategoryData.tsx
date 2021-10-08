@@ -1,6 +1,4 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
-import { Vidverto } from "components/Ads";
-import { List } from "components/List";
 import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
 import {
   DEFAULT_DAYS_TO_SHOW,
@@ -10,26 +8,19 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo, useEffect, useState } from "react";
-import styled from "styled-components";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
   MoreIcon,
   MoreLink,
+  StyledDayCard,
   StyledLicensePlate,
+  StyledLink,
+  StyledList,
   StyledPypDate,
+  StyledVidverto,
   Title,
 } from "./CategoryData.styles";
-import DayCard from "./DayCard";
-
-const StyledList = styled(List)`
-  margin: 1rem 0;
-`;
-const StyledLink = styled.a`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-`;
 
 type CategoryDataProps = {
   categoryData: ICategoryData;
@@ -116,17 +107,15 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
       </header>
-      <DayCard
+      <StyledDayCard
         categoryName={categoryName}
         isSelected
         pypData={currentPypData}
       />
-      <Vidverto />
       <StyledList rows={nextDataList} />
       {nextDataButton}
-      <footer>
-        <NumberLinks />
-      </footer>
+      <NumberLinks />
+      <StyledVidverto />
     </Article>
   );
 }

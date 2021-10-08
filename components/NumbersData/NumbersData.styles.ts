@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
 export const StyledCard = styled(Card)<{ isNumberActive: boolean }>`
+  margin-bottom: 1rem;
   .card-header {
     background-color: ${({ isNumberActive, theme }) =>
       isNumberActive ? theme.colors.danger : theme.colors.success};
@@ -38,7 +39,7 @@ export const Title = styled.h3`
 `;
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 1rem;
+  margin: 2rem auto;
 `;
 
 export const StyledDescription = styled(Description)`
