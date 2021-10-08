@@ -13,6 +13,10 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const StyledHeader = styled(Header)`
+  margin-top: 1rem;
+`;
+
 const Main = styled.main`
   align-items: center;
   display: flex;
@@ -45,7 +49,7 @@ export default function Page({
     <>
       <NextSeo description={description} title={title} />
       <Wrapper>
-        <Header date={date} title={title} />
+        <StyledHeader date={date} title={title} />
         <Main>{main}</Main>
         <CTA />
       </Wrapper>
