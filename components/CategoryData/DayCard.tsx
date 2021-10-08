@@ -32,8 +32,6 @@ function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
   const hasRestriction = numbersString !== NA;
   const { pathname, query } = useRouter();
 
-  console.log({ hasRestriction, isAllDigits });
-
   const header = (
     <Header hasDescription={hasRestriction}>
       <DateWrapper>
