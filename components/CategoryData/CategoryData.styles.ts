@@ -1,3 +1,4 @@
+import { Vidverto } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { PypDate } from "components/PypDate";
 import { HiOutlinePlusCircle } from "react-icons/hi";
@@ -49,4 +50,8 @@ export const Title = styled.h3`
   font-weight: normal;
   margin: 0 0 1rem;
   text-align: center;
+`;
+
+export const StyledVidverto = styled(Vidverto)`
+  margin: 2rem 0;
 `;

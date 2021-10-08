@@ -1,5 +1,4 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
-import { Vidverto } from "components/Ads";
 import { List } from "components/List";
 import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
 import {
@@ -18,6 +17,7 @@ import {
   MoreLink,
   StyledLicensePlate,
   StyledPypDate,
+  StyledVidverto,
   Title,
 } from "./CategoryData.styles";
 import DayCard from "./DayCard";
@@ -124,7 +124,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
       <StyledList rows={nextDataList} />
       {nextDataButton}
       <NumberLinks />
-      <Vidverto />
+      <StyledVidverto />
     </Article>
   );
 }
