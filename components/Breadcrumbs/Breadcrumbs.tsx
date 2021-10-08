@@ -60,10 +60,6 @@ type Props = {
 };
 
 function Breadcrumbs({ path, className = "" }: Props) {
-  if (path.length <= 1) {
-    return null;
-  }
-
   return (
     <Wrapper
       className={className}
