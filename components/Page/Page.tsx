@@ -13,24 +13,16 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const StyledHeader = styled(Header)`
+  margin-top: 1rem;
+`;
+
 const Main = styled.main`
   align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
   padding: 0 1rem;
-`;
-
-const MegaBanner = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER",
-})`
-  margin: 1rem auto 1rem;
-`;
-
-const MegaBannerBottom = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER_BOTTOM",
-})`
-  margin: 0 auto 2rem;
 `;
 
 const RecommendedContent = styled(TheMoneytizer).attrs({
@@ -57,10 +49,8 @@ export default function Page({
     <>
       <NextSeo description={description} title={title} />
       <Wrapper>
-        <MegaBanner />
-        <Header date={date} title={title} />
+        <StyledHeader date={date} title={title} />
         <Main>{main}</Main>
-        <MegaBannerBottom />
         <CTA />
       </Wrapper>
       <Aside>
