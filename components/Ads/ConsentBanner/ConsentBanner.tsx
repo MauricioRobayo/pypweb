@@ -9,8 +9,6 @@ export default function ConsentBanner() {
   return (
     <Script id="consent-banner" strategy="beforeInteractive">
       {`
-      <!-- Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
-      <script type="text/javascript" async=true>
       (function() {
         var host = window.location.hostname;
         var element = document.createElement('script');
@@ -166,8 +164,6 @@ export default function ConsentBanner() {
           var uspInterval = setInterval(checkIfUspIsReady, 6000);
         }
       })();
-      </script>
-      <!-- End Quantcast Choice. Consent Manager Tag v2.0 (for TCF 2.0) -->
       `}
     </Script>
   );
