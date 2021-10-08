@@ -53,5 +53,5 @@ export const Title = styled.h3`
 `;
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 2rem 0;
+  margin: 2rem auto;
 `;

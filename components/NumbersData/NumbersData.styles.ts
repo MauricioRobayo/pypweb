@@ -39,7 +39,7 @@ export const Title = styled.h3`
 `;
 
 export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 2rem;
+  margin: 2rem auto;
 `;
 
 export const StyledDescription = styled(Description)`
