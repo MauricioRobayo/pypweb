@@ -4,12 +4,12 @@ import styled from "styled-components";
 type LicenseSize = keyof typeof licenseFontSize;
 type StyledLicensePlateProps = {
   isPublic: boolean;
-  size: LicenseSize;
+  size?: LicenseSize;
 };
 const licenseFontSize = {
-  large: "1.5em",
-  medium: "1em",
-  small: "0.75em",
+  large: "1.5rem",
+  normal: "1rem",
+  small: "0.75rem",
 };
 
 export const PRIVATE_BG_COLOR = "#f7c000";
@@ -27,7 +27,7 @@ const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
   color: black;
   display: inline-flex;
   font-family: LicensePlate, monospace, sans-serif;
-  font-size: ${({ size }) => licenseFontSize[size]};
+  font-size: ${({ size }) => (size ? licenseFontSize[size] : "1em")};
   font-weight: bold;
   justify-content: center;
   line-height: 1rem;
@@ -39,17 +39,19 @@ const StyledLicensePlate = styled.div<StyledLicensePlateProps>`
 
 type LicensePlateProps = {
   children: React.ReactNode;
+  className?: string;
   isPublic?: boolean;
   size?: LicenseSize;
 };
 
 export default function LicensePlate({
   children,
+  className = "",
   isPublic = false,
-  size = "medium",
+  size,
 }: LicensePlateProps) {
   return (
-    <StyledLicensePlate isPublic={isPublic} size={size}>
+    <StyledLicensePlate isPublic={isPublic} size={size} className={className}>
       {children}
     </StyledLicensePlate>
   );

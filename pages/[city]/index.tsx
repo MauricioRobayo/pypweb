@@ -30,7 +30,7 @@ export default function CityPage({ categories, cityName }: CityPageProps) {
   const { query } = useRouter();
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${baseDescription} ${cityName}`;
-  const main = <StyledCityData categories={categories} date={INITIAL_DATE} />;
+  const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post
       sections={[

@@ -1,17 +1,23 @@
-import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import type { ICategoryData, Scheme } from "@mauriciorobayo/pyptron";
 import { Hours } from "components/Hours";
 import { LicensePlate } from "components/LicensePlate";
 import { NumberLinks } from "components/NumberMenu";
 import { PypDate } from "components/PypDate";
 import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
-import { DEFAULT_DAYS_TO_SHOW, NA, pypNumbersToString } from "lib/utils";
+import {
+  ALL_DIGITS,
+  DEFAULT_DAYS_TO_SHOW,
+  NA,
+  pypNumbersToString,
+} from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
-  ListItem,
-  ListWrapper,
+  StyledCard,
+  StyledDescription,
+  StyledList,
   StyledVidverto,
   Title,
   Wrapper,
@@ -19,63 +25,70 @@ import {
 
 type NumbersPageProps = {
   number: string;
-  schemeString: string;
+  scheme: Scheme;
   categoryData: ICategoryData;
   date: Date;
 };
 export default function NumbersData({
   number,
-  schemeString,
+  scheme,
   categoryData,
   date,
 }: NumbersPageProps) {
   const { query } = useRouter();
   const citySlug = query.city as string;
   const categorySlug = query.category as string;
-  const { data, name: categoryName } = categoryData;
+  const { data } = categoryData;
   const [{ numbers, hours }, ...remainingData] = data;
   const numbersString = pypNumbersToString(numbers);
-  const hasRestriction = numbers.includes(Number(number));
-
-  const currentNumberLicense = hasRestriction ? (
-    <>
-      <LicensePlate>{numbersString}</LicensePlate>
-    </>
-  ) : (
-    <>
-      <LicensePlate>{number}</LicensePlate>
-    </>
-  );
-
-  const todaysRestriction =
-    numbersString === NA ? null : (
-      <div>
-        Hoy tienen pico y placa placas {schemeString} en{" "}
-        <LicensePlate>{numbersString}</LicensePlate>.
-      </div>
-    );
+  const isAllDigits = numbersString === ALL_DIGITS;
+  const hasRestriction = numbersString !== NA;
+  const isNumberActive = numbers.includes(Number(number));
 
   const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
     numbers.includes(Number(number))
   );
 
+  const header = (
+    <Title>
+      <strong>
+        {isNumberActive ? (
+          <>
+            <LicensePlate>{number}</LicensePlate> hoy tiene restricción
+          </>
+        ) : (
+          <>
+            <LicensePlate>{number}</LicensePlate> hoy no tiene restricción
+          </>
+        )}
+      </strong>
+    </Title>
+  );
+
+  const body = isNumberActive ? (
+    <Hours date={date} hours={hours} interactive />
+  ) : null;
+
+  const footer = (
+    <>
+      <StyledDescription
+        hasRestriction={hasRestriction}
+        isAllDigits={isAllDigits}
+        scheme={scheme}
+        preText="Hoy"
+      />
+      <LicensePlate>{numbersString}</LicensePlate>
+    </>
+  );
+
   return (
     <Wrapper>
-      <Title>
-        Placas {schemeString} en {currentNumberLicense}{" "}
-        <strong>
-          {hasRestriction
-            ? "hoy tienen restricción."
-            : "hoy no tienen restricción."}
-        </strong>
-      </Title>
-      {hasRestriction ? (
-        <>
-          <Hours date={date} hours={hours} interactive />
-        </>
-      ) : (
-        todaysRestriction
-      )}
+      <StyledCard
+        header={header}
+        body={body}
+        footer={footer}
+        isNumberActive={isNumberActive}
+      />
       <StyledVidverto />
       <Title>Prográmese</Title>
       {forthcomingRestrictions.length === 0 ? (
@@ -83,15 +96,16 @@ export default function NumbersData({
       ) : (
         <div>
           <LicensePlate>{number}</LicensePlate> tiene pico y placa el próximo:
-          <ListWrapper>
-            {forthcomingRestrictions.map((data) => {
+          <StyledList
+            rows={forthcomingRestrictions.map((data) => {
               const dataDate = cotDateFromParts({
                 year: data.year,
                 month: data.month,
                 day: data.day,
               });
-              return (
-                <ListItem key={dataDate.toISOString()}>
+              return {
+                key: dataDate.toISOString(),
+                content: (
                   <Link
                     href={{
                       pathname: "/[city]/[category]",
@@ -108,10 +122,10 @@ export default function NumbersData({
                       <PypDate date={dataDate} />
                     </Anchor>
                   </Link>
-                </ListItem>
-              );
+                ),
+              };
             })}
-          </ListWrapper>
+          />
         </div>
       )}
       <NumberLinks selectedNumber={number} />

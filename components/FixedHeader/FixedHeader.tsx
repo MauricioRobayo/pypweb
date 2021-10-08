@@ -40,7 +40,7 @@ const StyledFixedHeader = styled.div<{ isVisible: boolean }>`
 
 const Wrapper = styled.div`
   margin: auto;
-  max-width: ${({ theme }) => theme.maxWidth};
+  max-width: ${({ theme }) => theme.width.normal};
 `;
 
 const Row = styled.div`

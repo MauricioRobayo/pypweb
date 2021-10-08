@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   align-self: center;
-  max-width: ${({ theme }) => theme.maxWidth};
+  max-width: ${({ theme }) => theme.width.normal};
   text-align: center;
 `;
 

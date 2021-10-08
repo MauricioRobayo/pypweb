@@ -1,1 +1,1 @@
-export { default as Icon } from "./Icon";
+export { IconLeft, IconRight, InlineIcon as Icon } from "./Icon";
