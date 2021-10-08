@@ -44,8 +44,6 @@ export default function NumbersData({
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
 
-  console.log({ hasRestriction, isAllDigits });
-
   const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
     numbers.includes(Number(number))
   );
