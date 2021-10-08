@@ -21,6 +21,7 @@ declare module "styled-components" {
     border: {
       radius: string;
     };
+    opacity: number;
     width: {
       narrow: string;
       normal: string;

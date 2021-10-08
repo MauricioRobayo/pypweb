@@ -19,6 +19,7 @@ export const defaultTheme: DefaultTheme = {
   border: {
     radius: "0.25em",
   },
+  opacity: 0.85,
   width: {
     narrow: "320px",
     normal: "570px",

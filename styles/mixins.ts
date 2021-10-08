@@ -3,7 +3,7 @@ import { size } from "./constants";
 
 export const secondaryText = css`
   font-size: ${({ theme }) => theme.font.size.small};
-  opacity: 0.85;
+  opacity: ${({ theme }) => theme.opacity};
 `;
 
 export const boxShadow = css`

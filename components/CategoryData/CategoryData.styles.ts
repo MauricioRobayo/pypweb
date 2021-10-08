@@ -34,7 +34,7 @@ export const StyledPypDate = styled(PypDate).attrs({
     text-transform: uppercase;
   }
   .date {
-    opacity: 0.95;
+    opacity: ${({ theme }) => theme.opacity};
     text-transform: uppercase;
   }
 `;
