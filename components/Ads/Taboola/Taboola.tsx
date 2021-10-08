@@ -7,7 +7,7 @@ export default function Taboola() {
   }
 
   return (
-    <Script id="taboola" strategy="beforeInteractive">
+    <Script id="taboola-script" strategy="beforeInteractive">
       {`window._taboola = window._taboola || [];
       _taboola.push({article:'auto'});
       !function (e, f, u, i) {
