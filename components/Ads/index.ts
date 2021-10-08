@@ -2,5 +2,5 @@ export { AdSense } from "./AdSense";
 export { ConsentBanner } from "./ConsentBanner";
 export { Placeholder } from "./Placeholder";
 export { SelfAd } from "./SelfAd";
-export { default as TheMoneytizer } from "./TheMoneytizer";
+export { BelowArticleThumbnails, Taboola } from "./Taboola";
 export { default as Vidverto } from "./Vidverto";

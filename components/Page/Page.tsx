@@ -1,4 +1,4 @@
-import { TheMoneytizer } from "components/Ads";
+import { BelowArticleThumbnails } from "components/Ads";
 import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
@@ -25,12 +25,6 @@ const Main = styled.main`
   padding: 0 1rem;
 `;
 
-const RecommendedContent = styled(TheMoneytizer).attrs({
-  formatType: "RECOMMENDED_CONTENT",
-})`
-  margin: 2rem auto;
-`;
-
 type PageProps = {
   title: string;
   description: string;
@@ -55,7 +49,7 @@ export default function Page({
       </Wrapper>
       <Aside>
         {aside}
-        <RecommendedContent />
+        <BelowArticleThumbnails />
       </Aside>
     </>
   );
