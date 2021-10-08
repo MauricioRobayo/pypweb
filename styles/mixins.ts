@@ -1,25 +1,17 @@
-import { ComponentType } from "react";
-import styled, { css } from "styled-components";
+import { css } from "styled-components";
 import { size } from "./constants";
 
-export const inlineIconLeft = <T>(component: ComponentType<T>) => styled(
-  component
-)`
-  margin-right: 0.5rem;
+export const secondaryText = css`
+  font-size: ${({ theme }) => theme.font.size.small};
+  opacity: ${({ theme }) => theme.opacity};
 `;
 
-export const inlineIconRight = <T>(component: ComponentType<T>) => styled(
-  component
-)`
-  margin-left: 0.5rem;
-`;
-
-export const boxShadow = (blurRadius = 10) => css`
-  box-shadow: rgb(122 122 122) 0 0 ${blurRadius}px 0;
+export const boxShadow = css`
+  box-shadow: rgb(122 122 122) 0 0 10px 0;
 `;
 
 export const responsivePaddingAround = css`
-  padding: 0.5rem;
+  padding: 0.75rem;
   @media only screen and (min-width: ${size.sm}) {
     padding: 1rem;
   }
@@ -46,5 +38,5 @@ export const flexCenter = css`
 `;
 
 export const responsiveWidth = css`
-  width: min(${({ theme }) => theme.maxWidth}, 100%);
+  width: min(${({ theme }) => theme.width.normal}, 100%);
 `;

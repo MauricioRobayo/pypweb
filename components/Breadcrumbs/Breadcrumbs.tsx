@@ -94,6 +94,8 @@ function Breadcrumbs({ path, className = "" }: Props) {
               options={item.options}
               selected={item.selected}
             />
+            <meta itemProp="name" content={item.selected.replace(/.*\//, "")} />
+            <meta itemProp="position" content={`${i + 1}`} />
           </BreadcrumbItemContainer>
         );
       })}

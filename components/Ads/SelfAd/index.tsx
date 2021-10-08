@@ -1,12 +1,9 @@
 import { Button } from "components/Button";
-import { Icon } from "components/Icon";
+import { Icon, IconLeft, IconRight } from "components/Icon";
 import React, { useEffect, useRef, useState } from "react";
 import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
-import { inlineIconLeft, inlineIconRight } from "styles/mixins";
 
-const IconLeft = inlineIconLeft(Icon);
-const IconRight = inlineIconRight(Icon);
 const StyledEmail = styled(Email)`
   color: ${({ theme }) => theme.colors.main};
   text-decoration: none;

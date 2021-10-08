@@ -1,3 +1,5 @@
+import { Scheme } from "@mauriciorobayo/pyptron";
+
 export const ALL_DAY = "Todo el día";
 export const ALL_DIGITS = "Todos";
 export const NA = "No aplica";
@@ -25,8 +27,9 @@ export function pypNumbersToString(numbers: number[]) {
 }
 
 export function isPublicLicense(categoryName: string) {
-  const lowerCaseName = categoryName.toLowerCase();
-  return ["taxis", "público"].some((category) =>
-    lowerCaseName.includes(category)
-  );
+  return /(taxis|público)/i.test(categoryName);
+}
+
+export function getSchemeString(scheme: Scheme) {
+  return scheme === "first" ? "iniciadas" : "terminadas";
 }

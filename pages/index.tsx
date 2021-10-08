@@ -1,4 +1,4 @@
-import { Footer } from "components/CityData/CategoryCard.styles";
+import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
 import type { CitiesList } from "lib/cities";
@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const StyledSelect = styled(Select)`
   margin: 0.5rem 0;
-  width: min(100%, ${({ theme }) => theme.maxWidthNarrow});
+  width: min(100%, ${({ theme }) => theme.width.narrow});
 `;
 
 const StyledLayout = styled.div`

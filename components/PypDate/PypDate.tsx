@@ -8,19 +8,19 @@ import {
 type DateProps = {
   className?: string;
   date: Date;
-  type?: "long" | "short";
+  style?: "long" | "short";
   showTodaysPrefix?: boolean;
 };
 
 export default function PypDate({
   className = "",
   date,
-  type = "long",
+  style = "long",
   showTodaysPrefix = true,
 }: DateProps) {
   const todaysPrefix = cotIsToday(date) && showTodaysPrefix ? "Hoy " : "";
 
-  if (type === "long") {
+  if (style === "long") {
     const localLongDateString = cotFormatLongDate(date);
     return (
       <time className={className} dateTime={date.toISOString()}>
