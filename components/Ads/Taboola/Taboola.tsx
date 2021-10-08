@@ -2,12 +2,12 @@ import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 
 export default function Taboola() {
-  if (!shouldShowAds) {
+  if (!shouldShowAds && Math.random() > 1) {
     return null;
   }
 
   return (
-    <Script id="taboola-script" strategy="beforeInteractive">
+    <Script id="taboola-script">
       {`window._taboola = window._taboola || [];
       _taboola.push({article:'auto'});
       !function (e, f, u, i) {

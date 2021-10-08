@@ -2,7 +2,7 @@ import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 
 export default function BellowArticleThumbnails() {
-  if (!shouldShowAds) {
+  if (!shouldShowAds && Math.random() > 1) {
     return null;
   }
 
