@@ -72,7 +72,9 @@ export default function CategoryCard({
 
   const body = (
     <Body>
-      {isAllDigits || !hasRestriction ? null : (
+      {!hasRestriction ? null : isAllDigits ? (
+        <Description>No circulan</Description>
+      ) : (
         <Description>No circulan placas {schemeString} en</Description>
       )}
       <div>

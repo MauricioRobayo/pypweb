@@ -2,6 +2,7 @@ import { LicensePlate } from "components/LicensePlate";
 import { PypDate } from "components/PypDate";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
+import { size } from "styles/constants";
 import { responsiveWidth } from "styles/mixins";
 
 export const Article = styled.article`
@@ -21,7 +22,11 @@ export const MoreLink = styled.a`
 `;
 
 export const StyledLicensePlate = styled(LicensePlate)`
+  font-size: 1em;
   grid-area: licensePlate;
+  @media screen and (min-width: ${size.sm}) {
+    font-size: 1.25em;
+  }
 `;
 
 export const StyledPypDate = styled(PypDate).attrs({

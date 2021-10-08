@@ -12,17 +12,15 @@ export const Header = styled.div<{ hasDescription: boolean }>`
   ${({ hasDescription }) =>
     hasDescription
       ? css`
-          align-items: flex-end;
-          grid-gap: 0.5em;
+          align-items: end;
+          grid-row-gap: 0.5em;
           grid-template-areas:
-            "date date"
+            "date licensePlate"
             "description licensePlate";
           grid-template-columns: 1fr auto;
+
           @media screen and (min-width: ${size.sm}) {
             grid-row-gap: 0;
-            grid-template-areas:
-              "date licensePlate"
-              "description licensePlate";
           }
         `
       : css`

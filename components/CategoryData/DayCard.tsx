@@ -23,12 +23,7 @@ type DayCardProps = {
   isSelected?: boolean;
 };
 
-function DayCard({
-  categoryName,
-  className = "",
-  isSelected = false,
-  pypData,
-}: DayCardProps) {
+function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
   const { day, hours, month, numbers, scheme, year } = pypData;
   const date = cotDateFromParts({ year, month, day });
   const numbersString = pypNumbersToString(numbers);
@@ -38,18 +33,18 @@ function DayCard({
   const isInactive = numbersString === NA;
   const { pathname, query } = useRouter();
 
-  const hasDescription = !isInactive && !isAllDigits;
-
   const header = (
-    <Header hasDescription={hasDescription}>
+    <Header hasDescription={!isInactive}>
       <DateWrapper>
         <IconLeft name={categoryIcon[categoryName]} />
         <StyledPypDate date={date} />
       </DateWrapper>
-      {hasDescription ? (
+      {isInactive ? null : isAllDigits ? (
+        <Description>No circulan</Description>
+      ) : (
         <Description>No circulan placas {schemeString} en</Description>
-      ) : null}
-      <StyledLicensePlate isPublic={isPublic}>
+      )}
+      <StyledLicensePlate isPublic={isPublic} size="large">
         {numbersString}
       </StyledLicensePlate>
     </Header>
