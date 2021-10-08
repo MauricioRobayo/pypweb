@@ -21,18 +21,6 @@ const Main = styled.main`
   padding: 0 1rem;
 `;
 
-const MegaBanner = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER",
-})`
-  margin: 1rem auto 1rem;
-`;
-
-const MegaBannerBottom = styled(TheMoneytizer).attrs({
-  formatType: "MEGABANNER_BOTTOM",
-})`
-  margin: 0 auto 2rem;
-`;
-
 const RecommendedContent = styled(TheMoneytizer).attrs({
   formatType: "RECOMMENDED_CONTENT",
 })`
@@ -57,10 +45,8 @@ export default function Page({
     <>
       <NextSeo description={description} title={title} />
       <Wrapper>
-        <MegaBanner />
         <Header date={date} title={title} />
         <Main>{main}</Main>
-        <MegaBannerBottom />
         <CTA />
       </Wrapper>
       <Aside>
