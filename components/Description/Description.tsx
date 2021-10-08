@@ -36,7 +36,5 @@ export default function Description({
     text = `${text} placas ${schemeString} en`;
   }
 
-  console.log({ text });
-
   return <StyledDescription className={className}>{text}</StyledDescription>;
 }
