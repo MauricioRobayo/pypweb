@@ -43,6 +43,7 @@ export default function NumbersData({
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
+  const isNumberActive = numbers.includes(Number(number));
 
   const forthcomingRestrictions = remainingData.filter(({ numbers }) =>
     numbers.includes(Number(number))
@@ -51,7 +52,7 @@ export default function NumbersData({
   const header = (
     <Title>
       <strong>
-        {hasRestriction ? (
+        {isNumberActive ? (
           <>
             <LicensePlate>{number}</LicensePlate> hoy tiene restricción
           </>
@@ -70,12 +71,13 @@ export default function NumbersData({
         hasRestriction={hasRestriction}
         isAllDigits={isAllDigits}
         scheme={scheme}
+        preText="Hoy"
       />
       <LicensePlate>{numbersString}</LicensePlate>
     </>
   );
 
-  const body = hasRestriction ? (
+  const body = isNumberActive ? (
     <>
       <Hours date={date} hours={hours} interactive />
     </>

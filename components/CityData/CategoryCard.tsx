@@ -76,6 +76,7 @@ export default function CategoryCard({
         hasRestriction={hasRestriction}
         isAllDigits={isAllDigits}
         scheme={scheme}
+        preText="Hoy"
       />
       <div>
         <LicensePlate isPublic={isPublicLicense(categoryName)} size="large">
