@@ -13,13 +13,13 @@ const StyledNavbar = styled.nav`
   width: 100%;
 `;
 
-const Main = styled.div`
+const Wrapper = styled.div`
   align-items: center;
   display: grid;
   gap: 0.5rem;
   grid-template-columns: auto 1fr;
   margin: auto;
-  max-width: ${({ theme }) => theme.width};
+  max-width: ${({ theme }) => theme.width.normal};
 `;
 
 export const Logo = styled.h2`
@@ -40,7 +40,7 @@ export default function Navbar({ cities }: NavbarProps) {
   } = useRouter();
   return (
     <StyledNavbar>
-      <Main>
+      <Wrapper>
         <Logo>
           <Link href="/">
             <a>
@@ -54,7 +54,7 @@ export default function Navbar({ cities }: NavbarProps) {
           placeholder="Ciudad"
           selected={`/${city as string}`}
         />
-      </Main>
+      </Wrapper>
     </StyledNavbar>
   );
 }

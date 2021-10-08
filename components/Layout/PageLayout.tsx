@@ -1,3 +1,4 @@
+import { TaboolaFlush } from "components/Ads/Taboola";
 import { FixedHeader } from "components/FixedHeader";
 import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
@@ -18,11 +19,14 @@ type LayoutProps = {
 };
 export default function Layout({ children, cities }: LayoutProps) {
   return (
-    <StyledLayout>
-      <Navbar cities={cities} />
-      <FixedHeader cities={cities} />
-      {children}
-      <Footer />
-    </StyledLayout>
+    <>
+      <StyledLayout>
+        <Navbar cities={cities} />
+        <FixedHeader cities={cities} />
+        {children}
+        <Footer />
+      </StyledLayout>
+      <TaboolaFlush />
+    </>
   );
 }
