@@ -8,6 +8,7 @@ import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
 import { cotDateParts } from "lib/dateUtils";
 import getPostBySlugs from "lib/posts";
+import { getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { baseDescription, baseTitle } from "next-seo.config";
@@ -32,7 +33,7 @@ export default function NumberPage({
   const {
     data: [{ scheme }],
   } = categoryData;
-  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
+  const schemeString = getSchemeString(scheme);
   const title = `${categoryData.name.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
   const pageTitle = `${baseTitle} ${title}`;
   const pageDescription = `${baseDescription} ${title}`;
@@ -41,7 +42,7 @@ export default function NumberPage({
       categoryData={categoryData}
       date={INITIAL_DATE}
       number={number}
-      schemeString={schemeString}
+      scheme={scheme}
     />
   );
   const aside = (

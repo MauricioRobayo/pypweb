@@ -1,4 +1,5 @@
 import { Card } from "components/Card";
+import { Description } from "components/Description";
 import { Hours } from "components/Hours";
 import styled, { css } from "styled-components";
 import { size } from "styles/constants";
@@ -40,7 +41,7 @@ export const StyledHours = styled(Hours)`
   text-align: center;
 `;
 
-export const Description = styled.div`
+export const StyledDescription = styled(Description)`
   grid-area: description;
 `;
 

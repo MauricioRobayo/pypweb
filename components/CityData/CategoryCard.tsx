@@ -1,5 +1,6 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
 import { Card } from "components/Card";
+import { Description } from "components/Description";
 import { Hours } from "components/Hours";
 import { IconLeft } from "components/Icon";
 import { LicensePlate } from "components/LicensePlate";
@@ -29,7 +30,7 @@ const SeeMore = styled.a`
   ${flexHorizontalCenterVerticalEnd}
 `;
 
-const Description = styled.div`
+const StyledDescription = styled(Description)`
   margin-bottom: 1rem;
 `;
 
@@ -50,7 +51,6 @@ export default function CategoryCard({
   const numbersString = pypNumbersToString(numbers);
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
-  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const linkUrl = {
     pathname: "/[city]/[category]",
     query: {
@@ -72,11 +72,11 @@ export default function CategoryCard({
 
   const body = (
     <Body>
-      {!hasRestriction ? null : isAllDigits ? (
-        <Description>No circulan</Description>
-      ) : (
-        <Description>No circulan placas {schemeString} en</Description>
-      )}
+      <StyledDescription
+        hasRestriction={hasRestriction}
+        isAllDigits={isAllDigits}
+        scheme={scheme}
+      />
       <div>
         <LicensePlate isPublic={isPublicLicense(categoryName)} size="large">
           {numbersString}

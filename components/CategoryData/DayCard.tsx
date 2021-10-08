@@ -9,10 +9,10 @@ import { memo } from "react";
 import { StyledLicensePlate, StyledPypDate } from "./CategoryData.styles";
 import {
   DateWrapper,
-  Description,
   Footer,
   Header,
   StyledCard,
+  StyledDescription,
   StyledHours,
 } from "./DayCard.styles";
 
@@ -28,31 +28,32 @@ function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
   const date = cotDateFromParts({ year, month, day });
   const numbersString = pypNumbersToString(numbers);
   const isPublic = isPublicLicense(categoryName);
-  const schemeString = scheme === "first" ? "iniciadas" : "terminadas";
   const isAllDigits = numbersString === ALL_DIGITS;
-  const isInactive = numbersString === NA;
+  const hasRestriction = numbersString !== NA;
   const { pathname, query } = useRouter();
 
+  console.log({ hasRestriction, isAllDigits });
+
   const header = (
-    <Header hasDescription={!isInactive}>
+    <Header hasDescription={hasRestriction}>
       <DateWrapper>
         <IconLeft name={categoryIcon[categoryName]} />
         <StyledPypDate date={date} />
       </DateWrapper>
-      {isInactive ? null : isAllDigits ? (
-        <Description>No circulan</Description>
-      ) : (
-        <Description>No circulan placas {schemeString} en</Description>
-      )}
+      <StyledDescription
+        hasRestriction={hasRestriction}
+        isAllDigits={isAllDigits}
+        scheme={scheme}
+      />
       <StyledLicensePlate isPublic={isPublic} size="large">
         {numbersString}
       </StyledLicensePlate>
     </Header>
   );
 
-  const body = isInactive ? null : (
+  const body = hasRestriction ? (
     <StyledHours date={date} hours={hours} interactive={cotIsToday(date)} />
-  );
+  ) : null;
 
   const footer = cotIsToday(date) ? null : (
     <Footer>

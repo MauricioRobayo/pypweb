@@ -1,4 +1,5 @@
 import { Vidverto } from "components/Ads";
+import { Description } from "components/Description";
 import { List } from "components/List";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
@@ -31,6 +32,6 @@ export const StyledVidverto = styled(Vidverto)`
   margin: 1rem auto 0;
 `;
 
-export const Description = styled.p`
+export const StyledDescription = styled(Description)`
   margin: 0 0 0.5em;
 `;
