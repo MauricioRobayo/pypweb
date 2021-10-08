@@ -7,7 +7,7 @@ export default function TaboolaFlush() {
   }
 
   return (
-    <Script id="taboola-flush">
+    <Script id="taboola-flush" strategy="lazyOnload">
       {`window._taboola = window._taboola || [];
       _taboola.push({flush: true});`}
     </Script>
