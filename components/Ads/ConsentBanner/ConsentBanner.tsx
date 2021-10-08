@@ -1,7 +1,7 @@
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 
-export function ConsentBanner() {
+export default function ConsentBanner() {
   if (!shouldShowAds) {
     return null;
   }
