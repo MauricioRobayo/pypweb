@@ -1,4 +1,3 @@
-import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
 import type { CitiesList } from "lib/cities";
@@ -55,7 +54,6 @@ export default function Home({
           />
         </Main>
       </Page>
-      <Footer />
     </StyledLayout>
   );
 }
