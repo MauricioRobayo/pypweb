@@ -41,7 +41,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <>
-      <GoogleAnalytics strategy="lazyOnload" />
+      <GoogleAnalytics />
       <ConsentBanner />
       <AdSense />
       <Taboola />
