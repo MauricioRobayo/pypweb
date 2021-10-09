@@ -6,7 +6,7 @@ import { responsiveWidth } from "styles/mixins";
 import CategoryCard from "./CategoryCard";
 
 const StyledVidverto = styled(Vidverto)`
-  margin-top: 1rem;
+  margin: 1rem auto 2rem;
 `;
 
 const List = styled.div`
@@ -36,7 +36,6 @@ export default function CityData({
 
   return (
     <>
-      <StyledVidverto />
       <List className={className}>
         {categories.map((category) => (
           <CategoryCard
@@ -46,6 +45,7 @@ export default function CityData({
           />
         ))}
       </List>
+      <StyledVidverto />
     </>
   );
 }

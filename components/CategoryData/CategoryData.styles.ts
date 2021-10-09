@@ -1,9 +1,12 @@
+import { Vidverto } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
+import { List } from "components/List";
 import { PypDate } from "components/PypDate";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { size } from "styles/constants";
 import { responsiveWidth } from "styles/mixins";
+import DayCard from "./DayCard";
 
 export const Article = styled.article`
   margin: 0 auto 1rem;
@@ -49,4 +52,22 @@ export const Title = styled.h3`
   font-weight: normal;
   margin: 0 0 1rem;
   text-align: center;
+`;
+
+export const StyledVidverto = styled(Vidverto)`
+  margin: 2rem auto;
+`;
+
+export const StyledList = styled(List)`
+  margin: 1rem 0;
+`;
+
+export const StyledLink = styled.a`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const StyledDayCard = styled(DayCard)`
+  margin-top: 2rem;
 `;

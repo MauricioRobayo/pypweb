@@ -17,7 +17,7 @@ import styled from "styled-components";
 const INITIAL_DATE = new Date();
 
 const StyledCityData = styled(CityData)`
-  margin: 1rem 0 2rem;
+  margin: 1rem 0;
 `;
 
 type CityPageProps = {
