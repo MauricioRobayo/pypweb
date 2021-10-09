@@ -2,29 +2,59 @@ module.exports = {
   async redirects() {
     return [
       {
-        destination: "/:city/:category/:number",
-        permanent: true,
         source: "/:city/:category/placa/:number",
+        permanent: true,
+        destination: "/:city/:category/:number",
       },
       {
-        destination: "/popayan/transporte-de-carga-menor-a-1.500kg",
-        permanent: true,
         source: "/popayan/transporte-de-carga",
+        permanent: true,
+        destination: "/popayan/transporte-de-carga-menor-a-1.500kg",
       },
       {
-        destination: "/santa-cruz-de-lorica",
-        permanent: true,
         source: "/lorica",
+        permanent: true,
+        destination: "/santa-cruz-de-lorica",
       },
       {
-        destination: "/santa-cruz-de-lorica/:category",
-        permanent: true,
         source: "/lorica/:category",
+        permanent: true,
+        destination: "/santa-cruz-de-lorica/:category",
       },
       {
-        destination: "/santa-cruz-de-lorica/:category/:number",
-        permanent: true,
         source: "/lorica/:category/:number",
+        permanent: true,
+        destination: "/santa-cruz-de-lorica/:category/:number",
+      },
+      {
+        source: "/popayan/transporte-de-carga-menor-a-1.500kg",
+        permanent: true,
+        destination: "/popayan/transporte-de-carga-menor-a-1500kg",
+      },
+      {
+        source: "/bogota/carga-peso-max.-superior-a-8.500kg",
+        permanent: true,
+        destination: "/bogota/carga-peso-max-superior-a-8500kg",
+      },
+      {
+        source: "/bogota/carga-peso-max.-superior-a-3.500kg",
+        permanent: true,
+        destination: "/bogota/carga-peso-max-superior-a-3500kg",
+      },
+      {
+        source: "/popayan/transporte-de-carga-menor-a-1.500kg/:number*",
+        permanent: true,
+        destination: "/popayan/transporte-de-carga-menor-a-1500kg/:number*",
+      },
+      {
+        source: "/bogota/carga-peso-max.-superior-a-8.500kg/:number*",
+        permanent: true,
+        destination: "/bogota/carga-peso-max-superior-a-8500kg/:number*",
+      },
+      {
+        source: "/bogota/carga-peso-max.-superior-a-3.500kg/:number*",
+        permanent: true,
+        destination: "/bogota/carga-peso-max-superior-a-3500kg/:number*",
       },
     ];
   },
