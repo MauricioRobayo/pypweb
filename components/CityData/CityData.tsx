@@ -30,16 +30,14 @@ export default function CityData({
   } = useRouter();
 
   return (
-    <>
-      <List className={className}>
-        {categories.map((category) => (
-          <CategoryCard
-            key={category.slug}
-            category={category}
-            citySlug={citySlug as string}
-          />
-        ))}
-      </List>
-    </>
+    <List className={className}>
+      {categories.map((category) => (
+        <CategoryCard
+          key={category.slug}
+          category={category}
+          citySlug={citySlug as string}
+        />
+      ))}
+    </List>
   );
 }
