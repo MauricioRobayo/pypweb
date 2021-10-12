@@ -9,17 +9,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          always-auth: true
           node-version: "14"
+          cache: "npm"
+          always-auth: true
           registry-url: "https://npm.pkg.github.com"
           scope: "@mauriciorobayo"
-      - name: Cache node modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       # Skip post-install scripts here, as a malicious
       # script could steal NODE_AUTH_TOKEN.
       - run: npm ci --ignore-scripts
