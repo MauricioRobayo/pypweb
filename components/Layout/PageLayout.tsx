@@ -1,4 +1,3 @@
-import { TaboolaFlush } from "components/Ads/Taboola";
 import { FixedHeader } from "components/FixedHeader";
 import { Navbar } from "components/Navbar";
 import type { CitiesList } from "lib/cities";
@@ -24,7 +23,6 @@ export default function Layout({ children, cities }: LayoutProps) {
         <FixedHeader cities={cities} />
         {children}
       </StyledLayout>
-      <TaboolaFlush />
     </>
   );
 }
