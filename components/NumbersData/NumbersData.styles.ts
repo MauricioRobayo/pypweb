@@ -1,4 +1,3 @@
-import { Vidverto } from "components/Ads";
 import { Card } from "components/Card";
 import { Description } from "components/Description";
 import { List } from "components/List";
@@ -36,10 +35,6 @@ export const Title = styled.h3`
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
   margin: 0;
-`;
-
-export const StyledVidverto = styled(Vidverto)`
-  margin: 2rem auto;
 `;
 
 export const StyledDescription = styled(Description)`
