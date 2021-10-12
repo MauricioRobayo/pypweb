@@ -1,4 +1,4 @@
-import { TaboolaFlush } from "components/Ads/Taboola";
+import { TaboolaFlush } from "components/Ads";
 import { FixedHeader } from "components/FixedHeader";
 import { Navbar } from "components/Navbar";
 import type { CitiesList } from "lib/cities";
