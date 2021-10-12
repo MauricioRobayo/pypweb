@@ -1,4 +1,3 @@
-import { Vidverto } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { List } from "components/List";
 import { PypDate } from "components/PypDate";
@@ -52,10 +51,6 @@ export const Title = styled.h3`
   font-weight: normal;
   margin: 0 0 1rem;
   text-align: center;
-`;
-
-export const StyledVidverto = styled(Vidverto)`
-  margin: 2rem auto;
 `;
 
 export const StyledList = styled(List)`
