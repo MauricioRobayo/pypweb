@@ -6,5 +6,8 @@
     {
       "path": "../pyptron"
     }
-  ]
+  ],
+  "settings": {
+    "cSpell.words": ["vidverto"]
+  }
 }
