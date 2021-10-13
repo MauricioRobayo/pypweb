@@ -18,6 +18,7 @@ import {
   StyledCard,
   StyledDescription,
   StyledList,
+  StyledVidverto,
   Title,
   Wrapper,
 } from "./NumbersData.styles";
@@ -127,6 +128,7 @@ export default function NumbersData({
         </div>
       )}
       <NumberLinks selectedNumber={number} />
+      <StyledVidverto />
     </Wrapper>
   );
 }

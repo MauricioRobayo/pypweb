@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../pyptron"
+    }
+  ],
+  "settings": {
+    "cSpell.words": ["vidverto"]
+  }
+}
