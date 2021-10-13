@@ -1,8 +1,13 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import { Vidverto } from "components/Ads";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 import CategoryCard from "./CategoryCard";
+
+const StyledVidverto = styled(Vidverto)`
+  margin: 1rem auto 2rem;
+`;
 
 const List = styled.div`
   ${responsiveWidth}
@@ -30,14 +35,17 @@ export default function CityData({
   } = useRouter();
 
   return (
-    <List className={className}>
-      {categories.map((category) => (
-        <CategoryCard
-          key={category.slug}
-          category={category}
-          citySlug={citySlug as string}
-        />
-      ))}
-    </List>
+    <>
+      <List className={className}>
+        {categories.map((category) => (
+          <CategoryCard
+            key={category.slug}
+            category={category}
+            citySlug={citySlug as string}
+          />
+        ))}
+      </List>
+      <StyledVidverto />
+    </>
   );
 }

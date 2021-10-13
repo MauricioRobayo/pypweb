@@ -18,6 +18,7 @@ import {
   StyledLink,
   StyledList,
   StyledPypDate,
+  StyledVidverto,
   Title,
 } from "./CategoryData.styles";
 
@@ -114,6 +115,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
       <StyledList rows={nextDataList} />
       {nextDataButton}
       <NumberLinks />
+      <StyledVidverto />
     </Article>
   );
 }
