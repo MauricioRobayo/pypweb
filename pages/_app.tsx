@@ -1,4 +1,4 @@
-import { AdSense, ConsentBanner } from "components/Ads";
+import { AdSense, ConsentBanner, Vidoomy } from "components/Ads";
 import { CitiesList } from "lib/cities";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
@@ -44,6 +44,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <GoogleAnalytics />
       <ConsentBanner />
       <AdSense />
+      <Vidoomy />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />
