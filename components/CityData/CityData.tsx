@@ -6,7 +6,7 @@ import { responsiveWidth } from "styles/mixins";
 import CategoryCard from "./CategoryCard";
 
 const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto 2rem;
+  margin: -1rem auto 2rem;
 `;
 
 const List = styled.div`
