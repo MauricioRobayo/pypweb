@@ -14,7 +14,7 @@ interface Options {
 
 export async function getPostBySlug(
   filePath: string,
-  { autoLinkHeadings = false }: Options = {}
+  { autoLinkHeadings = true }: Options = {}
 ): Promise<{
   mdxSource: MDXRemoteSerializeResult;
   data: { [key: string]: any };
