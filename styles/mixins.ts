@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, DefaultTheme } from "styled-components";
 import { size } from "./constants";
 
 export const secondaryText = css`
@@ -37,6 +37,8 @@ export const flexCenter = css`
   justify-content: center;
 `;
 
-export const responsiveWidth = css`
-  width: min(${({ theme }) => theme.width.normal}, 100%);
-`;
+export function responsiveWidth(width: keyof DefaultTheme["width"] = "normal") {
+  return css`
+    width: min(${({ theme }) => theme.width[width]}, 100%);
+  `;
+}

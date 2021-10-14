@@ -1,5 +1,4 @@
 import { AdSense, ConsentBanner, Vidoomy } from "components/Ads";
-import { CitiesList } from "lib/cities";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -13,7 +12,7 @@ import { defaultTheme } from "styles/theme";
 import { defaultConfig } from "../next-seo.config";
 
 type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement, cities: CitiesList) => ReactNode;
+  getLayout?: (page: ReactElement, pageProps: any) => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {

@@ -2,7 +2,7 @@ import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Fine } from "components/Fine";
-import PageLayout from "components/Layout/PageLayout";
+import { Layout } from "components/Layout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
@@ -13,7 +13,7 @@ import {
   datePartsFromString,
   isValidDateString,
 } from "lib/dateUtils";
-import getPostBySlugs from "lib/posts";
+import { getPostBySlug } from "lib/posts";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { baseDescription, baseTitle } from "next-seo.config";
@@ -113,7 +113,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
-  const mdxSource = await getPostBySlugs(`${citySlug}/${categorySlug}`);
+  const { mdxSource } = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
     ...cotDateParts(INITIAL_DATE),
@@ -134,5 +134,5 @@ CategoryPage.getLayout = function getLayout(
   page: ReactElement,
   props: { cities: CitiesList }
 ) {
-  return <PageLayout cities={props.cities}>{page}</PageLayout>;
+  return <Layout cities={props.cities}>{page}</Layout>;
 };

@@ -7,7 +7,7 @@ import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { citiesList, CitiesList } from "lib/cities";
 import { cotDateParts } from "lib/dateUtils";
-import getPostBySlugs from "lib/posts";
+import { getPostBySlug } from "lib/posts";
 import { getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
-  const mdxSource = await getPostBySlugs(`${citySlug}/${categorySlug}`);
+  const { mdxSource } = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
 
   return {
     props: {

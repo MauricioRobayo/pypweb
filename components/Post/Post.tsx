@@ -4,10 +4,20 @@ import Image from "next/image";
 import TweetEmbed from "react-tweet-embed";
 import styled from "styled-components";
 import { size } from "styles/constants";
+import { responsiveWidth } from "styles/mixins";
 import PostSection from "./PostSection";
 
 const Wrapper = styled.div<{ isMobile: boolean | null }>`
-  h4 {
+  ${responsiveWidth("wide")}
+
+  p {
+    line-height: 1.5;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     align-items: flex-end;
     display: flex;
     scroll-margin-top: 2.5rem;

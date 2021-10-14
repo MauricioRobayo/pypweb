@@ -12,15 +12,20 @@ export const StyledLayout = styled.div`
   min-height: 100vh;
 `;
 
-type LayoutProps = {
+interface Props {
   children: ReactNode;
   cities: CitiesList;
-};
-export default function Layout({ children, cities }: LayoutProps) {
+  showFixedHeader?: boolean;
+}
+export default function Layout({
+  children,
+  cities,
+  showFixedHeader = true,
+}: Props) {
   return (
     <StyledLayout>
       <Navbar cities={cities} />
-      <FixedHeader cities={cities} />
+      {showFixedHeader ? <FixedHeader cities={cities} /> : null}
       {children}
       <Footer />
     </StyledLayout>

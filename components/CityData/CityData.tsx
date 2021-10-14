@@ -10,7 +10,7 @@ const StyledVidverto = styled(Vidverto)`
 `;
 
 const List = styled.div`
-  ${responsiveWidth}
+  ${responsiveWidth()}
 
   display: grid;
   display: flex;
