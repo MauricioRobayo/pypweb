@@ -20,6 +20,7 @@
   "dependencies": {
     "@mauriciorobayo/pyptron": "^2.34.0",
     "classnames": "^2.3.1",
+    "gray-matter": "^4.0.3",
     "next": "^11.1.2",
     "next-mdx-remote": "^3.0.4",
     "next-seo": "^4.28.1",

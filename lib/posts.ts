@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import matter from "gray-matter";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
@@ -14,11 +15,14 @@ interface Options {
 export async function getPostBySlug(
   filePath: string,
   { autoLinkHeadings = false }: Options = {}
-): Promise<MDXRemoteSerializeResult> {
+): Promise<{
+  mdxSource: MDXRemoteSerializeResult;
+  data: { [key: string]: any };
+}> {
   const fullPath = join(postsDirectory, filePath);
   try {
-    const content = await readFile(fullPath, "utf8");
-
+    const fileContents = await readFile(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
     // TODO: Properly type this
     const rehypePlugins = [];
 
@@ -58,11 +62,14 @@ export async function getPostBySlug(
       ]);
     }
 
-    return serialize(content, {
-      // @ts-ignore
-      mdxOptions: { rehypePlugins },
-    });
+    return {
+      data,
+      mdxSource: await serialize(content, {
+        // @ts-ignore
+        mdxOptions: { rehypePlugins },
+      }),
+    };
   } catch {
-    return serialize("");
+    return { data: {}, mdxSource: await serialize("") };
   }
 }
