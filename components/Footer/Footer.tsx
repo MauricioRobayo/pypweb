@@ -1,5 +1,6 @@
-import { SelfAd } from "components/Ads";
+import Link from "next/link";
 import React from "react";
+import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
@@ -12,12 +13,22 @@ const StyledFooter = styled.footer`
   p {
     margin: 0.5rem;
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default function Footer() {
   return (
     <StyledFooter>
-      <SelfAd />
+      <p>
+        <Email email="info@pyphoy.com" />
+      </p>
+      <p>
+        <Link href="/politica-de-privacidad">
+          <a>Política de privacidad</a>
+        </Link>
+      </p>
     </StyledFooter>
   );
 }
