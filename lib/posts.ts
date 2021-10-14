@@ -6,7 +6,7 @@ import rehypeSlug from "rehype-slug";
 
 const postsDirectory = join(process.cwd(), "posts");
 
-export default async function getPostBySlug(slug: string) {
+export async function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.mdx$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.mdx`);
   try {
