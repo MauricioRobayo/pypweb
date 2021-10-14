@@ -10,7 +10,14 @@ import PostSection from "./PostSection";
 const Wrapper = styled.div<{ isMobile: boolean | null }>`
   ${responsiveWidth("wide")}
 
-  h4 {
+  p {
+    line-height: 1.5;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     align-items: flex-end;
     display: flex;
     scroll-margin-top: 2.5rem;
