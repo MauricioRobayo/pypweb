@@ -37,9 +37,7 @@ export const flexCenter = css`
   justify-content: center;
 `;
 
-export function responsiveWidth(
-  width?: keyof DefaultTheme["width"] = "normal"
-) {
+export function responsiveWidth(width: keyof DefaultTheme["width"] = "normal") {
   return css`
     width: min(${({ theme }) => theme.width[width]}, 100%);
   `;
