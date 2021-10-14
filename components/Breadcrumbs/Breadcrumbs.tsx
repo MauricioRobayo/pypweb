@@ -23,7 +23,7 @@ const StyledSelect = styled(Select)`
   }
 `;
 const Wrapper = styled.ol`
-  ${responsiveWidth}
+  ${responsiveWidth()}
 
   align-items: center;
   display: flex;

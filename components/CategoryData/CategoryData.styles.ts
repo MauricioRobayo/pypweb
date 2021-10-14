@@ -10,7 +10,7 @@ import DayCard from "./DayCard";
 
 export const Article = styled.article`
   margin: 0 auto 1rem;
-  ${responsiveWidth}
+  ${responsiveWidth()}
 `;
 
 export const MoreIcon = styled(HiOutlinePlusCircle)`

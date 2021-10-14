@@ -26,7 +26,7 @@ export const StyledList = styled(List)`
 `;
 
 export const Wrapper = styled.div`
-  ${responsiveWidth}
+  ${responsiveWidth()}
 
   margin-top: 1rem;
   text-align: center;
