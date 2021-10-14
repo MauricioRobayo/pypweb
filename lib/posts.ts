@@ -53,7 +53,7 @@ export async function getPostBySlug(slug: string) {
         ],
       },
     });
-  } catch (e) {
-    return "";
+  } catch {
+    return serialize("");
   }
 }
