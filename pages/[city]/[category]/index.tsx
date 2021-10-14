@@ -113,7 +113,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
   const { categories, name: cityName } = cities[citySlug];
-  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
+  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`, {
+    autoLinkHeadings: true,
+  });
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
     ...cotDateParts(INITIAL_DATE),

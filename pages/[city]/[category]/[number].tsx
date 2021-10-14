@@ -94,7 +94,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
-  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
+  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`, {
+    autoLinkHeadings: true,
+  });
 
   return {
     props: {
