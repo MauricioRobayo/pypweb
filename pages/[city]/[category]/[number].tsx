@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
     name: cityName,
   } = cities[citySlug];
-  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}`);
+  const mdxSource = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
 
   return {
     props: {

@@ -8,10 +8,9 @@ import rehypeSlug from "rehype-slug";
 const postsDirectory = join(process.cwd(), "posts");
 
 export async function getPostBySlug(
-  slug: string
+  filePath: string
 ): Promise<MDXRemoteSerializeResult> {
-  const realSlug = slug.replace(/\.mdx?$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.mdx`);
+  const fullPath = join(postsDirectory, filePath);
   try {
     const content = await readFile(fullPath, "utf8");
 
