@@ -11,12 +11,12 @@ function PostSection({ title = "", content }: Props) {
   return (
     <>
       {title ? (
-        <h4 id={id}>
+        <h2 id={id}>
           {title}
           <a aria-hidden="true" tabIndex={-1} href={`#${id}`}>
             <LinkIcon />
           </a>
-        </h4>
+        </h2>
       ) : null}
       {content}
     </>
