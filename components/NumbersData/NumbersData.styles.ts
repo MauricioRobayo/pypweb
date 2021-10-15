@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.div`
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
   margin: 0;

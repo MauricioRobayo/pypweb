@@ -47,7 +47,7 @@ export const StyledPypDate = styled(PypDate).attrs({
   }
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h2`
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: normal;
   margin: 0 0 1rem;
