@@ -11,6 +11,7 @@ import { memo, useEffect, useState } from "react";
 import { NumberLinks } from "../NumberMenu";
 import {
   Article,
+  Header,
   MoreIcon,
   MoreLink,
   StyledDayCard,
@@ -100,13 +101,13 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
 
   return (
     <Article>
-      <header>
+      <Header>
         <Title>
           Se restringe la circulación de vehículos{" "}
           <strong>{categoryName.toLowerCase()}</strong> según el{" "}
           <strong>{schemeMessage} dígito del número de la placa</strong>
         </Title>
-      </header>
+      </Header>
       <StyledDayCard
         categoryName={categoryName}
         isSelected
