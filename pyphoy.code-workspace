@@ -8,6 +8,7 @@
     }
   ],
   "settings": {
+    "cSpell.language": "en,es",
     "cSpell.words": ["pyphoy", "pyptron", "taboola", "vidoomy", "vidverto"]
   }
 }
