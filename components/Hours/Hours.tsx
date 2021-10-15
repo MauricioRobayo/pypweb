@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { flexCenter } from "styles/mixins";
 import Hour from "./Hour";
 
-const HoursTitle = styled.h2`
+const HoursTitle = styled.div`
   ${flexCenter}
 
   font-size: ${({ theme }) => theme.font.size.large};
+  font-weight: bold;
   margin: 0;
 `;
 
