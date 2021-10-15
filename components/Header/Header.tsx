@@ -14,7 +14,7 @@ const Title = styled.h1`
   margin: 0 0 1rem;
 `;
 
-const Subtitle = styled.h2`
+const StyledDate = styled(PypDate)`
   font-size: ${({ theme }) => theme.font.size.large};
   margin: 1rem 0 0;
 `;
@@ -34,9 +34,7 @@ export default function Header({
   return (
     <StyledHeader className={className}>
       <Title>{title}</Title>
-      <Subtitle>
-        <PypDate date={date} showTodaysPrefix={showTodaysPrefix} />
-      </Subtitle>
+      <StyledDate date={date} showTodaysPrefix={showTodaysPrefix} />
     </StyledHeader>
   );
 }
