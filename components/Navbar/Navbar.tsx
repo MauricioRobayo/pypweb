@@ -22,7 +22,8 @@ const Wrapper = styled.div`
   max-width: ${({ theme }) => theme.width.normal};
 `;
 
-export const Logo = styled.h2`
+export const Logo = styled.div`
+  font-size: 1.5rem;
   margin: 0;
   ${camouflageLink}
 `;
