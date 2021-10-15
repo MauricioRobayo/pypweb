@@ -1,5 +1,5 @@
+import { TaboolaFlush } from "components/Ads";
 import { FixedHeader } from "components/FixedHeader";
-import { Footer } from "components/Footer";
 import { Navbar } from "components/Navbar";
 import type { CitiesList } from "lib/cities";
 import React, { ReactNode } from "react";
@@ -23,11 +23,13 @@ export default function Layout({
   showFixedHeader = true,
 }: Props) {
   return (
-    <StyledLayout>
-      <Navbar cities={cities} />
-      {showFixedHeader ? <FixedHeader cities={cities} /> : null}
-      {children}
-      <Footer />
-    </StyledLayout>
+    <>
+      <StyledLayout>
+        <Navbar cities={cities} />
+        <FixedHeader cities={cities} />
+        {children}
+      </StyledLayout>
+      <TaboolaFlush />
+    </>
   );
 }

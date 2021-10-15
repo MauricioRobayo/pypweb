@@ -1,3 +1,4 @@
+import { BelowArticleThumbnails } from "components/Ads";
 import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
@@ -46,7 +47,10 @@ export default function Page({
         <Main>{main}</Main>
         <CTA />
       </Wrapper>
-      <Aside>{aside}</Aside>
+      <Aside>
+        {aside}
+        <BelowArticleThumbnails />
+      </Aside>
     </>
   );
 }

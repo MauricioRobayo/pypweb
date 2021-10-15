@@ -1,4 +1,4 @@
-import { AdSense, ConsentBanner, Vidoomy } from "components/Ads";
+import { AdSense, ConsentBanner, Taboola, Vidoomy } from "components/Ads";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -44,6 +44,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <ConsentBanner />
       <AdSense />
       <Vidoomy />
+      <Taboola />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />

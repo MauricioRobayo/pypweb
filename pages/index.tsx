@@ -1,4 +1,3 @@
-import { Footer } from "components/Footer";
 import { Header } from "components/Header";
 import { Select } from "components/Select";
 import type { CitiesList } from "lib/cities";
@@ -12,13 +11,20 @@ const StyledSelect = styled(Select)`
   width: min(100%, ${({ theme }) => theme.width.narrow});
 `;
 
-const Wrapper = styled.div`
+const StyledLayout = styled.div`
   align-items: center;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+`;
+
+const Page = styled.div`
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
+  padding: 0 1rem;
 `;
 
 const Main = styled.main`
@@ -28,18 +34,14 @@ const Main = styled.main`
   padding: 0 1rem;
 `;
 
-const HeaderWrapper = styled.div`
-  margin-inline: auto;
-`;
-
 export default function Home({
   cities,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const date = new Date();
   const pageTitle = "Pico y placa hoy";
   return (
-    <Wrapper>
-      <HeaderWrapper>
+    <StyledLayout>
+      <Page>
         <Header date={date} title={pageTitle} showTodaysPrefix={false} />
         <Main>
           <StyledSelect
@@ -51,9 +53,8 @@ export default function Home({
             placeholder="Ciudad"
           />
         </Main>
-      </HeaderWrapper>
-      <Footer />
-    </Wrapper>
+      </Page>
+    </StyledLayout>
   );
 }
 
