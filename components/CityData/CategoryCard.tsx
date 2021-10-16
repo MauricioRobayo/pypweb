@@ -11,7 +11,7 @@ import styled from "styled-components";
 import { flexHorizontalCenterVerticalEnd } from "styles/mixins";
 import { categoryIcon } from "./utils";
 
-const Title = styled.h3`
+const Title = styled.h2`
   font-size: ${({ theme }) => theme.font.size.large};
   font-weight: bold;
   margin: 0;

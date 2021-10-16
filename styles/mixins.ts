@@ -42,3 +42,9 @@ export function responsiveWidth(width: keyof DefaultTheme["width"] = "normal") {
     width: min(${({ theme }) => theme.width[width]}, 100%);
   `;
 }
+
+export const subtitle = css`
+  font-size: ${({ theme }) => theme.font.size.large};
+  font-weight: normal;
+  margin: 0 0 1rem;
+`;

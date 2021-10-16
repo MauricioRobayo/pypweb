@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     line-height: normal
   }
+  strong {
+    font-weight: bold;
+  }
 `;
 
 export default GlobalStyle;

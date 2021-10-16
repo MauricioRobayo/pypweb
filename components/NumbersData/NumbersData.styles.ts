@@ -3,7 +3,7 @@ import { Card } from "components/Card";
 import { Description } from "components/Description";
 import { List } from "components/List";
 import styled from "styled-components";
-import { responsiveWidth } from "styles/mixins";
+import { responsiveWidth, subtitle } from "styles/mixins";
 
 export const StyledCard = styled(Card)<{ isNumberActive: boolean }>`
   margin-bottom: 1rem;
@@ -32,10 +32,8 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: normal;
-  margin: 0;
+export const Title = styled.div`
+  ${subtitle}
 `;
 
 export const StyledVidverto = styled(Vidverto)`

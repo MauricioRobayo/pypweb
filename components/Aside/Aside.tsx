@@ -5,7 +5,7 @@ const StyledAside = styled.aside`
   max-width: ${({ theme }) => theme.width.wide};
   padding: 0.5rem 1rem;
   width: 100%;
-  h4 {
+  h2 {
     font-weight: bold;
     margin: 1rem 0 0.5rem;
   }

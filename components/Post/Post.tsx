@@ -33,9 +33,9 @@ const Wrapper = styled.div<{ isMobile: boolean | null }>`
     }
   }
   li {
-    padding: 0.5em 0;
+    line-height: 2;
     @media only screen and (min-width: ${size.sm}) {
-      padding: 0;
+      line-height: 1.5;
     }
   }
 `;

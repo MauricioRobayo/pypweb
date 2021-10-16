@@ -5,7 +5,7 @@ import { PypDate } from "components/PypDate";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { size } from "styles/constants";
-import { responsiveWidth } from "styles/mixins";
+import { responsiveWidth, subtitle } from "styles/mixins";
 import DayCard from "./DayCard";
 
 export const Article = styled.article`
@@ -47,11 +47,12 @@ export const StyledPypDate = styled(PypDate).attrs({
   }
 `;
 
-export const Title = styled.h3`
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: normal;
-  margin: 0 0 1rem;
+export const Header = styled.header`
   text-align: center;
+`;
+
+export const Title = styled.div`
+  ${subtitle}
 `;
 
 export const StyledVidverto = styled(Vidverto)`

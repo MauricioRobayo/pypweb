@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { subtitle } from "styles/mixins";
 import Number from "./Number";
 
 const Wrapper = styled.div`
@@ -6,10 +7,8 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h4`
-  font-size: ${({ theme }) => theme.font.size.large};
-  font-weight: bold;
-  margin-bottom: 1rem;
+const Title = styled.div`
+  ${subtitle}
 `;
 
 const Container = styled.div`
