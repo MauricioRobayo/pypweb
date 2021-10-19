@@ -1,3 +1,14 @@
+import { MdWeb } from "react-icons/md";
+import {
+  RiFacebookFill,
+  RiMailFill,
+  RiMailLine,
+  RiMessengerFill,
+  RiMessengerLine,
+  RiTwitterFill,
+  RiWhatsappFill,
+  RiWhatsappLine,
+} from "react-icons/ri";
 import styled from "styled-components";
 import Calendar from "svg-emojis/twemoji/1f4c5.svg";
 import Megaphone from "svg-emojis/twemoji/1f4e3.svg";
@@ -27,6 +38,15 @@ const iconName = {
   "🚛": ArticulatedLorry,
   "🛵": Scooter,
   "📅": Calendar,
+  facebook: RiFacebookFill,
+  twitter: RiTwitterFill,
+  whatsappFill: RiWhatsappFill,
+  whatsappLine: RiWhatsappLine,
+  emailFill: RiMailFill,
+  emailLine: RiMailLine,
+  website: MdWeb,
+  messengerFill: RiMessengerFill,
+  messengerLine: RiMessengerLine,
 };
 
 type IconProps = {
