@@ -1,10 +1,11 @@
+import { Icon } from "components/Icon";
 import useShare from "hooks/useShare";
-import { IoShareSocial } from "react-icons/io5";
 import styled, { useTheme } from "styled-components";
 
 const StyledShareButton = styled.button`
   background-color: transparent;
   border: none;
+  color: ${({ theme }) => theme.colors.secondaryDark};
   cursor: pointer;
   line-height: 0;
   margin: 0;
@@ -24,7 +25,7 @@ export default function ShareButton() {
   if (hasShare) {
     return (
       <StyledShareButton type="button" title="Compartir" onClick={share}>
-        <IoShareSocial color={theme.colors.secondaryDark} />
+        <Icon name="share" />
       </StyledShareButton>
     );
   }
