@@ -1,3 +1,4 @@
+import { HiOutlinePlusCircle } from "react-icons/hi";
 import { MdWeb } from "react-icons/md";
 import {
   RiFacebookFill,
@@ -5,6 +6,7 @@ import {
   RiMailLine,
   RiMessengerFill,
   RiMessengerLine,
+  RiShareFill,
   RiTwitterFill,
   RiWhatsappFill,
   RiWhatsappLine,
@@ -27,6 +29,7 @@ import WarningSign from "svg-emojis/twemoji/26a0.svg";
 const iconName = {
   "⏰": AlarmClock,
   "⚠": WarningSign,
+  "📅": Calendar,
   "📣": Megaphone,
   "🤩": StarEyes,
   "🚌": Bus,
@@ -37,16 +40,17 @@ const iconName = {
   "🚚": DeliveryTruck,
   "🚛": ArticulatedLorry,
   "🛵": Scooter,
-  "📅": Calendar,
-  facebook: RiFacebookFill,
-  twitter: RiTwitterFill,
-  whatsappFill: RiWhatsappFill,
-  whatsappLine: RiWhatsappLine,
   emailFill: RiMailFill,
   emailLine: RiMailLine,
-  website: MdWeb,
+  facebook: RiFacebookFill,
   messengerFill: RiMessengerFill,
   messengerLine: RiMessengerLine,
+  plus: HiOutlinePlusCircle,
+  share: RiShareFill,
+  twitter: RiTwitterFill,
+  website: MdWeb,
+  whatsappFill: RiWhatsappFill,
+  whatsappLine: RiWhatsappLine,
 };
 
 type IconProps = {
