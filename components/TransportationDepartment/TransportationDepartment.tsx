@@ -12,20 +12,9 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
   return (
     <>
       <p>
-        El Pico y Placa para {city} es regulado por la{" "}
-        <a
-          href={transportationDepartment.website}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Secretaría de Movilidad de {city}
-        </a>
-        .
-      </p>
-      <p>
         Puede dirigir sus inquietudes a cualquiera de los canales oficiales de
-        la oficina de tránsito y transporte de {city} en donde podrá será
-        atendida de manera oportuna:
+        la oficina de Tránsito y Transporte de la ciudad de {city}, en donde
+        será atendida de manera oportuna:
       </p>
       <ul>
         {facebook ? (
@@ -34,6 +23,7 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
               href={`https://www.facebook.com/${facebook}`}
               target="_blank"
               rel="noopener noreferer noreferrer"
+              title={`Cuenta oficial de Facebook de la Secretaría de Movilidad de ${city}`}
             >
               <IconLeft name="facebook" />
               Facebook
@@ -46,6 +36,7 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
               href={`https://twitter.com/${twitter}`}
               target="_blank"
               rel="noopener noreferer noreferrer"
+              title={`Cuenta oficial de Twitter de la Secretaría de Movilidad de ${city}`}
             >
               <IconLeft name="twitter" />
               Twitter
@@ -54,7 +45,10 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
         ) : null}
         {whatsapp ? (
           <li>
-            <a href={`whatsapp://send?phone=${whatsapp}`}>
+            <a
+              href={`whatsapp://send?phone=${whatsapp}`}
+              title={`Cuenta oficial de Whatsapp de la Secretaría de Movilidad de ${city}`}
+            >
               <IconLeft name="whatsappFill" />
               Whatsapp
             </a>
@@ -66,6 +60,7 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
               href={website}
               target="_blank"
               rel="noopener noreferer noreferrer"
+              title={`Sitio web oficial de la Secretaría de Movilidad de ${city}`}
             >
               <IconLeft name="website" />
               Página web
@@ -74,7 +69,10 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
         ) : null}
         {email ? (
           <li>
-            <Email email={email}>
+            <Email
+              email={email}
+              title={`Correo electrónico oficial de la Secretaría de Movilidad de ${city}`}
+            >
               <IconLeft name="emailFill" />
               Correo electrónico
             </Email>
