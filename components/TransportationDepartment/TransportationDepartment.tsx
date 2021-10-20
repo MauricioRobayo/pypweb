@@ -2,42 +2,6 @@ import type { City } from "@mauriciorobayo/pyptron";
 import { IconLeft } from "components/Icon";
 import { Email } from "react-obfuscate-email";
 
-const contact: Record<
-  keyof City["transportationDepartment"],
-  ({ contact }: { contact: string }) => JSX.Element
-> = {
-  facebook: ({ contact }): JSX.Element => (
-    <a href={`https://www.facebook.com/${contact}`}>
-      <IconLeft name="facebook" />
-      Facebook
-    </a>
-  ),
-  twitter: ({ contact }) => (
-    <a href={`https://twitter.com/${contact}`}>
-      <IconLeft name="twitter" />
-      Twitter
-    </a>
-  ),
-  whatsapp: ({ contact }) => (
-    <a href={`whatsapp://send?phone=${contact}`}>
-      <IconLeft name="whatsappFill" />
-      Whatsapp
-    </a>
-  ),
-  website: ({ contact }) => (
-    <a href={contact}>
-      <IconLeft name="website" />
-      Página web
-    </a>
-  ),
-  email: ({ contact }) => (
-    <Email email={contact}>
-      <IconLeft name="emailFill" />
-      Correo electrónico
-    </Email>
-  ),
-};
-
 interface Props {
   city: string;
   transportationDepartment: City["transportationDepartment"];
