@@ -60,6 +60,7 @@ export default function NumberPage({
               transportationDepartment={transportationDepartment}
             />
           ),
+          position: "top",
         },
         { title: "Sanciones", content: <Fine /> },
       ]}

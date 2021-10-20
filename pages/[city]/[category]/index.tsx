@@ -95,6 +95,7 @@ export default function CategoryPage({
               transportationDepartment={transportationDepartment}
             />
           ),
+          position: "top",
         },
         { title: "Sanciones", content: <Fine /> },
       ]}
