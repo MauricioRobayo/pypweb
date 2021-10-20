@@ -1,7 +1,7 @@
 import { Button } from "components/Button";
+import { IconLeft } from "components/Icon";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { RiMailLine, RiMessengerLine, RiWhatsappLine } from "react-icons/ri";
 import { Email } from "react-obfuscate-email";
 import styled from "styled-components";
 
@@ -57,12 +57,12 @@ export default function CTA() {
               href={`whatsapp://send?phone=${process.env.NEXT_PUBLIC_PYPHOY_CONTACT_PHONE}&text=Hay un error en ${path}`}
               title="WhatsApp"
             >
-              <RiWhatsappLine />
+              <IconLeft name="whatsappLine" />
             </a>
           </ContactOption>
           <ContactOption>
             <a href="http://m.me/picoyplacahoy" title="Facebook messenger">
-              <RiMessengerLine />
+              <IconLeft name="messengerLine" />
             </a>
           </ContactOption>
           <ContactOption>
@@ -71,7 +71,7 @@ export default function CTA() {
               title="Correo electrónico"
               subject={`Hay un error en ${path}`}
             >
-              <RiMailLine />
+              <IconLeft name="emailLine" />
             </Email>
           </ContactOption>
         </ContactOptions>

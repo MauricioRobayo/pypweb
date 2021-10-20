@@ -1,4 +1,5 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
+import { IconLeft } from "components/Icon";
 import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
 import {
   DEFAULT_DAYS_TO_SHOW,
@@ -12,7 +13,6 @@ import { NumberLinks } from "../NumberMenu";
 import {
   Article,
   Header,
-  MoreIcon,
   MoreLink,
   StyledDayCard,
   StyledLicensePlate,
@@ -93,7 +93,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
         passHref
       >
         <MoreLink>
-          <MoreIcon />
+          <IconLeft name="plus" />
           Ver más días
         </MoreLink>
       </Link>

@@ -1,10 +1,11 @@
-import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import type { City, CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CityData } from "components/CityData";
 import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { TransportationDepartment } from "components/TransportationDepartment";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -24,9 +25,14 @@ type CityPageProps = {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
+  transportationDepartment: City["transportationDepartment"];
 };
 
-export default function CityPage({ categories, cityName }: CityPageProps) {
+export default function CityPage({
+  categories,
+  cityName,
+  transportationDepartment,
+}: CityPageProps) {
   const { query } = useRouter();
   const pageTitle = `${baseTitle} ${cityName}`;
   const pageDescription = `${baseDescription} ${cityName}`;
@@ -67,6 +73,15 @@ export default function CityPage({ categories, cityName }: CityPageProps) {
           ),
         },
         {
+          title: "Secretaría de Tránsito",
+          content: (
+            <TransportationDepartment
+              city={cityName}
+              transportationDepartment={transportationDepartment}
+            />
+          ),
+        },
+        {
           title: "Sanciones",
           content: <Fine />,
         },
@@ -92,7 +107,11 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
-  const { name: cityName, categories } = cities[citySlug];
+  const {
+    name: cityName,
+    categories,
+    transportationDepartment,
+  } = cities[citySlug];
   const categoriesData = Object.values(categories).map((category) =>
     category.getCategoryData(cotDateParts(INITIAL_DATE))
   );
@@ -102,6 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       categories: categoriesData,
       cities: citiesList(),
       cityName,
+      transportationDepartment,
     },
   };
 };

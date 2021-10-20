@@ -2,7 +2,6 @@ import { Vidverto } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { List } from "components/List";
 import { PypDate } from "components/PypDate";
-import { HiOutlinePlusCircle } from "react-icons/hi";
 import styled from "styled-components";
 import { size } from "styles/constants";
 import { responsiveWidth, subtitle } from "styles/mixins";
@@ -11,10 +10,6 @@ import DayCard from "./DayCard";
 export const Article = styled.article`
   margin: 0 auto 1rem;
   ${responsiveWidth()}
-`;
-
-export const MoreIcon = styled(HiOutlinePlusCircle)`
-  margin-right: 0.25rem;
 `;
 
 export const MoreLink = styled.a`
