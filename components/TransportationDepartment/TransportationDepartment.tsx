@@ -24,8 +24,8 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
       </p>
       <p>
         Puede dirigir sus inquietudes a cualquiera de los canales oficiales de
-        la oficina de tránsito y transporte en donde podrá será atendida de
-        manera oportuna:
+        la oficina de tránsito y transporte de {city} en donde podrá será
+        atendida de manera oportuna:
       </p>
       <ul>
         {facebook ? (
