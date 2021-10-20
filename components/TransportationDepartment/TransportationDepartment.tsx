@@ -59,8 +59,9 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
         .
       </p>
       <p>
-        Cualquier inquietud puede dirigirla a sus canales oficiales en donde
-        será atendida de manera oportuna:
+        Puede dirigir sus inquietudes a cualquiera de los canales oficiales de
+        la oficina de tránsito y transporte en donde podrá será atendida de
+        manera oportuna:
       </p>
       <ul>
         {facebook ? (

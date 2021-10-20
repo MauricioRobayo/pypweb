@@ -1,10 +1,11 @@
-import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import type { City, CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { Fine } from "components/Fine";
 import PageLayout from "components/Layout/PageLayout";
 import { NumbersData } from "components/NumbersData";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { TransportationDepartment } from "components/TransportationDepartment";
 import { citiesList, CitiesList } from "lib/cities";
 import { cotDateParts } from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
@@ -22,6 +23,7 @@ type NumberPageProps = {
   cityName: string;
   number: string;
   mdxSource: MDXRemoteSerializeResult;
+  transportationDepartment: City["transportationDepartment"];
 };
 
 export default function NumberPage({
@@ -29,6 +31,7 @@ export default function NumberPage({
   cityName,
   number,
   mdxSource,
+  transportationDepartment,
 }: NumberPageProps) {
   const {
     data: [{ scheme }],
@@ -48,7 +51,18 @@ export default function NumberPage({
   const aside = (
     <Post
       mdxSource={mdxSource}
-      sections={[{ title: "Sanciones", content: <Fine /> }]}
+      sections={[
+        {
+          title: "Secretaría de Tránsito",
+          content: (
+            <TransportationDepartment
+              city={cityName}
+              transportationDepartment={transportationDepartment}
+            />
+          ),
+        },
+        { title: "Sanciones", content: <Fine /> },
+      ]}
     />
   );
 
@@ -93,6 +107,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       [categorySlug]: { getCategoryData },
     },
     name: cityName,
+    transportationDepartment,
   } = cities[citySlug];
   const { mdxSource } = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
 
@@ -106,6 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       mdxSource,
       number: params?.number,
+      transportationDepartment,
     },
   };
 };

@@ -1,10 +1,11 @@
-import type { CityType, ICategoryData } from "@mauriciorobayo/pyptron";
+import type { City, CityType, ICategoryData } from "@mauriciorobayo/pyptron";
 import cities from "@mauriciorobayo/pyptron";
 import { CategoryData } from "components/CategoryData";
 import { Fine } from "components/Fine";
 import { Layout } from "components/Layout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
+import { TransportationDepartment } from "components/TransportationDepartment";
 import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
@@ -27,11 +28,13 @@ type CategoryPageProps = {
   cityName: string;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
+  transportationDepartment: City["transportationDepartment"];
 };
 export default function CategoryPage({
   cityName,
   initialCategoryData,
   mdxSource,
+  transportationDepartment,
 }: CategoryPageProps) {
   const [categoryData, setCategoryData] = useState(initialCategoryData);
   const [date, setDate] = useState(INITIAL_DATE);
@@ -83,7 +86,18 @@ export default function CategoryPage({
   const aside = (
     <Post
       mdxSource={cotIsToday(date) ? mdxSource : null}
-      sections={[{ title: "Sanciones", content: <Fine /> }]}
+      sections={[
+        {
+          title: "Secretaría de Tránsito",
+          content: (
+            <TransportationDepartment
+              city={cityName}
+              transportationDepartment={transportationDepartment}
+            />
+          ),
+        },
+        { title: "Sanciones", content: <Fine /> },
+      ]}
     />
   );
 
@@ -112,7 +126,11 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const citySlug = params?.city as CityType;
   const categorySlug = params?.category as string;
-  const { categories, name: cityName } = cities[citySlug];
+  const {
+    categories,
+    name: cityName,
+    transportationDepartment,
+  } = cities[citySlug];
   const { mdxSource } = await getPostBySlug(`${citySlug}/${categorySlug}.mdx`);
   const { getCategoryData } = categories[categorySlug];
   const categoryData = getCategoryData({
@@ -126,6 +144,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cityName,
       initialCategoryData: categoryData,
       mdxSource,
+      transportationDepartment,
     },
   };
 };
