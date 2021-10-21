@@ -7,24 +7,24 @@ import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { citiesList, CitiesList } from "lib/cities";
-import { cotDateParts } from "lib/dateUtils";
+import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
 import { getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { baseDescription, baseTitle } from "next-seo.config";
+import { baseTitle } from "next-seo.config";
 import React, { ReactElement } from "react";
 
 const INITIAL_DATE = new Date();
 
-type NumberPageProps = {
+interface NumberPageProps {
   categoryData: ICategoryData;
   categoryName: string;
   cityName: string;
   number: string;
   mdxSource: MDXRemoteSerializeResult;
   transportationDepartment: City["transportationDepartment"];
-};
+}
 
 export default function NumberPage({
   categoryData,
@@ -37,9 +37,9 @@ export default function NumberPage({
     data: [{ scheme }],
   } = categoryData;
   const schemeString = getSchemeString(scheme);
-  const title = `${categoryData.name.toLowerCase()} ${cityName} placas ${schemeString} en ${number}`;
-  const pageTitle = `${baseTitle} ${title}`;
-  const pageDescription = `${baseDescription} ${title}`;
+  const longDate = cotFormatLongDate(INITIAL_DATE);
+  const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName} placas ${schemeString} en ${number} hoy ${longDate}`;
+  const seoDescription = ``;
   const main = (
     <NumbersData
       categoryData={categoryData}
@@ -71,9 +71,9 @@ export default function NumberPage({
     <Page
       aside={aside}
       date={INITIAL_DATE}
-      seoDescription={pageDescription}
+      seoDescription={seoDescription}
       main={main}
-      title={pageTitle}
+      title={title}
     />
   );
 }
