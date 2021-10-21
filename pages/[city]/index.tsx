@@ -8,8 +8,9 @@ import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
+import { pypNumbersToString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { baseDescription, baseTitle } from "next-seo.config";
+import { baseTitle } from "next-seo.config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
@@ -21,12 +22,22 @@ const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
 
-type CityPageProps = {
+function getSeoDescription(categories: ICategoryData[]): string {
+  return categories
+    .map((category) => {
+      return `${category.name.toLocaleLowerCase()} ${pypNumbersToString(
+        category.data[0].numbers
+      )}`;
+    })
+    .join(", ");
+}
+
+interface CityPageProps {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
   transportationDepartment: City["transportationDepartment"];
-};
+}
 
 export default function CityPage({
   categories,
@@ -37,7 +48,7 @@ export default function CityPage({
   const longDate = cotFormatLongDate(INITIAL_DATE);
   const pageTitle = `${baseTitle} en ${cityName}`;
   const seoTitle = `${pageTitle} hoy ${longDate}`;
-  const seoDescription = `${baseDescription} ${cityName}`;
+  const seoDescription = `Hoy no circulan: ${getSeoDescription(categories)}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post
