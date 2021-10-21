@@ -1,4 +1,5 @@
-export const siteName = "PYPHOY";
+const siteName = "Pico y placa hoy";
+
 export const baseTitle = "Pico y placa";
 export const baseDescription =
   "Horario, días, fechas, números, decretos, sanciones y toda la información del pico y placa";
@@ -49,12 +50,12 @@ export const defaultConfig = {
       name: "theme-color",
     },
   ],
-  defaultTitle: `${baseTitle} en Colombia | ${siteName}`,
-  description: `${baseDescription} en Colombia`,
+  defaultTitle: `${siteName} en Colombia`,
+  description: `${baseDescription} hoy en las principales ciudades del país`,
   openGraph: {
     images: [
       {
-        alt: baseTitle,
+        alt: siteName,
         height: 512,
         url: "https://www.pyphoy.com/android-chrome-512x512.png",
         width: 512,
