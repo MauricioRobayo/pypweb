@@ -34,8 +34,10 @@ export default function CityPage({
   transportationDepartment,
 }: CityPageProps) {
   const { query } = useRouter();
-  const pageTitle = `${baseTitle} ${cityName}`;
-  const pageDescription = `${baseDescription} ${cityName}`;
+  const longDate = cotFormatLongDate(INITIAL_DATE);
+  const pageTitle = `${baseTitle} en ${cityName}`;
+  const seoTitle = `${pageTitle} hoy ${longDate}`;
+  const seoDescription = `${baseDescription} ${cityName}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post
@@ -47,8 +49,8 @@ export default function CityPage({
               <p>
                 Las siguientes son las medidas de restricción vehicular vigentes
                 para {cityName} durante el mes de{" "}
-                {cotFormatLongDate().split(" ").slice(3).join(" ")}, de acuerdo
-                con lo establecido por la Alcaldía de {cityName}:
+                {longDate.split(" ").slice(3).join(" ")}, de acuerdo con lo
+                establecido por la Alcaldía de {cityName}:
               </p>
               <ul>
                 {categories.map(
@@ -93,8 +95,9 @@ export default function CityPage({
     <Page
       aside={aside}
       date={INITIAL_DATE}
-      seoDescription={pageDescription}
       main={main}
+      seoDescription={seoDescription}
+      seoTitle={seoTitle}
       title={pageTitle}
     />
   );
