@@ -25,23 +25,25 @@ const Main = styled.main`
   padding: 0 1rem;
 `;
 
-type PageProps = {
-  title: string;
-  description: string;
-  main: ReactNode;
+interface Props {
   aside: ReactNode;
   date: Date;
-};
+  main: ReactNode;
+  seoDescription: string;
+  seoTitle?: string;
+  title: string;
+}
 export default function Page({
-  title,
-  description,
-  main,
   aside,
   date,
-}: PageProps) {
+  main,
+  seoDescription,
+  seoTitle,
+  title,
+}: Props) {
   return (
     <>
-      <NextSeo description={description} title={title} />
+      <NextSeo description={seoDescription} title={seoTitle || title} />
       <Wrapper>
         <StyledHeader date={date} title={title} />
         <Main>{main}</Main>

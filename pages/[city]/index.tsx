@@ -93,7 +93,7 @@ export default function CityPage({
     <Page
       aside={aside}
       date={INITIAL_DATE}
-      description={pageDescription}
+      seoDescription={pageDescription}
       main={main}
       title={pageTitle}
     />

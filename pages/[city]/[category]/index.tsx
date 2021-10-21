@@ -106,7 +106,7 @@ export default function CategoryPage({
     <Page
       aside={aside}
       date={new Date(date)}
-      description={pageDescription}
+      seoDescription={pageDescription}
       main={main}
       title={pageTitle}
     />
