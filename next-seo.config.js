@@ -2,7 +2,7 @@ const siteName = "Pico y placa hoy";
 
 export const baseTitle = "Pico y placa";
 export const baseDescription =
-  "Horario, días, fechas, números, decretos, sanciones y toda la información del pico y placa";
+  "Horarios, días, placas, decretos, sanciones y toda la información del pico y placa";
 export const defaultConfig = {
   additionalLinkTags: [
     {
