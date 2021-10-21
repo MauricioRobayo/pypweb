@@ -46,8 +46,8 @@ export default function CityPage({
 }: CityPageProps) {
   const { query } = useRouter();
   const longDate = cotFormatLongDate(INITIAL_DATE);
-  const pageTitle = `${baseTitle} en ${cityName}`;
-  const seoTitle = `${pageTitle} hoy ${longDate}`;
+  const title = `${baseTitle} en ${cityName}`;
+  const seoTitle = `${title} hoy ${longDate}`;
   const seoDescription = `Hoy no circulan: ${getSeoDescription(categories)}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
@@ -109,7 +109,7 @@ export default function CityPage({
       main={main}
       seoDescription={seoDescription}
       seoTitle={seoTitle}
-      title={pageTitle}
+      title={title}
     />
   );
 }
