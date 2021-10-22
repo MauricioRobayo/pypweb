@@ -7,15 +7,50 @@ import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { citiesList, CitiesList } from "lib/cities";
-import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
+import {
+  convert24toAmPm,
+  cotDateParts,
+  cotFormatLongDate,
+} from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
-import { getSchemeString } from "lib/utils";
+import { arrayToList, getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { baseTitle } from "next-seo.config";
 import React, { ReactElement } from "react";
 
 const INITIAL_DATE = new Date();
+
+function toFriendlyHour(hour: [string, string] | []): string {
+  return hour.map(convert24toAmPm).join(" a ");
+}
+
+function getSeoDescription({ data }: ICategoryData, number: string): string {
+  const { numbers, hours } = data[0];
+  const numbersString = arrayToList(numbers);
+  const isNumberActive = numbers.includes(Number(number));
+
+  const hoursString = hours
+    .filter((hour) => {
+      if (!hour.days) {
+        return true;
+      }
+
+      return hour.days.includes(INITIAL_DATE.getDay());
+    })
+    .map((hour) => {
+      const friendlyHours = hour.hours.map(toFriendlyHour);
+      const hoursList = arrayToList(friendlyHours);
+      return `${hour.comment || ""} ${hoursList}`.trim();
+    })
+    .join("; ");
+
+  if (isNumberActive) {
+    return `${number} hoy tiene pico y placa ${hoursString.toLocaleLowerCase()}`;
+  }
+
+  return `${number} hoy no tiene pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
+}
 
 interface NumberPageProps {
   categoryData: ICategoryData;
@@ -39,7 +74,8 @@ export default function NumberPage({
   const schemeString = getSchemeString(scheme);
   const longDate = cotFormatLongDate(INITIAL_DATE);
   const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName} placas ${schemeString} en ${number} hoy ${longDate}`;
-  const seoDescription = ``;
+  const seoDescription = getSeoDescription(categoryData, number);
+
   const main = (
     <NumbersData
       categoryData={categoryData}

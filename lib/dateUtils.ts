@@ -19,6 +19,16 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeStyle: "long",
 });
 
+export function convert24toAmPm(hour24: string) {
+  if (hour24 === "12:00") return `${hour24}m.`;
+  const [hours, minutes] = hour24.split(":");
+  const hoursNumber = parseInt(hours, 10);
+  if (hoursNumber === 12) return `${hour24}pm`;
+  return hoursNumber > 12
+    ? `${hoursNumber - 12}:${minutes}pm`
+    : `${hoursNumber}:${minutes}am`;
+}
+
 /**
  * Colombian time long date format
  */
