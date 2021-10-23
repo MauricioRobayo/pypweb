@@ -6,6 +6,7 @@ import { Layout } from "components/Layout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
+import useLandingPage from "hooks/useLandingPage";
 import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
@@ -43,7 +44,7 @@ export default function CategoryPage({
     city: citySlug,
     category: categorySlug,
   } = query;
-  const isLandingPage = query.fecha === undefined;
+  const { isLandingPage } = useLandingPage();
 
   useEffect(() => {
     async function updateData() {

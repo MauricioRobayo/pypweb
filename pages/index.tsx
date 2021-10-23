@@ -40,7 +40,7 @@ export default function Home({
   return (
     <Wrapper>
       <HeaderWrapper>
-        <Header date={date} title={pageTitle} showTodaysPrefix={false} />
+        <Header date={date} title={pageTitle} />
         <Main>
           <StyledSelect
             name="ciudad"

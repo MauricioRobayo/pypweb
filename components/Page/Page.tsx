@@ -2,6 +2,7 @@ import { BelowArticleThumbnails } from "components/Ads/Taboola";
 import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
+import useLandingPage from "hooks/useLandingPage";
 import { NextSeo } from "next-seo";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
@@ -41,11 +42,16 @@ export default function Page({
   seoTitle,
   title,
 }: Props) {
+  const { isLandingPage } = useLandingPage();
   return (
     <>
       <NextSeo description={seoDescription} title={seoTitle || title} />
       <Wrapper>
-        <StyledHeader date={date} title={title} />
+        <StyledHeader
+          date={date}
+          title={title}
+          prefix={isLandingPage ? "Hoy " : ""}
+        />
         <Main>{main}</Main>
         <CTA />
       </Wrapper>

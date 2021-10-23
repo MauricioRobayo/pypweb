@@ -22,19 +22,19 @@ const StyledDate = styled(PypDate)`
 type HeaderProps = {
   className?: string;
   date: Date;
-  showTodaysPrefix?: boolean;
+  prefix?: string;
   title: ReactNode;
 };
 export default function Header({
   className = "",
   date,
-  showTodaysPrefix = true,
+  prefix = "",
   title,
 }: HeaderProps) {
   return (
     <StyledHeader className={className}>
       <Title>{title}</Title>
-      <StyledDate date={date} showTodaysPrefix={showTodaysPrefix} />
+      <StyledDate date={date} prefix={prefix} />
     </StyledHeader>
   );
 }
