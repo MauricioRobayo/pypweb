@@ -43,6 +43,7 @@ export default function CategoryPage({
     city: citySlug,
     category: categorySlug,
   } = query;
+  const isLandingPage = query.fecha === undefined;
 
   useEffect(() => {
     async function updateData() {
@@ -84,7 +85,7 @@ export default function CategoryPage({
   );
   const aside = (
     <Post
-      mdxSource={requestedDateString ? null : mdxSource}
+      mdxSource={isLandingPage ? mdxSource : null}
       sections={[
         {
           title: "Secretaría de Tránsito",

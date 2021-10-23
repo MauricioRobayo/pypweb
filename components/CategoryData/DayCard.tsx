@@ -1,7 +1,7 @@
 import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { IconLeft } from "components/Icon";
-import { cotDateFromParts, cotIsToday } from "lib/dateUtils";
+import { cotDateFromParts } from "lib/dateUtils";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -31,6 +31,7 @@ function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
   const isAllDigits = numbersString === ALL_DIGITS;
   const hasRestriction = numbersString !== NA;
   const { pathname, query } = useRouter();
+  const isLandingPage = query.fecha === undefined;
 
   const header = (
     <Header hasDescription={hasRestriction}>
@@ -50,10 +51,10 @@ function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
   );
 
   const body = hasRestriction ? (
-    <StyledHours date={date} hours={hours} interactive={cotIsToday(date)} />
+    <StyledHours date={date} hours={hours} interactive={isLandingPage} />
   ) : null;
 
-  const footer = cotIsToday(date) ? null : (
+  const footer = isLandingPage ? null : (
     <Footer>
       <Link
         href={{
