@@ -10,7 +10,6 @@ import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
-  cotIsToday,
   datePartsFromString,
   isValidDateString,
 } from "lib/dateUtils";
@@ -85,7 +84,7 @@ export default function CategoryPage({
   );
   const aside = (
     <Post
-      mdxSource={cotIsToday(date) ? mdxSource : null}
+      mdxSource={requestedDateString ? null : mdxSource}
       sections={[
         {
           title: "Secretaría de Tránsito",
