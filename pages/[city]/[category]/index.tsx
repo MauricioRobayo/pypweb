@@ -28,25 +28,20 @@ import React, { ReactElement, useEffect, useState } from "react";
 const MAX_DAYS_PER_PAGE = 31;
 const INITIAL_DATE = new Date();
 
-function getSeoDescription(
-  category: ICategoryData,
-  date: Date,
-  isLandingPage: boolean
-): string {
+function getDescription(category: ICategoryData, date: Date): string {
   const {
     name,
     data: [currentData],
   } = category;
   const { numbers, scheme, hours } = currentData;
-  const prefix = isLandingPage ? "Hoy no" : "No";
 
   if (numbers.length === 0) {
-    return `${prefix} aplica restricción vehicular por pico y placa para ${name}`;
+    return `no aplica restricción vehicular por pico y placa para ${name.toLocaleLowerCase()}`;
   }
 
   const hoursString = getActiveHoursString(hours, date);
 
-  return `${prefix} circulan placas ${getSchemeString(scheme)} en ${arrayToList(
+  return `no circulan placas ${getSchemeString(scheme)} en ${arrayToList(
     numbers
   )} horario ${hoursString}`;
 }
@@ -76,8 +71,9 @@ export default function CategoryPage({
 
   const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName}`;
   const longDate = cotFormatLongDate(date);
-  const seoTitle = `${title}${isLandingPage ? " hoy " : " "}${longDate}`;
-  const seoDescription = getSeoDescription(categoryData, date, isLandingPage);
+  const description = `${
+    isLandingPage ? "Hoy " : ""
+  }${longDate}, ${getDescription(categoryData, date)}`;
 
   useEffect(() => {
     async function updateData() {
@@ -135,7 +131,7 @@ export default function CategoryPage({
 
   return (
     <>
-      <NextSeo description={seoDescription} title={seoTitle} />
+      <NextSeo description={description} title={title} />
       <Page aside={aside} date={new Date(date)} main={main} title={title} />
     </>
   );

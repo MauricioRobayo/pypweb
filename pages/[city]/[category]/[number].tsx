@@ -22,7 +22,7 @@ import React, { ReactElement } from "react";
 
 const INITIAL_DATE = new Date();
 
-function getSeoDescription(
+function getDescription(
   { data: [currentData] }: ICategoryData,
   number: string
 ): string {
@@ -32,10 +32,10 @@ function getSeoDescription(
   const hoursString = getActiveHoursString(hours, INITIAL_DATE);
 
   if (isNumberActive) {
-    return `Placas número ${number} hoy tienen pico y placa horario ${hoursString.toLocaleLowerCase()}`;
+    return `${number} tiene pico y placa horario ${hoursString.toLocaleLowerCase()}`;
   }
 
-  return `Placas número ${number} hoy no tienen pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
+  return `${number} no tiene pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
 }
 
 interface NumberPageProps {
@@ -60,8 +60,10 @@ export default function NumberPage({
   const schemeString = getSchemeString(scheme);
   const longDate = cotFormatLongDate(INITIAL_DATE);
   const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
-  const seoTitle = `${title} hoy ${longDate}`;
-  const seoDescription = getSeoDescription(categoryData, number);
+  const description = `Hoy ${longDate}, ${getDescription(
+    categoryData,
+    number
+  )}`;
 
   const main = (
     <NumbersData
@@ -92,7 +94,7 @@ export default function NumberPage({
 
   return (
     <>
-      <NextSeo description={seoDescription} title={seoTitle} />
+      <NextSeo description={description} title={title} />
       <Page aside={aside} date={INITIAL_DATE} main={main} title={title} />
     </>
   );

@@ -23,13 +23,13 @@ const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
 
-function getSeoDescription(categories: ICategoryData[]): string {
+function getDescription(categories: ICategoryData[]): string {
   const activeCategories = categories.filter(
     (category) => category.data[0].numbers.length !== 0
   );
 
   if (activeCategories.length === 0) {
-    return "Hoy no aplica restricción vehicular por pico y placa para ningún tipo de vehículo";
+    return "no aplica restricción vehicular por pico y placa para ningún tipo de vehículo";
   }
 
   return activeCategories
@@ -56,8 +56,7 @@ export default function CityPage({
   const { query } = useRouter();
   const longDate = cotFormatLongDate(INITIAL_DATE);
   const title = `${baseTitle} en ${cityName}`;
-  const seoTitle = `${title} hoy ${longDate}`;
-  const seoDescription = `Hoy no circulan ${getSeoDescription(categories)}`;
+  const description = `Hoy ${longDate}, ${getDescription(categories)}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post
@@ -113,7 +112,7 @@ export default function CityPage({
 
   return (
     <>
-      <NextSeo description={seoDescription} title={seoTitle} />
+      <NextSeo description={description} title={title} />
       <Page aside={aside} date={INITIAL_DATE} main={main} title={title} />
     </>
   );
