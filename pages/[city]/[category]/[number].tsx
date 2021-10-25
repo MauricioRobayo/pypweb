@@ -31,8 +31,6 @@ function getDescription(
   const isNumberActive = numbers.includes(Number(number));
   const hoursString = getActiveHoursString(hours, INITIAL_DATE);
 
-  console.log({ hoursString });
-
   if (isNumberActive) {
     return `${number} tiene pico y placa horario ${hoursString.toLocaleLowerCase()}`;
   }
