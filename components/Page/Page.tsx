@@ -3,7 +3,6 @@ import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
 import useLandingPage from "hooks/useLandingPage";
-import { NextSeo } from "next-seo";
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
@@ -30,22 +29,12 @@ interface Props {
   aside: ReactNode;
   date: Date;
   main: ReactNode;
-  seoDescription: string;
-  seoTitle?: string;
   title: string;
 }
-export default function Page({
-  aside,
-  date,
-  main,
-  seoDescription,
-  seoTitle,
-  title,
-}: Props) {
+export default function Page({ aside, date, main, title }: Props) {
   const { isLandingPage } = useLandingPage();
   return (
     <>
-      <NextSeo description={seoDescription} title={seoTitle || title} />
       <Wrapper>
         <StyledHeader
           date={date}

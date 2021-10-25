@@ -16,6 +16,7 @@ import { getPostBySlug } from "lib/posts";
 import { arrayToList, getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { NextSeo } from "next-seo";
 import { baseTitle } from "next-seo.config";
 import React, { ReactElement } from "react";
 
@@ -58,7 +59,8 @@ export default function NumberPage({
   } = categoryData;
   const schemeString = getSchemeString(scheme);
   const longDate = cotFormatLongDate(INITIAL_DATE);
-  const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName} placas ${schemeString} en ${number} hoy ${longDate}`;
+  const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName} placas ${schemeString} en ${number}`;
+  const seoTitle = `${title} hoy ${longDate}`;
   const seoDescription = getSeoDescription(categoryData, number);
 
   const main = (
@@ -89,13 +91,10 @@ export default function NumberPage({
   );
 
   return (
-    <Page
-      aside={aside}
-      date={INITIAL_DATE}
-      seoDescription={seoDescription}
-      main={main}
-      title={title}
-    />
+    <>
+      <NextSeo description={seoDescription} title={seoTitle} />
+      <Page aside={aside} date={INITIAL_DATE} main={main} title={title} />
+    </>
   );
 }
 

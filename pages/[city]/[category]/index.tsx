@@ -20,6 +20,7 @@ import { getPostBySlug } from "lib/posts";
 import { arrayToList, getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { NextSeo } from "next-seo";
 import { baseTitle } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
@@ -77,7 +78,6 @@ export default function CategoryPage({
   const longDate = cotFormatLongDate(date);
   const seoTitle = `${title}${isLandingPage ? " hoy " : " "}${longDate}`;
   const seoDescription = getSeoDescription(categoryData, date, isLandingPage);
-  console.log({ isLandingPage, seoTitle });
 
   useEffect(() => {
     async function updateData() {
@@ -134,14 +134,10 @@ export default function CategoryPage({
   );
 
   return (
-    <Page
-      aside={aside}
-      date={new Date(date)}
-      main={main}
-      seoDescription={seoDescription}
-      seoTitle={seoTitle}
-      title={title}
-    />
+    <>
+      <NextSeo description={seoDescription} title={seoTitle} />
+      <Page aside={aside} date={new Date(date)} main={main} title={title} />
+    </>
   );
 }
 

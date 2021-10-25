@@ -10,6 +10,7 @@ import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
 import { arrayToList } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import { baseTitle } from "next-seo.config";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -111,14 +112,10 @@ export default function CityPage({
   );
 
   return (
-    <Page
-      aside={aside}
-      date={INITIAL_DATE}
-      main={main}
-      seoDescription={seoDescription}
-      seoTitle={seoTitle}
-      title={title}
-    />
+    <>
+      <NextSeo description={seoDescription} title={seoTitle} />
+      <Page aside={aside} date={INITIAL_DATE} main={main} title={title} />
+    </>
   );
 }
 
