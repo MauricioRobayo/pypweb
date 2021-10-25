@@ -2,7 +2,7 @@ import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { IconLeft } from "components/Icon";
 import useLandingPage from "hooks/useLandingPage";
-import { cotDateFromParts } from "lib/dateUtils";
+import { cotDateFromParts, cotIsToday } from "lib/dateUtils";
 import { ALL_DIGITS, isPublicLicense, NA, pypNumbersToString } from "lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -55,27 +55,28 @@ function DayCard({ categoryName, className = "", pypData }: DayCardProps) {
     <StyledHours date={date} hours={hours} interactive={isLandingPage} />
   ) : null;
 
-  const footer = isLandingPage ? null : (
-    <Footer>
-      <Link
-        href={{
-          pathname,
-          query: {
-            city: query.city,
-            category: query.category,
-          },
-        }}
-        prefetch={false}
-        scroll={false}
-        shallow
-      >
-        <a>
-          <IconLeft name="⚠" />
-          Para ver la información de hoy haga click acá
-        </a>
-      </Link>
-    </Footer>
-  );
+  const footer =
+    isLandingPage || cotIsToday(date) ? null : (
+      <Footer>
+        <Link
+          href={{
+            pathname,
+            query: {
+              city: query.city,
+              category: query.category,
+            },
+          }}
+          prefetch={false}
+          scroll={false}
+          shallow
+        >
+          <a>
+            <IconLeft name="⚠" />
+            Para ver la información de hoy haga click acá
+          </a>
+        </Link>
+      </Footer>
+    );
 
   return (
     <StyledCard
