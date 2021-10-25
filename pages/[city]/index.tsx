@@ -8,7 +8,7 @@ import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
-import { pypNumbersToString } from "lib/utils";
+import { arrayToList } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { baseTitle } from "next-seo.config";
 import Link from "next/link";
@@ -23,9 +23,17 @@ const StyledCityData = styled(CityData)`
 `;
 
 function getSeoDescription(categories: ICategoryData[]): string {
-  return categories
+  const activeCategories = categories.filter(
+    (category) => category.data[0].numbers.length !== 0
+  );
+
+  if (activeCategories.length === 0) {
+    return "Hoy no aplica restricción vehicular por pico y placa para ningún tipo de vehículo";
+  }
+
+  return activeCategories
     .map((category) => {
-      return `${category.name.toLocaleLowerCase()} ${pypNumbersToString(
+      return `${category.name.toLocaleLowerCase()} ${arrayToList(
         category.data[0].numbers
       )}`;
     })
@@ -48,7 +56,7 @@ export default function CityPage({
   const longDate = cotFormatLongDate(INITIAL_DATE);
   const title = `${baseTitle} en ${cityName}`;
   const seoTitle = `${title} hoy ${longDate}`;
-  const seoDescription = `Hoy no circulan: ${getSeoDescription(categories)}`;
+  const seoDescription = `Hoy no circulan ${getSeoDescription(categories)}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post

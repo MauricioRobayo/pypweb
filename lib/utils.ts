@@ -14,16 +14,26 @@ export function hasAllDigits(numbers: number[]) {
   return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].every((num) => numbers.includes(num));
 }
 
-export function arrayToList(numbers: (number | string)[]): string {
-  if (numbers.length === 0) {
+export function isNumbersArray(
+  numbers: (string | number)[]
+): numbers is number[] {
+  return numbers.every((num) => typeof num === "number");
+}
+
+export function arrayToList(arr: (number | string)[]): string {
+  if (arr.length === 0) {
     return "";
   }
 
-  if (numbers.length === 1) {
-    return numbers[0].toLocaleString();
+  if (arr.length === 1) {
+    return arr[0].toLocaleString();
   }
 
-  return `${numbers.slice(0, -1).join(", ")} y ${numbers[numbers.length - 1]}`;
+  if (isNumbersArray(arr) && hasAllDigits(arr)) {
+    return ALL_DIGITS;
+  }
+
+  return `${arr.slice(0, -1).join(", ")} y ${arr[arr.length - 1]}`;
 }
 
 export function pypNumbersToString(numbers: number[]) {
