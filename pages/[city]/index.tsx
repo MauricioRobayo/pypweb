@@ -32,13 +32,13 @@ function getDescription(categories: ICategoryData[]): string {
     return "no aplica restricción vehicular por pico y placa para ningún tipo de vehículo";
   }
 
-  return activeCategories
+  return `no circulan ${activeCategories
     .map((category) => {
       return `${category.name.toLocaleLowerCase()} ${arrayToList(
         category.data[0].numbers
       )}`;
     })
-    .join(", ");
+    .join(", ")}`;
 }
 
 interface CityPageProps {
