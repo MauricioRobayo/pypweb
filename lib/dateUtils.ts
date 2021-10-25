@@ -1,3 +1,6 @@
+import { IHourData } from "@mauriciorobayo/pyptron";
+import { arrayToList } from "./utils";
+
 type DateParts = Record<"year" | "month" | "day", number>;
 
 const AMERICA_BOGOTA = "America/Bogota";
@@ -18,6 +21,28 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeZone: AMERICA_BOGOTA,
   timeStyle: "long",
 });
+
+export function getActiveHoursString(hours: IHourData[], date: Date): string {
+  return hours
+    .filter((hour) => {
+      if (!hour.days) {
+        return true;
+      }
+
+      const { day } = cotDateParts(date);
+      return hour.days.includes(day);
+    })
+    .map(getHourString)
+    .join("; ");
+}
+
+export function getHourString(hour: IHourData): string {
+  const friendlyHours = hour.hours.map((hour) =>
+    hour.map(convert24toAmPm).join(" a ")
+  );
+  const hoursList = arrayToList(friendlyHours);
+  return `${hour.comment || ""} ${hoursList}`.trim();
+}
 
 export function convert24toAmPm(hour24: string) {
   if (hour24 === "12:00") return `${hour24}m.`;

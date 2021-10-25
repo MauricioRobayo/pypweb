@@ -8,9 +8,9 @@ import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { citiesList, CitiesList } from "lib/cities";
 import {
-  convert24toAmPm,
   cotDateParts,
   cotFormatLongDate,
+  getActiveHoursString,
 } from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
 import { arrayToList, getSchemeString } from "lib/utils";
@@ -21,29 +21,14 @@ import React, { ReactElement } from "react";
 
 const INITIAL_DATE = new Date();
 
-function toFriendlyHour(hour: [string, string] | []): string {
-  return hour.map(convert24toAmPm).join(" a ");
-}
-
-function getSeoDescription({ data }: ICategoryData, number: string): string {
-  const { numbers, hours } = data[0];
+function getSeoDescription(
+  { data: [currentData] }: ICategoryData,
+  number: string
+): string {
+  const { numbers, hours } = currentData;
   const numbersString = arrayToList(numbers);
   const isNumberActive = numbers.includes(Number(number));
-
-  const hoursString = hours
-    .filter((hour) => {
-      if (!hour.days) {
-        return true;
-      }
-
-      return hour.days.includes(INITIAL_DATE.getDay());
-    })
-    .map((hour) => {
-      const friendlyHours = hour.hours.map(toFriendlyHour);
-      const hoursList = arrayToList(friendlyHours);
-      return `${hour.comment || ""} ${hoursList}`.trim();
-    })
-    .join("; ");
+  const hoursString = getActiveHoursString(hours, INITIAL_DATE);
 
   if (isNumberActive) {
     return `Placas número ${number} hoy tienen pico y placa horario ${hoursString.toLocaleLowerCase()}`;
