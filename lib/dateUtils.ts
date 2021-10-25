@@ -29,8 +29,7 @@ export function getActiveHoursString(hours: IHourData[], date: Date): string {
         return true;
       }
 
-      const { day } = cotDateParts(date);
-      return hour.days.includes(day);
+      return hour.days.includes(cotGetWeekday(date));
     })
     .map(getHourString)
     .join("; ");
@@ -83,6 +82,28 @@ export function cotGetWeekdayName(date: Date = new Date()): string {
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
   ) as Intl.DateTimeFormatPart;
   return weekdayName.value;
+}
+
+/**
+ * Colombian time weekday Sunday = 0
+ */
+export function cotGetWeekday(date: Date = new Date()): number {
+  const weekdayName = cotGetWeekdayName(date);
+  const weekday = {
+    domingo: 0,
+    lunes: 1,
+    martes: 2,
+    miércoles: 3,
+    jueves: 4,
+    viernes: 5,
+    sábado: 6,
+  }[weekdayName.toLocaleLowerCase()];
+
+  if (weekday === undefined) {
+    throw new Error(`Could not get weekday for ${weekdayName}`);
+  }
+
+  return weekday;
 }
 
 export function isValidDateString(date: any): date is string {

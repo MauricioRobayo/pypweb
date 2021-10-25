@@ -23,7 +23,7 @@ import React, { ReactElement } from "react";
 const INITIAL_DATE = new Date();
 
 function getDescription(
-  { data: [currentData] }: ICategoryData,
+  { name, data: [currentData] }: ICategoryData,
   number: string
 ): string {
   const { numbers, hours } = currentData;
@@ -31,8 +31,14 @@ function getDescription(
   const isNumberActive = numbers.includes(Number(number));
   const hoursString = getActiveHoursString(hours, INITIAL_DATE);
 
+  console.log({ hoursString });
+
   if (isNumberActive) {
     return `${number} tiene pico y placa horario ${hoursString.toLocaleLowerCase()}`;
+  }
+
+  if (numbers.length === 0) {
+    return `${number} no tiene pico y placa. Hoy no aplica restricción por pico y placa`;
   }
 
   return `${number} no tiene pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
