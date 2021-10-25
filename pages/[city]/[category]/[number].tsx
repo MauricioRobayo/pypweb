@@ -46,10 +46,10 @@ function getSeoDescription({ data }: ICategoryData, number: string): string {
     .join("; ");
 
   if (isNumberActive) {
-    return `${number} hoy tiene pico y placa ${hoursString.toLocaleLowerCase()}`;
+    return `Placas número ${number} hoy tienen pico y placa horario ${hoursString.toLocaleLowerCase()}`;
   }
 
-  return `${number} hoy no tiene pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
+  return `Placas número ${number} hoy no tienen pico y placa. Hoy tienen pico y placa las pacas terminadas en ${numbersString.toLocaleLowerCase()}`;
 }
 
 interface NumberPageProps {
