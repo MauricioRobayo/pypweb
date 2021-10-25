@@ -8,8 +8,10 @@ import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
 import { CitiesList, citiesList } from "lib/cities";
 import { cotDateParts, cotFormatLongDate } from "lib/dateUtils";
+import { arrayToList } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { baseDescription, baseTitle } from "next-seo.config";
+import { NextSeo } from "next-seo";
+import { baseTitle } from "next-seo.config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ReactElement } from "react";
@@ -21,12 +23,30 @@ const StyledCityData = styled(CityData)`
   margin: 1rem 0 2rem;
 `;
 
-type CityPageProps = {
+function getDescription(categories: ICategoryData[]): string {
+  const activeCategories = categories.filter(
+    (category) => category.data[0].numbers.length !== 0
+  );
+
+  if (activeCategories.length === 0) {
+    return "no aplica restricción vehicular por pico y placa para ningún tipo de vehículo";
+  }
+
+  return `no circulan ${activeCategories
+    .map((category) => {
+      return `${category.name.toLocaleLowerCase()} ${arrayToList(
+        category.data[0].numbers
+      )}`;
+    })
+    .join(", ")}`;
+}
+
+interface CityPageProps {
   categories: ICategoryData[];
   cityName: string;
   citySlug: CityType;
   transportationDepartment: City["transportationDepartment"];
-};
+}
 
 export default function CityPage({
   categories,
@@ -34,8 +54,9 @@ export default function CityPage({
   transportationDepartment,
 }: CityPageProps) {
   const { query } = useRouter();
-  const pageTitle = `${baseTitle} ${cityName}`;
-  const pageDescription = `${baseDescription} ${cityName}`;
+  const longDate = cotFormatLongDate(INITIAL_DATE);
+  const title = `${baseTitle} en ${cityName}`;
+  const description = `Hoy ${longDate}, ${getDescription(categories)}`;
   const main = <StyledCityData categories={categories} />;
   const aside = (
     <Post
@@ -47,8 +68,8 @@ export default function CityPage({
               <p>
                 Las siguientes son las medidas de restricción vehicular vigentes
                 para {cityName} durante el mes de{" "}
-                {cotFormatLongDate().split(" ").slice(3).join(" ")}, de acuerdo
-                con lo establecido por la Alcaldía de {cityName}:
+                {longDate.split(" ").slice(3).join(" ")}, de acuerdo con lo
+                establecido por la Alcaldía de {cityName}:
               </p>
               <ul>
                 {categories.map(
@@ -90,13 +111,10 @@ export default function CityPage({
   );
 
   return (
-    <Page
-      aside={aside}
-      date={INITIAL_DATE}
-      description={pageDescription}
-      main={main}
-      title={pageTitle}
-    />
+    <>
+      <NextSeo description={description} title={title} />
+      <Page aside={aside} date={INITIAL_DATE} main={main} title={title} />
+    </>
   );
 }
 

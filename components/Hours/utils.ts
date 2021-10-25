@@ -1,20 +1,11 @@
 import type { IHourData } from "@mauriciorobayo/pyptron";
+import { convert24toAmPm } from "lib/dateUtils";
 import { ALL_DAY } from "lib/utils";
 
 export enum NextType {
   START,
   END,
 }
-
-export const convert24toAMPM = (hour24: string) => {
-  if (hour24 === "12:00") return `${hour24}m.`;
-  const [hours, minutes] = hour24.split(":");
-  const hoursNumber = parseInt(hours, 10);
-  if (hoursNumber === 12) return `${hour24}pm`;
-  return hoursNumber > 12
-    ? `${hoursNumber - 12}:${minutes}pm`
-    : `${hoursNumber}:${minutes}am`;
-};
 
 export const nextEndTime = (
   hours: [string, string] | [],
@@ -71,7 +62,7 @@ export const calculateHoursWithEndTime = (
     }
 
     if (alreadyDisplayedTimeEnd) {
-      result.push([hour.map(convert24toAMPM).join(" a ")]);
+      result.push([hour.map(convert24toAmPm).join(" a ")]);
       return;
     }
 
@@ -89,11 +80,11 @@ export const calculateHoursWithEndTime = (
     const [endTime, endType] = end;
 
     if (endTime !== undefined && endType !== undefined) {
-      result.push([hour.map(convert24toAMPM).join(" a "), endTime, endType]);
+      result.push([hour.map(convert24toAmPm).join(" a "), endTime, endType]);
       return;
     }
 
-    result.push([hour.map(convert24toAMPM).join(" a ")]);
+    result.push([hour.map(convert24toAmPm).join(" a ")]);
   });
 
   return result;

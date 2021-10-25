@@ -1,3 +1,6 @@
+import { IHourData } from "@mauriciorobayo/pyptron";
+import { arrayToList } from "./utils";
+
 type DateParts = Record<"year" | "month" | "day", number>;
 
 const AMERICA_BOGOTA = "America/Bogota";
@@ -18,6 +21,37 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeZone: AMERICA_BOGOTA,
   timeStyle: "long",
 });
+
+export function getActiveHoursString(hours: IHourData[], date: Date): string {
+  return hours
+    .filter((hour) => {
+      if (!hour.days) {
+        return true;
+      }
+
+      return hour.days.includes(cotGetWeekday(date));
+    })
+    .map(getHourString)
+    .join("; ");
+}
+
+export function getHourString(hour: IHourData): string {
+  const friendlyHours = hour.hours.map((hour) =>
+    hour.map(convert24toAmPm).join(" a ")
+  );
+  const hoursList = arrayToList(friendlyHours);
+  return `${hour.comment || ""} ${hoursList}`.trim();
+}
+
+export function convert24toAmPm(hour24: string) {
+  if (hour24 === "12:00") return `${hour24}m.`;
+  const [hours, minutes] = hour24.split(":");
+  const hoursNumber = parseInt(hours, 10);
+  if (hoursNumber === 12) return `${hour24}pm`;
+  return hoursNumber > 12
+    ? `${hoursNumber - 12}:${minutes}pm`
+    : `${hoursNumber}:${minutes}am`;
+}
 
 /**
  * Colombian time long date format
@@ -48,6 +82,28 @@ export function cotGetWeekdayName(date: Date = new Date()): string {
     ({ type }: Intl.DateTimeFormatPart) => type === "weekday"
   ) as Intl.DateTimeFormatPart;
   return weekdayName.value;
+}
+
+/**
+ * Colombian time weekday Sunday = 0
+ */
+export function cotGetWeekday(date: Date = new Date()): number {
+  const weekdayName = cotGetWeekdayName(date);
+  const weekday = {
+    domingo: 0,
+    lunes: 1,
+    martes: 2,
+    miércoles: 3,
+    jueves: 4,
+    viernes: 5,
+    sábado: 6,
+  }[weekdayName.toLocaleLowerCase()];
+
+  if (weekday === undefined) {
+    throw new Error(`Could not get weekday for ${weekdayName}`);
+  }
+
+  return weekday;
 }
 
 export function isValidDateString(date: any): date is string {

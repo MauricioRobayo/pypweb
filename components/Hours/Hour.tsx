@@ -1,5 +1,6 @@
 import type { IHourData } from "@mauriciorobayo/pyptron";
 import { Countdown } from "components/Countdown";
+import { cotGetWeekday } from "lib/dateUtils";
 import { ALL_DAY, AMERICA_BOGOTA } from "lib/utils";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -84,7 +85,7 @@ const Hour = ({
             return null;
           }
 
-          if (days && !days.includes(date.getDay())) {
+          if (days && !days.includes(cotGetWeekday(date))) {
             return null;
           }
 

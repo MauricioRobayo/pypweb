@@ -6,30 +6,53 @@ import { Layout } from "components/Layout";
 import { Page } from "components/Page";
 import { Post } from "components/Post";
 import { TransportationDepartment } from "components/TransportationDepartment";
+import useLandingPage from "hooks/useLandingPage";
 import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
-  cotIsToday,
+  cotFormatLongDate,
   datePartsFromString,
+  getActiveHoursString,
   isValidDateString,
 } from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
+import { arrayToList, getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { baseDescription, baseTitle } from "next-seo.config";
+import { NextSeo } from "next-seo";
+import { baseTitle } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
 const INITIAL_DATE = new Date();
 
-type CategoryPageProps = {
+function getDescription(category: ICategoryData, date: Date): string {
+  const {
+    name,
+    data: [currentData],
+  } = category;
+  const { numbers, scheme, hours } = currentData;
+
+  if (numbers.length === 0) {
+    return `no aplica restricción vehicular por pico y placa para ${name.toLocaleLowerCase()}`;
+  }
+
+  const hoursString = getActiveHoursString(hours, date);
+
+  return `no circulan placas ${getSchemeString(scheme)} en ${arrayToList(
+    numbers
+  )} horario ${hoursString}`;
+}
+
+interface CategoryPageProps {
   cityName: string;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
   transportationDepartment: City["transportationDepartment"];
-};
+}
+
 export default function CategoryPage({
   cityName,
   initialCategoryData,
@@ -44,6 +67,13 @@ export default function CategoryPage({
     city: citySlug,
     category: categorySlug,
   } = query;
+  const { isLandingPage } = useLandingPage();
+
+  const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName}`;
+  const longDate = cotFormatLongDate(date);
+  const description = `${
+    isLandingPage ? "Hoy " : ""
+  }${longDate}, ${getDescription(categoryData, date)}`;
 
   useEffect(() => {
     async function updateData() {
@@ -77,15 +107,12 @@ export default function CategoryPage({
     updateData();
   }, [requestedDateString, citySlug, categorySlug, initialCategoryData]);
 
-  const title = `${categoryData.name.toLowerCase()} ${cityName}`;
-  const pageTitle = `${baseTitle} ${title} `;
-  const pageDescription = `${baseDescription} ${title}`;
   const main = (
     <CategoryData categoryData={categoryData} maxDays={MAX_DAYS_PER_PAGE} />
   );
   const aside = (
     <Post
-      mdxSource={cotIsToday(date) ? mdxSource : null}
+      mdxSource={isLandingPage ? mdxSource : null}
       sections={[
         {
           title: "Secretaría de Tránsito",
@@ -103,13 +130,10 @@ export default function CategoryPage({
   );
 
   return (
-    <Page
-      aside={aside}
-      date={new Date(date)}
-      description={pageDescription}
-      main={main}
-      title={pageTitle}
-    />
+    <>
+      <NextSeo description={description} title={title} />
+      <Page aside={aside} date={new Date(date)} main={main} title={title} />
+    </>
   );
 }
 

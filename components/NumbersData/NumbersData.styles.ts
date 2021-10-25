@@ -34,6 +34,8 @@ export const Wrapper = styled.div`
 
 export const Title = styled.div`
   ${subtitle}
+
+  margin-bottom: 0;
 `;
 
 export const StyledVidverto = styled(Vidverto)`
