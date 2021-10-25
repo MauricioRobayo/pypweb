@@ -11,25 +11,52 @@ import { citiesList, CitiesList } from "lib/cities";
 import {
   cotDateFromParts,
   cotDateParts,
+  cotFormatLongDate,
   datePartsFromString,
+  getActiveHoursString,
   isValidDateString,
 } from "lib/dateUtils";
 import { getPostBySlug } from "lib/posts";
+import { arrayToList, getSchemeString } from "lib/utils";
 import { GetStaticPaths, GetStaticProps } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { baseDescription, baseTitle } from "next-seo.config";
+import { baseTitle } from "next-seo.config";
 import { useRouter } from "next/router";
 import React, { ReactElement, useEffect, useState } from "react";
 
 const MAX_DAYS_PER_PAGE = 31;
 const INITIAL_DATE = new Date();
 
-type CategoryPageProps = {
+function getSeoDescription(
+  category: ICategoryData,
+  date: Date,
+  isLandingPage: boolean
+): string {
+  const {
+    name,
+    data: [currentData],
+  } = category;
+  const { numbers, scheme, hours } = currentData;
+  const prefix = isLandingPage ? "Hoy no" : "No";
+
+  if (numbers.length === 0) {
+    return `${prefix} aplica restricción vehicular por pico y placa para ${name}`;
+  }
+
+  const hoursString = getActiveHoursString(hours, date);
+
+  return `${prefix} circulan placas ${getSchemeString(scheme)} en ${arrayToList(
+    numbers
+  )} horario ${hoursString}`;
+}
+
+interface CategoryPageProps {
   cityName: string;
   initialCategoryData: ICategoryData;
   mdxSource: MDXRemoteSerializeResult;
   transportationDepartment: City["transportationDepartment"];
-};
+}
+
 export default function CategoryPage({
   cityName,
   initialCategoryData,
@@ -45,6 +72,12 @@ export default function CategoryPage({
     category: categorySlug,
   } = query;
   const { isLandingPage } = useLandingPage();
+
+  const title = `${baseTitle} ${categoryData.name.toLowerCase()} en ${cityName}`;
+  const longDate = cotFormatLongDate(date);
+  const seoTitle = `${title}${isLandingPage ? " hoy " : " "}${longDate}`;
+  const seoDescription = getSeoDescription(categoryData, date, isLandingPage);
+  console.log({ isLandingPage, seoTitle });
 
   useEffect(() => {
     async function updateData() {
@@ -78,9 +111,6 @@ export default function CategoryPage({
     updateData();
   }, [requestedDateString, citySlug, categorySlug, initialCategoryData]);
 
-  const title = `${categoryData.name.toLowerCase()} ${cityName}`;
-  const pageTitle = `${baseTitle} ${title} `;
-  const pageDescription = `${baseDescription} ${title}`;
   const main = (
     <CategoryData categoryData={categoryData} maxDays={MAX_DAYS_PER_PAGE} />
   );
@@ -107,9 +137,10 @@ export default function CategoryPage({
     <Page
       aside={aside}
       date={new Date(date)}
-      seoDescription={pageDescription}
       main={main}
-      title={pageTitle}
+      seoDescription={seoDescription}
+      seoTitle={seoTitle}
+      title={title}
     />
   );
 }
