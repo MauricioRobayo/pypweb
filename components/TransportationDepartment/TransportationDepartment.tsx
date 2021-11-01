@@ -17,19 +17,6 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
         será atendida de manera oportuna:
       </p>
       <ul>
-        {facebook ? (
-          <li>
-            <a
-              href={`https://www.facebook.com/${facebook}`}
-              target="_blank"
-              rel="noopener noreferer noreferrer"
-              title={`Cuenta oficial de Facebook de la Secretaría de Movilidad de ${city}`}
-            >
-              <IconLeft name="facebook" />
-              Facebook
-            </a>
-          </li>
-        ) : null}
         {twitter ? (
           <li>
             <a
@@ -43,6 +30,20 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
             </a>
           </li>
         ) : null}
+        {facebook ? (
+          <li>
+            <a
+              href={`https://www.facebook.com/${facebook}`}
+              target="_blank"
+              rel="noopener noreferer noreferrer"
+              title={`Cuenta oficial de Facebook de la Secretaría de Movilidad de ${city}`}
+            >
+              <IconLeft name="facebook" />
+              Facebook
+            </a>
+          </li>
+        ) : null}
+
         {whatsapp ? (
           <li>
             <a
