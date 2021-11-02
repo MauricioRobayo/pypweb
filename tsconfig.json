@@ -3,7 +3,11 @@
     "importHelpers": true,
     "removeComments": true,
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,11 +21,27 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "lib/*": ["lib/*"],
-      "components/*": ["components/*"],
-      "styles/*": ["styles/*"]
-    }
+      "lib/*": [
+        "lib/*"
+      ],
+      "components/*": [
+        "components/*"
+      ],
+      "styles/*": [
+        "styles/*"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-seo.config.js"],
-  "exclude": ["node_modules", ".next", "out"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next-seo.config.js"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out"
+  ]
 }

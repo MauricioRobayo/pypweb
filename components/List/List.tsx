@@ -19,7 +19,9 @@ const Item = styled.li`
   & > a {
     ${responsivePaddingAround}
 
+    position: relative;
     &:hover {
+      z-index: 1000;
       ${boxShadow};
     }
   }

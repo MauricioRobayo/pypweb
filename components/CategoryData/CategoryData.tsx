@@ -4,6 +4,7 @@ import { cotDateFromParts, cotFormatShortDate } from "lib/dateUtils";
 import {
   DEFAULT_DAYS_TO_SHOW,
   isPublicLicense,
+  NA,
   pypNumbersToString,
 } from "lib/utils";
 import Link from "next/link";
@@ -66,7 +67,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
           shallow
           scroll
         >
-          <StyledLink>
+          <StyledLink dim={numbersString === NA}>
             <StyledPypDate date={date} />
             <StyledLicensePlate isPublic={isPublic}>
               {numbersString}
