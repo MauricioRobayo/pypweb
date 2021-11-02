@@ -58,8 +58,10 @@ export const StyledList = styled(List)`
   margin: 1rem 0;
 `;
 
-export const StyledLink = styled.a`
+export const StyledLink = styled.a<{ dim: boolean }>`
   align-items: center;
+  background-color: ${({ dim, theme }) =>
+    dim ? theme.colors.secondaryLighter : theme.colors.mainComplement};
   display: flex;
   justify-content: space-between;
 `;
