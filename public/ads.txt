@@ -163,3 +163,16 @@ smaato.com, 1100047487, RESELLER, 07bcf65f187117b4
 synacor.com, 82376, RESELLER, e108f11b2cdf7d5b
 sonobi.com, 9a1db44c9c, RESELLER, d1a215d9eb5aee9e
 yahoo.com, 59189, RESELLER
+
+# AdPlayer.Pro
+AdPlayer.Pro, 1, DIRECT
+google.com, pub-2610964203515025, DIRECT, f08c47fec0942fa0
+google.com, pub-2393320645055022, RESELLER, f08c47fec0942fa0
+ampliffy.com, 5026, DIRECT, a34493ff032mp431
+google.com, pub-0796790890307838, RESELLER, f08c47fec0942fa0
+indexexchange.com, 186318, RESELLER
+openx.com, 539624483, RESELLER, 6a698e2ec38604c6
+rubiconproject.com, 18304, RESELLER, 0bfd66d529a55807
+appnexus.com, 12027, RESELLER
+google.com, pub-9035087792692775, DIRECT, f08c47fec0942fa0
+google.com, pub-9035087792692775, RESELLER, f08c47fec0942fa0
