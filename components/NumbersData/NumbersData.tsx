@@ -89,6 +89,7 @@ export default function NumbersData({
         footer={footer}
         isNumberActive={isNumberActive}
       />
+      <StyledVidverto />
       <Title>Prográmese</Title>
       {forthcomingRestrictions.length === 0 ? (
         <div>No tiene restricciones en los próximos 30 días.</div>
@@ -128,7 +129,6 @@ export default function NumbersData({
         </div>
       )}
       <NumberLinks selectedNumber={number} />
-      <StyledVidverto />
     </Wrapper>
   );
 }
