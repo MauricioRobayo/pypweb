@@ -23,7 +23,7 @@ import React, { ReactElement } from "react";
 const INITIAL_DATE = new Date();
 
 function getDescription(
-  { name, data: [currentData] }: ICategoryData,
+  { data: [currentData] }: ICategoryData,
   number: string
 ): string {
   const { numbers, hours } = currentData;
