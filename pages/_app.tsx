@@ -1,5 +1,4 @@
-import { AdSense, ConsentBanner } from "components/Ads";
-import { Taboola } from "components/Ads/Taboola";
+import { AdSense, ConsentBanner, Optima, Taboola } from "components/Ads";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -45,6 +44,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <ConsentBanner />
       <AdSense />
       <Taboola />
+      <Optima />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
         <Normalize />
