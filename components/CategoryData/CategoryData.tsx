@@ -114,10 +114,10 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
         isSelected
         pypData={currentPypData}
       />
+      <StyledVidverto />
       <StyledList rows={nextDataList} />
       {nextDataButton}
       <NumberLinks />
-      <StyledVidverto />
     </Article>
   );
 }
