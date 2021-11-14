@@ -1,5 +1,5 @@
 import type { ICategoryData } from "@mauriciorobayo/pyptron";
-import { Vidverto } from "components/Ads";
+import { AdPlayer, Vidverto } from "components/Ads";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
@@ -46,6 +46,7 @@ export default function CityData({
           />
         ))}
       </List>
+      <AdPlayer />
     </>
   );
 }
