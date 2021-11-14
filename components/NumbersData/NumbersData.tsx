@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import {
   Anchor,
+  StyledAdPlayer,
   StyledCard,
   StyledDescription,
   StyledList,
@@ -128,6 +129,7 @@ export default function NumbersData({
           />
         </div>
       )}
+      <StyledAdPlayer />
       <NumberLinks selectedNumber={number} />
     </Wrapper>
   );

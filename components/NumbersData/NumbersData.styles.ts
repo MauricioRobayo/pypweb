@@ -1,4 +1,4 @@
-import { Vidverto } from "components/Ads";
+import { AdPlayer, Vidverto } from "components/Ads";
 import { Card } from "components/Card";
 import { Description } from "components/Description";
 import { List } from "components/List";
@@ -49,3 +49,5 @@ export const StyledDescription = styled(Description)`
 export const HoursWrapper = styled.div`
   margin-top: 1rem;
 `;
+
+export const StyledAdPlayer = styled(AdPlayer)``;

@@ -1,4 +1,4 @@
-import { Placeholder } from "components/Ads";
+import { Placeholder } from "components/Ads/Placeholder";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";

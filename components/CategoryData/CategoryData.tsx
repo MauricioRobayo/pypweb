@@ -15,6 +15,7 @@ import {
   Article,
   Header,
   MoreLink,
+  StyledAdPlayer,
   StyledDayCard,
   StyledLicensePlate,
   StyledLink,
@@ -117,6 +118,7 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
       <StyledVidverto />
       <StyledList rows={nextDataList} />
       {nextDataButton}
+      <StyledAdPlayer />
       <NumberLinks />
     </Article>
   );
