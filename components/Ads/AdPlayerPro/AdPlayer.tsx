@@ -1,4 +1,4 @@
-import { Placeholder } from "components/Ads";
+import { Placeholder } from "components/Ads/Placeholder";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
 import styled from "styled-components";
@@ -6,8 +6,6 @@ import { responsiveWidth } from "styles/mixins";
 
 const Wrapper = styled.div`
   ${responsiveWidth()}
-
-  margin: -1rem auto 1rem;
 `;
 
 const StyledPlaceholder = styled(Placeholder)`
@@ -16,9 +14,12 @@ const StyledPlaceholder = styled(Placeholder)`
   overflow: hidden;
 `;
 
-function AdPlayer() {
+interface Props {
+  className?: string;
+}
+function AdPlayer({ className = "" }: Props) {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       {shouldShowAds ? (
         <Script
           data-playerPro="current"

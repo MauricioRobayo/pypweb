@@ -9,6 +9,10 @@ const StyledVidverto = styled(Vidverto)`
   margin: 1rem auto 0;
 `;
 
+const StyledAdPlayer = styled(AdPlayer)`
+  margin: -1rem auto 1rem;
+`;
+
 const List = styled.div`
   ${responsiveWidth()}
 
@@ -46,7 +50,7 @@ export default function CityData({
           />
         ))}
       </List>
-      <AdPlayer />
+      <StyledAdPlayer />
     </>
   );
 }

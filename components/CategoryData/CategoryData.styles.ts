@@ -1,4 +1,4 @@
-import { Vidverto } from "components/Ads";
+import { AdPlayer, Vidverto } from "components/Ads";
 import { LicensePlate } from "components/LicensePlate";
 import { List } from "components/List";
 import { PypDate } from "components/PypDate";
@@ -68,4 +68,8 @@ export const StyledLink = styled.a<{ dim: boolean }>`
 
 export const StyledDayCard = styled(DayCard)`
   margin-top: 2rem;
+`;
+
+export const StyledAdPlayer = styled(AdPlayer)`
+  margin: 1rem 0 0;
 `;
