@@ -1,6 +1,6 @@
 import { Placeholder } from "components/Ads/Placeholder";
 import { shouldShowAds } from "lib/utils";
-import Script from "next/script";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { responsiveWidth } from "styles/mixins";
 
@@ -18,16 +18,27 @@ interface Props {
   className?: string;
 }
 function AdPlayer({ className = "" }: Props) {
+  useEffect(() => {
+    if (!shouldShowAds) {
+      return;
+    }
+
+    const scriptElement = document.querySelector<HTMLScriptElement>(
+      'script[data-player-pro="current"]'
+    );
+
+    if (scriptElement) {
+      scriptElement.removeAttribute("data-player-pro");
+      // @ts-ignore
+      const playerPro = window.playerPro || [];
+      playerPro.push({ id: "c4NYNo6LcvPZ", after: scriptElement });
+    }
+  }, []);
+
   return (
     <Wrapper className={className}>
       {shouldShowAds ? (
-        <Script
-          data-playerPro="current"
-          id="ad-player-pro"
-          strategy="lazyOnload"
-        >
-          {`(function(){var s=document.querySelector('script[data-playerPro="current"]');s.removeAttribute("data-playerPro");(playerPro=window.playerPro||[]).push({id:"c4NYNo6LcvPZ",after:s});})();`}
-        </Script>
+        <script data-player-pro="current" />
       ) : (
         <StyledPlaceholder name="Ad Player Pro" />
       )}
