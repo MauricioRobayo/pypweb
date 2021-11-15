@@ -10,6 +10,7 @@ export const StyledCard = styled(Card)`
 
 export const Header = styled.div<{ hasDescription: boolean }>`
   display: grid;
+  text-align: left;
   ${({ hasDescription }) =>
     hasDescription
       ? css`
