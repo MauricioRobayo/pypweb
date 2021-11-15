@@ -50,10 +50,6 @@ export const Title = styled.div`
   ${subtitle}
 `;
 
-export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto;
-`;
-
 export const StyledList = styled(List)`
   margin: 1rem 0;
 `;
@@ -70,6 +66,10 @@ export const StyledDayCard = styled(DayCard)`
   margin-top: 2rem;
 `;
 
+export const StyledVidverto = styled(Vidverto)`
+  margin: 1rem auto;
+`;
+
 export const StyledAdPlayer = styled(AdPlayer)`
-  margin: 1rem 0 0;
+  margin: 1rem auto;
 `;

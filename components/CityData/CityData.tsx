@@ -10,7 +10,7 @@ const StyledVidverto = styled(Vidverto)`
 `;
 
 const StyledAdPlayer = styled(AdPlayer)`
-  margin: -1rem auto 1rem;
+  margin: 1rem auto 0;
 `;
 
 const List = styled.div`
@@ -40,7 +40,7 @@ export default function CityData({
 
   return (
     <>
-      <StyledVidverto />
+      {Math.random() < 0.5 ? <StyledAdPlayer /> : <StyledVidverto />}
       <List className={className}>
         {categories.map((category) => (
           <CategoryCard
@@ -50,7 +50,6 @@ export default function CityData({
           />
         ))}
       </List>
-      <StyledAdPlayer />
     </>
   );
 }
