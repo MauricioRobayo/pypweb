@@ -30,8 +30,8 @@ function AdPlayer({ className = "" }: Props) {
     if (scriptElement) {
       scriptElement.removeAttribute("data-player-pro");
       // @ts-ignore
-      const pp = window.playerPro || [];
-      pp.push({ id: "c4NYNo6LcvPZ", after: scriptElement });
+      const playerPro = window.playerPro || [];
+      playerPro.push({ id: "c4NYNo6LcvPZ", after: scriptElement });
     }
   }, []);
 
