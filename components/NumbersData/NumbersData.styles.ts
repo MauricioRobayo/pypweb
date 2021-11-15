@@ -38,10 +38,6 @@ export const Title = styled.div`
   margin-bottom: 0;
 `;
 
-export const StyledVidverto = styled(Vidverto)`
-  margin: 1rem auto;
-`;
-
 export const StyledDescription = styled(Description)`
   margin-bottom: 0.5rem;
 `;
@@ -50,4 +46,10 @@ export const HoursWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-export const StyledAdPlayer = styled(AdPlayer)``;
+export const StyledVidverto = styled(Vidverto)`
+  margin: 1rem auto;
+`;
+
+export const StyledAdPlayer = styled(AdPlayer)`
+  margin: 1rem auto;
+`;
