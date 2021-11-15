@@ -10,6 +10,7 @@ import PostSection from "./PostSection";
 const Wrapper = styled.div<{ isMobile: boolean | null }>`
   ${responsiveWidth("wide")}
 
+  text-align: left;
   p {
     line-height: 1.5;
   }
