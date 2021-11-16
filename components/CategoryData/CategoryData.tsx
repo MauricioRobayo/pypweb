@@ -115,9 +115,10 @@ function CategoryData({ categoryData, maxDays }: CategoryDataProps) {
         isSelected
         pypData={currentPypData}
       />
-      {Math.random() < 0.5 ? <StyledAdPlayer /> : <StyledVidverto />}
+      <StyledVidverto />
       <StyledList rows={nextDataList} />
       {nextDataButton}
+      <StyledAdPlayer />
       <NumberLinks />
     </Article>
   );

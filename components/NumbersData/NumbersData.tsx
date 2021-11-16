@@ -90,7 +90,7 @@ export default function NumbersData({
         footer={footer}
         isNumberActive={isNumberActive}
       />
-      {Math.random() < 0.5 ? <StyledAdPlayer /> : <StyledVidverto />}
+      <StyledVidverto />
       <Title>Prográmese</Title>
       {forthcomingRestrictions.length === 0 ? (
         <div>No tiene restricciones en los próximos 30 días.</div>
@@ -129,6 +129,7 @@ export default function NumbersData({
           />
         </div>
       )}
+      <StyledAdPlayer />
       <NumberLinks selectedNumber={number} />
     </Wrapper>
   );
