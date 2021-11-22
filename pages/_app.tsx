@@ -1,10 +1,4 @@
-import {
-  AdPlayerPro,
-  AdSense,
-  ConsentBanner,
-  Optima,
-  Taboola,
-} from "components/Ads";
+import { AdPlayerPro, AdSense, ConsentBanner, Optima } from "components/Ads";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -49,7 +43,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <GoogleAnalytics />
       <ConsentBanner />
       <AdSense />
-      <Taboola />
       <Optima />
       <AdPlayerPro />
       <DefaultSeo {...defaultConfig} />
