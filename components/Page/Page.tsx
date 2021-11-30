@@ -1,4 +1,3 @@
-import { BelowArticleThumbnails } from "components/Ads/Taboola";
 import { Aside } from "components/Aside";
 import { CTA } from "components/CTA";
 import { Header } from "components/Header";
@@ -44,10 +43,7 @@ export default function Page({ aside, date, main, title }: Props) {
         <Main>{main}</Main>
         <CTA />
       </Wrapper>
-      <Aside>
-        {aside}
-        <BelowArticleThumbnails />
-      </Aside>
+      <Aside>{aside}</Aside>
     </>
   );
 }
