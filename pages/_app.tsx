@@ -1,4 +1,4 @@
-import { AdPlayerPro, AdSense, Optima } from "components/Ads";
+import { AdPlayerPro, AdSense } from "components/Ads";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
@@ -42,7 +42,6 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
     <>
       <GoogleAnalytics />
       <AdSense />
-      <Optima />
       <AdPlayerPro />
       <DefaultSeo {...defaultConfig} />
       <ThemeProvider theme={defaultTheme}>
