@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install ghostscript
-        run: sudo apt install ghostscript
+        run: sudo apt-get install ghostscript
       - name: Shrink PDFs
         run: |
           PR_URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"
