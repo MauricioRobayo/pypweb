@@ -13,7 +13,6 @@ jobs:
           node-version: "14"
           registry-url: "https://npm.pkg.github.com"
           scope: "@mauriciorobayo"
-          cache: "npm"
       # Skip post-install scripts here, as a malicious
       # script could steal NODE_AUTH_TOKEN.
       - run: npm ci --ignore-scripts
