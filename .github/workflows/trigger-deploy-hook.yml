@@ -15,4 +15,13 @@ jobs:
           always-auth: true
           node-version: "16"
           registry-url: "https://npm.pkg.github.com"
+          scope: "@mauriciorobayo"
+          cache: "npm"
+      # Skip post-install scripts here, as a malicious
+      # script could steal NODE_AUTH_TOKEN.
+      - run: npm ci --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # `npm rebuild` will run all those post-install scripts for us.
+      - run: npm rebuild && npm run prepare --if-present
       - run: node ./scripts/exponential-retry-back-off.js ${{ secrets.VERCEL_DEPLOYMENT_HOOK }}
