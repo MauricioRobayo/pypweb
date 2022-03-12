@@ -2,10 +2,12 @@ import type { IHourData } from "@mauriciorobayo/pyptron";
 import { convert24toAmPm } from "lib/dateUtils";
 import { ALL_DAY } from "lib/utils";
 
-export enum NextType {
-  START,
-  END,
-}
+export const Next = {
+  START: 0,
+  END: 1,
+} as const;
+
+export type NextType = typeof Next[keyof typeof Next];
 
 export const nextEndTime = (
   hours: [string, string] | [],
@@ -25,7 +27,7 @@ export const nextEndTime = (
   startDate.setSeconds(0);
 
   if (startDate > date) {
-    return [startDate, NextType.START];
+    return [startDate, Next.START];
   }
 
   const endDate = new Date(date);
@@ -41,7 +43,7 @@ export const nextEndTime = (
   }
 
   if (endDate > date) {
-    return [endDate, NextType.END];
+    return [endDate, Next.END];
   }
 
   return [];
