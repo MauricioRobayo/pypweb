@@ -5,7 +5,7 @@ import { ALL_DAY, AMERICA_BOGOTA } from "lib/utils";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { flexCenter } from "styles/mixins";
-import { calculateHoursWithEndTime, NextType } from "./utils";
+import { calculateHoursWithEndTime, Next, NextType } from "./utils";
 
 type StyledCountdownProps = {
   type: NextType;
@@ -17,7 +17,7 @@ const StyledCountdown = styled(Countdown)<StyledCountdownProps>`
   margin-top: 0.25rem;
   .countdown {
     background-color: ${({ type, theme }) =>
-      type === NextType.START ? theme.colors.success : theme.colors.danger};
+      type === Next.START ? theme.colors.success : theme.colors.danger};
     border-radius: 8px;
     color: ${({ theme }) => theme.colors.white};
     margin-left: 0.25rem;
@@ -106,9 +106,7 @@ const Hour = ({
                       <StyledCountdown
                         endTime={endTime}
                         message={
-                          endType === NextType.START
-                            ? "inicia en"
-                            : "termina en"
+                          endType === Next.START ? "inicia en" : "termina en"
                         }
                         type={endType}
                       />

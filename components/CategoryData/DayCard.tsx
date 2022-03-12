@@ -1,4 +1,4 @@
-import type { CategoryName, IPypDataResult } from "@mauriciorobayo/pyptron";
+import type { CategoryNameType, IPypDataResult } from "@mauriciorobayo/pyptron";
 import { categoryIcon } from "components/CityData/utils";
 import { IconLeft } from "components/Icon";
 import useLandingPage from "hooks/useLandingPage";
@@ -18,7 +18,7 @@ import {
 } from "./DayCard.styles";
 
 type DayCardProps = {
-  categoryName: CategoryName;
+  categoryName: CategoryNameType;
   className?: string;
   pypData: IPypDataResult;
   isSelected?: boolean;
