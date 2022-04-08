@@ -138,7 +138,6 @@ appnexus.com, 10726, RESELLER, f5ab79cb980f11d1
 triplelift.com, 10899, DIRECT, 6c33edb13117fd86
 prodooh.com, pdh-1884, DIRECT
 invamia.com, ivm-1884, DIRECT
-triplelift.com, 10899, DIRECT, 6c33edb13117fd86
 
 # AdPlayer.Pro
 AdPlayer.Pro, 1, DIRECT
