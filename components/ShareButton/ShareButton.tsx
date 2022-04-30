@@ -1,6 +1,6 @@
 import { Icon } from "components/Icon";
-import useShare from "hooks/useShare";
-import styled, { useTheme } from "styled-components";
+import useHasShare from "hooks/useHasShare";
+import styled from "styled-components";
 
 const StyledShareButton = styled.button`
   background-color: transparent;
@@ -13,8 +13,7 @@ const StyledShareButton = styled.button`
 `;
 
 export default function ShareButton() {
-  const theme = useTheme();
-  const hasShare = useShare();
+  const hasShare = useHasShare();
 
   const share = () => {
     navigator.share({
