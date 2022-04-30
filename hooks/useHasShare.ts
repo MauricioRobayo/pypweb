@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useShare() {
+export default function useHasShare() {
   const [hasShare, setHasShare] = useState(false);
 
   useEffect(() => {

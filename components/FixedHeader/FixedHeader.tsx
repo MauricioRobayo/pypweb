@@ -2,7 +2,7 @@ import type { Path } from "components/Breadcrumbs";
 import { Breadcrumbs } from "components/Breadcrumbs";
 import { Clock } from "components/Clock";
 import { ShareButton } from "components/ShareButton";
-import useShare from "hooks/useShare";
+import useHasShare from "hooks/useHasShare";
 import { CitiesList } from "lib/cities";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
@@ -65,7 +65,7 @@ function FixedHeader({ cities }: Props) {
     categorySlug: category as string | undefined,
     number: number as string | undefined,
   });
-  const hasShare = useShare();
+  const hasShare = useHasShare();
 
   useEffect(() => {
     const { current } = ref;
