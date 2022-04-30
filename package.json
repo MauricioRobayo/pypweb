@@ -18,7 +18,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
-    "@mauriciorobayo/pyptron": "^2.43.1",
+    "@mauriciorobayo/pyptron": "^2.44.0",
     "classnames": "^2.3.1",
     "gray-matter": "^4.0.3",
     "next": "^12.1.0",
