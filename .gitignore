@@ -4,7 +4,7 @@
 /.yalc
 yalc.lock
 
-/public/sitemap.xml
+/public/sitemap*.xml
 /public/robots.txt
 
 .npmrc
