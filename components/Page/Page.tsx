@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
 const StyledHeader = styled(Header)`
   margin-top: 1rem;
+  padding-inline: 1rem;
 `;
 
 const Main = styled.main`
