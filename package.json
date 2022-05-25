@@ -9,14 +9,13 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "postinstall": "git config core.hooksPath .githooks || true",
-    "prepare": "git config core.hooksPath .githooks || true",
     "test": "jest",
     "test:ci": "jest -ci",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@mauriciorobayo/pyptron": "^2.45.1",
+    "@mauriciorobayo/pyptron": "^2.45.3",
     "classnames": "^2.3.1",
     "gray-matter": "^4.0.3",
     "next": "^12.1.6",
@@ -40,7 +39,6 @@
     "@hint/hint-axe": "^4.4.10",
     "@hint/hint-meta-theme-color": "^4.0.12",
     "@svgr/webpack": "^6.2.1",
-    "@types/classnames": "^2.3.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.30",
     "@types/react": "^18.0.8",
@@ -52,6 +50,7 @@
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "hint": "^6.1.12",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.4.1",
     "next-remote-watch": "^1.0.0",
