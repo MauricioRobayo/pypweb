@@ -65,8 +65,8 @@ google.com, pub-9467340974789471, RESELLER, f08c47fec0942fa0
 google.com, pub-9685734445476814, RESELLER, f08c47fec0942fa0
 google.com, pub-8610050614645263, RESELLER, f08c47fec0942fa0
 google.com, pub-9033099948928268, RESELLER, f08c47fec0942fa0
-google.com, pub-7620071422727774, DIRECT, f08c47fec0942fa0
-google.com, pub-5278973888786334, DIRECT, f08c47fec0942fa0
+google.com, pub-5278973888786334, RESELLER, f08c47fec0942fa0
+google.com, pub-7620071422727774, RESELLER, f08c47fec0942fa0
 google.com, pub-1290995901905588, DIRECT, f08c47fec0942fa0
 appnexus.com, 1001, RESELLER, f5ab79cb980f11d1
 appnexus.com, 10239, RESELLER, f5ab79cb980f11d1
@@ -138,6 +138,7 @@ appnexus.com, 10726, RESELLER, f5ab79cb980f11d1
 triplelift.com, 10899, DIRECT, 6c33edb13117fd86
 prodooh.com, pdh-1884, DIRECT
 invamia.com, ivm-1884, DIRECT
+monetizemore.com, e587c3c382, DIRECT
 
 # AdPlayer.Pro
 AdPlayer.Pro, 1, DIRECT
