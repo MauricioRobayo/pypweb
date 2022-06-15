@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/config-conventional': ^16.2.4
   '@hint/hint-axe': ^4.4.10
   '@hint/hint-meta-theme-color': ^4.0.12
-  '@mauriciorobayo/pyptron': ^2.45.3
+  '@mauriciorobayo/pyptron': ^2.45.4
   '@svgr/webpack': ^6.2.1
   '@types/jest': ^27.4.1
   '@types/node': ^17.0.30
@@ -50,7 +50,7 @@ specifiers:
   typescript: ^4.6.4
 
 dependencies:
-  '@mauriciorobayo/pyptron': 2.45.3
+  '@mauriciorobayo/pyptron': 2.45.4
   classnames: 2.3.1
   gray-matter: 4.0.3
   next: 12.1.6_6j5eyi3us3liopewjenwniphpy
@@ -3118,9 +3118,8 @@ packages:
     dev: true
     optional: true
 
-  /@mauriciorobayo/pyptron/2.45.3:
-    resolution: {integrity: sha512-tyzwPWvJcXT6nALco5+/hPS313IIWlUU5GOTHiHnG7KmKOKEG/6ApYo0cNj2G0D7wXUO/LPsQ0Ae/BZh87owww==, tarball: download/@mauriciorobayo/pyptron/2.45.3/d886b834c04ca044b0267514b5cedf609c3e51910eab138125b2ee4610c18bab}
-    engines: {node: '>=14.0.0'}
+  /@mauriciorobayo/pyptron/2.45.4:
+    resolution: {integrity: sha512-mepW5px+VDYerm500hPLHGUNkqNcULaVVWBCzt6gM2JvCTnPmw+7chYh4dIJvzeEYuskhHr1f+GiByQSmmtOvQ==, tarball: download/@mauriciorobayo/pyptron/2.45.4/b6d41419d4b37814180c000e7772bbfcc4176b16215e7a567bbd56878297c3dd}
     requiresBuild: true
     dependencies:
       colombian-holidays: 1.7.7
