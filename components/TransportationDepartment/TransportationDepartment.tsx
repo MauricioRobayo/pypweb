@@ -7,7 +7,7 @@ interface Props {
   transportationDepartment: City["transportationDepartment"];
 }
 function TransportationDepartment({ city, transportationDepartment }: Props) {
-  const { facebook, twitter, whatsapp, email, website } =
+  const { facebookHandle, twitterHandle, whatsapp, email, website } =
     transportationDepartment;
   return (
     <>
@@ -17,10 +17,10 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
         será atendida de manera oportuna:
       </p>
       <ul>
-        {twitter ? (
+        {twitterHandle ? (
           <li>
             <a
-              href={`https://twitter.com/${twitter}`}
+              href={`https://twitter.com/${twitterHandle}`}
               target="_blank"
               rel="noopener noreferer noreferrer"
               title={`Cuenta oficial de Twitter de la Secretaría de Movilidad de ${city}`}
@@ -30,10 +30,10 @@ function TransportationDepartment({ city, transportationDepartment }: Props) {
             </a>
           </li>
         ) : null}
-        {facebook ? (
+        {facebookHandle ? (
           <li>
             <a
-              href={`https://www.facebook.com/${facebook}`}
+              href={`https://www.facebook.com/${facebookHandle}`}
               target="_blank"
               rel="noopener noreferer noreferrer"
               title={`Cuenta oficial de Facebook de la Secretaría de Movilidad de ${city}`}
