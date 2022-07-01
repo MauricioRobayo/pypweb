@@ -15,7 +15,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mauriciorobayo/pyptron": "^2.46.0",
+    "@mauriciorobayo/pyptron": "^2.46.1",
     "classnames": "^2.3.1",
     "gray-matter": "^4.0.3",
     "next": "^12.1.6",
