@@ -2,7 +2,7 @@ import { AdPlayerPro, AdSense, Optima } from "components/Ads";
 import { NextPage } from "next";
 import { DefaultSeo } from "next-seo";
 import { AppProps, NextWebVitalsMetric } from "next/app";
-import { event, GoogleAnalytics, usePagesViews } from "nextjs-google-analytics";
+import { event, GoogleAnalytics, usePageViews } from "nextjs-google-analytics";
 import NextNprogress from "nextjs-progressbar";
 import React, { ReactElement, ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
@@ -36,7 +36,7 @@ export function reportWebVitals({
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
 
-  usePagesViews();
+  usePageViews();
 
   return (
     <>
