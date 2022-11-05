@@ -36,11 +36,9 @@ export function reportWebVitals({
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page: ReactNode) => page);
 
-  usePageViews();
-
   return (
     <>
-      <GoogleAnalytics />
+      <GoogleAnalytics trackPageViews />
       <AdSense />
       <Optima />
       <AdPlayerPro />
