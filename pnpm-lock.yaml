@@ -29,7 +29,7 @@ specifiers:
   next-remote-watch: ^1.0.0
   next-seo: ^5.4.0
   next-sitemap: ^2.5.20
-  nextjs-google-analytics: ^1.2.1
+  nextjs-google-analytics: ^2.2.0
   nextjs-progressbar: ^0.0.14
   npm-run-all: ^4.1.5
   prettier: ^2.6.2
@@ -56,7 +56,7 @@ dependencies:
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   next-mdx-remote: 4.0.3_ef5jwxihqo6n7gxfmzogljlgcm
   next-seo: 5.4.0_2mgcgz5qhsdxw4fgpqzqeafmkq
-  nextjs-google-analytics: 1.2.1_next@12.1.6+react@18.1.0
+  nextjs-google-analytics: 2.2.0_next@12.1.6+react@18.1.0
   nextjs-progressbar: 0.0.14_next@12.1.6+react@18.1.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -3130,6 +3130,7 @@ packages:
 
   /@mauriciorobayo/pyptron/2.48.4:
     resolution: {integrity: sha512-gDeYRZGXpNuC54sYIKTXjlBuDJguTKNLqv4EhAtSTKzwL7ywNlscyUXZoZLyXg+g70felHgX6yJnmAfaHy3cXQ==, tarball: download/@mauriciorobayo/pyptron/2.48.4/002859baa788ef4174b3b7aa44343686bfc111d8a030af1b297e7e1db6e6815b}
+    engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       colombian-holidays: 1.7.7
@@ -4912,8 +4913,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -9041,14 +9042,16 @@ packages:
       - '@babel/core'
       - babel-plugin-macros
 
-  /nextjs-google-analytics/1.2.1_next@12.1.6+react@18.1.0:
-    resolution: {integrity: sha512-YrNkTrFRdxrzNRuFuf+3NolXwnM8oU9abri3MQsy9s5xM2BJYS2/nzIBse/o4jeA1EZ7RQVdYdpW75YuPvX+dA==}
+  /nextjs-google-analytics/2.2.0_next@12.1.6+react@18.1.0:
+    resolution: {integrity: sha512-UJz/nWEMnuPuEv2kwsX/4UOxZS49StvZ+GERBbtKnkHXrvL5tMIoeCzncM83Jd7GlUluoUW3KC39sAHm5JRcQQ==}
     peerDependencies:
       next: '>=11.0.0'
       react: '>=17.0.0'
     dependencies:
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
       react: 18.1.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /nextjs-progressbar/0.0.14_next@12.1.6+react@18.1.0:
