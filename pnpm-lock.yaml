@@ -30,6 +30,7 @@ specifiers:
   react: 18.1.0
   react-dom: 18.1.0
   react-icons: ^4.3.1
+  react-is: ^18.2.0
   react-obfuscate-email: ^1.0.15
   react-tweet-embed: ^2.0.0
   rehype-autolink-headings: ^6.1.1
@@ -54,10 +55,11 @@ dependencies:
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-icons: 4.3.1_react@18.1.0
+  react-is: 18.2.0
   react-obfuscate-email: 1.0.15_react@18.1.0+tslib@2.4.0
   react-tweet-embed: 2.0.0_react@18.1.0
   slugify: 1.6.5
-  styled-components: 5.3.5_ef5jwxihqo6n7gxfmzogljlgcm
+  styled-components: 5.3.5_uuaz5p7xzfmtjacf6iqf7idnby
   styled-normalize: 8.0.7_styled-components@5.3.5
   svg-emojis: 0.0.8
 
@@ -2782,7 +2784,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.5_ef5jwxihqo6n7gxfmzogljlgcm
+      styled-components: 5.3.5_uuaz5p7xzfmtjacf6iqf7idnby
     dev: false
 
   /babel-plugin-syntax-jsx/6.18.0:
@@ -6679,6 +6681,10 @@ packages:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
 
+  /react-is/18.2.0:
+    resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
+    dev: false
+
   /react-obfuscate-email/1.0.15_react@18.1.0+tslib@2.4.0:
     resolution: {integrity: sha512-cA6gXuVbN26/2p2eVgkOdZHvGUAXJzHMIrbAVIvMB8H81TsDjmLt8Jaj8kk3WnnMps2iEiY9ATwz4lZcZTcFKw==}
     engines: {node: '>=12'}
@@ -7307,7 +7313,7 @@ packages:
       inline-style-parser: 0.1.1
     dev: false
 
-  /styled-components/5.3.5_ef5jwxihqo6n7gxfmzogljlgcm:
+  /styled-components/5.3.5_uuaz5p7xzfmtjacf6iqf7idnby:
     resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
     engines: {node: '>=10'}
     requiresBuild: true
@@ -7326,6 +7332,7 @@ packages:
       hoist-non-react-statics: 3.3.2
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
+      react-is: 18.2.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
     dev: false
@@ -7350,7 +7357,7 @@ packages:
     peerDependencies:
       styled-components: ^4.0.0 || ^5.0.0
     dependencies:
-      styled-components: 5.3.5_ef5jwxihqo6n7gxfmzogljlgcm
+      styled-components: 5.3.5_uuaz5p7xzfmtjacf6iqf7idnby
     dev: false
 
   /supports-color/5.5.0:
