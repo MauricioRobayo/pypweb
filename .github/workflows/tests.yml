@@ -6,23 +6,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2
-        with:
-          version: "7"
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: "pnpm"
           registry-url: "https://npm.pkg.github.com"
           scope: "@mauriciorobayo"
-      - run: pnpm install --frozen-lockfile --ignore-scripts
+          cache: "npm"
+      # Skip post-install scripts here, as a malicious
+      # script could steal NODE_AUTH_TOKEN.
+      - run: npm ci --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # `npm rebuild` will run all those post-install scripts for us.
-      - run: pnpm rebuild && pnpm prepare --if-present
+      - run: npm rebuild && npm run prepare --if-present
       - name: Build
-        run: pnpm build
+        run: npm run build
       - name: Lint
-        run: pnpm lint
+        run: npm run lint
       - name: Test
-        run: pnpm test:ci
+        run: npm run test:ci
