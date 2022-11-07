@@ -10,8 +10,7 @@
     "format": "prettier --write .",
     "test": "jest",
     "test:ci": "jest -ci",
-    "postbuild": "next-sitemap",
-    "prepare": "husky install"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@mauriciorobayo/pyptron": "^2.48.4",
@@ -44,9 +43,7 @@
     "axios": "^0.27.2",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
-    "husky": "^8.0.0",
     "jest": "^27.5.1",
-    "lint-staged": "^12.4.2",
     "next-remote-watch": "^1.0.0",
     "next-sitemap": "^2.5.25",
     "prettier": "^2.6.2",
@@ -63,9 +60,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/picoyplaca/pypweb.git"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix",
-    "*.{js,ts,tsx,md}": "prettier --write"
   }
 }
