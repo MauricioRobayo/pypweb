@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint:eslint": "next lint",
-    "lint": "run-p lint:*",
+    "lint": "next lint",
     "dev": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
