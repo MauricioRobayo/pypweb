@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.pyphoy.com
+
+# Sitemaps
+Sitemap: https://www.pyphoy.com/sitemap.xml
