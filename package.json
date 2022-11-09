@@ -16,7 +16,7 @@
     "@mauriciorobayo/pyptron": "^2.48.4",
     "classnames": "^2.3.1",
     "gray-matter": "^4.0.3",
-    "next": "12.1.6",
+    "next": "12.3.1",
     "next-mdx-remote": "^4.0.3",
     "next-seo": "^5.4.0",
     "nextjs-google-analytics": "^2.2.0",
