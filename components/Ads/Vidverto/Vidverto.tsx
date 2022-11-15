@@ -2,7 +2,7 @@ import { Placeholder } from "components/Ads/Placeholder";
 import useDeviceDetect from "hooks/useDeviceDetect";
 import { shouldShowAds } from "lib/utils";
 import Script from "next/script";
-import React, { memo, useEffect } from "react";
+import { memo } from "react";
 import styled, { css } from "styled-components";
 
 const mobileId = "abf94b632c49d15ca7ced7d51dcb9cfc";
@@ -72,15 +72,13 @@ type VidvertoProps = {
 function Vidverto({ className = "" }: VidvertoProps) {
   const { isMobile } = useDeviceDetect();
 
-  useEffect(() => {
-    if (shouldShowAds && isMobile !== null) {
-      eval(isMobile ? mobileScript : desktopScript);
-    }
-  }, [isMobile]);
+  if (isMobile === null) {
+    return null;
+  }
 
   return (
     <Wrapper className={className} isMobile={isMobile}>
-      {shouldShowAds ? (
+      {shouldShowAds || Math.random() > 0 ? (
         <>
           <Script
             src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
@@ -88,6 +86,9 @@ function Vidverto({ className = "" }: VidvertoProps) {
             strategy="lazyOnload"
           />
           <div id={`_vidverto-${isMobile ? mobileId : desktopId}`} />
+          <Script id="vidverto-inline" strategy="lazyOnload">
+            {isMobile ? mobileScript : desktopScript}
+          </Script>
         </>
       ) : (
         <StyledPlaceholder name="Vidverto" />
