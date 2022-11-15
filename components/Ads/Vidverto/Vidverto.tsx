@@ -78,7 +78,7 @@ function Vidverto({ className = "" }: VidvertoProps) {
 
   return (
     <Wrapper className={className} isMobile={isMobile}>
-      {shouldShowAds || Math.random() > 0 ? (
+      {shouldShowAds ? (
         <>
           <Script
             src="https://ad.vidverto.io/vidverto/js/aries/v1/invocation.js"
