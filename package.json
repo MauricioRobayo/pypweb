@@ -25,7 +25,7 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1",
     "react-is": "^18.2.0",
-    "react-obfuscate-email": "^1.0.15",
+    "react-obfuscate-email": "^1.1.0",
     "react-tweet-embed": "^2.0.0",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.5",
